@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>hexo 搭建静态博客－高级篇（插件编写） | Frapples的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x867D;&amp;#x7136; hexo &amp;#x672C;&amp;#x8EAB;&amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5F88;&amp;#x4E0D;&amp;#x9519;&amp;#x4E86;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x96BE;&amp;#x514D;&amp;#x4F1A;&amp;#x6709;&amp;#x4EBA;&amp;#x6709;&amp;#x5404;&amp;#x79CD;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 搭建静态博客－高级篇（插件编写）">
+<meta property="og:url" content="http://frapples.github.io/2016/09/21/create-blog-by-hexo-high/index.html">
+<meta property="og:site_name" content="Frapples的博客">
+<meta property="og:description" content="&amp;#x867D;&amp;#x7136; hexo &amp;#x672C;&amp;#x8EAB;&amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5F88;&amp;#x4E0D;&amp;#x9519;&amp;#x4E86;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x96BE;&amp;#x514D;&amp;#x4F1A;&amp;#x6709;&amp;#x4EBA;&amp;#x6709;&amp;#x5404;&amp;#x79CD;&amp;">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/disappointed.png">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/sunglasses.png">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/smile.png">
+<meta property="og:updated_time" content="2016-09-21T14:21:33.060Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo 搭建静态博客－高级篇（插件编写）">
+<meta name="twitter:description" content="&amp;#x867D;&amp;#x7136; hexo &amp;#x672C;&amp;#x8EAB;&amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5F88;&amp;#x4E0D;&amp;#x9519;&amp;#x4E86;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x96BE;&amp;#x514D;&amp;#x4F1A;&amp;#x6709;&amp;#x4EBA;&amp;#x6709;&amp;#x5404;&amp;#x79CD;&amp;">
+<meta name="twitter:image" content="http://frapples.github.io/images/emoji/disappointed.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Frapples</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">博文归档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">文章列表</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://www.github.com/frapples" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Frapples</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Frapples</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">博文归档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://www.github.com/frapples" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-create-blog-by-hexo-high" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo 搭建静态博客－高级篇（插件编写）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>
+&#x867D;&#x7136; hexo &#x672C;&#x8EAB;&#x7684;&#x529F;&#x80FD;&#x5DF2;&#x7ECF;&#x5F88;&#x4E0D;&#x9519;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x96BE;&#x514D;&#x4F1A;&#x6709;&#x4EBA;&#x6709;&#x5404;&#x79CD;&#x5404;&#x6837;&#x5C0F;&#x4F17;&#x7684;&#x9700;&#x6C42;&#x3002;
+&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;emacs &#x7528;&#x6237;&#x4F1A;&#x60F3;&#x7528; org &#x6A21;&#x5F0F;&#x5199;&#x535A;&#x6587;&#x7B49;&#x7B49;&#x3002;
+hexo &#x5F53;&#x7136;&#x4E5F;&#x7167;&#x987E;&#x5230;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x4EBA;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x7B80;&#x5355;&#x6613;&#x7528;&#x7684; API &#x7528;&#x4EE5;&#x521B;&#x5EFA;&#x63D2;&#x4EF6;&#x3002;
+&#x8FD9;&#x6837;&#xFF0C;&#x6709;&#x72EC;&#x7279;&#x9700;&#x6C42;&#x7684;&#x4EBA;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x6269;&#x5C55; hexo&#x3002;
+</p>
+
+<p>
+&#x6211;&#x6700;&#x8FD1;&#x53D1;&#x73B0;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x4E0D;&#x652F;&#x6301; emoji &#x8868;&#x60C5;
+<img width="20" height="20" class="emoji nofancybox" title=":disappointed:" alt="&#x1F61E;" src="/images/emoji/disappointed.png">
+&#xFF0C;&#x4F46;&#x662F;&#x641C;&#x7D22;&#x4E86;&#x4E00;&#x5708;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x597D;&#x7528;&#x7684;&#x63D2;&#x4EF6;&#x3002;
+&#x6240;&#x4EE5;&#x6211;&#x5728;&#x770B;&#x4E86;&#x6587;&#x6863;&#x4E86;&#x89E3;&#x4E86;&#x4E00;&#x4E9B;&#x60C5;&#x51B5;&#x540E;&#xFF0C;&#x51B3;&#x5B9A;&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5199;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x652F;&#x6301; emoji &#x7684;&#x63D2;&#x4EF6;&#x6765;&#x3002;
+&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x5229;&#x7528; hexo &#x7684; API &#x5199;&#x51FA;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x63D2;&#x4EF6;&#x6765;&#x3002;
+</p>
+
+<a id="more"></a>
+
+
+<p>
+hexo &#x662F;&#x7528; nodejs&#xFF08;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684; javascript&#xFF09;&#x5199;&#x6210;&#x7684;&#xFF0C;&#x5B83;&#x7684;&#x63D2;&#x4EF6;&#x4E5F;&#x662F;&#x8981;&#x7528; nodejs &#x5199;&#x7684;&#x3002;
+&#x6240;&#x4EE5;&#x8981;&#x60F3;&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5199;&#x63D2;&#x4EF6;&#x6269;&#x5C55; hexo&#xFF0C;&#x5F97;&#x4F1A;&#x4E00;&#x70B9;&#x513F; nodejs &#x7684;&#x57FA;&#x672C;&#x77E5;&#x8BC6;&#x3002;
+&#x50CF;&#x6211;&#x8FD9;&#x6837;&#x4E0D;&#x719F;&#x6089; javacript &#x7684;&#x4EBA;&#xFF0C;&#x90FD;&#x80FD;&#x4F7F;&#x7528; hexo &#x7684; API &#x6765;&#x5199;&#x63D2;&#x4EF6;&#x6269;&#x5C55;&#x6211;&#x9700;&#x8981;&#x7684;&#x529F;&#x80FD;&#x3002;
+&#x6240;&#x4EE5; hexo &#x7684; API&#xFF0C;&#x8BBE;&#x8BA1;&#x7684;&#x662F;&#x975E;&#x5E38;&#x4F18;&#x79C0;&#x7684;&#x3002;
+</p>
+
+<p>
+&#x4F17;&#x6240;&#x5468;&#x77E5; javascript &#x7684;&#x8BED;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#x9ED1;&#x70B9;&#xFF0C;&#x4E0D;&#x719F;&#x6089;&#x5B83;&#x7684;&#x4EBA;&#x5E38;&#x5E38;&#x88AB;&#x641E;&#x7684;&#x5934;&#x6655;&#x773C;&#x82B1;&#x3002;
+&#x4E0D;&#x8FC7; hexo &#x7684; API &#x548C;&#x5404;&#x79CD;&#x5E93;&#x7684; API &#x8BBE;&#x8BA1;&#x7684;&#x5F88;&#x597D;&#xFF0C;&#x4F5C;&#x4E3A;&#x4F7F;&#x7528;&#x8005;&#x4F60;&#x4E0D;&#x8981;&#x77E5;&#x9053;&#x592A;&#x591A;&#x7684;&#x4E71;&#x4E03;&#x516B;&#x7CDF;&#x7684;&#x8BED;&#x6CD5;&#x3002;
+&#x6240;&#x4EE5;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x61C2;&#x5F97; javascript &#x7684;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x80FD;&#x5B8C;&#x6210;&#x4F60;&#x7684;&#x9700;&#x6C42;&#x5C31;&#x884C;&#x4E86;&#x3002;
+&#x50CF;&#x57FA;&#x672C;&#x7684;&#x63A7;&#x5236;&#x6D41;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#xFF0C;&#x4EE5;&#x53CA;&#x6700;&#x6700;&#x91CD;&#x8981;&#x7684;&#xFF0C; <b>&#x95ED;&#x5305;</b> &#x3002;
+</p>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> hexo &#x63D2;&#x4EF6;&#x7ED3;&#x6784;</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+&#x4E3A;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x65B9;&#x4FBF;&#x6269;&#x5C55;&#xFF0C;hexo &#x652F;&#x6301;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x63D2;&#x4EF6;&#x3002;
+</p>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> scripts &#x6587;&#x4EF6;</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+&#x8FD9;&#x662F;&#x7B2C;&#x4E00;&#x79CD;&#x5F62;&#x5F0F;&#x3002;
+&#x5982;&#x679C;&#x4F60;&#x7684;&#x9700;&#x6C42;&#x975E;&#x5E38;&#x7684;&#x5C0F;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x5341;&#x51E0;&#x884C;&#x4EE3;&#x7801;&#x5C31;&#x80FD;&#x89E3;&#x51B3;&#x3002;
+&#x76F4;&#x63A5;&#x5728;&#x535A;&#x6587;&#x76EE;&#x5F55;&#x4E0B;&#x5EFA;&#x7ACB; <code>scripts</code> &#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A; js &#x811A;&#x672C;&#x6587;&#x4EF6;&#xFF0C;&#x628A;&#x4EE3;&#x7801;&#x5199;&#x8FDB;&#x53BB;&#x5C31;&#x884C;&#x4E86;&#x3002;
+hexo &#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x8F7D;&#x5165; <code>scripts</code> &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x811A;&#x672C;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> packages</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+&#x7B2C;&#x4E8C;&#x79CD;&#x5F62;&#x5F0F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684; npm &#x5305;&#x4E86;&#x3002;
+&#x9996;&#x5148;&#x4F60;&#x8981;&#x7ED9;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x53D6;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x3002;
+&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;hexo &#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x540D;&#x79F0;&#x5FC5;&#x987B;&#x8981;&#x4EE5; <code>hexo-</code> &#x5F00;&#x5934;&#x3002;
+&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6211;&#x60F3;&#x5199;&#x4E00;&#x4E2A;&#x80FD;&#x7ED9;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x6DFB;&#x52A0; emoji &#x8868;&#x60C5;&#x652F;&#x6301;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x6211;&#x628A;&#x5B83;&#x547D;&#x540D;&#x6210; <code>hexo-article-emoji</code> &#x3002;
+</p>
+
+<p>
+&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5728;&#x535A;&#x5BA2;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>node_modules</code> &#x4E0B;&#x5EFA;&#x7ACB;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x540D;&#x79F0;&#x662F;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x540D;&#x79F0;&#x3002;
+</p>
+
+<p>
+&#x5728;&#x8FD9;&#x91CC;&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x9762;&#xFF0C;&#x81F3;&#x5C11;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF1A; <code>index.js</code> &#x548C; <code>package.json</code> &#x3002;
+<code>package.json</code> &#x662F;&#x5173;&#x4E8E;&#x63D2;&#x4EF6;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C; <code>index.js</code> &#x4E00;&#x822C;&#x6765;&#x8BF4;&#x662F;&#x63D2;&#x4EF6;&#x7684;&#x542F;&#x52A8;&#x5165;&#x53E3;&#xFF08;&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x5728; <code>package.json</code> &#x4E2D;&#x914D;&#x7F6E;&#xFF09;&#x3002;
+</p>
+
+<p>
+&#x5728;&#x535A;&#x5BA2;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x7701;&#x7565;&#x53BB;&#x65E0;&#x5173;&#x6587;&#x4EF6;&#xFF0C;&#x5927;&#x81F4;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x6784;&#xFF1A;
+</p>
+<pre class="example">
+.
+&#x2514;&#x2500;&#x2500; node_modules
+    &#x2514;&#x2500;&#x2500; hexo-article-emoji
+        &#x251C;&#x2500;&#x2500; index.js
+        &#x2514;&#x2500;&#x2500; package.json
+</pre>
+
+<p>
+<code>package.json</code> &#x662F; json &#x683C;&#x5F0F;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x9700;&#x8981;&#x5305;&#x542B;&#x7684;&#x5185;&#x5BB9;&#x662F;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  &quot;<span class="attribute">name</span>&quot;: <span class="value"><span class="string">&quot;hexo-article-emoji&quot;</span></span>,</span><br><span class="line">  &quot;<span class="attribute">version</span>&quot;: <span class="value"><span class="string">&quot;0.0.1&quot;</span></span>,</span><br><span class="line">  &quot;<span class="attribute">main</span>&quot;: <span class="value"><span class="string">&quot;index&quot;</span></span><br><span class="line"></span>}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+name &#x662F;&#x63D2;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;version &#x662F;&#x63D2;&#x4EF6;&#x7248;&#x672C;&#xFF0C;main &#x662F;&#x63D2;&#x4EF6;&#x7684;&#x542F;&#x52A8;&#x7684; js &#x6587;&#x4EF6;&#x3002;
+</p>
+
+<p>
+index.js &#x662F;&#x63D2;&#x4EF6;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x91CC;&#x9762;&#x5F00;&#x59CB;&#x7F16;&#x5199;&#x63D2;&#x4EF6;&#x6269;&#x5C55;&#x529F;&#x80FD;&#x4E86;&#x3002;
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> &#x4F9D;&#x8D56;&#x5305;&#x7684;&#x5B89;&#x88C5;</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&#x5BF9;&#x4E8E;&#x6709;&#x4E9B;&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x70B9;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x53EF;&#x80FD;&#x53EA;&#x5355;&#x5355;&#x7528;&#x6700;&#x57FA;&#x672C; nodejs &#x5E93;&#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x7684;&#x3002;
+&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x7684;&#x652F;&#x6301;&#x3002;
+&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6211;&#x4E3A;&#x4E86;&#x7ED9;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x52A0;&#x4E0A; emoji &#x8868;&#x60C5;&#x652F;&#x6301;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x5230;&#x4E00;&#x4E2A;&#x53EB;&#x505A; cheerio &#x7684;&#x5E93;&#x3002;
+&#x8FD9;&#x4E2A;&#x5E93;&#xFF0C;&#x662F;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684; jquery&#xFF0C;&#x7528;&#x6765;&#x5904;&#x7406; HTML &#x975E;&#x5E38;&#x597D;&#x7528;&#x3002;
+</p>
+
+<p>
+&#x4EE5; cheerio &#x4E3A;&#x4F8B;&#xFF0C;&#x5728;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x5B89;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x5E93;&#x3002; <b>&#x5728;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;</b> &#x6267;&#x884C;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install cheerio --save</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x4F1A;&#x628A; cheerio &#x5B89;&#x88C5;&#x5230;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x53BB;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x6CE8;&#x610F;&#x7684;&#x8BDD;&#x4F1A;&#x53D1;&#x73B0;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x591A;&#x4E86;&#x4E00;&#x4E2A; node_modules &#x6587;&#x4EF6;&#x5939;&#x3002;
+&#x800C;&#x4E14;&#xFF0C;&#x5B83;&#x8FD8;&#x4F1A;&#x4FEE;&#x6539;&#x4F60;&#x63D2;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>package.json</code> &#x6587;&#x4EF6;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x591A;&#x4E86;&#x4E00;&#x4E2A; <code>dependencies</code> &#x5B57;&#x6BB5;&#xFF08;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x7684;&#x8BDD;&#xFF09;&#xFF0C;
+&#x5728;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x4E0B;&#x9762;&#x8FD8;&#x9644;&#x4E0A;&#x4E86;&#x8FD9;&#x4E2A;&#x5E93;&#x7684;&#x540D;&#x79F0;&#x548C;&#x7248;&#x672C;&#x8981;&#x6C42;&#x3002;
+</p>
+
+<p>
+&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x6709;&#x4EC0;&#x4E48;&#x4F5C;&#x7528;&#x5462;&#xFF1F;&#x5982;&#x679C;&#x4F60;&#x628A;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x53D1;&#x5E03;&#x5230; github &#x4E0A;&#x53BB;&#xFF0C;
+&#x522B;&#x4EBA;&#x901A;&#x8FC7; npm &#x6765;&#x5B89;&#x88C5;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;npm &#x5C31;&#x80FD;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x81EA;&#x52A8;&#x7684;&#x628A;&#x6240;&#x6709;&#x7684;&#x4F9D;&#x8D56;&#x5305;&#x90FD;&#x5B89;&#x88C5;&#x597D;&#xFF0C;&#x5F88;&#x65B9;&#x4FBF;&#x5427;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> hexo &#x7684; API</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> hexo &#x5BF9;&#x8C61;</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+&#x65E2;&#x7136;&#x662F;&#x63D2;&#x4EF6;&#xFF0C;&#x81EA;&#x7136;&#x8981;&#x63D0;&#x4F9B;&#x80FD;&#x8BBF;&#x95EE; API &#x7684;&#x63A5;&#x53E3;&#x3002;&#x5728; <code>index.js</code> &#x91CC;&#x9762;&#xFF0C;&#x4F60;&#x80FD;&#x8BBF;&#x95EE;&#x5230;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C; <code>hexo</code> &#x3002;
+&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x5F53;&#x6210;&#x63D2;&#x4EF6;&#x8BBF;&#x95EE; hexo API &#x7684;&#x901A;&#x9053;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> &#x83B7;&#x53D6; hexo &#x914D;&#x7F6E;</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x535A;&#x5BA2;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>_config.yml</code> &#x6587;&#x4EF6;&#xFF0C;&#x8BB0;&#x5F55;&#x4E86; hexo &#x535A;&#x5BA2;&#x7684;&#x5927;&#x90E8;&#x5206;&#x914D;&#x7F6E;&#x3002;
+yml &#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;&#x7C7B;&#x4F3C; json&#xFF0C;hexo &#x5728;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x52A0;&#x8F7D;&#x5B83;&#x3002;
+&#x5728;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x63D2;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x8FC7; <code>hexo.config</code> &#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5C31;&#x80FD;&#x8BBF;&#x95EE;&#x5230;&#x8FD9;&#x4E9B;&#x914D;&#x7F6E;&#x3002;
+</p>
+
+<p>
+&#x6211;&#x4EEC;&#x8981;&#x7F16;&#x5199;&#x7684;&#x63D2;&#x4EF6;&#x53EF;&#x80FD;&#x80FD;&#x63D0;&#x4F9B;&#x7ED9;&#x7528;&#x6237;&#x4E00;&#x4E9B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x8FD9;&#x4E9B;&#x914D;&#x7F6E;&#x4E5F;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x535A;&#x5BA2;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>_config.yml</code> &#x4E2D;&#x3002;
+&#x4E4B;&#x540E;&#x5728;&#x63D2;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7; <code>hexo.config</code> &#x5C31;&#x80FD;&#x8BBF;&#x95EE;&#x5230;&#x5B83;&#x4E86;&#x3002;
+</p>
+
+<p>
+&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x6211;&#x7684; hexo-article-emoji &#x63D2;&#x4EF6;&#x80FD;&#x591F;&#x914D;&#x7F6E;&#x662F;&#x5426;&#x89E3;&#x6790;&#x5B8C;&#x6574;&#x7248;&#x7684; emoji&#x3002;
+&#x6211;&#x4EEC;&#x5728;&#x63D2;&#x4EF6;&#x6587;&#x6863;&#x91CC;&#x544A;&#x8BC9;&#x7528;&#x6237;&#xFF0C;&#x5728; <code>_config.yml</code> &#x7684;&#x540E;&#x9762;&#x52A0;&#x4E0A;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">article-emoji:
+  full: true</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5728;&#x63D2;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7; <code>hexo.config.article-emoji.full</code> &#x5C31;&#x80FD;&#x53D6;&#x5F97;&#x5BF9;&#x5E94;&#x914D;&#x7F6E;&#x9879;&#x7684;&#x503C;&#x4E86;&#x3002;&#x6BD4;&#x5982;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_full</span>(<span class="params"></span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="string">&quot;article_emoji&quot;</span> <span class="keyword">in</span> hexo.config) || !(<span class="string">&quot;full&quot;</span> <span class="keyword">in</span> hexo.config.emoji)) {</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">	<span class="keyword">return</span> hexo.config.article_emoji.full;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x8FD9;&#x4E9B;&#x914D;&#x7F6E;&#x7684;&#x5B57;&#x6BB5;&#x662F;&#x600E;&#x4E48;&#x6837;&#x7684;&#xFF0C;&#x5B8C;&#x5168;&#x7531;&#x4F60;&#x51B3;&#x5B9A;&#x3002;&#x4E0D;&#x8FC7;&#x8981;&#x6CE8;&#x610F;&#x4E24;&#x70B9;&#xFF1A;
+</p>
+<ol class="org-ol">
+<li>&#x4E0D;&#x8981;&#x548C;&#x5176;&#x5B83;&#x7684;&#x914D;&#x7F6E;&#x9009;&#x9879;&#x51B2;&#x7A81;
+</li>
+<li>&#x5C3D;&#x91CF;&#x80FD;&#x76F4;&#x63A5;&#x4ECE;&#x914D;&#x7F6E;&#x4E2D;&#x770B;&#x51FA;&#x662F;&#x54EA;&#x4E2A;&#x63D2;&#x4EF6;&#x7684;&#x914D;&#x7F6E;
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> &#x8FC7;&#x6EE4;&#x5668;</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+&#x597D;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x6784;&#x601D;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x6587;&#x7AE0; emoji &#x8868;&#x60C5;&#x7684;&#x63D2;&#x4EF6;&#x3002;
+&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E2A;&#x63D2;&#x4EF6;&#x8981;&#x505A;&#x7684;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x4E8B;&#x60C5;&#x5C31;&#x662F;&#xFF0C;&#x628A;&#x6587;&#x7AE0;&#x91CC;&#x9762;&#x7684;&#x7C7B;&#x4F3C;&#x4EE5;&#x4E0B;&#x7684; emoji &#x8BED;&#x6CD5;&#xFF1A;
+</p>
+<pre class="example">
+:smile:
+</pre>
+<p>
+&#x628A;&#x5B83;&#x66FF;&#x6362;&#x6210;&#x56FE;&#x7247;&#x94FE;&#x63A5;&#xFF0C;&#x5982;&#xFF1A;
+</p>
+<pre class="example">
+&lt;img  title=&quot;:smile:&quot;  src=&quot;/images/emoji/smile.png&quot;&gt;&lt;/img&gt;
+</pre>
+
+<p>
+&#x90A3;&#x4E48;&#x5C31;&#x5F97;&#x4F7F;&#x7528; hexo &#x7684; API &#x6765;&#x4FEE;&#x6539;&#x6587;&#x7AE0;&#x3002;
+hexo &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7C7B;&#x5F88;&#x7B80;&#x5355;&#x5374;&#x5F88;&#x5F3A;&#x5927;&#x7684; API &#x5C31;&#x662F;&#x8FC7;&#x6EE4;&#x5668;&#x3002;
+</p>
+
+<p>
+&#x6240;&#x8C13;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;&#x4F60;&#x5B9A;&#x4E49;&#x7684;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x6587;&#x7AE0;&#x7684;&#x51FD;&#x6570;&#x3002;
+&#x4F7F;&#x7528; hexo &#x63D0;&#x4F9B;&#x7684; API &#x5C06;&#x5B83;&#x6CE8;&#x518C;&#x6210;&#x8FC7;&#x6EE4;&#x5668;&#x3002;
+&#x4E4B;&#x540E;&#xFF0C;hexo &#x5728;&#x5C06;&#x4F60;&#x7684;&#x6587;&#x7AE0;&#x89E3;&#x6790;&#x6210; HTML &#x9759;&#x6001;&#x9875;&#x9762;&#x65F6;&#xFF0C;&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;
+</p>
+<ul class="org-ul">
+<li>&#x6267;&#x884C; <code>before_post_render</code> &#x8FC7;&#x6EE4;&#x5668;
+</li>
+<li>&#x4F7F;&#x7528;&#x6E32;&#x67D3;&#x5668;&#x5C06;&#x535A;&#x5BA2;&#x6587;&#x4EF6;&#xFF08;Mrkdown &#x6216;&#x8005;&#x5176;&#x5B83;&#x683C;&#x5F0F;&#xFF09;&#x6E32;&#x67D3;&#x6210; HTML
+</li>
+<li>&#x6267;&#x884C; <code>after_post_render</code> &#x8FC7;&#x6EE4;&#x5668;
+</li>
+</ul>
+
+<p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;hexo &#x5148;&#x628A;&#x539F;&#x59CB;&#x7684; markdown &#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x4F20;&#x5165;&#x4F60;&#x7684; before_post_render &#x6CE8;&#x518C;&#x5668;&#x51FD;&#x6570;&#xFF0C;
+&#x8FD9;&#x6837;&#x4F60;&#x5C31;&#x6709;&#x673A;&#x4F1A;&#x53BB;&#x4FEE;&#x6539;&#x539F;&#x59CB;&#x7684; markdown &#x683C;&#x5F0F;&#x7684;&#x5185;&#x5BB9;&#x3002;
+&#x518D;&#x5C06;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x7528;&#x6E32;&#x67D3;&#x5668;&#x6E32;&#x67D3;&#x6210; HTML&#x3002;
+&#x6700;&#x540E;&#x7684;&#x8FD9;&#x4E2A; HTML &#x8FD8;&#x80FD;&#x4F20;&#x5165;&#x4F60;&#x7684; after_post_render &#x6CE8;&#x518C;&#x5668;&#x51FD;&#x6570;&#xFF0C;
+&#x8FD9;&#x6837;&#x4F60;&#x53C8;&#x6709;&#x673A;&#x4F1A;&#x53BB;&#x4FEE;&#x6539;&#x6700;&#x7EC8;&#x751F;&#x6210;&#x7684; HTML&#x3002;
+</p>
+
+<p>
+hexo &#x7684; API &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5199;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x6210;&#x67D0;&#x79CD;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> my_before_post_render = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{</span><br><span class="line">  data.title = data.title.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> my_after_post_render = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{</span><br><span class="line">  data.title = data.title.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(<span class="string">&apos;before_post_render&apos;</span>, my_before_post_render);</span><br><span class="line">hexo.extend.filter.register(<span class="string">&apos;after_post_render&apos;</span>, my_after_post_render);</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x901A;&#x8FC7; hexo &#x7684; API &#x628A;&#x5B83;&#x4EEC;&#x5206;&#x522B;&#x8BBE;&#x7F6E;&#x6210;&#x67D0;&#x79CD;&#x8FC7;&#x6EE4;&#x5668;&#x3002;
+&#x7531;&#x4E8E; javascript &#x4E2D;&#x51FD;&#x6570;&#x662F; first-class &#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x80FD;&#x628A;&#x5B83;&#x5F53;&#x6210;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x53E6;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x91CC;&#x9762;&#xFF0C;&#x4E5F;&#x80FD;&#x628A;&#x5B83;&#x4FDD;&#x5B58;&#x5230;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x91CC;&#x9762;&#x3002;
+hexo &#x5145;&#x5206;&#x5229;&#x7528;&#x4E86;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x8BBE;&#x8BA1;&#x51FA;&#x4E86;&#x6613;&#x7528;&#x5F3A;&#x5927;&#x7684; API&#x3002;
+</p>
+
+<p>
+&#x6CE8;&#x610F;&#x5230;&#x51FD;&#x6570;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;hexo &#x5728;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x4F1A;&#x628A;&#x6587;&#x7AE0;&#x7684;&#x4FE1;&#x606F;&#x4ECE;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x8FDB;&#x6765;&#x3002;
+&#x4F20;&#x5165;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x6709;&#x5982;&#x4E0B;&#x7684;&#x952E;&#x503C;&#xFF1A;
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="left">
+
+<col class="left">
+
+<col class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">&#x952E;&#x503C;</th>
+<th scope="col" class="left">&#x7C7B;&#x578B;</th>
+<th scope="col" class="left">&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">title</td>
+<td class="left">&#x5B57;&#x7B26;&#x4E32;</td>
+<td class="left">&#x6587;&#x7AE0;&#x6807;&#x9898;</td>
+</tr>
+
+<tr>
+<td class="left">excerpt</td>
+<td class="left">&#x5B57;&#x7B26;&#x4E32;</td>
+<td class="left">&#x6587;&#x7AE0;&#x6458;&#x8981;</td>
+</tr>
+
+<tr>
+<td class="left">more</td>
+<td class="left">&#x5B57;&#x7B26;&#x4E32;</td>
+<td class="left">&#x6587;&#x7AE0;&#x51FA;&#x6458;&#x8981;&#x4EE5;&#x5916;&#x7684;&#x5185;&#x5BB9;</td>
+</tr>
+
+<tr>
+<td class="left">content</td>
+<td class="left">&#x5B57;&#x7B26;&#x4E32;</td>
+<td class="left">&#x6587;&#x7AE0;&#x5185;&#x5BB9;</td>
+</tr>
+</tbody>
+</table>
+<p>
+excerpt&#xFF0C;more&#xFF0C;content &#x8FD9;&#x4E09;&#x4E2A;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x662F; before_post_render&#xFF0C;&#x91CC;&#x9762;&#x662F;&#x539F;&#x59CB;&#x7684;&#xFF08;markdown &#x7B49;&#xFF09;&#x5185;&#x5BB9;&#x3002;
+&#x5982;&#x679C;&#x4F60;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x662F; after_post_render&#xFF0C;&#x90A3;&#x4E48;&#x91CC;&#x9762;&#x7684;&#x662F;&#x89E3;&#x6790;&#x540E;&#x7684; HTML&#x3002;
+&#x4E4B;&#x540E;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x503C;&#xFF0C;&#x518D;&#x628A;&#x6574;&#x4E2A;&#x6570;&#x7EC4;&#x8FD4;&#x56DE;&#x3002;
+</p>
+
+<p>
+&#x597D;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x6709;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#xFF0C;&#x4ECE;&#x6280;&#x672F;&#x7684;&#x89D2;&#x5EA6;&#xFF0C;&#x5B9E;&#x73B0; emoji &#x8868;&#x60C5;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x662F;&#x6BEB;&#x65E0;&#x95EE;&#x9898;&#x4E86;&#x3002;
+</p>
+
+<p>
+&#x66F4;&#x591A;&#x952E;&#x503C;&#x8BF7;&#x53C2;&#x8003;&#xFF1A;<a href="https://hexo.io/zh-cn/docs/variables.html" target="_blank" rel="external">https://hexo.io/zh-cn/docs/variables.html</a>&#x3002; <br>
+&#x66F4;&#x591A;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x8BF7;&#x53C2;&#x8003;&#xFF1A;<a href="https://hexo.io/zh-cn/api/filter.html" target="_blank" rel="external">https://hexo.io/zh-cn/api/filter.html</a>
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> &#x6700;&#x540E;</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+&#x6700;&#x7EC8;&#xFF0C;&#x6211;&#x51ED;&#x7740;&#x8E69;&#x811A;&#x7684; javascript &#x7684;&#x6C34;&#x5E73;&#xFF0C;&#x7EC8;&#x4E8E;&#x5199;&#x51FA;&#x4E86;&#x63D2;&#x4EF6;&#x5B9E;&#x73B0;&#x4E86;&#x6211;&#x60F3;&#x8981;&#x7684; emoji &#x529F;&#x80FD;&#xFF01;
+&#x6211;&#x628A;&#x5B83;&#x653E;&#x5728;&#x4E86; github &#x4E0A;&#x9762;&#xFF1A;<a href="https://github.com/frapples/hexo-article-emoji" target="_blank" rel="external">https://github.com/frapples/hexo-article-emoji</a> <br>
+&#x867D;&#x7136;&#x5B83;&#x7684;&#x529F;&#x80FD;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x8DB3;&#x591F;&#x6EE1;&#x8DB3;&#x6211;&#x7684;&#x9700;&#x6C42;&#x4E86;&#x3002;
+&#x6211;&#x7684; emacs &#x5728; org-mode &#x662F;&#x80FD;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x63D2;&#x5165; emoji &#x8BED;&#x6CD5;&#xFF0C;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x7EC8;&#x4E8E;&#x80FD;&#x8BC6;&#x522B;&#x4ED6;&#x4EEC;&#x4E86;&#xFF01;
+<img width="20" height="20" class="emoji nofancybox" title=":sunglasses:" alt="&#x1F60E;" src="/images/emoji/sunglasses.png">
+
+<img width="20" height="20" class="emoji nofancybox" title=":smile:" alt="&#x1F604;" src="/images/emoji/smile.png">
+
+</p>
+</div>
+</div>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/09/21/create-blog-by-hexo-high/" class="archive-article-date">
+  	<time datetime="2016-09-21T14:21:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-21</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/博客/">博客</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/20/create-blog-by-hexo-middle/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo 搭建静态博客－中级篇（主题和org支持）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+<div class="share ds-share flat" 
+    data-thread-key="create-blog-by-hexo-high"
+    data-title="hexo 搭建静态博客－高级篇（插件编写）" 
+    data-images="" 
+    data-content="" 
+    data-url="http://frapples.github.io/2016/09/21/create-blog-by-hexo-high/">
+
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-baidu" href="javascript:void(0);" data-service="baidu"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="create-blog-by-hexo-high" data-title="hexo 搭建静态博客－高级篇（插件编写）" data-url="http://frapples.github.io/2016/09/21/create-blog-by-hexo-high/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"frapples"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Frapples
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/emacs/" style="font-size: 15px;">emacs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/myself/" style="font-size: 10px;">myself</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/orgmode/" style="font-size: 15px;">orgmode</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">热爱技术，热爱知识的大学生一枚。&lt;br&gt;&lt;br&gt;自己的一片小天地。&lt;br&gt;在这里整理自己的思绪，分享自己的心得。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
