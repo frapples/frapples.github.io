@@ -4,17 +4,23 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Frapples的博客</title>
+  <title>动态语言与 C 语言泛型 | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人的一片小天地，整理思绪，思考问题，分享心得:)">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frapples的博客">
-<meta property="og:url" content="http://frapples.github.io/index.html">
+  <meta name="description" content="&amp;#x52A8;&amp;#x6001;&amp;#x8BED;&amp;#x8A00;&amp;#x5982; python&amp;#xFF0C;javascript&amp;#xFF0C;php &amp;#x7B49;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#x548C;&amp;#x503C;&amp;#x662F;&amp;#x5206;&amp;#x5F00;&amp;#x6765;&amp;#x7684;&amp;#x3002;
+&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态语言与 C 语言泛型">
+<meta property="og:url" content="http://frapples.github.io/2016/10/10/dynamic-language-and-c-generics/index.html">
 <meta property="og:site_name" content="Frapples的博客">
-<meta property="og:description" content="个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta property="og:description" content="&amp;#x52A8;&amp;#x6001;&amp;#x8BED;&amp;#x8A00;&amp;#x5982; python&amp;#xFF0C;javascript&amp;#xFF0C;php &amp;#x7B49;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#x548C;&amp;#x503C;&amp;#x662F;&amp;#x5206;&amp;#x5F00;&amp;#x6765;&amp;#x7684;&amp;#x3002;
+&amp;">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/smile.png">
+<meta property="og:updated_time" content="2016-10-10T15:39:24.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frapples的博客">
-<meta name="twitter:description" content="个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="twitter:title" content="动态语言与 C 语言泛型">
+<meta name="twitter:description" content="&amp;#x52A8;&amp;#x6001;&amp;#x8BED;&amp;#x8A00;&amp;#x5982; python&amp;#xFF0C;javascript&amp;#xFF0C;php &amp;#x7B49;&amp;#xFF0C;&amp;#x5B83;&amp;#x4EEC;&amp;#x7684;&amp;#x53D8;&amp;#x91CF;&amp;#x548C;&amp;#x503C;&amp;#x662F;&amp;#x5206;&amp;#x5F00;&amp;#x6765;&amp;#x7684;&amp;#x3002;
+&amp;">
+<meta name="twitter:image" content="http://frapples.github.io/images/emoji/smile.png">
   
     <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
   
@@ -129,9 +135,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-dynamic-language-and-c-generics" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-dynamic-language-and-c-generics" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -140,8 +144,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/10/dynamic-language-and-c-generics/">动态语言与 C 语言泛型</a>
+    <h1 class="article-title" itemprop="name">
+      动态语言与 C 语言泛型
     </h1>
   
 
@@ -150,6 +154,14 @@
     <div class="article-entry" itemprop="articleBody">
       
 
+          
+              <div class="toc-article">
+                  <strong class="toc-title">目录</strong>
+                  (<a class="js-toggle-toc" href="javascript:void(0)"></a>)
+                  <div class="toc-content">
+                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-1"><span class="toc-text">1 什么是泛型？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-1-1"><span class="toc-text">1.1 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-1-2"><span class="toc-text">1.2 泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-1-2-1"><span class="toc-text">1.2.1 举例一 容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-1-2-2"><span class="toc-text">1.2.2 举例二 算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-2"><span class="toc-text">2 泛型的重要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-3"><span class="toc-text">3 动态语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-1"><span class="toc-text">3.1 动态语言特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-2"><span class="toc-text">3.2 动态语言中的泛型代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-4"><span class="toc-text">4 C 语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-4-1"><span class="toc-text">4.1 试图用类型别名提升容器的通用性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-4-2"><span class="toc-text">4.2 void * 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-4-2-1"><span class="toc-text">4.2.1 容器泛型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-4-2-2"><span class="toc-text">4.2.2 算法泛型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-5"><span class="toc-text">5 共通之处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-6"><span class="toc-text">6 这种方式的缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-6-1"><span class="toc-text">6.1 类型安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-6-2"><span class="toc-text">6.2 无法及时暴露错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-6-3"><span class="toc-text">6.3 性能问题</span></a></li></ol></li></ol>
+                  </div>
+              </div>
           
 
         <p>
@@ -701,389 +713,71 @@ C &#x8BED;&#x8A00;&#x4F5C;&#x4E3A;&#x5F3A;&#x7C7B;&#x578B;&#x8BED;&#x8A00;&#xFF0
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
-
-
   
-    <article id="post-create-blog-by-hexo-high" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/21/create-blog-by-hexo-high/">hexo 搭建静态博客－高级篇（插件编写）</a>
-    </h1>
   
+    <a href="/2016/09/21/create-blog-by-hexo-high/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo 搭建静态博客－高级篇（插件编写）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>
-&#x867D;&#x7136; hexo &#x672C;&#x8EAB;&#x7684;&#x529F;&#x80FD;&#x5DF2;&#x7ECF;&#x5F88;&#x4E0D;&#x9519;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x96BE;&#x514D;&#x4F1A;&#x6709;&#x4EBA;&#x6709;&#x5404;&#x79CD;&#x5404;&#x6837;&#x5C0F;&#x4F17;&#x7684;&#x9700;&#x6C42;&#x3002;
-&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;emacs &#x7528;&#x6237;&#x4F1A;&#x60F3;&#x7528; org &#x6A21;&#x5F0F;&#x5199;&#x535A;&#x6587;&#x7B49;&#x7B49;&#x3002;
-hexo &#x5F53;&#x7136;&#x4E5F;&#x7167;&#x987E;&#x5230;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x4EBA;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x7B80;&#x5355;&#x6613;&#x7528;&#x7684; API &#x7528;&#x4EE5;&#x521B;&#x5EFA;&#x63D2;&#x4EF6;&#x3002;
-&#x8FD9;&#x6837;&#xFF0C;&#x6709;&#x72EC;&#x7279;&#x9700;&#x6C42;&#x7684;&#x4EBA;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x6269;&#x5C55; hexo&#x3002;
-</p>
 
-<p>
-&#x6211;&#x6700;&#x8FD1;&#x53D1;&#x73B0;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x4E0D;&#x652F;&#x6301; emoji &#x8868;&#x60C5;
-<img width="20" height="20" class="emoji nofancybox" title=":disappointed:" alt="&#x1F61E;" src="/images/emoji/disappointed.png">
-&#xFF0C;&#x4F46;&#x662F;&#x641C;&#x7D22;&#x4E86;&#x4E00;&#x5708;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x597D;&#x7528;&#x7684;&#x63D2;&#x4EF6;&#x3002;
-&#x6240;&#x4EE5;&#x6211;&#x5728;&#x770B;&#x4E86;&#x6587;&#x6863;&#x4E86;&#x89E3;&#x4E86;&#x4E00;&#x4E9B;&#x60C5;&#x51B5;&#x540E;&#xFF0C;&#x51B3;&#x5B9A;&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5199;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x652F;&#x6301; emoji &#x7684;&#x63D2;&#x4EF6;&#x6765;&#x3002;
-&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x5229;&#x7528; hexo &#x7684; API &#x5199;&#x51FA;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x63D2;&#x4EF6;&#x6765;&#x3002;
-</p>
-        <p class="article-more-link">
-          <a  href="/2016/09/21/create-blog-by-hexo-high/#more">more >></a>
-        </p>
-      
+
+
+
+
+
+
+
+<div class="share ds-share flat" 
+    data-thread-key="dynamic-language-and-c-generics"
+    data-title="动态语言与 C 语言泛型" 
+    data-images="" 
+    data-content="" 
+    data-url="http://frapples.github.io/2016/10/10/dynamic-language-and-c-generics/">
+
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-baidu" href="javascript:void(0);" data-service="baidu"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+        </ul>
     </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/21/create-blog-by-hexo-high/" class="archive-article-date">
-  	<time datetime="2016-09-21T14:21:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-21</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
-	</div>
+</div>
 
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/博客/">博客</a>
-	</div>
 
 
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="dynamic-language-and-c-generics" data-title="动态语言与 C 语言泛型" data-url="http://frapples.github.io/2016/10/10/dynamic-language-and-c-generics/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"frapples"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-create-blog-by-hexo-middle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/20/create-blog-by-hexo-middle/">hexo 搭建静态博客－中级篇（主题和org支持）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>
-hexo&#x662F;&#x4E00;&#x6B3E;&#x5F88;&#x5F3A;&#x5927;&#x7684;&#x9759;&#x6001;&#x535A;&#x5BA2;&#x751F;&#x6210;&#x7CFB;&#x7EDF;&#x3002;
-&#x5BF9;&#x4E8E;&#x4E00;&#x822C;&#x7528;&#x6237;&#xFF0C;&#x53EF;&#x80FD;&#x89C9;&#x5F97;&#x9ED8;&#x8BA4;&#x7684;&#x914D;&#x7F6E;&#x5DF2;&#x7ECF;&#x8DB3;&#x591F;&#x4E86;&#xFF0C;
-&#x9ED8;&#x8BA4;&#x4E3B;&#x9898;&#x591F;&#x6F02;&#x4EAE;&#xFF0C;&#x4F7F;&#x7528;markdown&#x683C;&#x5F0F;&#x4E66;&#x5199;&#x535A;&#x6587;&#x4E5F;&#x662F;&#x5F88;&#x4E0D;&#x9519;&#x7684;&#x642D;&#x914D;&#x3002;
-</p>
-
-<p>
-&#x4F46;&#x662F;&#x5BF9;&#x6211;&#x800C;&#x8A00;&#xFF0C;&#x9996;&#x5148;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;emacs&#x7528;&#x6237;&#x800C;&#x8A00;&#xFF0C;&#x7528;org-mode&#x5199;&#x535A;&#x6587;&#x90A3;&#x662F;&#x5FC5;&#x987B;&#x7684;
-<img width="20" height="20" class="emoji nofancybox" title=":smile:" alt="&#x1F604;" src="/images/emoji/smile.png">
-&#x3002;
-&#x7136;&#x800C;hexo&#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x652F;&#x6301;org&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5F97;&#x53BB;&#x9700;&#x6C42;&#x652F;&#x6301;org&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;&#x3002;
-&#x7136;&#x540E;&#x5C31;&#x662F;&#x4E3B;&#x9898;&#x4E86;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;&#x5404;&#x79CD;&#x8F6F;&#x4EF6;&#x7684;&#x6362;&#x80A4;&#x529F;&#x80FD;&#xFF0C;&#x53BB;&#x627E;&#x4E00;&#x4E2A;&#x6F02;&#x4EAE;&#x7684;&#x4E3B;&#x9898;&#x6362;&#x4E0A;&#x53BB;&#x603B;&#x662F;&#x90A3;&#x4E48;&#x7684;&#x6709;&#x5438;&#x5F15;&#x529B;
-<img width="20" height="20" class="emoji nofancybox" title=":blush:" alt="&#x1F60A;" src="/images/emoji/blush.png">
- &#xFF01;
-</p>
-
-<p>
-&#x5728;&#x914D;&#x7F6E;&#x5B8C;&#x6211;&#x7684;hexo&#x535A;&#x5BA2;&#x540E;&#xFF0C;&#x6211;&#x628A;&#x7B14;&#x8BB0;&#x4E2D;&#x7684;&#x76F8;&#x5173;&#x90E8;&#x5206;&#x6574;&#x7406;&#x51FA;&#x6765;&#x3002;
-&#x8003;&#x8651;&#x5230;&#x4F7F;&#x7528;emacs&#x7684;&#x57FA;&#x672C;&#x90FD;&#x662F;&#x559C;&#x6B22;&#x6298;&#x817E;&#x7684;&#x4EBA;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x7BC7;&#x535A;&#x6587;&#x4E5F;&#x5C31;&#x4E0D;&#x591A;&#x5E9F;&#x8BDD;&#x4E86;&#xFF0C;&#x529B;&#x6C42;&#x7B80;&#x6D01;&#x660E;&#x4E86;&#x3002;
-</p>
-        <p class="article-more-link">
-          <a  href="/2016/09/20/create-blog-by-hexo-middle/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/20/create-blog-by-hexo-middle/" class="archive-article-date">
-  	<time datetime="2016-09-20T15:50:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-20</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emacs/">emacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orgmode/">orgmode</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/博客/">博客</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-create-blog-by-hexo-basic" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/18/create-blog-by-hexo-basic/">hexo 搭建静态博客－基础篇</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>
-&#x535A;&#x5BA2;&#x8FD9;&#x79CD;&#x6BD4;&#x8F83;&#x53E4;&#x8001;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x867D;&#x7136;&#x73B0;&#x5728;&#x6CA1;&#x6709;&#x4EE5;&#x524D;&#x6D41;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x7684;&#x5F88;&#x591A;&#x4F18;&#x70B9;&#x5374;&#x6709;&#x7740;&#x4E0D;&#x53EF;&#x66FF;&#x4EE3;&#x7684;&#x4F5C;&#x7528;&#x3002;
-hexo&#xFF0C;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x535A;&#x5BA2;&#x751F;&#x6210;&#x7CFB;&#x7EDF;&#xFF0C; &#x548C; github&#xFF0C;&#x4E00;&#x4E2A;&#x514D;&#x8D39;&#x7684;&#x6258;&#x7BA1;&#x7F51;&#x7AD9;&#xFF0C;
-&#x4F7F;&#x7528;&#x4ED6;&#x4EEC;&#xFF0C;&#x4F60;&#x5C31;&#x80FD;&#x642D;&#x5EFA;&#x5C5E;&#x4E8E;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x5566;&#xFF01;
-</p>
-
-<p>
-&#x9274;&#x4E8E; hexo &#x6BD4;&#x8F83;&#x504F;&#x6280;&#x672F;&#x5316;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4E0D;&#x63A8;&#x8350;&#x4E00;&#x822C;&#x4EBA;&#x4F7F;&#x7528; hexo&#x3002;
-&#x5176;&#x5B83;&#x7684;&#x535A;&#x5BA2;&#x6258;&#x7BA1;&#x670D;&#x52A1;&#xFF0C;&#x5982;&#x65B0;&#x6D6A;&#x535A;&#x5BA2;&#x7B49;&#xFF0C;&#x53EF;&#x80FD;&#x66F4;&#x9002;&#x5408;&#x4F60;&#x3002;
-&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x5BF9; IT &#x611F;&#x5174;&#x8DA3;&#x6216;&#x8005;&#x672C;&#x8EAB;&#x5C31;&#x662F; IT &#x7684;&#xFF0C;&#x60F3;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE; hexo&#xFF01;
-&#x4F60;&#x4E0D;&#x4EC5;&#x80FD;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x6F02;&#x4EAE;&#x7684;&#x535A;&#x5BA2;&#xFF0C;&#x8FD8;&#x80FD;&#x4ECE;&#x4E2D;&#x5B66;&#x4E60;&#x5230;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#x3002;
-</p>
-
-<p>
-&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E9B;&#x642D;&#x5EFA; hexo &#x9759;&#x6001;&#x535A;&#x5BA2;&#x7684;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x548C;&#x57FA;&#x672C;&#x77E5;&#x8BC6;&#xFF0C;&#x529B;&#x6C42;&#x901A;&#x4FD7;&#x6613;&#x61C2;&#xFF0C;&#x7ED9;&#x60F3;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x7684;&#x4EBA;&#x4E00;&#x4E2A;&#x53C2;&#x8003;&#x3002;
-</p>
-        <p class="article-more-link">
-          <a  href="/2016/09/18/create-blog-by-hexo-basic/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/18/create-blog-by-hexo-basic/" class="archive-article-date">
-  	<time datetime="2016-09-17T16:15:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-18</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/博客/">博客</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-blog-starting" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/17/blog-starting/">博客开张</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>
-&#x4E2D;&#x79CB;&#x524D;&#x540E;&#xFF0C;&#x5229;&#x7528; hexo &#x5DE5;&#x5177;&#x548C; github&#xFF0C;&#x7EC8;&#x4E8E;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x7ED9;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#x3002;
-&#x65F6;&#x95F4;&#x8FC7;&#x7684;&#x53EF;&#x771F;&#x5FEB;&#xFF0C;&#x4E0D;&#x77E5;&#x4E0D;&#x89C9;&#x7684;&#x5DF2;&#x7ECF;&#x8E0F;&#x5165;&#x5927;&#x5B66;&#x4E09;&#x5E74;&#x4E86;&#x3002;
-&#x5176;&#x5B9E;&#x65E9;&#x5728;&#x5927;&#x4E8C;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x5C31;&#x6709;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x7684;&#x60F3;&#x6CD5;&#x4E86;&#x3002;
-&#x53EF;&#x90A3;&#x65F6;&#xFF0C;&#x6211;&#x53D1;&#x73B0;&#x6211;&#x8EAB;&#x4E0A;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x7684;&#x95EE;&#x9898;&#x8981;&#x53BB;&#x89E3;&#x51B3;&#x3002;
-&#x800C;&#x4E14;&#x6211;&#x81EA;&#x5DF1;&#x53C8;&#x592A;&#x61D2;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E8B;&#xFF0C;&#x5C31;&#x4E00;&#x76F4;&#x62D6;&#x7740;&#x4E86;&#x3002;
-</p>
-
-<p>
-&#x524D;&#x51E0;&#x5929;&#x5728;&#x6574;&#x7406;&#x81EA;&#x5DF1;&#x7684;&#x7B14;&#x8BB0;&#xFF0C;&#x7A81;&#x7136;&#x53D1;&#x73B0;&#x591A;&#x4E86;&#x8BB8;&#x591A;&#x7075;&#x611F;&#x3002;
-&#x4E8E;&#x662F;&#x5C31;&#x501F;&#x7740;&#x8FD9;&#x6CE2;&#x52B2;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x7ED9;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#x3002;
-&#x4EE5;&#x540E;&#x8FD9;&#x91CC;&#x5BF9;&#x6211;&#x800C;&#x8A00;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x9759;&#x8C27;&#x4E4B;&#x5730;&#xFF0C;&#x80FD;&#x8BA9;&#x6211;&#x6682;&#x65F6;&#x8FDC;&#x79BB;&#x5C18;&#x4E16;&#x7684;&#x55A7;&#x56A3;&#x548C;&#x6D6E;&#x8E81;&#xFF0C;&#x76F4;&#x9762;&#x5185;&#x5FC3;&#x7684;&#x81EA;&#x5DF1;&#x3002;
-&#x6211;&#x4E0D;&#x4EC5;&#x80FD;&#x591F;&#x5B89;&#x9759;&#x7684;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x95EE;&#x9898;&#xFF0C;&#x6574;&#x7406;&#x601D;&#x7EEA;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x5206;&#x4EAB;&#x4E00;&#x4E9B;&#x4E2A;&#x4EBA;&#x7684;&#x5C0F;&#x5FC3;&#x5F97;&#x548C;&#x6D45;&#x8584;&#x7684;&#x89C1;&#x89E3;&#x3002;
-</p>
-
-<p>
-&#x611F;&#x8C22;&#x8FD9;&#x4E9B;&#x5E74;&#x6765;&#x4E00;&#x76F4;&#x9ED8;&#x9ED8;&#x652F;&#x6301;&#x6211;&#x7684;&#x670B;&#x53CB;&#x4EEC;&#xFF0C;&#x795D;&#x613F;&#x6211;&#x4EEC;&#x7684;&#x660E;&#x5929;&#x5C06;&#x4F1A;&#x66F4;&#x7F8E;&#x597D;&#x3002;
-</p>
-        <p class="article-more-link">
-          <a  href="/2016/09/17/blog-starting/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/17/blog-starting/" class="archive-article-date">
-  	<time datetime="2016-09-17T09:45:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-17</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/myself/">myself</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/博客/">博客</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-org-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/16/hexo-org-test/">这是一篇使用 org-mode 书写的博文</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>
-org-mode &#x662F; emacs &#x4E2D;&#x7528;&#x6765;&#x7F16;&#x8F91;&#x6587;&#x6863;&#x7684;&#x4E3B;&#x6A21;&#x5F0F;&#x3002;
-org-mode &#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x5957;&#x8BED;&#x6CD5;&#x6765;&#x6807;&#x8BB0;&#x5BCC;&#x6587;&#x6863;&#xFF0C;&#x7C7B;&#x4F3C; markdown&#xFF0C;&#x4F46;&#x662F;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#x800C;&#x4E14;&#x529F;&#x80FD;&#x66F4;&#x591A;&#x3002;
-org-mode &#x4E0E; emacs &#x96C6;&#x6210;&#x7684;&#x5929;&#x8863;&#x65E0;&#x7F1D;&#xFF0C;&#x80FD;&#x4F7F;&#x7528; emacs &#x7684;&#x7F16;&#x8F91;&#x4F18;&#x52BF;&#x4E13;&#x5FC3;&#x5199;&#x4F5C;&#xFF0C;&#x6D41;&#x7545;&#x7F16;&#x8F91;&#xFF0C;&#x4E0D;&#x53D7;&#x6253;&#x6270;&#x3002;
-&#x56E0;&#x6B64;&#xFF0C;&#x62FF; org-mode &#x5199;&#x535A;&#x5BA2;&#x4E5F;&#x662F;&#x5F88;&#x81EA;&#x7136;&#x7684;&#x60F3;&#x6CD5;&#x3002;
-</p>
-
-<p>
-&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x662F;&#x4E00;&#x7BC7;&#x6D4B;&#x8BD5;&#x535A;&#x5BA2;&#xFF0C;&#x6D4B;&#x8BD5;&#x4E86;&#x5728;&#x6211;&#x7684; hexo &#x914D;&#x7F6E;&#x4E2D;&#xFF0C;&#x6700;&#x7EC8;&#x5BF9; org-mode &#x7684;&#x5C55;&#x793A;&#x6548;&#x679C;&#x5982;&#x4F55;&#x3002; 
-<img width="20" height="20" class="emoji nofancybox" title=":grinning:" alt="&#x1F600;" src="/images/emoji/grinning.png">
-
-</p>
-        <p class="article-more-link">
-          <a  href="/2016/09/16/hexo-org-test/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/09/16/hexo-org-test/" class="archive-article-date">
-  	<time datetime="2016-09-16T12:11:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-09-16</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/emacs/">emacs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/orgmode/">orgmode</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/博客/">博客</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
 
 
       </div>
@@ -1105,8 +799,8 @@ org-mode &#x4E0E; emacs &#x96C6;&#x6210;&#x7684;&#x5929;&#x8863;&#x65E0;&#x7F1D;
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
