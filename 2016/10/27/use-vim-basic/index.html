@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>编辑器之神 -- vim 的基本使用 | Frapples的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#xFF0C;&amp;#x8457;&amp;#x540D;&amp;#x7684;&amp;#x7F16;&amp;#x8F91;&amp;#x5668; vim &amp;#x53D1;&amp;#x5E03;&amp;#x4E86; 8.0 &amp;#x7248;&amp;#x672C;&amp;#x3002;
+&amp;#x4F5C;&amp;#x4E3A;&amp;#x7F16;&amp;#x8F91;&amp;#x5668;&amp;#x4E4B;&amp;#x7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编辑器之神 -- vim 的基本使用">
+<meta property="og:url" content="http://frapples.github.io/2016/10/27/use-vim-basic/index.html">
+<meta property="og:site_name" content="Frapples的博客">
+<meta property="og:description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#xFF0C;&amp;#x8457;&amp;#x540D;&amp;#x7684;&amp;#x7F16;&amp;#x8F91;&amp;#x5668; vim &amp;#x53D1;&amp;#x5E03;&amp;#x4E86; 8.0 &amp;#x7248;&amp;#x672C;&amp;#x3002;
+&amp;#x4F5C;&amp;#x4E3A;&amp;#x7F16;&amp;#x8F91;&amp;#x5668;&amp;#x4E4B;&amp;#x7">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/joy.png">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/joy.png">
+<meta property="og:updated_time" content="2016-10-27T12:49:44.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编辑器之神 -- vim 的基本使用">
+<meta name="twitter:description" content="&amp;#x524D;&amp;#x6BB5;&amp;#x65F6;&amp;#x95F4;&amp;#xFF0C;&amp;#x8457;&amp;#x540D;&amp;#x7684;&amp;#x7F16;&amp;#x8F91;&amp;#x5668; vim &amp;#x53D1;&amp;#x5E03;&amp;#x4E86; 8.0 &amp;#x7248;&amp;#x672C;&amp;#x3002;
+&amp;#x4F5C;&amp;#x4E3A;&amp;#x7F16;&amp;#x8F91;&amp;#x5668;&amp;#x4E4B;&amp;#x7">
+<meta name="twitter:image" content="http://frapples.github.io/images/emoji/joy.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Frapples</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">博文归档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">文章列表</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/frapples" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Frapples</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Frapples</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">博文归档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/frapples" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-use-vim-basic" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      编辑器之神 -- vim 的基本使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+          
+              <div class="toc-article">
+                  <strong class="toc-title">目录</strong>
+                  (<a class="js-toggle-toc" href="javascript:void(0)"></a>)
+                  <div class="toc-content">
+                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-1"><span class="toc-text">1 vim 是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-2"><span class="toc-text">2 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-2-1"><span class="toc-text">2.1 windows</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-2-1-1"><span class="toc-text">2.1.1 安装版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-2-1-2"><span class="toc-text">2.1.2 绿色版本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-2-2"><span class="toc-text">2.2 linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-3"><span class="toc-text">3 开始使用！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-1"><span class="toc-text">3.1 tutor</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-3-1-1"><span class="toc-text">3.1.1 便携式的 windows 版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-3-1-2"><span class="toc-text">3.1.2 linux</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-2"><span class="toc-text">3.2 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-3"><span class="toc-text">3.3 帮助</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-4"><span class="toc-text">4 编辑文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-4-1"><span class="toc-text">4.1 打开文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-4-2"><span class="toc-text">4.2 编辑文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-4-3"><span class="toc-text">4.3 保存文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-5"><span class="toc-text">5 基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-5-1"><span class="toc-text">5.1 配置文件路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-5-1-1"><span class="toc-text">5.1.1 windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sec-5-1-2"><span class="toc-text">5.1.2 linux</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-5-2"><span class="toc-text">5.2 中文帮助文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-6"><span class="toc-text">6 结尾</span></a></li></ol>
+                  </div>
+              </div>
+          
+
+        <p>
+&#x524D;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x8457;&#x540D;&#x7684;&#x7F16;&#x8F91;&#x5668; vim &#x53D1;&#x5E03;&#x4E86; 8.0 &#x7248;&#x672C;&#x3002;
+&#x4F5C;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#x4E4B;&#x795E;&#xFF0C;&#x53D7;&#x5230;&#x4E86;&#x5F88;&#x591A;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x559C;&#x7231;&#xFF0C;&#x636E;&#x8BF4;&#x80FD;&#x4E0E;&#x4E4B;&#x6297;&#x8861;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x795E;&#x7684;&#x7F16;&#x8F91;&#x5668; &#x2013; emacs &#x4E86;&#x3002;
+</p>
+
+<p>
+&#x5B66;&#x4E60; vim &#x662F;&#x6211;&#x8E0F;&#x5165; IT &#x4EE5;&#x6765;&#xFF0C;&#x5B66;&#x4E60;&#x7684;&#x6700;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x4E1C;&#x897F;&#x4E4B;&#x4E00;&#x3002;
+&#x6211;&#x73B0;&#x5728;&#x4F9D;&#x7136;&#x8FD8;&#x8BB0;&#x5F97;&#xFF0C;&#x5927;&#x4E00;&#x7684;&#x67D0;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x6000;&#x7740;&#x597D;&#x5947;&#x7684;&#x5FC3;&#x60C5;&#x6253;&#x5F00;&#x4E86; vim&#x3002;
+&#x8D77;&#x521D;&#x7684;&#x51E0;&#x6B21;&#xFF0C;&#x6211;&#x5728;&#x5B83;&#x7684; GUI &#x83DC;&#x5355;&#x4E0A;&#x505A;&#x7684;&#x4E2A;&#x6027;&#x5316;&#x8BBE;&#x7F6E;&#x4E00;&#x91CD;&#x542F;&#x5C31;&#x6CA1;&#x4E86;&#x3002; 
+&#x9ED8;&#x8BA4;&#x7684;&#x8BBE;&#x7F6E;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x4E11;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x4E27;&#x5931;&#x4E86;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x5174;&#x8DA3;&#x3002;
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+
+</p>
+
+<p>
+&#x4E0D;&#x8FC7;&#x6211;&#x6CA1;&#x6709;&#x653E;&#x5F03;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x67D0;&#x5929;&#x508D;&#x665A;&#xFF0C;&#x6211;&#x5B89;&#x88C5;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x6F02;&#x4EAE;&#x7684;&#x900F;&#x660E;&#x7EC8;&#x7AEF;&#xFF0C;
+&#x7136;&#x540E;&#x6309;&#x7167;&#x6211;&#x67E5;&#x5230;&#x7684;&#x8D44;&#x6599;&#xFF0C;&#x6000;&#x7740;&#x597D;&#x5947;&#x7684;&#x5FC3;&#x60C5;&#x6572;&#x5165;&#x4E86;&#x547D;&#x4EE4; vimtutor&#x3002;
+&#x5F53;&#x5929;&#x508D;&#x665A;&#xFF0C;&#x5916;&#x9762;&#x5C0F;&#x98CE;&#x4E00;&#x5439;&#xFF0C;&#x8BA9;&#x6211;&#x611F;&#x5230;&#x795E;&#x6E05;&#x6C14;&#x723D;&#x3002;
+&#x914D;&#x4E0A;&#x597D;&#x770B;&#x7684;&#x900F;&#x660E;&#x7EC8;&#x7AEF;&#xFF0C;&#x6211;&#x5C31;&#x7167;&#x7740;&#x6559;&#x7A0B;&#x5B66;&#x4E60;&#x8D77;&#x6765;&#x4E86;&#x3002;
+&#x81F3;&#x6B64;&#xFF0C;&#x6211;&#x8E0F;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5927;&#x95E8;&#x91CC;&#x3002;
+</p>
+
+
+<a id="more"></a>
+
+
+<p>
+&#x4E0D;&#x4E45;&#x540E;&#xFF0C;&#x6211;&#x5C1D;&#x8BD5;&#x5728;&#x7EC8;&#x7AEF;&#x91CC;&#x7528; vim &#x6572;&#x4E86;&#x4E00;&#x4E9B; C &#x8BED;&#x8A00;&#x4EE3;&#x7801;&#x3002;
+&#x90A3;&#x6B21;&#x7684;&#x611F;&#x53D7;&#xFF0C;&#x6211;&#x81F3;&#x4ECA;&#x8FD8;&#x8BB0;&#x5F97;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x80A1;&#x6E05;&#x98CE;&#x5F90;&#x5F90;&#x62C2;&#x8FC7;&#xFF0C;&#x4E00;&#x79CD;&#x5F88;&#x8212;&#x670D;&#x5F88;&#x723D;&#x7684;&#x611F;&#x89C9;&#x3002;
+</p>
+
+<p>
+&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x5199;&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x53EA;&#x624B;&#x59CB;&#x7EC8;&#x5728;&#x952E;&#x76D8;&#x548C;&#x9F20;&#x6807;&#x952E;&#x5207;&#x6362;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x6478;&#x9519;&#x4E86;&#xFF0C;&#x5C31;&#x50CF;&#x770B;&#x7535;&#x5F71;&#x5361;&#x789F;&#x4E00;&#x6837;&#x8BA9;&#x4EBA;&#x611F;&#x89C9;&#x5F88;&#x4E0D;&#x723D;&#x3002;
+&#x800C;&#x53E6;&#x5916;&#x4E00;&#x53EA;&#x624B;&#xFF0C;&#x5728;&#x8336;&#x676F;&#x4E0A;&#xFF0C;&#x952E;&#x76D8;&#x4E0A;&#xFF0C;&#x4E0B;&#x5DF4;&#x4E0A;&#xFF0C;&#x8111;&#x888B;&#x4E0A;&#x6E38;&#x79BB;&#xFF0C;&#x517B;&#x6210;&#x4E86;&#x597D;&#x591A;&#x5F3A;&#x8FEB;&#x75C7;&#x3002;
+</p>
+
+<p>
+&#x73B0;&#x5728;&#xFF0C;&#x6709;&#x4E86; vim&#xFF0C;&#x6211;&#x7684;&#x4E24;&#x53EA;&#x624B;&#x59CB;&#x7EC8;&#x90FD;&#x5728;&#x952E;&#x76D8;&#x4E0A;&#xFF0C;&#x6D41;&#x7545;&#x7684;&#x7F16;&#x8F91;&#x4F53;&#x9A8C;&#xFF0C;&#x4ECE; vim &#x5F00;&#x59CB;&#xFF01;
+</p>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> vim &#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+vim &#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x53E4;&#x8001;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x4E86;&#xFF0C;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;&#x5728;&#x8FD9;&#xFF1A;<a href="http://www.vim.org" target="_blank" rel="external">http://www.vim.org</a>
+&#x6240;&#x8C13;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x901A;&#x4FD7;&#x7684;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x8BB0;&#x4E8B;&#x672C;&#xFF0C;&#x62FF;&#x6765;&#x7F16;&#x8F91;&#x7C7B;&#x4F3C; txt &#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x3002;
+&#x4F46;&#x662F; vim &#x7684;&#x7279;&#x8272;&#x5728;&#x4E8E;&#xFF0C;&#x5B83;&#x80FD;&#x4F7F;&#x7528;&#x7EAF;&#x952E;&#x76D8;&#x7684;&#x4E3B;&#x952E;&#x533A;&#x6765;&#x5B8C;&#x6210;&#x5404;&#x79CD;&#x7F16;&#x8F91;&#x64CD;&#x4F5C;&#x3002;
+&#x7F16;&#x8F91;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F60;&#x7684;&#x624B;&#x5B8C;&#x5168;&#x4E0D;&#x7528;&#x79BB;&#x5F00;&#x952E;&#x76D8;&#x3002;
+</p>
+
+<p>
+&#x5176;&#x5B9E;&#x5728;&#x4EE5;&#x524D;&#x7684;&#x65F6;&#x5019;&#x8FD9;&#x4E5F;&#x662F;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x90A3;&#x4E2A;&#x65F6;&#x5019;&#x8FD8;&#x6CA1;&#x6709;&#x9F20;&#x6807;&#x5462;&#x3002;
+&#x4F46;&#x662F;&#x540E;&#x6765;&#x5F88;&#x591A;&#x4EBA;&#x53D1;&#x73B0;&#xFF0C;&#x7528;&#x8FD9;&#x79CD;&#x770B;&#x4F3C;&#x53E4;&#x8001;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x8F91;&#xFF0C;&#x5176;&#x4F53;&#x9A8C;&#x7ADF;&#x7136;&#x8FDC;&#x8FDC;&#x597D;&#x4E8E;&#x73B0;&#x4EE3;&#x7684;&#x7528;&#x9F20;&#x6807;&#x548C;&#x952E;&#x76D8;&#x914D;&#x5408;&#x7684;&#x7F16;&#x8F91;&#x5668;&#xFF01;
+</p>
+
+<p>
+&#x901A;&#x8FC7;&#x4E00;&#x4E9B;&#x914D;&#x7F6E;&#x548C;&#x5B89;&#x88C5;&#x4E00;&#x4E9B;&#x6269;&#x5C55;&#xFF0C;vim &#x4E5F;&#x80FD; <b>&#x52C9;&#x5F3A;</b> &#x5F53;&#x505A;&#x7F16;&#x8F91;&#x4EE3;&#x7801;&#x7684; IDE &#x6765;&#x4F7F;&#x7528;&#x3002;
+&#x4F46;&#x662F;&#xFF0C;vim &#x7684;&#x7CBE;&#x9AD3;&#xFF0C;&#x4E0D;&#x5728;&#x4E8E;&#x6269;&#x5C55;&#x80FD;&#x529B;&#xFF0C;&#x800C;&#x5728;&#x4E8E;&#x5B83;&#x7684; <b>&#x7F16;&#x8F91;&#x65B9;&#x5F0F;</b> &#x3002;
+</p>
+
+<p>
+&#x76F8;&#x6BD4;&#x4E00;&#x822C;&#x7684; windows &#x8F6F;&#x4EF6;&#xFF0C;vim &#x7684;&#x914D;&#x7F6E;&#x6BD4;&#x8F83;&#x96BE;&#x800C;&#x4E14;&#x4E0D;&#x76F4;&#x89C2;&#x3002;&#x6240;&#x4EE5;&#xFF0C;vim &#x7684;&#x5B66;&#x4E60;&#x66F2;&#x7EBF;&#x6BD4;&#x8F83;&#x9AD8;&#x3002;
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> &#x5B89;&#x88C5;</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&#x4E4B;&#x524D; vim &#x7684;&#x66F4;&#x65B0;&#x4E00;&#x76F4;&#x662F;&#x5F88;&#x6162;&#x7684;&#xFF0C;&#x8FD9;&#x6B21;&#x636E;&#x8BF4;&#x662F;&#x53D7;&#x5230;&#x4E86; neovim&#xFF08;&#x4E00;&#x4E2A; vim &#x7684; fork &#x7248;&#x672C;&#xFF09;&#x7684;&#x523A;&#x6FC0;&#xFF0C;&#x624D;&#x8D76;&#x7D27;&#x52A0;&#x5FEB;&#x901F;&#x5EA6;&#xFF0C;&#x51FA;&#x4E86;&#x4E2A; 8.0 &#x7248;&#x672C;&#x3002;
+</p>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> windows</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> &#x5B89;&#x88C5;&#x7248;&#x672C;</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+&#x5B89;&#x88C5;&#x7248;&#x672C;&#x5728; vim &#x7684;&#x5B98;&#x65B9;&#x7F51;&#x7AD9;  <a href="http://www.vim.org/download.php#pc" target="_blank" rel="external">http://www.vim.org/download.php#pc</a> &#x53EF;&#x4EE5;&#x627E;&#x5230;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> &#x7EFF;&#x8272;&#x7248;&#x672C;</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+&#x5982;&#x679C;&#x4F60;&#x548C;&#x6211;&#x4E00;&#x6837;&#xFF0C;&#x66F4;&#x559C;&#x6B22;&#x7EFF;&#x8272;&#x7248;&#x672C;&#xFF0C;&#x5E26;&#x5728; U &#x76D8;&#x91CC;&#xFF0C;&#x968F;&#x7528;&#x968F;&#x5F00;&#xFF0C;&#x90A3;&#x8FD9;&#x91CC;&#x6709;&#x4FBF;&#x643A;&#x5199;&#x7248;&#x7684;&#x4E0B;&#x8F7D;&#xFF1A;\
+<a href="http://portableapps.com/apps/development/gvim_portable" target="_blank" rel="external">http://portableapps.com/apps/development/gvim_portable</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> linux</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+linux &#x5C31;&#x66F4;&#x65B9;&#x4FBF;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x5305;&#x7BA1;&#x7406;&#x5668;&#x5B89;&#x88C5;&#x5373;&#x53EF;&#x3002;
+&#x4EE5;&#x6211;&#x4F7F;&#x7528;&#x7684; deb &#x7CFB;&#x7528;&#x4F8B;&#xFF0C;&#x5B89;&#x88C5; vim-gtk &#x5305;&#xFF0C;&#x4F1A;&#x5B89;&#x88C5; GUI &#x7248;&#x672C;&#x7684; vim&#xFF0C;&#x4E5F;&#x4F1A;&#x6709;&#x7EC8;&#x7AEF;&#x7248;&#x672C;&#x7684; vim&#x3002;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install vim-gtk</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> &#x5F00;&#x59CB;&#x4F7F;&#x7528;&#xFF01;</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> tutor</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+&#x7B2C;&#x4E00;&#x6B65;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x9605;&#x8BFB;&#x5B98;&#x65B9;&#x7684;&#x65B0;&#x624B;&#x6559;&#x7A0B;&#xFF01;&#x4EE4;&#x4EBA;&#x6FC0;&#x52A8;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x6559;&#x7A0B;&#x662F;&#x4E2D;&#x6587;&#x7684;&#xFF01;
+&#x597D;&#xFF0C;&#x73B0;&#x5728;&#x542F;&#x52A8;&#x6559;&#x7A0B;&#x6765;&#x5B66;&#x4E60;&#x5427;&#xFF01;
+</p>
+
+<p>
+&#x8FD9;&#x4E2A;&#x6559;&#x7A0B;&#x5F88;&#x77ED;&#xFF0C;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x8DB3;&#x4EE5;&#x5E26;&#x9886;&#x4F60;&#x4E8E;&#x5B66;&#x4E60; vim &#x7684;&#x7F16;&#x8F91;&#x65B9;&#x5F0F;&#x4E86;&#x3002;
+&#x8DDF;&#x7740;&#x8FD9;&#x4E2A;&#x6559;&#x7A0B;&#x5B66;&#x5B8C;&#xFF0C;&#x4F60;&#x5927;&#x6982;&#x5C31;&#x80FD;&#x638C;&#x63E1; vim &#x7684;&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#x4E86;&#x3002;
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> &#x4FBF;&#x643A;&#x5F0F;&#x7684; windows &#x7248;&#x672C;</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+&#x5728;&#x4F60;&#x7684; vim &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;App/vim/vimxx/vimtutor.bat&#xFF08;xx &#x662F;&#x7248;&#x672C;&#x53F7;&#xFF09;&#x5C31;&#x662F;&#x65B0;&#x624B;&#x6559;&#x7A0B;&#x4E86;&#xFF0C;&#x53CC;&#x51FB;&#x542F;&#x52A8;&#x5B83;&#xFF01;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> linux</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+&#x76F4;&#x63A5;&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x5165; vimtutor &#x547D;&#x4EE4;&#xFF0C;&#x5C31;&#x80FD;&#x542F;&#x52A8;&#x5B83;&#x4E86;&#xFF01;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> &#x6A21;&#x5F0F;</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&#x548C;&#x666E;&#x901A;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x4E0D;&#x540C;&#xFF0C;&#x6A21;&#x5F0F;&#x662F; vim &#x72EC;&#x7279;&#x7684;&#x4E00;&#x4E2A;&#x6982;&#x5FF5;&#x3002;
+</p>
+
+<p>
+&#x5E38;&#x89C1;&#x7684;&#x4E09;&#x79CD;&#x6A21;&#x5F0F;&#x662F;&#xFF1A;
+</p>
+<dl class="org-dl">
+<dt> &#x666E;&#x901A;&#x6A21;&#x5F0F; </dt><dd>&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x4F60;&#x6572;&#x5165;&#x5404;&#x79CD;&#x5B57;&#x6BCD;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x8F93;&#x5165;&#x5B57;&#x7B26;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x4E0B;&#x6572;&#x5165;&#x5404;&#x79CD;&#x5B57;&#x6BCD;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x5404;&#x79CD;&#x5FEB;&#x6377;&#x952E;&#xFF0C;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x529F;&#x80FD;&#x3002;&#x6BD4;&#x5982; dd&#xFF08;&#x6309;&#x4E24;&#x4E0B; d&#xFF09;&#x5220;&#x9664;&#x4E00;&#x884C;&#x3002;
+</dd>
+<dt> &#x63D2;&#x5165;&#x6A21;&#x5F0F; </dt><dd>&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x4E0B;&#x6309; i &#x6216; a &#x8FDB;&#x5165;&#x63D2;&#x5165;&#x6A21;&#x5F0F;&#x3002;&#x5728;&#x63D2;&#x5165;&#x6A21;&#x5F0F;&#xFF0C;&#x6572;&#x5165;&#x5404;&#x79CD;&#x5B57;&#x6BCD;&#xFF0C;&#x5C31;&#x80FD;&#x5728;&#x5149;&#x6807;&#x5904;&#x8F93;&#x5165;&#x5B57;&#x7B26;&#x4E86;&#x3002;&#x63D2;&#x5165;&#x6A21;&#x5F0F;&#x4E0B;&#x6309; ESC &#x952E;&#x9000;&#x56DE;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x3002;
+</dd>
+<dt> &#x547D;&#x4EE4;&#x6A21;&#x5F0F; </dt><dd>&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x4E0B;&#x6309; <code>:</code> &#x8FDB;&#x5165;&#x547D;&#x4EE4;&#x6A21;&#x5F0F;&#x3002;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#x4E0B;&#x8F93;&#x5165;&#x5404;&#x79CD; vim &#x547D;&#x4EE4;&#xFF08;&#x6BD4;&#x5982; help &#x547D;&#x4EE4;&#x662F;&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x56DE;&#x8F66;&#x5C31;&#x80FD;&#x6267;&#x884C;&#x3002;&#x56DE;&#x8F66;&#x540E;&#x4E00;&#x822C; vim &#x5C31;&#x53C8;&#x8FD4;&#x56DE;&#x5230;&#x4E86;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x3002;
+</dd>
+</dl>
+
+<p>
+&#x8FD9;&#x4E9B;&#x81EA;&#x5DF1;&#x8BD5;&#x4E00;&#x8BD5;&#x5C31;&#x660E;&#x767D;&#x4E86;&#x3002;
+&#x7531;&#x4E8E;&#x9ED8;&#x8BA4;&#x6253;&#x5F00;&#x7684; vim &#x662F;&#x5728;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E00;&#x6B21;&#x4F7F;&#x7528; vim &#x65F6;&#xFF0C;&#x567C;&#x91CC;&#x556A;&#x5566;&#x5728;&#x952E;&#x76D8;&#x6572;&#x51E0;&#x4E2A;&#x5B57;&#xFF0C;&#x5374;&#x53D1;&#x73B0; vim &#x7684;&#x53CD;&#x5E94;&#x5374;&#x5F88;&#x5947;&#x602A;&#x3002; 
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> &#x5E2E;&#x52A9;</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+vim &#x8D34;&#x5FC3;&#x7684;&#x63D0;&#x4F9B;&#x4E86; help &#x547D;&#x4EE4;&#x7528;&#x6765;&#x67E5;&#x8BE2;&#x5B98;&#x65B9;&#x7684;&#x5E2E;&#x52A9;&#x6587;&#x6863;&#x3002;&#x8FD9;&#x91CC;&#x63D0;&#x4F9B;&#x51E0;&#x4E2A;&#x5F88;&#x6709;&#x7528;&#x7684;&#xFF1A;
+</p>
+<ol class="org-ol">
+<li><code>:help quickref</code> &#x67E5;&#x770B;&#x5E38;&#x7528;&#x7684;&#x5FEB;&#x6377;&#x952E;&#x3002;
+</li>
+<li><code>:help user-manual</code> &#x67E5;&#x770B;&#x7528;&#x6237;&#x624B;&#x518C;&#xFF0C;&#x8FD9;&#x91CC;&#x7CFB;&#x7EDF;&#x7684;&#x544A;&#x8BC9;&#x4F60;&#x5982;&#x4F55;&#x4F7F;&#x7528; vim &#x6765;&#x7F16;&#x8F91;&#x6587;&#x4EF6;&#x3002;
+</li>
+<li><code>:help how-to</code> how-to &#x6307;&#x5F15;&#xFF0C;&#x6309;&#x7167;&#x4E3B;&#x9898;&#x5217;&#x51FA;&#x4E86;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;&#x95EE;&#x9898;&#x3002;
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> &#x7F16;&#x8F91;&#x6587;&#x4EF6;</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+&#x4F5C;&#x4E3A;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5373;&#x4F7F;&#x5B83;&#x518D;&#x795E;&#xFF0C;&#x5B83;&#x7684;&#x672C;&#x804C;&#x5DE5;&#x4F5C;&#x4ECD;&#x7136;&#x662F;&#x7F16;&#x8F91;&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x7684;&#x4E00;&#x5207;&#x529F;&#x80FD;&#x90FD;&#x662F;&#x4E3A;&#x7F16;&#x8F91;&#x800C;&#x670D;&#x52A1;&#x7684;&#x3002;
+</p>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> &#x6253;&#x5F00;&#x6587;&#x4EF6;</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>edit</code> &#x547D;&#x4EE4;&#xFF08;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x63D0;&#x4F9B;&#x4E86;&#x7B80;&#x5199; <code>e</code> &#xFF09;&#x3002;&#x6BD4;&#x5982;&#x6253;&#x5F00;~/test.txt &#x6587;&#x4EF6;&#xFF1A;\
+<code>:e ~/test.txt</code>
+</p>
+
+<p>
+&#x5BF9;&#x4E8E;&#x719F;&#x6089; linux &#x7684;&#x7528;&#x6237;&#x6765;&#x8BF4;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6253;&#x5F00;&#x4E0D;&#x662F;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x5E38; linux &#x4E0B;&#x7684;&#x8DEF;&#x5F84;&#x6BD4;&#x8F83;&#x597D;&#x8F93;&#x5165;&#x4E00;&#x4E9B;&#x3002;
+&#x4F46;&#x662F; windows &#x5462;&#xFF1F;&#x7279;&#x522B;&#x662F;&#x7F16;&#x8F91;&#x5728;&#x684C;&#x9762;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x90A3;&#x8DEF;&#x5F84;&#xFF0C;&#x592A;&#x957F;&#x4E86;&#x3002;&#x3002;&#x3002;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x7528;&#x7684;&#x662F;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x7684; vim&#xFF0C;&#x8FD8;&#x6709;&#x66F4;&#x76F4;&#x89C2;&#x7684;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x3002;
+&#x7B2C;&#x4E00;&#x79CD;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x9F20;&#x6807;&#x628A;&#x6587;&#x4EF6;&#x62D6;&#x8FDB;&#x53BB;&#x5C31;&#x884C;&#x4E86;&#x3002;
+&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5728; vim &#x4E2D;&#x8F93;&#x5165; vim &#x547D;&#x4EE4; <code>:browse</code> &#xFF0C;&#x5C31;&#x4F1A;&#x5F39;&#x51FA;&#x4E00;&#x4E2A;&#x5BF9;&#x8BDD;&#x6846;&#xFF0C;&#x9009;&#x62E9;&#x4F60;&#x8981;&#x7F16;&#x8F91;&#x7684;&#x6587;&#x4EF6;&#x5373;&#x53EF;&#x3002;
+</p>
+
+<p>
+&#x751A;&#x81F3; vim &#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x5FEB;&#x6377;&#x952E;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x628A;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x7ED1;&#x5B9A;&#x5230;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x4E0B;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x6377;&#x952E;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#x6309;&#x51E0;&#x4E2A;&#x952E;&#xFF0C;&#x5C31;&#x80FD;&#x6253;&#x5F00;&#x8FD9;&#x4E2A;&#x5BF9;&#x8BDD;&#x6846;&#x4E86;&#xFF01;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> &#x7F16;&#x8F91;&#x6587;&#x4EF6;</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+&#x8FD9;&#x662F; vim &#x7684;&#x7CBE;&#x9AD3;&#x90E8;&#x5206;&#xFF0C;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#x5B83;&#xFF0C;&#x4F60;&#x4E0D;&#x4EC5;&#x5F97;&#x5230;&#x8212;&#x9002;&#x7684;&#x7F16;&#x8F91;&#x4F53;&#x9A8C;&#xFF0C;&#x7F16;&#x8F91;&#x6548;&#x7387;&#x4E5F;&#x66F4;&#x4E0A;&#x4E00;&#x5C42;&#x697C;&#xFF01;
+&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x592A;&#x591A;&#xFF0C;&#x638C;&#x63E1;&#x5B83;&#x9700;&#x8981;&#x9760;&#x4E0D;&#x65AD;&#x7684;&#x4F7F;&#x7528;&#x548C;&#x601D;&#x8003;&#x3002;&#x6709;&#x65F6;&#x95F4;&#x6211;&#x4F1A;&#x6574;&#x7406;&#x4E00;&#x4EFD; vim &#x7F16;&#x8F91;&#x7684;&#x5FEB;&#x6377;&#x952E;&#x6E05;&#x5355;&#x548C;&#x6280;&#x5DE7;&#x7684;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> &#x4FDD;&#x5B58;&#x6587;&#x4EF6;</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+&#x4F7F;&#x7528;&#x547D;&#x4EE4; <code>write</code> &#xFF08;&#x7B80;&#x5199;&#x662F; <code>w</code> &#xFF09;&#xFF0C;&#x5C31;&#x80FD;&#x4FDD;&#x5B58;&#x6587;&#x4EF6;&#x4E86;&#x3002;
+</p>
+
+<p>
+&#x4F7F;&#x7528;&#x547D;&#x4EE4; <code>quit</code> &#xFF08;&#x7B80;&#x5199;&#x662F; <code>q</code> &#xFF09;&#xFF0C; &#x9000;&#x51FA; vim&#x3002;
+&#x5982;&#x679C;&#x8FD8;&#x6709;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x4FDD;&#x5B58;&#x7684;&#x8BDD; vim &#x4F1A;&#x4E0D;&#x8BA9;&#x4F60;&#x9000;&#x51FA;&#xFF0C;&#x8FD9;&#x65F6;&#x4F7F;&#x7528; <code>q!</code> &#x547D;&#x4EE4;&#x5C31;&#x80FD;&#x4E22;&#x5F03;&#x4FEE;&#x6539;&#x9000;&#x51FA;&#x4E86;&#x3002;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> &#x57FA;&#x672C;&#x914D;&#x7F6E;</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+vim &#x7684;&#x914D;&#x7F6E;&#x76F8;&#x5173;&#x7684;&#x6587;&#x4EF6;&#x5206;&#x4E24;&#x90E8;&#x5206;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x63D2;&#x4EF6;&#x548C;&#x5E2E;&#x52A9;&#x6587;&#x6863;&#x7684;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x7528;&#x4EE5;&#x7F16;&#x5199;&#x914D;&#x7F6E;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;
+</p>
+
+<p>
+&#x5173;&#x4E8E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x5728; vim &#x4E2D;&#x4F7F;&#x7528;&#x547D;&#x4EE4; <code>:help vimfiles</code> &#x548C; <code>:help vimrc</code> &#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x5B98;&#x65B9;&#x7684;&#x6587;&#x6863;&#x3002;
+&#x8FD9;&#x91CC;&#x7B80;&#x8981;&#x7684;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x3002;
+</p>
+</div>
+
+<div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1"><span class="section-number-4">5.1.1</span> windows</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+windows &#x4E0B;&#xFF0C;&#x5B89;&#x88C5;&#x7248;&#x7684;&#x8DEF;&#x5F84;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x6240;&#x4EE5;&#x6211;&#x63A8;&#x8350;&#x7528;&#x4FBF;&#x643A;&#x7248;&#x672C;&#x7684;&#x3002;
+</p>
+
+<p>
+&#x4FBF;&#x643A;&#x7248;&#x672C;&#x4E0B;&#xFF0C; &#x653E; vim &#x76EE;&#x5F55;&#x4E0B;&#x7684; Data/settings/vimfiles &#x662F;&#x5B58;&#x653E;&#x63D2;&#x4EF6;&#x548C;&#x5E2E;&#x52A9;&#x6587;&#x6863;&#x7684;&#x3002;
+</p>
+
+<p>
+&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;&#x653E;&#x5728; Data/settings/_vimrc &#x4E0B;&#x9762;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x662F; Data/settings/vimfiles/vimrc &#x4E0B;&#x3002;
+&#x6211;&#x5EFA;&#x8BAE;&#x7528;&#x540E;&#x8005;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x7684; vim &#x76F8;&#x5173;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x80FD;&#x4FDD;&#x5B58;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x4E86;&#xFF0C;&#x65B9;&#x4FBF;&#x7BA1;&#x7406;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x662F;&#x4F7F;&#x7528;&#x540E;&#x8005;&#x7684;&#x8BDD;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x628A;&#x524D;&#x9762;&#x7684;&#x90A3;&#x4E2A;&#x5220;&#x6389;&#x3002;&#x56E0;&#x4E3A; vim &#x4F1A;&#x4F18;&#x5148;&#x4F7F;&#x7528;&#x524D;&#x9762;&#x7684;&#x90A3;&#x4E2A;&#x8DEF;&#x5F84;&#x67E5;&#x627E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-1-2" class="outline-4">
+<h4 id="sec-5-1-2"><span class="section-number-4">5.1.2</span> linux</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+linux &#x4E0B;&#xFF0C;~/.vim &#x76EE;&#x5F55;&#x662F;&#x5B58;&#x653E;&#x63D2;&#x4EF6;&#x548C;&#x5E2E;&#x52A9;&#x6587;&#x6863;&#x7684;&#xFF0C;~/.vimrc &#x6216;~/.vim/vimrc &#x662F;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;
+&#x540C;&#x6837;&#xFF0C;&#x6211;&#x5EFA;&#x8BAE;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x7528;&#x540E;&#x8005;&#xFF0C;&#x65B9;&#x4FBF;&#x7BA1;&#x7406;&#x3002;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> &#x4E2D;&#x6587;&#x5E2E;&#x52A9;&#x6587;&#x4EF6;</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+&#x524D;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;vim &#x547D;&#x4EE4;&#x6A21;&#x5F0F;&#x7684; help &#x547D;&#x4EE4;&#xFF0C;&#x80FD;&#x65B9;&#x4FBF;&#x7684;&#x67E5;&#x9605;&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x6587;&#x6863;&#x3002;
+&#x4F46;&#x662F;&#x50CF;&#x6211;&#x8FD9;&#x6837;&#x82F1;&#x8BED;&#x4E0D;&#x597D;&#x7684;&#xFF0C;&#x786C;&#x7740;&#x5934;&#x76AE;&#x8BFB;&#x8D77;&#x6765;&#xFF0C;&#x867D;&#x7136;&#x5927;&#x7EA6;&#x80FD;&#x61C2;&#xFF0C;&#x4F46;&#x662F;&#x5F88;&#x8D39;&#x8111;&#x5B50;&#x548C;&#x7CBE;&#x529B;&#xFF0C;&#x603B;&#x5F52;&#x6CA1;&#x6709;&#x6BCD;&#x8BED;&#x770B;&#x7740;&#x90A3;&#x4E48;&#x60EC;&#x610F;&#x8212;&#x9002;&#x3002;
+&#x597D;&#x5728;&#x4E00;&#x7FA4;&#x65E0;&#x79C1;&#x7684; vim &#x7231;&#x597D;&#x8005;&#x7FFB;&#x8BD1;&#x4E86; vim &#x7684;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x89C1;&#x8FD9;&#x4E2A;&#x7F51;&#x5740;&#xFF1A;<a href="http://vimcdoc.sourceforge.net/" target="_blank" rel="external">http://vimcdoc.sourceforge.net/</a>  &#xFF08;&#x63D0;&#x793A;&#xFF1A;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x68AF;&#x5B50;&#xFF09;
+</p>
+
+<p>
+&#x4E0B;&#x8F7D;&#x90A3;&#x4E2A;&#x9875;&#x9762;&#x63D0;&#x4F9B;&#x7684;&#x538B;&#x7F29;&#x5305;&#xFF0C;&#x89E3;&#x538B;&#xFF0C;&#x6709;&#x4E2A; doc &#x76EE;&#x5F55;&#xFF0C;&#x628A;&#x91CC;&#x9762;&#x6240;&#x6709;&#x7684;&#x6587;&#x4EF6; copy &#x5230;~/.vimrc/doc &#x76EE;&#x5F55;&#x91CC;&#xFF08;windows &#x4FBF;&#x643A;&#x7248;&#x5219;&#x662F; Data/settings/vimfiles/doc&#xFF09;&#x3002;
+</p>
+
+<p>
+&#x73B0;&#x5728;&#xFF0C;&#x4F60;&#x7684;&#x4E2D;&#x6587;&#x6587;&#x6863;&#x5305;&#x5C31;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x597D;&#x4E86;&#x3002;&#x4E4B;&#x540E;&#xFF0C;&#x628A;&#x4E2D;&#x6587;&#x6587;&#x6863;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;&#x7684;&#x3002;&#x7F16;&#x8F91;&#x4F60;&#x7684; vimrc &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x52A0;&#x5165;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">set helplang=cn</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x91CD;&#x542F; vim&#xFF0C;&#x518D;&#x6B21;&#x8BD5;&#x4E0B; <code>:help</code> &#x547D;&#x4EE4;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x53D8;&#x6210;&#x4E2D;&#x6587;&#x4E86;&#xFF1F;
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> &#x7ED3;&#x5C3E;</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+&#x867D;&#x7136;&#x8BF4;&#x5F88;&#x591A;&#x4EBA;&#x7ED9; vim &#x7F16;&#x5199;&#x4E86;&#x5F88;&#x591A;&#x6269;&#x5C55;&#x8BD5;&#x56FE;&#x5C06;&#x5176;&#x6269;&#x5C55;&#x6210;&#x66F4;&#x5F3A;&#x5927;&#x7684;&#x8F6F;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E9B;&#x6269;&#x5C55;&#x529F;&#x80FD;&#x7528;&#x8D77;&#x6765;&#x603B;&#x4E0D;&#x5982;&#x4E13;&#x95E8;&#x7684;&#x8F6F;&#x4EF6;&#x7528;&#x8D77;&#x6765;&#x8212;&#x670D;&#x3002;
+vim &#x6700;&#x7CBE;&#x9AD3;&#x7684;&#x5730;&#x65B9;&#x662F;&#x5176;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7F16;&#x8F91;&#x6A21;&#x5F0F;&#xFF0C;&#x7528;&#x597D;&#x8FD9;&#x79CD;&#x7F16;&#x8F91;&#x6A21;&#x5F0F;&#xFF0C;&#x4F60;&#x5C31;&#x5F97;&#x5F97;&#x5230;&#x975E;&#x5E38;&#x597D;&#x7684;&#x7F16;&#x8F91;&#x4F53;&#x9A8C;&#x548C;&#x6548;&#x7387;&#x3002;
+</p>
+
+<p>
+&#x6700;&#x540E;&#x63A8;&#x8350;&#x4E00;&#x672C;&#x4E66;&#xFF0C;&#x8FD9;&#x672C;&#x4E66;&#x4F20;&#x6388;&#x4E86;&#x7528; vim &#x7F16;&#x8F91;&#x7684;&#x5404;&#x79CD;&#x6280;&#x5DE7;&#xFF0C;&#x77ED;&#x77ED;&#x51E0;&#x4E2A;&#x6309;&#x952E;&#xFF0C;&#x4F60;&#x5C31;&#x80FD;&#x5B8C;&#x6210;&#x5404;&#x79CD;&#x590D;&#x6742;&#x7684;&#x7F16;&#x8F91;&#x4EFB;&#x52A1;&#x3002;
+&#x8FD9;&#x672C;&#x4E66;&#x7684;&#x82F1;&#x6587;&#x540D;&#x5B57;&#x662F;&#x300A;Practical Vim&#x300B;,&#x4E2D;&#x6587;&#x540D;&#x5B57;&#x662F;&#x300A;vim &#x5B9E;&#x7528;&#x6280;&#x5DE7;&#x300B;&#xFF0C;&#x7F51;&#x4E0A;&#x80FD;&#x627E;&#x5230; pdf &#x4E0B;&#x8F7D;&#x7248;&#x7684;&#x3002;
+</p>
+
+<p>
+&#x7528;&#x4E60;&#x60EF;&#x4E86; vim &#x540E;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x4F60;&#x518D;&#x4E5F;&#x53D7;&#x4E0D;&#x4E86;&#x5176;&#x5B83;&#x7F16;&#x8F91;&#x5668;&#x4E86;&#xFF0C;&#x5176;&#x5B83;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x90FD;&#x975E;&#x5E38;&#x96BE;&#x7528;&#xFF0C;&#x53EA;&#x6709;&#x4F7F;&#x7528; vim&#xFF0C;&#x624D;&#x80FD;&#x4F53;&#x9A8C;&#x5230;&#x7F16;&#x8F91;&#x7684;&#x5FEB;&#x611F;&#x3002;
+</p>
+</div>
+</div>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/27/use-vim-basic/" class="archive-article-date">
+  	<time datetime="2016-10-27T12:49:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-27</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/">tools</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/软件/">软件</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/10/dynamic-language-and-c-generics/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态语言与 C 语言泛型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+<div class="share ds-share flat" 
+    data-thread-key="use-vim-basic"
+    data-title="编辑器之神 -- vim 的基本使用" 
+    data-images="" 
+    data-content="" 
+    data-url="http://frapples.github.io/2016/10/27/use-vim-basic/">
+
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-baidu" href="javascript:void(0);" data-service="baidu"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="use-vim-basic" data-title="编辑器之神 -- vim 的基本使用" data-url="http://frapples.github.io/2016/10/27/use-vim-basic/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"frapples"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Frapples
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/emacs/" style="font-size: 15px;">emacs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/myself/" style="font-size: 10px;">myself</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/orgmode/" style="font-size: 15px;">orgmode</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/动态语言/" style="font-size: 10px;">动态语言</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">热爱技术，热爱知识的大学生一枚。&lt;br&gt;&lt;br&gt;自己的一片小天地。&lt;br&gt;在这里整理自己的思绪，分享自己的心得。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
