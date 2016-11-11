@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>python 的装饰器 | Frapples的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x662F; python &amp;#x7684;&amp;#x7279;&amp;#x8272;&amp;#x8BED;&amp;#x6CD5;&amp;#x4E4B;&amp;#x4E00;&amp;#xFF0C;&amp;#x5B83;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x6765;&amp;#x505A;&amp;#x9762;&amp;#x5411;&amp;#x5207;&amp;#x9762;&amp;#x7F16;&amp;#x7A0B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 的装饰器">
+<meta property="og:url" content="http://frapples.github.io/2016/11/11/python-decorator/index.html">
+<meta property="og:site_name" content="Frapples的博客">
+<meta property="og:description" content="&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x662F; python &amp;#x7684;&amp;#x7279;&amp;#x8272;&amp;#x8BED;&amp;#x6CD5;&amp;#x4E4B;&amp;#x4E00;&amp;#xFF0C;&amp;#x5B83;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x6765;&amp;#x505A;&amp;#x9762;&amp;#x5411;&amp;#x5207;&amp;#x9762;&amp;#x7F16;&amp;#x7A0B">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/smiley.png">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/smiley.png">
+<meta property="og:updated_time" content="2016-11-11T10:20:06.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python 的装饰器">
+<meta name="twitter:description" content="&amp;#x88C5;&amp;#x9970;&amp;#x5668;&amp;#x662F; python &amp;#x7684;&amp;#x7279;&amp;#x8272;&amp;#x8BED;&amp;#x6CD5;&amp;#x4E4B;&amp;#x4E00;&amp;#xFF0C;&amp;#x5B83;&amp;#x53EF;&amp;#x4EE5;&amp;#x7528;&amp;#x6765;&amp;#x505A;&amp;#x9762;&amp;#x5411;&amp;#x5207;&amp;#x9762;&amp;#x7F16;&amp;#x7A0B">
+<meta name="twitter:image" content="http://frapples.github.io/images/emoji/smiley.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Frapples</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">博文归档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">文章列表</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/frapples" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Frapples</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Frapples</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">博文归档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/frapples" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-python-decorator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python 的装饰器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+          
+              <div class="toc-article">
+                  <strong class="toc-title">目录</strong>
+                  (<a class="js-toggle-toc" href="javascript:void(0)"></a>)
+                  <div class="toc-content">
+                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-1"><span class="toc-text">1 基本的装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-1-1"><span class="toc-text">1.1 使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-1-2"><span class="toc-text">1.2 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-1-3"><span class="toc-text">1.3 函数签名问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-2"><span class="toc-text">2 带参数的装饰器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-2-1"><span class="toc-text">2.1 函数写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-2-2"><span class="toc-text">2.2 类写法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-2-3"><span class="toc-text">2.3 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-3"><span class="toc-text">3 装饰器装饰类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-4"><span class="toc-text">4 多装饰器的顺序问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-5"><span class="toc-text">5 最后</span></a></li></ol>
+                  </div>
+              </div>
+          
+
+        <p>
+&#x88C5;&#x9970;&#x5668;&#x662F; python &#x7684;&#x7279;&#x8272;&#x8BED;&#x6CD5;&#x4E4B;&#x4E00;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x505A;&#x9762;&#x5411;&#x5207;&#x9762;&#x7F16;&#x7A0B;&#xFF08;AOP&#xFF09;&#x3002;
+&#x76F8;&#x6BD4;&#x5176;&#x5B83;&#x8BED;&#x8A00;&#xFF0C;python &#x7684;&#x88C5;&#x9970;&#x5668;&#x8BED;&#x6CD5;&#x8981;&#x7B80;&#x6D01;&#x7684;&#x591A;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5145;&#x5206;&#x5229;&#x7528;&#x4E86;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#x8FD9;&#x4E00;&#x5F3A;&#x5927;&#x7684;&#x7279;&#x6027;&#x3002;
+</p>
+
+<p>
+&#x4F46;&#x662F;&#x5728;&#x5177;&#x4F53;&#x7684;&#x4F7F;&#x7528;&#x4E0A;&#xFF0C;&#x603B;&#x4F1A;&#x9047;&#x5230;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x8BED;&#x6CD5;&#x4E0A;&#x7EC6;&#x679D;&#x672B;&#x8282;&#x7684;&#x7EA0;&#x7F20;&#x3002;
+&#x6240;&#x4EE5;&#x4ECA;&#x5929;&#x6211;&#x603B;&#x7ED3;&#x4E0B;&#x6709;&#x5173; python &#x88C5;&#x9970;&#x5668;&#x7684;&#x8BED;&#x6CD5;&#x7EC6;&#x8282;&#xFF0C;&#x4E5F;&#x7B97;&#x662F;&#x7ED9;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x4E2A;&#x53C2;&#x8003;&#x5427;&#x3002;
+<img width="20" height="20" class="emoji nofancybox" title=":smiley:" alt="&#x1F603;" src="/images/emoji/smiley.png">
+ 
+</p>
+
+<a id="more"></a>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> &#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> &#x4F7F;&#x7528;</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;&#x88C5;&#x9970;&#x5668;&#x7684;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x4E8E;&#x8FD9;&#x6837;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="decorator">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x5047;&#x8BBE;&#x8FD9;&#x4E2A; log &#x88C5;&#x9970;&#x5668;&#x662F;&#x6DFB;&#x52A0;&#x65E5;&#x5FD7;&#x529F;&#x80FD;&#xFF0C;&#x90A3;&#x4E48;&#x6BCF;&#x6B21; add &#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x8BB0;&#x5F55;&#x4E0B;&#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#x3002;
+</p>
+
+<p>
+&#x5728;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x524D;&#x7528;@&#x7B26;&#x53F7;&#x52A0;&#x4E0A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x5C31;&#x4F1A;&#x7ED9;&#x4EBA;&#x4E00;&#x79CD;&#x611F;&#x89C9;&#xFF0C;&#x597D;&#x50CF;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x88AB;@&#x8FD9;&#x79CD;&#x5F3A;&#x5927;&#x7684;&#x9B54;&#x6CD5;&#x88C5;&#x9970;&#x4E86;&#x4E00;&#x6837;&#x3002;
+&#x8FD9;&#x91CC;&#xFF0C;&#x7531;&#x4E8E;&#x88AB;@&#x7684;&#x5F3A;&#x5927;&#x9B54;&#x6CD5;&#x6240;&#x5F71;&#x54CD;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x88AB;&#x589E;&#x52A0;&#x4E86;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x7684;&#x529F;&#x80FD;&#x3002;
+</p>
+
+
+
+<p>
+&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD9;&#x79CD;@&#x7684;&#x8BED;&#x6CD5;&#x53EA;&#x4E0D;&#x8FC7;&#x662F;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#x7CD6;&#x800C;&#x5DF2;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5B8C;&#x5168;&#x7B49;&#x4EF7;&#x4E8E;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">add = log(add)</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x5728; python &#x4E2D;&#xFF0C;&#x4E00;&#x5207;&#x53D8;&#x91CF;&#x90FD;&#x662F;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x4E14;&#x51FD;&#x6570;&#x53C8;&#x662F; first-class &#x7684;&#x3002;
+&#x6240;&#x4EE5;&#x5B9A;&#x4E49; add &#x51FD;&#x6570;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x5C06; add &#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x5F15;&#x7528;&#x3002;
+&#x5982;&#x679C;&#x6211;&#x613F;&#x610F;&#xFF0C;&#x6211;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x8BA9; add &#x91CD;&#x65B0;&#x5F15;&#x7528;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E0A;&#x3002;
+</p>
+
+<p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;python &#x88C5;&#x9970;&#x5668;&#x8BED;&#x6CD5;&#x7684;&#x5B9E;&#x8D28;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x5C06; add &#x51FD;&#x6570;&#x4F20;&#x5165;&#x5230; log &#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x8FD4;&#x56DE;&#x7684;&#x51FD;&#x6570;&#x91CD;&#x65B0;&#x5F15;&#x7528;&#x5230; add &#x4E0A;&#x3002;
+</p>
+
+<p>
+&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; log&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x4E5F;&#x662F;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x662F;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x88AB;&#x88C5;&#x9970;&#x7684;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x88C5;&#x9970;&#x540E;&#x7684;&#x51FD;&#x6570;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> &#x5B9A;&#x4E49;</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+&#x77E5;&#x9053;&#x4E86;&#x88C5;&#x9970;&#x5668;&#x662F;&#x4E2A;&#x4F20;&#x5165;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x88C5;&#x9970;&#x540E;&#x51FD;&#x6570;&#x7684;&#x9AD8;&#x9636;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5B9A;&#x4E49;&#x88C5;&#x9970;&#x5668;&#x4E5F;&#x5C31;&#x5F88;&#x7B80;&#x5355;&#x4E86;&#x3002;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	print(<span class="string">&quot;Call function %s&quot;</span> % func.__name__)</span><br><span class="line">	<span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="decorator">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+Call function add
+</pre>
+
+<p>
+log &#x51FD;&#x6570;&#x91CC;&#x9762;&#x5B9A;&#x4E49;&#x7684; wrapper &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528;&#x539F;&#x672C;&#x7684;&#x88AB;&#x88C5;&#x9970;&#x51FD;&#x6570;&#xFF08;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x91CC;&#x662F; add &#x51FD;&#x6570;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x505A;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x5DE5;&#x4F5C;&#x3002;
+</p>
+
+<p>
+&#x7136;&#x540E; log &#x51FD;&#x6570;&#x8FD4;&#x56DE; wrapper &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F1A;&#x66FF;&#x4EE3;&#x539F;&#x672C;&#x7684; add &#x51FD;&#x6570;&#x7ED1;&#x5B9A;&#x5230; add &#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#x4E0A;&#xFF0C;&#x53D8;&#x6210;&#x4E86;&#x65B0;&#x7684; add &#x51FD;&#x6570;&#x3002;
+</p>
+
+<p>
+&#x4E4B;&#x540E;&#x8C03;&#x7528; add &#x51FD;&#x6570;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x8C03;&#x7528;&#x88AB;&#x8C03;&#x5305;&#x8FC7;&#x7684; wrapper &#x51FD;&#x6570;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x4F7F;&#x7528;@&#x8BED;&#x6CD5;&#x8F7B;&#x8F7B;&#x4E00;&#x88C5;&#x9970;&#xFF0C;&#x51FD;&#x6570;&#x7684;&#x529F;&#x80FD;&#x5C31;&#x88AB;&#x589E;&#x5F3A;&#x4E86;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> &#x51FD;&#x6570;&#x7B7E;&#x540D;&#x95EE;&#x9898;</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5728;&#x7528; def &#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x50CF;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x628A; add &#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x5F15;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E0A;&#x3002;
+</p>
+
+<p>
+&#x7528; def &#x5B9A;&#x4E49; add &#x51FD;&#x6570;&#x65F6;&#x8FD8;&#x4F1A;&#x628A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684; <code>__name__</code> &#x5C5E;&#x6027;&#x8BBE;&#x4E3A;&quot;add&quot;&#x3002;&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8FD8;&#x6709; docstring, &#x53C2;&#x6570;&#x5217;&#x8868;&#x7B49;&#x5143;&#x4FE1;&#x606F;&#x3002;
+</p>
+
+<p>
+&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x88C5;&#x9970;&#x5668;&#x5B9A;&#x4E49;&#xFF0C;&#x6700;&#x7EC8; wrapper &#x51FD;&#x6570;&#x4F1A;&#x66FF;&#x6362;&#x539F;&#x672C;&#x7684; add &#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x539F;&#x672C;&#x7684;&#x8FD9;&#x4E9B;&#x5143;&#x4FE1;&#x606F;&#x5C31;&#x4E22;&#x5931;&#x4E86;&#x3002;&#x6765;&#x770B;&#x770B;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	print(<span class="string">&quot;Call function %s&quot;</span> % func.__name__)</span><br><span class="line">	<span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="decorator">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">&quot;&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line">print(add.__name__)</span><br><span class="line">print(add.__doc__)</span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+wrapper
+None
+</pre>
+
+
+<p>
+&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x4E5F;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x628A;&#x539F;&#x672C;&#x51FD;&#x6570;&#x7684;&#x5143;&#x4FE1;&#x606F; copy &#x5230;&#x5305;&#x88C5;&#x51FD;&#x6570; wrapper&#xFF0C;&#x5C31;&#x884C;&#x4E86;&#x3002;
+python &#x7684;&#x6807;&#x51C6;&#x5E93; functools &#x91CC;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x88C5;&#x9970;&#x5668; wraps&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x62FF;&#x5B83;&#x88C5;&#x9970;&#x4E0B;&#x5305;&#x88C5;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x5C31;&#x5E2E;&#x5B9A;&#x641E;&#x5B9A;&#x8FD9;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;
+</p>
+
+<p>
+&#x90A3;&#x4E48;&#x5C31;&#x6709;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(func)</span>:</span></span><br><span class="line"><span class="decorator">    @functools.wraps(func)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	print(<span class="string">&quot;Call function %s&quot;</span> % func.__name__)</span><br><span class="line">	<span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="decorator">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">&quot;&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line">print(add.__name__)</span><br><span class="line">print(add.__doc__)</span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+add
+&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> &#x5E26;&#x53C2;&#x6570;&#x7684;&#x88C5;&#x9970;&#x5668;</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&#x5047;&#x8BBE;&#x6211;&#x60F3;&#x5728;&#x4F7F;&#x7528;&#x88C5;&#x9970;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F20;&#x7ED9;&#x5B83;&#x4E00;&#x4E9B;&#x53C2;&#x6570;&#x4EE5;&#x66F4;&#x597D;&#x7684;&#x63A7;&#x5236;&#x5176;&#x884C;&#x4E3A;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="decorator">@log(&quot;basic&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">&quot;&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x540C;&#x6837;&#xFF0C;&#x7531;&#x4E8E;@&#x8BED;&#x6CD5;&#x53EA;&#x662F;&#x4E00;&#x5C42;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x5B83;&#x7B49;&#x540C;&#x4E8E;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">&quot;&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">add = log(<span class="string">&quot;basic&quot;</span>)(add)</span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x8C03;&#x7528; log(&quot;basic&quot;)&#x4F1A;&#x8FD4;&#x56DE;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x4E4B;&#x540E;&#x518D;&#x8C03;&#x7528;&#x5B83;&#x5305;&#x88C5; add &#x51FD;&#x6570;&#x3002;
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> &#x51FD;&#x6570;&#x5199;&#x6CD5;</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+&#x6709;&#x4E86;&#x4E0A;&#x9762;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x5B9E;&#x73B0;&#x8FD9;&#x6837;&#x7684;&#x88C5;&#x9970;&#x5668;&#x5199;&#x8D77;&#x6765;&#x5C31;&#x5F88;&#x7B80;&#x5355;&#x4E86;&#x3002;&#x4F60;&#x9700;&#x8981;&#x5728; log &#x51FD;&#x6570;&#x91CC;&#x9762;&#x5B9A;&#x4E49;&#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x5B83;&#x8FD4;&#x56DE;&#x3002;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line"><span class="decorator">	@functools.wraps(func)</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	    print(<span class="string">&quot;%s: Call function %s&quot;</span> % (text, func.__name__))</span><br><span class="line">	    <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">	<span class="keyword">return</span> wrapper</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="decorator">@log(&quot;basic&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">&quot;&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">add(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+basic: Call function add
+</pre>
+
+<p>
+&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;decorator &#x51FD;&#x6570;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E4B;&#x524D;&#x5B9A;&#x4E49;&#x8FC7;&#x7684;&#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;log &#x51FD;&#x6570;&#x4F1A;&#x8FD4;&#x56DE;&#x8FD9;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;&#x3002;
+</p>
+
+<p>
+&#x5728;&#x4F7F;&#x7528; <code>@log(&quot;basic&quot;)</code> &#x88C5;&#x9970; add &#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528; log(&quot;basic&quot;)&#x5F97;&#x5230;&#x5176;&#x8FD4;&#x56DE;&#x7684;&#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x7528;&#x5B83;&#x6765;&#x88C5;&#x9970; add &#x51FD;&#x6570;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> &#x7C7B;&#x5199;&#x6CD5;</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x5199;&#x6CD5;&#xFF0C;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x5957;&#x51FD;&#x6570;&#xFF0C;&#x6574;&#x6574;&#x5957;&#x4E86;&#x4E09;&#x5C42;&#xFF0C;&#x4E0D;&#x719F;&#x6089;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x7684;&#x4EBA;&#xFF0C;&#x53EF;&#x80FD;&#x7406;&#x89E3;&#x8D77;&#x6765;&#x6709;&#x70B9;&#x8D39;&#x52B2;&#x3002;
+</p>
+
+<p>
+python &#x662F;&#x4E00;&#x95E8;&#x5E94;&#x7528;&#x201C;&#x9E2D;&#x5B50;&#x7C7B;&#x578B;&#x201D;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x5404;&#x79CD;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x5982; <code>add = log(&quot;basic&quot;)(add)</code> &#xFF0C;
+&#x5176;&#x4E2D; <code>log(&quot;basic&quot;)</code> &#x8FD4;&#x56DE;&#x7684;&#xFF0C;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x975E;&#x5F97;&#x662F;&#x4E2A;&#x51FD;&#x6570;&#x3002;
+&#x5728; python &#x4E2D;&#xFF0C;&#x4E00;&#x5207;&#x62E5;&#x6709; <code>__call__</code> &#x65B9;&#x6CD5;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x5F53;&#x6210;&#x51FD;&#x6570;&#x6765;&#x8C03;&#x7528;&#x3002;&#x8FD9;&#x79CD;&#x5BF9;&#x8C61;&#x79F0;&#x4E3A; <b>&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;</b> (callable)&#x3002;
+</p>
+
+<p>
+&#x8FD9;&#x610F;&#x5473;&#x7740;,log &#x6709;&#x53EF;&#x80FD;&#x662F;&#x4E2A;&#x7C7B;&#xFF0C; <code>log(&quot;basic&quot;)</code> &#x5176;&#x5B9E;&#x662F;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; log &#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x53C8;&#x662F;&#x4E2A;&#x53EF;&#x8C03;&#x7528;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x7684; <code>__call__</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x4E2A;&#x57FA;&#x672C;&#x7684;&#x88C5;&#x9970;&#x5668;&#x3002;
+</p>
+
+<p>
+&#x65E2;&#x7136;&#x8FD9;&#x6837;&#xFF0C;&#x5C31;&#x6709;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x5B9A;&#x4E49;&#x5E26;&#x53C2;&#x6570;&#x88C5;&#x9970;&#x5668;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">log</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, text)</span>:</span></span><br><span class="line">	self._text = text</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, func)</span>:</span></span><br><span class="line"><span class="decorator">	@functools.wraps(func)</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">	    print(<span class="string">&quot;%s: Call function %s&quot;</span> % (self._text, func.__name__))</span><br><span class="line">	    <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">	<span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="decorator">@log(&quot;basic&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="string">&quot;&#x8FD4;&#x56DE; a &#x548C; b &#x7684;&#x548C;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line">add(<span class="number">1</span>, <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</div>
+
+<pre class="example">
+basic: Call function add
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> &#x5C0F;&#x7ED3;</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+&#x5BF9;&#x4E8E;&#x7C7B;&#x4F3C; <code>@log(&quot;basic&quot;)</code> &#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x4F20;&#x7ED9;&#x88C5;&#x9970;&#x5668;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x4E4B;&#x540E;&#x5305;&#x88C5;&#x51FD;&#x6570;&#x7528;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x6765;&#x505A;&#x989D;&#x5916;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x7684;&#x6253;&#x5370;&#x65E5;&#x5FD7;&#x3002;
+</p>
+
+<p>
+&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5199;&#x6CD5;&#x5B9A;&#x4E49;&#x51FA;&#x7684;&#x5E26;&#x53C2;&#x6570;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6570;&#x636E;&#x5176;&#x5B9E;&#x662F;&#x653E;&#x5728;&#x95ED;&#x5305;&#x4E2D;&#x7684;&#x3002;&#x800C;&#x7C7B;&#x5199;&#x6CD5;&#x7684;&#x5E26;&#x53C2;&#x6570;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6570;&#x636E;&#x662F;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4F20;&#x5165;&#x4FDD;&#x5B58;&#x5230;&#x4E86;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x4E2D;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x88C5;&#x9970;&#x5668;&#x7684;&#x903B;&#x8F91;&#x5F88;&#x590D;&#x6742;&#xFF0C;&#x867D;&#x7136;&#x5BF9;&#x4E8E;&#x7B2C;&#x4E00;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;&#x7684;&#x6280;&#x5DE7;&#x4E5F;&#x80FD;&#x5F88;&#x597D;&#x7684;&#x7EC4;&#x7EC7;&#x4EE3;&#x7801;&#x3002;
+&#x4F46;&#x662F;&#x5BF9; python &#x8FD9;&#x79CD;&#x5BF9;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x652F;&#x6301;&#x66F4;&#x597D;&#x7684;&#x8BED;&#x8A00;&#x6765;&#x8BF4;&#xFF0C;&#x8FD8;&#x662F;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x7C7B;&#x7684;&#x5199;&#x6CD5;&#x7EC4;&#x7EC7;&#x590D;&#x6742;&#x7684;&#x903B;&#x8F91;&#x3002;
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> &#x88C5;&#x9970;&#x5668;&#x88C5;&#x9970;&#x7C7B;</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+&#x81EA; python2.6 &#x4EE5;&#x540E;&#xFF0C;&#x88C5;&#x9970;&#x5668;&#x7684;@&#x8BED;&#x6CD5;&#x4E0D;&#x4EC5;&#x80FD;&#x5BF9;&#x51FD;&#x6570;&#x4F7F;&#x7528;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5BF9;&#x7C7B;&#x4F7F;&#x7528;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="decorator">@log</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">  <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x540C;&#x6837;&#xFF0C;@&#x53EA;&#x662F;&#x4E0B;&#x9762;&#x7B49;&#x4EF7;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;:
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">MyClass = log(MyClass)</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<p>
+&#x5229;&#x7528;&#x88C5;&#x9970;&#x7C7B;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x6211;&#x53EF;&#x4EE5;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#xFF0C;&#x6BD4;&#x5982;&#x6DFB;&#x52A0;&#x67D0;&#x4E9B;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(cls)</span>:</span></span><br><span class="line">  cls.logger = logging.getLogger(<span class="string">&quot;class &quot;</span> + cls.__name__)</span><br><span class="line">  <span class="keyword">return</span> cls</span><br><span class="line"></span><br><span class="line"><span class="decorator">@log</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">	self.logger.info(<span class="string">&quot;Class myClass init&quot;</span>)</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;log &#x51FD;&#x6570;&#x5728;&#x7ED9;&#x7C7B;&#x6DFB;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x540E;&#xFF0C;&#x5C31;&#x628A;&#x7C7B;&#x539F;&#x5C01;&#x4E0D;&#x52A8;&#x7684;&#x8FD4;&#x56DE;&#x4E86;&#x3002;&#x4E4B;&#x540E;&#x8FD9;&#x4E2A;&#x88AB;&#x5305;&#x88C5;&#x7684;&#x7C7B;&#xFF0C;&#x5C31;&#x591A;&#x4E86; logger &#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;
+</p>
+
+<p>
+&#x5229;&#x7528;&#x548C;&#x4E0A;&#x9762;&#x76F8;&#x4F3C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x540C;&#x6837;&#x80FD;&#x591F;&#x5199;&#x51FA;&#x5E26;&#x53C2;&#x6570;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">log</span><span class="params">(text)</span>:</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(cls)</span>:</span></span><br><span class="line">	  cls.logger = logging.getLogger(text + <span class="string">&quot; &quot;</span> + <span class="string">&quot;class &quot;</span> + cls.__name__)</span><br><span class="line">	  <span class="keyword">return</span> cls</span><br><span class="line"></span><br><span class="line"><span class="decorator">@log(&quot;moudule1&quot;)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">	self.logger.info(<span class="string">&quot;Class myClass init&quot;</span>)</span><br></pre></td></tr></table></figure>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> &#x591A;&#x88C5;&#x9970;&#x5668;&#x7684;&#x987A;&#x5E8F;&#x95EE;&#x9898;</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="decorator">@a</span></span><br><span class="line"><span class="decorator">@b</span></span><br><span class="line"><span class="decorator">@c</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+</div>
+
+<p>
+&#x8FD9;&#x79CD;&#x591A;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x88C5;&#x9970;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x628A;&#x8BED;&#x6CD5;&#x7CD6;&#x7684;&#x5916;&#x8863;&#x5265;&#x5F00;&#x5176;&#x5B9E;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">func = a(b(c(func)))</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8D8A;&#x5F80;&#x4E0B;&#x7684;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x5B83;&#x5BF9;&#x51FD;&#x6570;&#x7684;&#x5305;&#x88C5;&#x4E5F;&#x5C31;&#x8D8A;&#x9760;&#x91CC;&#x9762;&#x3002;
+</p>
+
+<p>
+&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#xFF0C;&#x662F;&#x6709;&#x987A;&#x5E8F;&#x8981;&#x6C42;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x8BB0;&#x4F4F;&#x4E0A;&#x9762;&#x7684;&#x53D8;&#x6362;&#xFF0C;&#x4E5F;&#x5C31;&#x5F88;&#x6E05;&#x695A;&#x7684;&#x77E5;&#x9053;&#x5230;&#x5E95;&#x5E94;&#x8BE5;&#x628A;&#x54EA;&#x4E2A;&#x88C5;&#x9970;&#x5668;&#x5199;&#x5728;&#x524D;&#x9762;&#x7684;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> &#x6700;&#x540E;</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+python &#x7684;&#x88C5;&#x9970;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5BF9;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6216;&#x7C7B;&#x8FDB;&#x884C;&#x5305;&#x88C5;&#x3002;
+</p>
+
+<p>
+&#x7531;&#x4E8E;&#x501F;&#x9274;&#x4E86;&#x51FD;&#x6570;&#x5F0F;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x88C5;&#x9970;&#x5668;&#x7684;&#x8BED;&#x6CD5;&#x975E;&#x5E38;&#x7B80;&#x6D01;&#x800C;&#x4E14;&#x7EDF;&#x4E00;&#x3002;
+</p>
+
+<p>
+&#x90A3;&#x7EDF;&#x4E00;&#x5728;&#x54EA;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x88C5;&#x9970;&#x5668;&#x672C;&#x6765;&#x7528; python &#x5DF2;&#x7ECF;&#x6709;&#x7684;&#x8BED;&#x6CD5;&#x5C31;&#x80FD;&#x8F7B;&#x677E;&#x5B9E;&#x73B0;&#xFF0C;
+&#x8FD9;&#x79CD;&#x5404;&#x79CD;&#x7279;&#x6027;&#x5176;&#x5B9E;&#x80CC;&#x540E;&#x90FD;&#x6709;&#x4E00;&#x79CD;&#x7EDF;&#x4E00;&#x7684;&#x89C4;&#x5F8B;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x89C4;&#x5B9A;&#x5927;&#x91CF;&#x590D;&#x6742;&#x6666;&#x6DA9;&#x7684;&#x7279;&#x4F8B;&#xFF0C;&#x672C;&#x8EAB;&#x5C31;&#x80FD;&#x7ED9;&#x4EBA;&#x4E00;&#x79CD;&#x7EDF;&#x4E00;&#x7F8E;&#x3002;
+</p>
+
+<p>
+&#x7136;&#x800C; python &#x4F7F;&#x7528;@&#x8BED;&#x6CD5;&#x7ED9;&#x8FD9;&#x79CD;&#x5DF2;&#x7ECF;&#x6709;&#x7684;&#x5199;&#x6CD5;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x5C0F;&#x5C0F;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#xFF0C;&#x4F7F;&#x5176;&#x66F4;&#x7B26;&#x5408;&#x4EBA;&#x7684;&#x76F4;&#x89C9;&#xFF0C;&#x8BA9;&#x672C;&#x6765;&#x5C31;&#x5F88;&#x597D;&#x7684;&#x8BED;&#x6CD5;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x597D;&#x7528;&#x4E86;&#x3002;
+</p>
+
+<p>
+python &#x7C7B;&#x4F3C;&#x7684;&#x7B80;&#x6D01;&#x4F18;&#x7F8E;&#x7684;&#x7279;&#x70B9;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x7528; python &#x7F16;&#x7A0B;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x80FD;&#x4F53;&#x4F1A;&#x5230;&#x4E00;&#x79CD;&#x7F8E;&#x7684;&#x4EAB;&#x53D7;&#xFF01; 
+<img width="20" height="20" class="emoji nofancybox" title=":smiley:" alt="&#x1F603;" src="/images/emoji/smiley.png">
+
+</p>
+</div>
+</div>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/11/python-decorator/" class="archive-article-date">
+  	<time datetime="2016-11-11T10:20:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-11</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/编程/">编程</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/27/use-vim-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">编辑器之神 -- vim 的基本使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+<div class="share ds-share flat" 
+    data-thread-key="python-decorator"
+    data-title="python 的装饰器" 
+    data-images="" 
+    data-content="" 
+    data-url="http://frapples.github.io/2016/11/11/python-decorator/">
+
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-baidu" href="javascript:void(0);" data-service="baidu"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="python-decorator" data-title="python 的装饰器" data-url="http://frapples.github.io/2016/11/11/python-decorator/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"frapples"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Frapples
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/emacs/" style="font-size: 15px;">emacs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/myself/" style="font-size: 10px;">myself</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/orgmode/" style="font-size: 15px;">orgmode</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/动态语言/" style="font-size: 10px;">动态语言</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">热爱技术，热爱知识的大学生一枚。&lt;br&gt;&lt;br&gt;自己的一片小天地。&lt;br&gt;在这里整理自己的思绪，分享自己的心得。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
