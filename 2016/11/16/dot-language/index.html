@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>dot 绘图语言 | Frapples的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="graphviz &amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x5F88;&amp;#x53E4;&amp;#x8001;&amp;#x7684;&amp;#x5F00;&amp;#x6E90;&amp;#x8F6F;&amp;#x4EF6;&amp;#x5305;&amp;#x4E86;&amp;#xFF0C;&amp;#x7528;&amp;#x6765;&amp;#x7ED8;&amp;#x5236;&amp;#x7ED3;&amp;#x6784;&amp;#x5316;&amp;#x7684;&amp;#x56FE;&amp;#x5F6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dot 绘图语言">
+<meta property="og:url" content="http://frapples.github.io/2016/11/16/dot-language/index.html">
+<meta property="og:site_name" content="Frapples的博客">
+<meta property="og:description" content="graphviz &amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x5F88;&amp;#x53E4;&amp;#x8001;&amp;#x7684;&amp;#x5F00;&amp;#x6E90;&amp;#x8F6F;&amp;#x4EF6;&amp;#x5305;&amp;#x4E86;&amp;#xFF0C;&amp;#x7528;&amp;#x6765;&amp;#x7ED8;&amp;#x5236;&amp;#x7ED3;&amp;#x6784;&amp;#x5316;&amp;#x7684;&amp;#x56FE;&amp;#x5F6">
+<meta property="og:image" content="http://frapples.github.io/images/emoji/grinning.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image1.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image2.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image3.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image4.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image5.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image6.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image7.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image8.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image9.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image10.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image11.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image12.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image13.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image14.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image15.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image16.png">
+<meta property="og:image" content="http://frapples.github.io/2016/11/16/dot-language/dot-image17.png">
+<meta property="og:updated_time" content="2016-11-16T06:29:51.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dot 绘图语言">
+<meta name="twitter:description" content="graphviz &amp;#x662F;&amp;#x4E00;&amp;#x4E2A;&amp;#x5F88;&amp;#x53E4;&amp;#x8001;&amp;#x7684;&amp;#x5F00;&amp;#x6E90;&amp;#x8F6F;&amp;#x4EF6;&amp;#x5305;&amp;#x4E86;&amp;#xFF0C;&amp;#x7528;&amp;#x6765;&amp;#x7ED8;&amp;#x5236;&amp;#x7ED3;&amp;#x6784;&amp;#x5316;&amp;#x7684;&amp;#x56FE;&amp;#x5F6">
+<meta name="twitter:image" content="http://frapples.github.io/images/emoji/grinning.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/images/logo.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Frapples</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">博文归档</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">文章列表</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/frapples" title="github">github</a>
+		        
+					<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Frapples</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/images/logo.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Frapples</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">个人的一片小天地，整理思绪，思考问题，分享心得:)</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">博文归档</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/frapples" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:frapples@163.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-dot-language" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      dot 绘图语言
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+          
+              <div class="toc-article">
+                  <strong class="toc-title">目录</strong>
+                  (<a class="js-toggle-toc" href="javascript:void(0)"></a>)
+                  <div class="toc-content">
+                      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-1"><span class="toc-text">1 有向图和无向图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-2"><span class="toc-text">2 边和节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-3"><span class="toc-text">3 设置属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-1"><span class="toc-text">3.1 对单个节点或边设置属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-2"><span class="toc-text">3.2 对所有的节点或边设置属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-3"><span class="toc-text">3.3 设置图的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-3-4"><span class="toc-text">3.4 常用属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-4"><span class="toc-text">4 注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-5"><span class="toc-text">5 复杂的节点结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-6"><span class="toc-text">6 子图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-7"><span class="toc-text">7 几个示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-7-1"><span class="toc-text">7.1 函数调用图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-7-2"><span class="toc-text">7.2 数据结构二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sec-7-3"><span class="toc-text">7.3 数据结构 hash 表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sec-8"><span class="toc-text">8 最后及其它资料</span></a></li></ol>
+                  </div>
+              </div>
+          
+
+        <p>
+graphviz &#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x53E4;&#x8001;&#x7684;&#x5F00;&#x6E90;&#x8F6F;&#x4EF6;&#x5305;&#x4E86;&#xFF0C;&#x7528;&#x6765;&#x7ED8;&#x5236;&#x7ED3;&#x6784;&#x5316;&#x7684;&#x56FE;&#x5F62;&#x3002;
+</p>
+
+<p>
+&#x901A;&#x8FC7;&#x5B83;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x7F16;&#x5199;&#x7B80;&#x5355;&#x7684;&#x811A;&#x672C;&#xFF08;dot &#x8BED;&#x8A00;&#xFF09;&#xFF0C;&#x63CF;&#x8FF0;&#x56FE;&#x7684;&#x903B;&#x8F91;&#x548C;&#x5173;&#x7CFB;&#xFF0C;
+&#x5B83;&#x5C31;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x5E2E;&#x4F60;&#x641E;&#x5B9A;&#x5E03;&#x5C40;&#x4E4B;&#x7C7B;&#x7684;&#x7410;&#x788E;&#x4E8B;&#x60C5;&#xFF0C;&#x751F;&#x6210;&#x4F60;&#x9700;&#x8981;&#x7684;&#x56FE;&#x3002;
+</p>
+
+<p>
+&#x5728;&#x7F16;&#x7A0B;&#x5F53;&#x4E2D;&#xFF0C;&#x5176;&#x5B9E;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x5E76;&#x4E0D;&#x592A;&#x5728;&#x4E4E;&#x56FE;&#x7684;&#x7F8E;&#x89C2;&#x548C;&#x5E03;&#x5C40;&#xFF0C;&#x5F80;&#x5F80;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x662F;&#x4E00;&#x79CD;&#x76F4;&#x89C2;&#x7684;&#x56FE;&#x5F62;&#x65B9;&#x5F0F;&#x6765;&#x8868;&#x8FBE;&#x6211;&#x4EEC;&#x5185;&#x5728;&#x7684;&#x590D;&#x6742;&#x903B;&#x8F91;&#x3002;
+&#x8FD9;&#x65F6;&#xFF0C;graphviz &#x7684;&#x5A01;&#x529B;&#x5C31;&#x53D1;&#x6325;&#x51FA;&#x6765;&#x4E86;&#x3002;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528; dot &#x811A;&#x672C;&#x7B80;&#x5355;&#x63CF;&#x8FF0;&#x4E0B;&#x903B;&#x8F91;&#xFF0C;&#x5C31;&#x80FD;&#x5F88;&#x597D;&#x7684;&#x5F97;&#x5230;&#x9700;&#x8981;&#x7684;&#x76F4;&#x89C2;&#x56FE;&#x5F62;&#x3002;
+</p>
+
+<p>
+&#x8FD9;&#x7BC7;&#x535A;&#x6587;&#x603B;&#x7ED3;&#x4E86;&#x4E0B; dot &#x7684;&#x5E38;&#x7528;&#x8BED;&#x6CD5;&#x548C;&#x51E0;&#x4E2A;&#x793A;&#x4F8B;&#x4EE5;&#x8BA9;&#x6211;&#x66F4;&#x597D;&#x7684;&#x4F7F;&#x7528; dot&#x3002;
+&#x6211;&#x672C;&#x4EBA;&#x559C;&#x6B22;&#x5728; org-mode &#x4E2D;&#x4F7F;&#x7528; org-babel &#x63D2;&#x5165;&#x6240;&#x9700;&#x8981;&#x7684;&#x56FE;&#xFF0C;&#x5173;&#x4E8E;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x7559;&#x5230;&#x4E0B;&#x7BC7;&#x535A;&#x6587;&#x518D;&#x8BB2;&#x3002; 
+<img width="20" height="20" class="emoji nofancybox" title=":grinning:" alt="&#x1F600;" src="/images/emoji/grinning.png">
+
+</p>
+
+<a id="more"></a>
+
+<p>
+&#x9996;&#x5148;&#x4E0A;&#x4E00;&#x4E2A;&#x5F88;&#x5389;&#x5BB3;&#x4E5F;&#x5F88;&#x5B9E;&#x7528;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x6709;&#x4EBA;&#x7528; dot &#x8F7B;&#x677E;&#x7684;&#x7ED8;&#x5236;&#x51FA;&#x4E86;&#x79BB;&#x6563;&#x6570;&#x5B66;&#x7684;&#x601D;&#x7EF4;&#x5BFC;&#x56FE;&#xFF1A;<br>
+<a href="https://zhuanlan.zhihu.com/p/20450190" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/20450190</a> 
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> &#x6709;&#x5411;&#x56FE;&#x548C;&#x65E0;&#x5411;&#x56FE;</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+a -&gt; b;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image1.png" alt="dot-image1.png">
+</p>
+</div>
+
+<p>
+&#x4F7F;&#x7528; digraph &#x5B9A;&#x4E49;&#x6709;&#x5411;&#x56FE;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5B9A;&#x4E49;&#x4E86;&#x6709;&#x5411;&#x56FE; G&#x3002;
+&#x6709;&#x5411;&#x56FE;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528; -&gt; &#x7B26;&#x53F7;&#x8868;&#x793A;&#x8FB9;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x4ECE;&#x8282;&#x70B9; a &#x6307;&#x5411;&#x8282;&#x70B9; b &#x6709;&#x4E00;&#x6761;&#x8FB9;&#x3002;
+</p>
+
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">graph G{
+a -- b;
+}</span><br></pre></td></tr></table></figure>
+</div>
+<p>
+<img src="/2016/11/16/dot-language/dot-image2.png" alt="dot-image2.png">
+&#x4F7F;&#x7528; graph &#x5B9A;&#x4E49;&#x65E0;&#x5411;&#x56FE;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5B9A;&#x4E49;&#x4E86;&#x65E0;&#x5411;&#x56FE; G&#x3002;
+&#x65E0;&#x5411;&#x56FE;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528; &#x2013; &#x7B26;&#x53F7;&#x8868;&#x793A;&#x8FB9;&#x3002;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x8282;&#x70B9; a &#x548C;&#x8282;&#x70B9; b &#x4E4B;&#x95F4;&#x6709;&#x4E00;&#x6761;&#x8FB9;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> &#x8FB9;&#x548C;&#x8282;&#x70B9;</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+&#x5982;&#x4E0B;&#x5B9A;&#x4E49;&#x4E86;&#x8282;&#x70B9; a &#x548C; b&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+a;
+b;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image3.png" alt="dot-image3.png">
+</p>
+</div>
+
+<p>
+&#x5982;&#x4E0B;&#x5B9A;&#x4E49;&#x4E86;&#x8282;&#x70B9; a &#x5230; b &#x7684;&#x8FB9;&#xFF1A;
+</p>
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+a -&gt; b;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image4.png" alt="dot-image4.png">
+</p>
+</div>
+
+<p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5728;&#x5B9A;&#x4E49;&#x8FB9;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x8BF4;&#x660E;&#x8282;&#x70B9;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x8282;&#x70B9;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#x8FC7;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x4E5F;&#x4F1A;&#x88AB;&#x5B9A;&#x4E49;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5230;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x6709;&#x8FB9;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x7B80;&#x5199;&#x6CD5;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+a -&gt; {b c};
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image5.png" alt="dot-image5.png">
+</p>
+</div>
+
+<p>
+&#x751A;&#x81F3;&#xFF0C;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x5230;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x6709;&#x8FB9;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+{a b c} -&gt; {d e f};
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image6.png" alt="dot-image6.png">
+</p>
+</div>
+
+<p>
+&#x8FDE;&#x7740;&#x5199;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+a -&gt; b -&gt; {c d};
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image7.png" alt="dot-image7.png">
+</p>
+</div>
+
+
+<p>
+&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x672B;&#x5C3E;&#x7684;&#x5206;&#x53F7;&#x662F;&#x53EF;&#x5199;&#x53EF;&#x4E0D;&#x5199;&#x7684;&#x3002;&#x800C;&#x4E14;&#x65E0;&#x8BBA;&#x4F60;&#x5199;&#x4E0D;&#x5199;&#x5206;&#x53F7;&#xFF0C;&#x6362;&#x4E0D;&#x6362;&#x884C;&#x90FD;&#x4E0D;&#x5F71;&#x54CD;&#x8BED;&#x4E49;&#x3002;
+&#x8FD9;&#x4E2A;&#x770B;&#x4E2A;&#x4EBA;&#x4E60;&#x60EF;&#xFF0C;dot &#x7684;&#x8BED;&#x6CD5;&#x5E76;&#x6CA1;&#x6709;&#x5F3A;&#x5236;&#x89C4;&#x5B9A;&#x8FD9;&#x4E2A;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> &#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> &#x5BF9;&#x5355;&#x4E2A;&#x8282;&#x70B9;&#x6216;&#x8FB9;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+&#x5728;&#x8FB9;&#x6216;&#x8282;&#x70B9;&#x7684;&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x4E00;&#x5BF9;&#x65B9;&#x62EC;&#x53F7;&#xFF0C;&#x91CC;&#x9762;&#x4F7F;&#x7528; key=value &#x7684;&#x5F62;&#x5F0F;&#x8BBE;&#x7F6E;&#x5B83;&#x7684;&#x5C5E;&#x6027;&#x3002;
+</p>
+
+<p>
+&#x8FB9;&#x548C;&#x8282;&#x70B9;&#x90FD;&#x6709;&#x4E2A; label &#x5C5E;&#x6027;&#xFF0C;&#x8868;&#x793A;&#x5B83;&#x5B9E;&#x9645;&#x663E;&#x793A;&#x7684;&#x6587;&#x5B57;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FB9;&#x662F;&#x4E0D;&#x663E;&#x793A;&#x6587;&#x5B57;&#x7684;&#xFF0C;&#x8282;&#x70B9;&#x7684;&#x6587;&#x5B57;&#x5C31;&#x662F;&#x8282;&#x70B9;&#x7684;&#x540D;&#x79F0;&#x3002;
+&#x4E0B;&#x9762;&#x7ED9;&#x8282;&#x70B9;&#x548C;&#x8FB9;&#x624B;&#x52A8;&#x8BBE;&#x7F6E; label &#x5C5E;&#x6027;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+  a [label=&quot;&#x8282;&#x70B9; A&quot;];
+  b [label=&quot;&#x8282;&#x70B9; B&quot;];
+  a -&gt; b [label=&quot;&#x4ECE; A &#x5230; B&quot;];
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image8.png" alt="dot-image8.png">
+</p>
+</div>
+
+<p>
+&#x8282;&#x70B9;&#x7684; shape &#x5C5E;&#x6027;&#x8868;&#x793A;&#x8282;&#x70B9;&#x7684;&#x5F62;&#x72B6;&#xFF0C;&#x8FB9;&#x7684; arrowhead &#x8868;&#x793A;&#x7BAD;&#x5934;&#x7684;&#x5F62;&#x72B6;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+  a [label=&quot;&#x8282;&#x70B9; A&quot;, shape=circle];
+  b [label=&quot;&#x8282;&#x70B9; B&quot;, shape=doublecircle];
+  a -&gt; b [label=&quot;&#x4ECE; A &#x5230; B&quot;, arrowhead=vee];
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image9.png" alt="dot-image9.png">
+</p>
+</div>
+
+<p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x8981;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E2A;&#x8FB9;&#x6216;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4E4B;&#x95F4;&#x7528;&#x9017;&#x53F7;&#x9694;&#x5F00;&#x3002;
+</p>
+
+<p>
+&#x66F4;&#x591A;&#x5173;&#x4E8E;&#x8FB9;&#x548C;&#x8282;&#x70B9;&#x7684;&#x5F62;&#x72B6;&#xFF0C;&#x53C2;&#x8003;&#x8FD9;&#x91CC;&#xFF1A;
+&#x8282;&#x70B9;&#x7684;&#x5F62;&#x72B6;&#xFF1A;<a href="http://graphviz.org/content/node-shapes" target="_blank" rel="external">http://graphviz.org/content/node-shapes</a> <br>
+&#x8FB9;&#x7684;&#x5F62;&#x72B6;&#xFF1A;<a href="http://graphviz.org/content/arrow-shapes" target="_blank" rel="external">http://graphviz.org/content/arrow-shapes</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> &#x5BF9;&#x6240;&#x6709;&#x7684;&#x8282;&#x70B9;&#x6216;&#x8FB9;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&#x5982;&#x679C;&#x4F60;&#x60F3;&#x4E00;&#x6B21;&#x8BBE;&#x7F6E;&#x5BF9;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x751F;&#x6548;&#xFF0C;&#x8FD9;&#x6837;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+node[shape=circle];
+edge[arrowhead=vee];
+  a [label=&quot;&#x8282;&#x70B9; A&quot;];
+  b [label=&quot;&#x8282;&#x70B9; B&quot;];
+  a -&gt; b [label=&quot;&#x4ECE; A &#x5230; B&quot;];
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image10.png" alt="dot-image10.png">
+</p>
+</div>
+
+<p>
+&#x5728; node &#x540E;&#x63A5;&#x4E2D;&#x62EC;&#x53F7;&#xFF0C;&#x91CC;&#x9762;&#x5199;&#x4E0A;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5B9A;&#x4E49;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x4F1A;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;&#x8FD9;&#x91CC;&#x7684;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x3002;
+</p>
+
+<p>
+&#x5BF9;&#x591A;&#x4E2A;&#x8FB9;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x4E5F;&#x7C7B;&#x4F3C;&#x8282;&#x70B9;&#x3002;&#x5728; edge &#x540E;&#x63A5;&#x4E2D;&#x62EC;&#x53F7;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> &#x8BBE;&#x7F6E;&#x56FE;&#x7684;&#x5C5E;&#x6027;</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+&#x56FE;&#x672C;&#x8EAB;&#x4E5F;&#x80FD;&#x8BBE;&#x7F6E;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#x5E03;&#x5C40;&#x65B9;&#x5F0F;&#xFF0C;&#x56FE;&#x672C;&#x8EAB;&#x7684;&#x8BF4;&#x660E;&#x6807;&#x7B7E;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G{
+rankdir = LR;
+label = &quot;&#x793A;&#x4F8B;&#x56FE;&quot;;
+a -&gt; b;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image11.png" alt="dot-image11.png">
+</p>
+</div>
+
+<p>
+rankdir &#x8BBE;&#x7F6E;&#x4E86;&#x56FE;&#x7684;&#x5E03;&#x5C40;&#x4E3A; LR&#xFF0C;&#x5373;&#x4ECE;&#x5DE6;&#x5411;&#x53F3;&#xFF1B;&#x9ED8;&#x8BA4;&#x56FE;&#x7684;&#x5E03;&#x5C40;&#x662F; TB&#xFF0C;&#x5373;&#x4ECE;&#x4E0A;&#x5411;&#x4E0B;&#x3002;
+label &#x8BBE;&#x7F6E;&#x4E86;&#x5BF9;&#x56FE;&#x672C;&#x8EAB;&#x7684;&#x8BF4;&#x660E;&#x6807;&#x7B7E;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> &#x5E38;&#x7528;&#x5C5E;&#x6027;</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x91CC;&#x5BF9;&#x5E38;&#x7528;&#x7684;&#x56FE;&#xFF0C;&#x8FB9;&#x548C;&#x8282;&#x70B9;&#x7684;&#x5C5E;&#x6027;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x8F83;&#x597D;&#x7684;&#x603B;&#x7ED3;&#xFF1A;
+<a href="http://www.jianshu.com/p/5b02445eca1d" target="_blank" rel="external">http://www.jianshu.com/p/5b02445eca1d</a>
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> &#x6CE8;&#x91CA;</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+dot &#x652F;&#x6301; C &#x548C; C++&#x98CE;&#x683C;&#x7684;&#x6CE8;&#x91CA;&#xFF0C;//&#x548C;/* */&#x4E24;&#x79CD;&#x3002;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> &#x590D;&#x6742;&#x7684;&#x8282;&#x70B9;&#x7ED3;&#x6784;</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+&#x901A;&#x8FC7;&#x5BF9; label &#x8FDB;&#x884C;&#x4E00;&#x5B9A;&#x683C;&#x5F0F;&#x7684;&#x7F16;&#x5199;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x5728; label &#x4E2D;&#x5448;&#x73B0;&#x51FA;&#x5982;&#x4E0B;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x6784;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph structs {
+    node [shape=record];
+    struct1 [shape=record,label=&quot;&lt;f0&gt; left|&lt;f1&gt; mid\ dle|&lt;f2&gt; right&quot;];
+    struct2 [shape=record,label=&quot;&lt;f0&gt; one|&lt;f1&gt; two&quot;];
+    struct3 [shape=record,label=&quot;hello\nworld |{ b |{c|&lt;here&gt; d|e}| f}| g | h&quot;];
+    struct1 -&gt; struct2;
+    struct1 -&gt; struct3;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image12.png" alt="dot-image12.png">
+</p>
+</div>
+
+<p>
+&#x6CE8;&#x610F;&#x5230;&#x8282;&#x70B9;&#x88AB;&#x5206;&#x6210;&#x4E86;&#x51E0;&#x4E2A;&#x5C0F;&#x65B9;&#x6846;&#xFF0C;&#x800C;&#x4E14;&#x6BCF;&#x4E00;&#x4E2A;&#x65B9;&#x6846;&#x90FD;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x3002;
+</p>
+
+<p>
+&#x5728;&#x8FDE;&#x63A5;&#x8282;&#x70B9;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#x5C31;&#x80FD;&#x66F4;&#x7EC6;&#x7684;&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x8FDE;&#x63A5;&#x5230;&#x54EA;&#x4E00;&#x4E2A;&#x5C0F;&#x65B9;&#x6846;&#x4E0A;&#xFF1A;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph structs {
+node [shape=record];
+struct1 [shape=record,label=&quot;&lt;f0&gt; left|&lt;f1&gt; middle|&lt;f2&gt; right&quot;];
+struct2 [shape=record,label=&quot;&lt;f0&gt; one|&lt;f1&gt; two&quot;];
+struct3 [shape=record,label=&quot;hello\nworld |{ b |{c|&lt;here&gt; d|e}| f}| g | h&quot;];
+struct1:f1 -&gt; struct2:f0;
+struct1:f2 -&gt; struct3:here;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image13.png" alt="dot-image13.png">
+</p>
+</div>
+
+<p>
+&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x70B9;&#xFF0C;&#x80FD;&#x591F;&#x4F7F;&#x7528; dot &#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x753B;&#x51FA;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x56FE;&#x3002;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> &#x5B50;&#x56FE;</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+&#x901A;&#x8FC7;&#x5B50;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x8FB9;&#x548C;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x3002;
+</p>
+
+<p>
+&#x5982;&#x679C;&#x5B50;&#x56FE;&#x540D;&#x4EE5; cluster &#x5F00;&#x5934;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B50;&#x56FE;&#x4F1A;&#x7528;&#x4E00;&#x4E2A;&#x65B9;&#x6846;&#x6846;&#x8D77;&#x6765;&#x3002;
+&#x800C;&#x4E14; cluster &#x4F1A;&#x88AB;&#x5F53;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5E03;&#x5C40;&#x6765;&#x5904;&#x7406;&#x3002;
+&#x4F60;&#x8FD8;&#x53EF;&#x4EE5;&#x5BF9; cluster &#x8BBE;&#x7F6E;&#x67D0;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#x80CC;&#x666F;&#x8272;&#xFF0C;&#x6807;&#x7B7E;&#x4E4B;&#x7C7B;&#x7684;&#x3002;
+</p>
+
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph graphname
+{
+  a -&gt; {b c};
+  c -&gt; b;
+  subgraph cluster_bc
+  {
+    bgcolor=red;
+    label=&quot;cluster&quot;;
+    b;
+    c;
+  }
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image14.png" alt="dot-image14.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> &#x51E0;&#x4E2A;&#x793A;&#x4F8B;</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x793A;&#x4F8B;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x7528; dot &#x7ED8;&#x5236;&#x6807;&#x51C6;&#x5316;&#x7684;&#x56FE;&#x5F62;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x76F4;&#x89C2;&#x3002;
+</p>
+
+<p>
+&#x6084;&#x6084;&#x7684;&#x8BF4;&#x4E00;&#x53E5;&#xFF0C;&#x8FD9;&#x4E9B;&#x56FE;&#xFF0C;&#x662F;&#x6211;&#x4ECE;&#x5B98;&#x65B9;&#x7684;&#x300A;dotguide&#x300B;&#x91CC;&#x9762;&#x527D;&#x7A83;&#x6765;&#x7684;&#xFF0C;&#x5618;&#x3002;&#x3002;&#x3002;
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> &#x51FD;&#x6570;&#x8C03;&#x7528;&#x56FE;</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G {
+size =&quot;4,4&quot;;
+main [shape=box]; /* this is a comment */
+main -&gt; parse [weight=8];
+parse -&gt; execute;
+main -&gt; init [style=dotted];
+main -&gt; cleanup;
+execute -&gt; { make_string; printf}
+init -&gt; make_string;
+edge [color=red]; // so is this
+main -&gt; printf [style=bold,label=&quot;100 times&quot;];
+make_string [label=&quot;make a\nstring&quot;];
+node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;];
+execute -&gt; compare;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image15.png" alt="dot-image15.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> &#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E8C;&#x53C9;&#x6811;</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph g {
+node [shape = record,height=.1];
+node0[label =&quot;&lt;f0&gt; |&lt;f1&gt; G|&lt;f2&gt;&quot;];
+node1[label =&quot;&lt;f0&gt; |&lt;f1&gt; E|&lt;f2&gt;&quot;];
+node2[label =&quot;&lt;f0&gt; |&lt;f1&gt; B|&lt;f2&gt;&quot;];
+node3[label =&quot;&lt;f0&gt; |&lt;f1&gt; F|&lt;f2&gt;&quot;];
+node4[label =&quot;&lt;f0&gt; |&lt;f1&gt; R|&lt;f2&gt;&quot;];
+node5[label =&quot;&lt;f0&gt; |&lt;f1&gt; H|&lt;f2&gt;&quot;];
+node6[label =&quot;&lt;f0&gt; |&lt;f1&gt; Y|&lt;f2&gt;&quot;];
+node7[label =&quot;&lt;f0&gt; |&lt;f1&gt; A|&lt;f2&gt;&quot;];
+node8[label =&quot;&lt;f0&gt; |&lt;f1&gt; C|&lt;f2&gt;&quot;];
+&quot;node0&quot;:f2 -&gt;&quot;node4&quot;:f1;
+&quot;node0&quot;:f0 -&gt;&quot;node1&quot;:f1;
+&quot;node1&quot;:f0 -&gt;&quot;node2&quot;:f1;
+&quot;node1&quot;:f2 -&gt;&quot;node3&quot;:f1;
+&quot;node2&quot;:f2 -&gt;&quot;node8&quot;:f1;
+&quot;node2&quot;:f0 -&gt;&quot;node7&quot;:f1;
+&quot;node4&quot;:f2 -&gt;&quot;node6&quot;:f1;
+&quot;node4&quot;:f0 -&gt;&quot;node5&quot;:f1;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image16.png" alt="dot-image16.png">
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> &#x6570;&#x636E;&#x7ED3;&#x6784; hash &#x8868;</h3>
+<div class="outline-text-3" id="text-7-3">
+<div class="org-src-container">
+
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">digraph G {
+  nodesep=.05;
+  rankdir=LR;
+  node [shape=record,width=.1,height=.1];
+
+  node0 [label = &quot;&lt;f0&gt; |&lt;f1&gt; |&lt;f2&gt; |&lt;f3&gt; |&lt;f4&gt; |&lt;f5&gt; |&lt;f6&gt; | &quot;,height=2.5];
+  node [width = 1.5];
+  node1 [label = &quot;{&lt;n&gt; n14 | 719 |&lt;p&gt; }&quot;];
+  node2 [label = &quot;{&lt;n&gt; a1  | 805 |&lt;p&gt; }&quot;];
+   node3 [label = &quot;{&lt;n&gt; i9  | 718 |&lt;p&gt; }&quot;];
+   node4 [label = &quot;{&lt;n&gt; e5  | 989 |&lt;p&gt; }&quot;];
+   node5 [label = &quot;{&lt;n&gt; t20 | 959 |&lt;p&gt; }&quot;] ;
+   node6 [label = &quot;{&lt;n&gt; o15 | 794 |&lt;p&gt; }&quot;] ;
+   node7 [label = &quot;{&lt;n&gt; s19 | 659 |&lt;p&gt; }&quot;] ;
+
+   node0:f0 -&gt; node1:n;
+   node0:f1 -&gt; node2:n;
+   node0:f2 -&gt; node3:n;
+   node0:f5 -&gt; node4:n;
+   node0:f6 -&gt; node5:n;
+   node2:p -&gt; node6:n;
+   node4:p -&gt; node7:n;
+}</span><br></pre></td></tr></table></figure>
+</div>
+
+<div class="figure">
+<p><img src="/2016/11/16/dot-language/dot-image17.png" alt="dot-image17.png">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> &#x6700;&#x540E;&#x53CA;&#x5176;&#x5B83;&#x8D44;&#x6599;</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;dot &#x8FD9;&#x79CD;&#x8BED;&#x8A00;&#x8BED;&#x6CD5;&#x7B80;&#x5355;&#xFF0C;&#x7A0D;&#x5FAE;&#x5B66;&#x4E60;&#x5C31;&#x80FD;&#x7F16;&#x8F91;&#x7B80;&#x5355;&#x7684;&#x811A;&#x672C;&#x6765;&#x63CF;&#x8FF0;&#x590D;&#x6742;&#x7684;&#x56FE;&#x5F62;&#x3002;
+&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x751F;&#x6210;&#x56FE;&#x5F62;&#xFF0C;&#x521D;&#x59CB;&#x7528;&#x65F6;&#x53EF;&#x80FD;&#x6709;&#x4E9B;&#x4E0D;&#x4E60;&#x60EF;&#xFF0C;&#x6BD5;&#x7ADF;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x201C;&#x5199;&#x4EE3;&#x7801;&#x201D;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x751F;&#x6210;&#x56FE;&#x5F62;&#x662F;&#x5F88;&#x53CD;&#x76F4;&#x89C9;&#x7684;&#x3002;
+</p>
+
+<p>
+&#x4F46;&#x662F;&#x719F;&#x6089;&#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x4F7F;&#x7528; dot &#x5728;&#x753B;&#x67D0;&#x4E9B;&#x56FE;&#x5F62;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x601D;&#x7EF4;&#x5BFC;&#x56FE;&#x7C7B;&#x65F6;&#xFF0C;
+dot &#x80FD;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x4ECE;&#x70E6;&#x7410;&#x7684;&#x5E03;&#x5C40;&#x4E2D;&#x89E3;&#x8131;&#x51FA;&#x6765;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x601D;&#x7EEA;&#x548C;&#x6CE8;&#x610F;&#x529B;&#x96C6;&#x4E2D;&#x5728;&#x771F;&#x6B63;&#x7684;&#x903B;&#x8F91;&#x4E0A;&#x3002;
+&#x4E13;&#x5FC3;&#x601D;&#x8003;&#x4E00;&#x4EF6;&#x4E8B;&#x60C5;&#x65F6;&#xFF0C;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5206;&#x5FC3;&#x70B9;&#xFF0C;&#x90FD;&#x6709;&#x53EF;&#x80FD;&#x8BA9;&#x601D;&#x7EF4;&#x5927;&#x6253;&#x6298;&#x6263;&#x3002;
+</p>
+
+
+<p>
+&#x5728;&#x5B66;&#x4E60;&#x4F7F;&#x7528; dot &#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x53C2;&#x8003;&#x4E86;&#x4EE5;&#x4E0B;&#x8D44;&#x6599;&#xFF0C;&#x7279;&#x6B64;&#x611F;&#x8C22;&#xFF1A;
+</p>
+<ul class="org-ul">
+<li><a href="http://www.graphviz.org/pdf/dotguide.pdf" target="_blank" rel="external">http://www.graphviz.org/pdf/dotguide.pdf</a>  &#xFF08;&#x5B98;&#x65B9;&#x7684;&#x6559;&#x7A0B;&#xFF09;
+</li>
+<li><a href="http://graphviz.org/Gallery.php" target="_blank" rel="external">http://graphviz.org/Gallery.php</a>    &#xFF08;&#x70B9;&#x51FB;&#x56FE;&#x5C31;&#x80FD;&#x770B;&#x5230;&#x5BF9;&#x5E94;&#x7684; dot &#x4EE3;&#x7801;&#xFF09;
+</li>
+<li><a href="http://www.jianshu.com/p/5b02445eca1d" target="_blank" rel="external">http://www.jianshu.com/p/5b02445eca1d</a>
+</li>
+<li><a href="https://zhuanlan.zhihu.com/p/19900327" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/19900327</a>
+</li>
+<li><a href="https://zhuanlan.zhihu.com/p/21993254" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/21993254</a>
+</li>
+<li><a href="http://liyanrui.is-programmer.com/posts/6261.html" target="_blank" rel="external">http://liyanrui.is-programmer.com/posts/6261.html</a>
+</li>
+</ul>
+</div>
+</div>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/16/dot-language/" class="archive-article-date">
+  	<time datetime="2016-11-16T05:35:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-16</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/draw/">draw</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graphviz/">graphviz</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/工具/">工具</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/12/python-decorator-auto-adapt-method-and-function/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python 装饰器之自动适应函数和方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+<div class="share ds-share flat" 
+    data-thread-key="dot-language"
+    data-title="dot 绘图语言" 
+    data-images="" 
+    data-content="" 
+    data-url="http://frapples.github.io/2016/11/16/dot-language/">
+
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-baidu" href="javascript:void(0);" data-service="baidu"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="dot-language" data-title="dot 绘图语言" data-url="http://frapples.github.io/2016/11/16/dot-language/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"frapples"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Frapples
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/"
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/aop/" style="font-size: 10px;">aop</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/draw/" style="font-size: 10px;">draw</a> <a href="/tags/emacs/" style="font-size: 15px;">emacs</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/graphviz/" style="font-size: 10px;">graphviz</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/myself/" style="font-size: 10px;">myself</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/orgmode/" style="font-size: 15px;">orgmode</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/动态语言/" style="font-size: 10px;">动态语言</a> <a href="/tags/泛型/" style="font-size: 10px;">泛型</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">热爱技术，热爱知识的大学生一枚。&lt;br&gt;&lt;br&gt;自己的一片小天地。&lt;br&gt;在这里整理自己的思绪，分享自己的心得。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
