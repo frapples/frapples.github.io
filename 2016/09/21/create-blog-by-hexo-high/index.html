@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://frapples.github.io/images/emoji/disappointed.png">
 <meta property="og:image" content="https://frapples.github.io/images/emoji/sunglasses.png">
 <meta property="og:image" content="https://frapples.github.io/images/emoji/smile.png">
-<meta property="og:updated_time" content="2017-05-10T03:41:23.220Z">
+<meta property="og:updated_time" content="2017-05-12T05:40:21.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 搭建静态博客－高级篇（插件编写）">
 <meta name="twitter:description" content="&amp;#x867D;&amp;#x7136; hexo &amp;#x672C;&amp;#x8EAB;&amp;#x7684;&amp;#x529F;&amp;#x80FD;&amp;#x5DF2;&amp;#x7ECF;&amp;#x5F88;&amp;#x4E0D;&amp;#x9519;&amp;#x4E86;&amp;#xFF0C;&amp;#x4F46;&amp;#x662F;&amp;#x96BE;&amp;#x514D;&amp;#x4F1A;&amp;#x6709;&amp;#x4EBA;&amp;#x6709;&amp;#x5404;&amp;#x79CD;&amp;">
@@ -207,15 +207,15 @@ hexo &#x662F;&#x7528; nodejs&#xFF08;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684; jav
 </p>
 
 
-<div id="outline-container-org5da448a" class="outline-2">
-<h2 id="org5da448a"><span class="section-number-2">1</span> hexo &#x63D2;&#x4EF6;&#x7ED3;&#x6784;</h2>
+<div id="outline-container-org8152653" class="outline-2">
+<h2 id="org8152653"><span class="section-number-2">1</span> hexo &#x63D2;&#x4EF6;&#x7ED3;&#x6784;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 &#x4E3A;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x65B9;&#x4FBF;&#x6269;&#x5C55;&#xFF0C;hexo &#x652F;&#x6301;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#x7684;&#x63D2;&#x4EF6;&#x3002;
 </p>
 </div>
-<div id="outline-container-orgaca352c" class="outline-3">
-<h3 id="orgaca352c"><span class="section-number-3">1.1</span> scripts &#x6587;&#x4EF6;</h3>
+<div id="outline-container-orgd8dda14" class="outline-3">
+<h3 id="orgd8dda14"><span class="section-number-3">1.1</span> scripts &#x6587;&#x4EF6;</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 &#x8FD9;&#x662F;&#x7B2C;&#x4E00;&#x79CD;&#x5F62;&#x5F0F;&#x3002;
@@ -226,8 +226,8 @@ hexo &#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x
 </div>
 </div>
 
-<div id="outline-container-org26e5cba" class="outline-3">
-<h3 id="org26e5cba"><span class="section-number-3">1.2</span> packages</h3>
+<div id="outline-container-orge3d4e6a" class="outline-3">
+<h3 id="orge3d4e6a"><span class="section-number-3">1.2</span> packages</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 &#x7B2C;&#x4E8C;&#x79CD;&#x5F62;&#x5F0F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684; npm &#x5305;&#x4E86;&#x3002;
@@ -260,7 +260,7 @@ hexo &#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x
 <code>package.json</code> &#x662F; json &#x683C;&#x5F0F;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x9700;&#x8981;&#x5305;&#x542B;&#x7684;&#x5185;&#x5BB9;&#x662F;&#xFF1A;
 </p>
 <div class="org-src-container">
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">{</span><br><span class="line">  &quot;<span class="attribute">name</span>&quot;: <span class="value"><span class="string">&quot;hexo-article-emoji&quot;</span></span>,</span><br><span class="line">  &quot;<span class="attribute">version</span>&quot;: <span class="value"><span class="string">&quot;0.0.1&quot;</span></span>,</span><br><span class="line">  &quot;<span class="attribute">main</span>&quot;: <span class="value"><span class="string">&quot;index&quot;</span></span><br><span class="line"></span>}</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  &quot;<span class="attribute">name</span>&quot;: <span class="value"><span class="string">&quot;hexo-article-emoji&quot;</span></span>,</span><br><span class="line">  &quot;<span class="attribute">version</span>&quot;: <span class="value"><span class="string">&quot;0.0.1&quot;</span></span>,</span><br><span class="line">  &quot;<span class="attribute">main</span>&quot;: <span class="value"><span class="string">&quot;index&quot;</span></span><br><span class="line"></span>}</span><br></pre></td></tr></table></figure>
 </div>
 <p>
 name &#x662F;&#x63D2;&#x4EF6;&#x540D;&#x79F0;&#xFF0C;version &#x662F;&#x63D2;&#x4EF6;&#x7248;&#x672C;&#xFF0C;main &#x662F;&#x63D2;&#x4EF6;&#x7684;&#x542F;&#x52A8;&#x7684; js &#x6587;&#x4EF6;&#x3002;
@@ -282,8 +282,8 @@ index.js &#x662F;&#x63D2;&#x4EF6;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C
 
 
 
-<div id="outline-container-orgcb825c5" class="outline-2">
-<h2 id="orgcb825c5"><span class="section-number-2">2</span> &#x4F9D;&#x8D56;&#x5305;&#x7684;&#x5B89;&#x88C5;</h2>
+<div id="outline-container-orgc363029" class="outline-2">
+<h2 id="orgc363029"><span class="section-number-2">2</span> &#x4F9D;&#x8D56;&#x5305;&#x7684;&#x5B89;&#x88C5;</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 &#x5BF9;&#x4E8E;&#x6709;&#x4E9B;&#x7A0D;&#x5FAE;&#x590D;&#x6742;&#x70B9;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F60;&#x7684;&#x63D2;&#x4EF6;&#x53EF;&#x80FD;&#x53EA;&#x5355;&#x5355;&#x7528;&#x6700;&#x57FA;&#x672C; nodejs &#x5E93;&#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x7684;&#x3002;
@@ -312,11 +312,11 @@ index.js &#x662F;&#x63D2;&#x4EF6;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C
 </div>
 
 
-<div id="outline-container-org331a797" class="outline-2">
-<h2 id="org331a797"><span class="section-number-2">3</span> hexo &#x7684; API</h2>
+<div id="outline-container-org409247c" class="outline-2">
+<h2 id="org409247c"><span class="section-number-2">3</span> hexo &#x7684; API</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org25c11e6" class="outline-3">
-<h3 id="org25c11e6"><span class="section-number-3">3.1</span> hexo &#x5BF9;&#x8C61;</h3>
+</div><div id="outline-container-org1e2a795" class="outline-3">
+<h3 id="org1e2a795"><span class="section-number-3">3.1</span> hexo &#x5BF9;&#x8C61;</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 &#x65E2;&#x7136;&#x662F;&#x63D2;&#x4EF6;&#xFF0C;&#x81EA;&#x7136;&#x8981;&#x63D0;&#x4F9B;&#x80FD;&#x8BBF;&#x95EE; API &#x7684;&#x63A5;&#x53E3;&#x3002;&#x5728; <code>index.js</code> &#x91CC;&#x9762;&#xFF0C;&#x4F60;&#x80FD;&#x8BBF;&#x95EE;&#x5230;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C; <code>hexo</code> &#x3002;
@@ -325,8 +325,8 @@ index.js &#x662F;&#x63D2;&#x4EF6;&#x7684;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C
 </div>
 </div>
 
-<div id="outline-container-org2b68ae3" class="outline-3">
-<h3 id="org2b68ae3"><span class="section-number-3">3.2</span> &#x83B7;&#x53D6; hexo &#x914D;&#x7F6E;</h3>
+<div id="outline-container-orge2ee372" class="outline-3">
+<h3 id="orge2ee372"><span class="section-number-3">3.2</span> &#x83B7;&#x53D6; hexo &#x914D;&#x7F6E;</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 &#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x535A;&#x5BA2;&#x76EE;&#x5F55;&#x4E0B;&#x7684; <code>_config.yml</code> &#x6587;&#x4EF6;&#xFF0C;&#x8BB0;&#x5F55;&#x4E86; hexo &#x535A;&#x5BA2;&#x7684;&#x5927;&#x90E8;&#x5206;&#x914D;&#x7F6E;&#x3002;
@@ -351,7 +351,7 @@ yml &#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;&#x7C7B;&#x4F3C; json&#xFF0C;hexo &#
 &#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5728;&#x63D2;&#x4EF6;&#x4E2D;&#x901A;&#x8FC7; <code>hexo.config.article-emoji.full</code> &#x5C31;&#x80FD;&#x53D6;&#x5F97;&#x5BF9;&#x5E94;&#x914D;&#x7F6E;&#x9879;&#x7684;&#x503C;&#x4E86;&#x3002;&#x6BD4;&#x5982;&#xFF1A;
 </p>
 <div class="org-src-container">
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_full</span>(<span class="params"></span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="string">&quot;article_emoji&quot;</span> <span class="keyword">in</span> hexo.config) || !(<span class="string">&quot;full&quot;</span> <span class="keyword">in</span> hexo.config.emoji)) {</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> hexo.config.article_emoji.full;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">is_full</span>(<span class="params"></span>)</span><br><span class="line"></span>{</span><br><span class="line">    <span class="keyword">if</span> (!(<span class="string">&quot;article_emoji&quot;</span> <span class="keyword">in</span> hexo.config) || !(<span class="string">&quot;full&quot;</span> <span class="keyword">in</span> hexo.config.emoji)) {</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">return</span> hexo.config.article_emoji.full;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 </div>
 
 <p>
@@ -364,8 +364,8 @@ yml &#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;&#x7C7B;&#x4F3C; json&#xFF0C;hexo &#
 </div>
 </div>
 
-<div id="outline-container-org81706f5" class="outline-3">
-<h3 id="org81706f5"><span class="section-number-3">3.3</span> &#x8FC7;&#x6EE4;&#x5668;</h3>
+<div id="outline-container-org3047bbf" class="outline-3">
+<h3 id="org3047bbf"><span class="section-number-3">3.3</span> &#x8FC7;&#x6EE4;&#x5668;</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 &#x597D;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x6784;&#x601D;&#x4E00;&#x4E2A;&#x652F;&#x6301;&#x6587;&#x7AE0; emoji &#x8868;&#x60C5;&#x7684;&#x63D2;&#x4EF6;&#x3002;
@@ -409,7 +409,7 @@ hexo &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7C7B;&#x5F88;&#x7B80;&#x5355;&#x5374;&#x
 hexo &#x7684; API &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5199;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8BBE;&#x7F6E;&#x6210;&#x67D0;&#x79CD;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;
 </p>
 <div class="org-src-container">
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> my_before_post_render = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{</span><br><span class="line">  data.title = data.title.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> my_after_post_render = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{</span><br><span class="line">  data.title = data.title.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(<span class="string">&apos;before_post_render&apos;</span>, my_before_post_render);</span><br><span class="line">hexo.extend.filter.register(<span class="string">&apos;after_post_render&apos;</span>, my_after_post_render);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> my_before_post_render = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{</span><br><span class="line">  data.title = data.title.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> my_after_post_render = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{</span><br><span class="line">  data.title = data.title.toLowerCase();</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(<span class="string">&apos;before_post_render&apos;</span>, my_before_post_render);</span><br><span class="line">hexo.extend.filter.register(<span class="string">&apos;after_post_render&apos;</span>, my_after_post_render);</span><br></pre></td></tr></table></figure>
 </div>
 <p>
 &#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x901A;&#x8FC7; hexo &#x7684; API &#x628A;&#x5B83;&#x4EEC;&#x5206;&#x522B;&#x8BBE;&#x7F6E;&#x6210;&#x67D0;&#x79CD;&#x8FC7;&#x6EE4;&#x5668;&#x3002;
@@ -484,8 +484,8 @@ excerpt&#xFF0C;more&#xFF0C;content &#x8FD9;&#x4E09;&#x4E2A;&#x503C;&#xFF0C;&#x59
 
 
 
-<div id="outline-container-org5d47b30" class="outline-2">
-<h2 id="org5d47b30"><span class="section-number-2">4</span> &#x6700;&#x540E;</h2>
+<div id="outline-container-org88292cb" class="outline-2">
+<h2 id="org88292cb"><span class="section-number-2">4</span> &#x6700;&#x540E;</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 &#x6700;&#x7EC8;&#xFF0C;&#x6211;&#x51ED;&#x7740;&#x8E69;&#x811A;&#x7684; javascript &#x7684;&#x6C34;&#x5E73;&#xFF0C;&#x7EC8;&#x4E8E;&#x5199;&#x51FA;&#x4E86;&#x63D2;&#x4EF6;&#x5B9E;&#x73B0;&#x4E86;&#x6211;&#x60F3;&#x8981;&#x7684; emoji &#x529F;&#x80FD;&#xFF01;
@@ -502,8 +502,8 @@ excerpt&#xFF0C;more&#xFF0C;content &#x8FD9;&#x4E09;&#x4E2A;&#x503C;&#xFF0C;&#x59
 
 
 
-<div id="outline-container-org5e82b40" class="outline-2">
-<h2 id="org5e82b40"><span class="section-number-2">5</span> &#x66F4;&#x65B0;&#x8BB0;&#x5F55;</h2>
+<div id="outline-container-org022d873" class="outline-2">
+<h2 id="org022d873"><span class="section-number-2">5</span> &#x66F4;&#x65B0;&#x8BB0;&#x5F55;</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-16 &#x4E09; 14:10&gt;  </span></span>  &#x7531;&#x4E8E;&#x53D1;&#x73B0;&#x535A;&#x5BA2;&#x5B58;&#x5728;&#x4E00;&#x4E2A; bug&#xFF0C;&#x4FEE;&#x590D;&#x540E;&#x53D1;&#x73B0; hexo &#x7684;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#xFF0C;&#x6545;&#x6B64;&#x8865;&#x5145;&#x3002;</li>
@@ -539,7 +539,7 @@ excerpt&#xFF0C;more&#xFF0C;content &#x8FD9;&#x4E09;&#x4E2A;&#x503C;&#xFF0C;&#x59
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/博客/" class="article-tag-list-link color3">博客</a>
+        			<a href="/categories/软件/" class="article-tag-list-link color3">软件</a>
         		</li>
       		
 		</ul>
