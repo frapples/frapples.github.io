@@ -9,11 +9,13 @@
   <title>Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Frapples的博客">
 <meta property="og:url" content="https://frapples.github.io/index.html">
 <meta property="og:site_name" content="Frapples的博客">
 <meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Frapples的博客">
 <meta name="twitter:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
@@ -150,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-javascript-use-oop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/frontend/javascript-use-oop" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/10/javascript-use-oop/">javascript模拟基本的对象特性</a>
+      <a class="article-title" href="/articles/2018-02-10-166e.html">javascript模拟基本的对象特性</a>
     </h1>
   
 
         
-        <a href="/2018/02/10/javascript-use-oop/" class="archive-article-date">
+        <a href="/articles/2018-02-10-166e.html" class="archive-article-date">
   	<time datetime="2018-02-10T15:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-10</time>
 </a>
         
@@ -172,7 +174,7 @@
       
         <p>javascript&#x8BED;&#x8A00;&#x7684;&#x8BBE;&#x8BA1;&#x6709;&#x8BF8;&#x591A;&#x7F3A;&#x9677;&#xFF0C;&#x5F53;&#x521D;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x7B80;&#x5355;&#x7684;&#x4EFB;&#x52A1;&#x3002;&#x5F97;&#x76CA;&#x4E8E;web&#x6280;&#x672F;&#x7684;&#x98DE;&#x901F;&#x53D1;&#x5C55;&#xFF0C;javascript&#x627F;&#x62C5;&#x7684;&#x5DE5;&#x4F5C;&#x4E5F;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#x3002;&#x7531;&#x4E8E;javascript&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x7AEF;&#x8FD0;&#x884C;&#xFF0C;&#x6709;&#x7740;&#x8BF8;&#x591A;&#x5386;&#x53F2;&#x9057;&#x7559;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x65E0;&#x6CD5;&#x723D;&#x5FEB;&#x7684;&#x5BF9;javascript&#x8FDB;&#x884C;&#x66F4;&#x65B0;&#x6362;&#x4EE3;&#x3002;<br>&#x5F53;&#x4F7F;&#x7528;javascript&#x65F6;&#xFF0C;&#x73B0;&#x6709;&#x7684;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x65F6;&#xFF0C;&#x7B2C;&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x5F0F;&#x662F;&#xFF0C;&#x4F7F;&#x7528;&#x7F16;&#x8BD1;&#x539F;&#x7406;&#x7B49;&#x6280;&#x672F;&#xFF0C;&#x5C06;&#x652F;&#x6301;&#x65B0;&#x7279;&#x6027;&#x7684;ES&#x7248;&#x672C;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x6210;&#x4F4E;&#x7248;&#x672C;&#x7684;ES&#x4EE3;&#x7801;&#xFF1B;&#x7B2C;&#x4E8C;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x662F;&#xFF0C;&#x770B;&#x770B;&#x80FD;&#x4E0D;&#x80FD;&#x7528;&#x5DF2;&#x7ECF;&#x6709;&#x7684;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x8F83;&#x4E3A;&#x76F4;&#x89C2;&#x7684;&#x53BB;&#x6A21;&#x62DF;&#x548C;&#x5B9E;&#x73B0;&#x8BE5;&#x7279;&#x6027;&#x3002;<br>&#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;js&#x652F;&#x6301;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#xFF0C;&#x51FD;&#x6570;&#x662F;&#x4E00;&#x7B49;&#x516C;&#x6C11;&#xFF0C;&#x8FD9;&#x5C31;&#x7ED9;&#x4E86;&#x5B83;&#x5F88;&#x5927;&#x7684;&#x6A21;&#x62DF;&#x7A7A;&#x95F4;&#x3002;&#x672C;&#x535A;&#x6587;&#x5C31;&#x6765;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x4F7F;&#x7528;js&#x6A21;&#x62DF;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7F16;&#x7A0B;&#x3002;</p>
         
-          <a class="article-more-a" href="/2018/02/10/javascript-use-oop/#more">more >></a>
+          <a class="article-more-a" href="/articles/2018-02-10-166e.html#more">more >></a>
         
       
 
@@ -198,7 +200,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/frontend//" class="article-tag-list-link color4">frontend</a>
         		</li>
       		
 		</ul>
@@ -207,7 +213,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/10/javascript-use-oop/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2018-02-10-166e.html">展开全文 >></a>
         </p>
       
 
@@ -237,19 +243,19 @@
 
 
   
-    <article id="post-spring-mvc-custom-argument-resolver" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/java/spring-mvc-custom-argument-resolver" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/05/spring-mvc-custom-argument-resolver/">spring自定义argumentResolver参数解析器</a>
+      <a class="article-title" href="/articles/2018-02-05-c05e.html">spring自定义argumentResolver参数解析器</a>
     </h1>
   
 
         
-        <a href="/2018/02/05/spring-mvc-custom-argument-resolver/" class="archive-article-date">
+        <a href="/articles/2018-02-05-c05e.html" class="archive-article-date">
   	<time datetime="2018-02-05T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
 </a>
         
@@ -259,7 +265,7 @@
       
         <p>&#x5728;&#x4E00;&#x4E2A;web&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;HTTP&#x8BF7;&#x6C42;&#x8FDB;&#x6765;&#x65F6;&#xFF0C;&#x4F1A;&#x88AB;&#x5BB9;&#x5668;&#x5904;&#x7406;&#x8FDB;&#x800C;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;servlet&#x8BF7;&#x6C42;&#x3002;<br>http&#x8BF7;&#x6C42;&#x6240;&#x643A;&#x5E26;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x867D;&#x7136;&#x662F;&#x683C;&#x5F0F;&#x5316;&#x7684;&#x4F46;&#x662F;&#x65E0;&#x7C7B;&#x578B;&#xFF1B;&#x800C;java&#x4F5C;&#x4E3A;&#x5F3A;&#x7C7B;&#x578B;&#x8BED;&#x8A00;&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x4E86;&#x5065;&#x58EE;&#x6027;&#x8003;&#x8651;&#xFF0C;&#x5FC5;&#x7136;&#x8981;&#x6709;&#x5B8C;&#x5584;&#x7684;&#x7C7B;&#x578B;&#x7EA6;&#x675F;&#x3002;<br>&#x5F53;&#x7136;&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x4ECE;servlet&#x8BF7;&#x6C42;&#x4E2D;&#x8F6C;&#x6362;&#x5230;java&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x5F88;&#x539F;&#x59CB;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x624B;&#x52A8;&#x5904;&#x7406;&#x3002;<br>&#x5E78;&#x597D;&#xFF0C;Spring MVC&#x901A;&#x8FC7;&#x4EE5;&#x6CE8;&#x89E3;&#x5F80;&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x989D;&#x5916;&#x4FE1;&#x606F;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F7F;&#x5F97;&#x4E0A;&#x8FF0;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x8FC7;&#x7A0B;&#x80FD;&#x591F;&#x4EA4;&#x7531;&#x6846;&#x67B6;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x3002;<br>&#x4ECE;&#x4E00;&#x4E2A;&#x89D2;&#x5EA6;&#x53BB;&#x770B;&#xFF0C;Controller&#x4E2D;&#x7684;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x53CA;&#x6CE8;&#x89E3;&#x5B9A;&#x4E49;&#x4E86;&#x6B64;HTTP&#x8BF7;&#x6C42;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x548C;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x5373;&#x89C4;&#x5B9A;&#x4E86;&#x5BF9;&#x5916;&#x90E8;&#x66B4;&#x9732;&#x7684;&#x4EE5;http&#x534F;&#x8BAE;&#x5C55;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#x3002;<br>&#x4E0D;&#x8FC7;&#xFF0C;&#x6709;&#x4E9B;&#x65F6;&#x5019;&#x5185;&#x7F6E;&#x6CE8;&#x89E3;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x81EA;&#x5B9A;&#x4E49;&#x81EA;&#x5DF1;&#x7684;&#x6CE8;&#x89E3;&#x4EE5;&#x58F0;&#x660E;&#x53C2;&#x6570;&#x7684;&#x683C;&#x5F0F;&#x3002;</p>
         
-          <a class="article-more-a" href="/2018/02/05/spring-mvc-custom-argument-resolver/#more">more >></a>
+          <a class="article-more-a" href="/articles/2018-02-05-c05e.html#more">more >></a>
         
       
 
@@ -289,7 +295,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -298,7 +308,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/05/spring-mvc-custom-argument-resolver/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2018-02-05-c05e.html">展开全文 >></a>
         </p>
       
 
@@ -328,19 +338,19 @@
 
 
   
-    <article id="post-driud-encrypt-db-user-password" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/java/driud-encrypt-db-user-password" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/03/driud-encrypt-db-user-password/">Druid使用自定义加密方式加密数据库配置</a>
+      <a class="article-title" href="/articles/2018-02-03-85dd.html">Druid使用自定义加密方式加密数据库配置</a>
     </h1>
   
 
         
-        <a href="/2018/02/03/driud-encrypt-db-user-password/" class="archive-article-date">
+        <a href="/articles/2018-02-03-85dd.html" class="archive-article-date">
   	<time datetime="2018-02-03T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
 </a>
         
@@ -351,7 +361,7 @@
         <p>druid&#x662F;&#x963F;&#x91CC;&#x5DF4;&#x5DF4;&#x51FA;&#x54C1;&#x7684;&#x4E00;&#x6B3E;&#x5F00;&#x6E90;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#xFF0C;&#x5176;&#x4E00;&#x5927;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x76D1;&#x63A7;&#x3002;<br>&#x5C06;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x660E;&#x6587;&#x914D;&#x7F6E;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x505A;&#x6CD5;&#x3002;<br>&#x5F88;&#x591A;&#x884C;&#x4E1A;&#x89C4;&#x8303;&#x8981;&#x6C42;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E0D;&#x5F97;&#x660E;&#x6587;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x5BC6;&#x7801;&#xFF0C;&#x8FD9;&#x91CC;&#xFF0C;&#x5C31;&#x6765;&#x63A2;&#x7A76;&#x4E0B;&#x5982;&#x4F55;&#x4F7F;&#x7528;druid&#x52A0;&#x5BC6;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x548C;&#x5BC6;&#x7801;&#x3002;</p>
 <p>&#x65E2;&#x7136;&#x662F;&#x5B9E;&#x6218;&#x6027;&#x8D28;&#x7684;&#x535A;&#x6587;&#xFF0C;&#x90A3;&#x5C31;&#x5E9F;&#x8BDD;&#x4E0D;&#x591A;&#x8BF4;&#xFF0C;&#x6765;&#x66B4;&#x529B;&#x7684;&#xFF0C;&#x9996;&#x5148;&#x770B;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;</p>
         
-          <a class="article-more-a" href="/2018/02/03/driud-encrypt-db-user-password/#more">more >></a>
+          <a class="article-more-a" href="/articles/2018-02-03-85dd.html#more">more >></a>
         
       
 
@@ -381,7 +391,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -390,7 +404,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/03/driud-encrypt-db-user-password/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2018-02-03-85dd.html">展开全文 >></a>
         </p>
       
 
@@ -420,19 +434,19 @@
 
 
   
-    <article id="post-talk-about-knowledge-management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-jottings/talk-about-knowledge-management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/02/talk-about-knowledge-management/">谈知识管理</a>
+      <a class="article-title" href="/articles/2018-02-02-9496.html">谈知识管理</a>
     </h1>
   
 
         
-        <a href="/2018/02/02/talk-about-knowledge-management/" class="archive-article-date">
+        <a href="/articles/2018-02-02-9496.html" class="archive-article-date">
   	<time datetime="2018-02-02T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
 </a>
         
@@ -443,7 +457,7 @@
         <p>&#x60F3;&#x6765;&#x597D;&#x4E45;&#x4E00;&#x9635;&#x5B50;&#x6CA1;&#x6709;&#x7BA1;&#x7406;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#xFF0C;&#x65E2;&#x6709;&#x6280;&#x672F;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x4E5F;&#x6709;&#x975E;&#x6280;&#x672F;&#x7684;&#x539F;&#x56E0;&#x3002; &#x4E4B;&#x524D;&#xFF0C;&#x4ECE;emacs&#x9635;&#x8425;&#x8F6C;&#x5230;&#x4E86;atom&#xFF0C;&#x81EA;&#x7136;&#x7684;&#xFF0C;hexo&#x4E5F;&#x9700;&#x8981;&#x4ECE;org&#x8F6C;&#x4E3A;markdown&#x3002;<br>&#x5B9E;&#x4E60;&#x671F;&#x95F4;&#xFF0C;&#x6211;&#x5DF2;&#x7ECF;&#x6570;&#x4E0D;&#x6E05;&#x695A;&#x6709;&#x591A;&#x5C11;&#x6B21;&#x8111;&#x6D77;&#x4E2D;&#x66FE;&#x5145;&#x6EE1;&#x4E86;&#x5404;&#x79CD;&#x6709;&#x6761;&#x7406;&#x7684;&#x6280;&#x672F;&#x7EC6;&#x8282;&#x548C;&#x60F3;&#x6CD5;&#xFF0C; &#x800C;&#x4E00;&#x89C9;&#x8FC7;&#x540E;&#xFF0C;&#x4F3C;&#x4E4E;&#x4E00;&#x5207;&#x90FD;&#x70DF;&#x6D88;&#x4E91;&#x6563;&#x4E86;&#x3002;<br>&#x8FD9;&#x8BA9;&#x6211;&#x8FEB;&#x5207;&#x7684;&#x610F;&#x8BC6;&#x5230;&#xFF0C;&#x5B8C;&#x5584;&#x7684;&#x77E5;&#x8BC6;&#x7BA1;&#x7406;&#x4F53;&#x7CFB;&#x662F;&#x591A;&#x4E48;&#x7684;&#x91CD;&#x8981;&#xFF0C;&#x800C;&#x535A;&#x5BA2;&#x5C31;&#x662F;&#x8FD9;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x73AF;&#x3002;<br>&#x7EC8;&#x4E8E;&#xFF0C;&#x62BD;&#x4E86;&#x4E00;&#x4E2A;&#x661F;&#x671F;&#x5929;&#xFF0C;&#x5FCD;&#x53D7;&#x7740;&#x5361;&#x6210;&#x72D7;&#x7684;&#x5B9E;&#x4E60;&#x5BBF;&#x820D;wifi&#xFF0C;&#x5BF9;hexo&#x8FDB;&#x884C;&#x4E00;&#x756A;&#x5C0F;&#x5C0F;&#x7684;&#x6298;&#x817E;&#xFF0C;&#x628A;&#x8FD9;&#x4E2A;&#x4E8B;&#x60C5;&#x641E;&#x5B9A;&#x4E86;&#x3002;</p>
 <p>&#x672C;&#x7BC7;&#x535A;&#x6587;&#x5C31;&#x6765;&#x8C08;&#x8C08;&#x6211;&#x5728;&#x77E5;&#x8BC6;&#x7BA1;&#x7406;&#x4E0A;&#xFF0C;&#x7ECF;&#x8FC7;&#x65E0;&#x6570;&#x7684;&#x8BD5;&#x9519;&#xFF0C;&#x76EE;&#x524D;&#x6478;&#x7D22;&#x51FA;&#x6765;&#x7684;&#x5F53;&#x4E0B;&#x7684;&#x201C;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x201D;&#x3002;</p>
         
-          <a class="article-more-a" href="/2018/02/02/talk-about-knowledge-management/#more">more >></a>
+          <a class="article-more-a" href="/articles/2018-02-02-9496.html#more">more >></a>
         
       
 
@@ -473,7 +487,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        			<a href="/categories/jottings//" class="article-tag-list-link color4">jottings</a>
         		</li>
       		
 		</ul>
@@ -482,7 +496,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/02/talk-about-knowledge-management/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2018-02-02-9496.html">展开全文 >></a>
         </p>
       
 
@@ -512,19 +526,19 @@
 
 
   
-    <article id="post-guest-os-as-server-with-no-gui" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/linux/guest-os-as-server-with-no-gui" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/guest-os-as-server-with-no-gui/">把服务器隔离进虚拟机</a>
+      <a class="article-title" href="/articles/2017-08-28-929b.html">把服务器隔离进虚拟机</a>
     </h1>
   
 
         
-        <a href="/2017/08/28/guest-os-as-server-with-no-gui/" class="archive-article-date">
+        <a href="/articles/2017-08-28-929b.html" class="archive-article-date">
   	<time datetime="2017-08-28T08:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
 </a>
         
@@ -535,7 +549,7 @@
         <p>&#x6700;&#x8FD1;&#x9047;&#x4E0A;&#x4E86;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x9700;&#x6C42;&#xFF0C;&#x6211;&#x627E;&#x5230;&#x4E86;&#x67D0;&#x4E2A;&#x975E;&#x5E38;&#x5389;&#x5BB3;&#x7684;&#x8F6F;&#x4EF6;xxxSoftware&#xFF0C;&#x58F0;&#x79F0;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x67D0;&#x79CD;&#x795E;&#x79D8;&#x670D;&#x52A1;&#x3002; &#x7ECF;&#x8FC7;&#x6D4B;&#x8BD5;&#xFF0C;&#x8FD9;&#x4E2A;&#x8F6F;&#x4EF6;&#x7684;&#x786E;&#x53EF;&#x4EE5;&#x50CF;&#x5B83;&#x5BA3;&#x4F20;&#x7684;&#x90A3;&#x6837;&#x63D0;&#x4F9B;&#x8BE5;&#x79CD;&#x795E;&#x79D8;&#x670D;&#x52A1;&#xFF0C; &#x53EF;&#x662F;&#x5728;&#x7F51;&#x7EDC;&#x4E0A;&#x641C;&#x7D22;&#x5230;&#x7684;&#x5404;&#x79CD;&#x7248;&#x672C;&#x662F;&#x6709;&#x53EF;&#x80FD;&#x5E26;&#x75C5;&#x6BD2;&#x7684;&#xFF0C; &#x90A3;&#x4E48;&#x65E2;&#x80FD;&#x4F7F;&#x7528;&#x8BE5;&#x8F6F;&#x4EF6;&#x63D0;&#x4F9B;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x53C8;&#x8981;&#x4FDD;&#x8BC1;&#x7CFB;&#x7EDF;&#x7684;&#x5B89;&#x5168;&#xFF0C;&#x5C31;&#x6210;&#x4E3A;&#x4E86;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
 <p>&#x5BF9;&#x4E8E;&#x8FD0;&#x884C;&#x4E0D;&#x653E;&#x5FC3;&#x7684;&#x8F6F;&#x4EF6;&#xFF0C;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#x662F;&#x5C06;&#x5B83;&#x653E;&#x8FDB;&#x6C99;&#x76D2;&#x91CC;&#x9762;&#xFF0C;&#x4E0E;&#x7CFB;&#x7EDF;&#x9694;&#x79BB;&#xFF0C;&#x786E;&#x4FDD;&#x8F6F;&#x4EF6;&#x4E0D;&#x80FD;&#x5371;&#x5BB3;&#x5230;&#x7CFB;&#x7EDF;&#x3002; &#x5728;&#x5404;&#x79CD;&#x9694;&#x79BB;&#x65B9;&#x5F0F;&#x4E2D;&#xFF0C;&#x6700;&#x5F7B;&#x5E95;&#x7684;&#x9694;&#x79BB;&#x65B9;&#x6848;&#x663E;&#x7136;&#x662F;&#x4F7F;&#x7528;&#x865A;&#x62DF;&#x673A;&#x3002;</p>
         
-          <a class="article-more-a" href="/2017/08/28/guest-os-as-server-with-no-gui/#more">more >></a>
+          <a class="article-more-a" href="/articles/2017-08-28-929b.html#more">more >></a>
         
       
 
@@ -565,7 +579,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/系统//" class="article-tag-list-link color3">系统</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -574,7 +592,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/guest-os-as-server-with-no-gui/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2017-08-28-929b.html">展开全文 >></a>
         </p>
       
 
@@ -604,19 +622,19 @@
 
 
   
-    <article id="post-talk-about-sync-and-async" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/frontend/talk-about-sync-and-async" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/11/talk-about-sync-and-async/">异步IO和同步IO</a>
+      <a class="article-title" href="/articles/2017-07-11-c771.html">异步IO和同步IO</a>
     </h1>
   
 
         
-        <a href="/2017/07/11/talk-about-sync-and-async/" class="archive-article-date">
+        <a href="/articles/2017-07-11-c771.html" class="archive-article-date">
   	<time datetime="2017-07-11T15:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
 </a>
         
@@ -627,7 +645,7 @@
         <p>&#x5728;&#x524D;&#x7AEF;&#x7684;javascript&#x7F16;&#x7A0B;&#x4E2D;&#xFF0C;&#x6050;&#x6015;&#x542C;&#x5230;&#x7684;&#x6700;&#x591A;&#x7684;&#x5C31;&#x662F;&#x5F02;&#x6B65;&#x56DE;&#x8C03;&#x4E86;&#x3002; &#x7531;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;javascript&#x811A;&#x672C;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x4F7F;&#x7528;&#x4F20;&#x7EDF;&#x7684;&#x540C;&#x6B65;I/O&#x4F1A;&#x5BFC;&#x81F4;&#x7F51;&#x9875;&#x201C;&#x5361;&#x6B7B;&#x201D;&#xFF0C; &#x53C8;&#x65E0;&#x6CD5;&#x5F00;&#x591A;&#x7EBF;&#x7A0B;&#xFF0C;&#x56E0;&#x6B64;&#x53EA;&#x80FD;&#x9009;&#x62E9;&#x5F02;&#x6B65;&#x7684;I/O&#x63A5;&#x53E3;&#x4E86;&#x3002; &#x53C8;&#x7531;&#x4E8E;&#x901A;&#x8FC7;&#x5F02;&#x6B65;I/O&#x64CD;&#x4F5C;&#x7F51;&#x7EDC;I/O&#x7684;&#x6027;&#x80FD;&#x597D;&#x4E8E;&#x540C;&#x6B65;I/O&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4E92;&#x8054;&#x7F51;&#x9886;&#x57DF;&#xFF0C;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x5C31;&#x706B;&#x4E86;&#x8D77;&#x6765;&#x3002;</p>
 <p>&#x5728;&#x8FD9;&#x7BC7;&#x535A;&#x6587;&#x4E2D;&#xFF0C;&#x6574;&#x7406;&#x4E86;&#x4E00;&#x4E0B;&#x4E2A;&#x4EBA;&#x5BF9;&#x5F02;&#x6B65;&#x548C;&#x540C;&#x6B65;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x5E76;&#x4E14;&#x7ED3;&#x5408;&#x5E95;&#x5C42;&#x7684;&#x4E00;&#x4E9B;&#x539F;&#x7406;&#x6765;&#x5206;&#x6790;&#x5B83;&#x4EEC;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#x3002;</p>
         
-          <a class="article-more-a" href="/2017/07/11/talk-about-sync-and-async/#more">more >></a>
+          <a class="article-more-a" href="/articles/2017-07-11-c771.html#more">more >></a>
         
       
 
@@ -653,7 +671,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/编程//" class="article-tag-list-link color3">编程</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/frontend//" class="article-tag-list-link color4">frontend</a>
         		</li>
       		
 		</ul>
@@ -662,7 +684,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/11/talk-about-sync-and-async/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2017-07-11-c771.html">展开全文 >></a>
         </p>
       
 
@@ -692,19 +714,19 @@
 
 
   
-    <article id="post-understand-git-use-from-git-design-model" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/tools/understand-git-use-from-git-design-model" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/07/understand-git-use-from-git-design-model/">从git设计模型理解git的使用</a>
+      <a class="article-title" href="/articles/2017-06-07-5b7d.html">从git设计模型理解git的使用</a>
     </h1>
   
 
         
-        <a href="/2017/06/07/understand-git-use-from-git-design-model/" class="archive-article-date">
+        <a href="/articles/2017-06-07-5b7d.html" class="archive-article-date">
   	<time datetime="2017-06-07T05:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
 </a>
         
@@ -721,7 +743,7 @@
 </ol>
 <p>&#x5982;&#x679C;&#x628A;git&#x5F53;&#x6210;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x8F6F;&#x4EF6;&#xFF0C;&#x5B83;&#x7684;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x62BD;&#x8C61;&#x7684;&#x786E;&#x6709;&#x70B9;&#x513F;&#x6666;&#x6DA9;&#x3002; &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6211;&#x89C9;&#x5F97;git&#x6839;&#x672C;&#x5C31;&#x6CA1;&#x6709;&#x9488;&#x5BF9;&#x7528;&#x6237;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F7F;&#x7528;&#x6A21;&#x578B;&#x6765;&#x5C4F;&#x853D;&#x5185;&#x90E8;&#x7684;&#x590D;&#x6742;&#x6027;&#xFF0C;git&#x76F4;&#x63A5;&#x628A;git&#x5185;&#x90E8;&#x7684;&#x7EC4;&#x7EC7;&#x6A21;&#x578B;&#x66B4;&#x9732;&#x7ED9;&#x4E86;&#x7528;&#x6237;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x60F3;&#x8981;&#x771F;&#x6B63;&#x7406;&#x89E3;git&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x8981;&#x7406;&#x89E3;git&#x7684;&#x5185;&#x90E8;&#x7EC4;&#x7EC7;&#x6A21;&#x578B;&#x3002;&#x597D;&#x5728;&#xFF0C;git&#x7684;&#x7528;&#x6237;&#x591A;&#x662F;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x7406;&#x89E3;&#x5B83;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x56F0;&#x96BE;&#x3002;</p>
         
-          <a class="article-more-a" href="/2017/06/07/understand-git-use-from-git-design-model/#more">more >></a>
+          <a class="article-more-a" href="/articles/2017-06-07-5b7d.html#more">more >></a>
         
       
 
@@ -751,7 +773,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/软件//" class="article-tag-list-link color3">软件</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
         		</li>
       		
 		</ul>
@@ -760,7 +786,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/07/understand-git-use-from-git-design-model/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2017-06-07-5b7d.html">展开全文 >></a>
         </p>
       
 
@@ -790,19 +816,19 @@
 
 
   
-    <article id="post-deep-thinking-about-z-turn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-feelings/deep-thinking-about-z-turn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/21/deep-thinking-about-z-turn/">对“折腾”的深入思考</a>
+      <a class="article-title" href="/articles/2017-05-21-529.html">对“折腾”的深入思考</a>
     </h1>
   
 
         
-        <a href="/2017/05/21/deep-thinking-about-z-turn/" class="archive-article-date">
+        <a href="/articles/2017-05-21-529.html" class="archive-article-date">
   	<time datetime="2017-05-21T12:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-21</time>
 </a>
         
@@ -813,7 +839,7 @@
         <p>&#x4E0D;&#x77E5;&#x9053;&#x4ECE;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5F00;&#x59CB;&#x8D77;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x5F88;&#x4E45;&#x5F88;&#x4E45;&#x4E4B;&#x524D;&#x4E86;&#xFF0C;&#x6211;&#x559C;&#x6B22;&#x4E0A;&#x9F13;&#x6363;&#x7535;&#x8111;&#x4E0A;&#x7684;&#x65B0;&#x9C9C;&#x73A9;&#x610F;&#x3002; &#x8D77;&#x521D;&#x4ECE;&#x6298;&#x817E; windows &#x4E0A;&#x5404;&#x79CD;&#x6709;&#x8DA3;&#x7684;&#x73A9;&#x610F;&#xFF0C;&#x5230;&#x5927;&#x5B66;&#x6B63;&#x5F0F;&#x8E0F;&#x5165;&#x6280;&#x672F;&#x7684;&#x5927;&#x95E8;&#x4E4B;&#x540E;&#xFF0C;&#x5F00;&#x59CB;&#x9F13;&#x6363; IT &#x4E0A;&#x7684;&#x5404;&#x79CD;&#x73A9;&#x610F;&#x3002; &#x4ECE; linux &#x5230;&#x5404;&#x79CD; IT &#x5DE5;&#x5177;&#xFF0C;&#x5404;&#x79CD;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x548C;&#x5E93;&#xFF0C;&#x4E50;&#x6B64;&#x4E0D;&#x75B2;&#x3002;</p>
 <p>&#x7A81;&#x7136;&#x6709;&#x4E00;&#x5929;&#xFF0C;&#x56E0;&#x4E3A;&#x5404;&#x79CD;&#x539F;&#x56E0;&#xFF0C;&#x6211;&#x4E00;&#x6BB5;&#x65E5;&#x5B50;&#x91CC;&#x505C;&#x6B62;&#x4E86;&#x78B0;&#x6280;&#x672F;&#x3002;&#x4E4B;&#x524D;&#x6211;&#x60F3;&#x5F53;&#x7136;&#x7684;&#x8BA4;&#x4E3A;&#xFF0C;&#x6298;&#x817E;&#x53EF;&#x80FD;&#x4E0A;&#x6D6A;&#x8D39;&#x65F6;&#x95F4;&#x53C8;&#x6CA1;&#x591A;&#x5C11;&#x6536;&#x76CA;&#x7684;&#x4E8B;&#x60C5;&#xFF0C; &#x4F46;&#x662F;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x611F;&#x53D7;&#x7A81;&#x7136;&#x4F7F;&#x6211;&#x610F;&#x8BC6;&#x5230;&#xFF0C;&#x201C;&#x6298;&#x817E;&#x201D;&#x4E24;&#x5B57;&#xFF0C;&#x5176;&#x542B;&#x4E49;&#x8FDC;&#x8FDC;&#x6BD4;&#x6211;&#x60F3;&#x8C61;&#x7684;&#x591A;&#x4E30;&#x5BCC;&#x7684;&#x591A;&#x3002;</p>
         
-          <a class="article-more-a" href="/2017/05/21/deep-thinking-about-z-turn/#more">more >></a>
+          <a class="article-more-a" href="/articles/2017-05-21-529.html#more">more >></a>
         
       
 
@@ -828,7 +854,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        			<a href="/categories/feelings//" class="article-tag-list-link color4">feelings</a>
         		</li>
       		
 		</ul>
@@ -837,7 +863,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/21/deep-thinking-about-z-turn/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2017-05-21-529.html">展开全文 >></a>
         </p>
       
 
@@ -867,19 +893,19 @@
 
 
   
-    <article id="post-debian-stretch-and-lxde-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/linux/debian-stretch-and-lxde-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/debian-stretch-and-lxde-config/">debian stretch 下的 lxde 配置</a>
+      <a class="article-title" href="/articles/2017-05-11-e6dc.html">debian stretch 下的 lxde 配置</a>
     </h1>
   
 
         
-        <a href="/2017/05/11/debian-stretch-and-lxde-config/" class="archive-article-date">
+        <a href="/articles/2017-05-11-e6dc.html" class="archive-article-date">
   	<time datetime="2017-05-11T07:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
 </a>
         
@@ -891,7 +917,7 @@
 <p>&#x8D81;&#x7740;&#x8FD9;&#x6B21;&#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x4E86;&#x4E00;&#x756A; debian&#xFF0C;&#x6211;&#x6574;&#x7406;&#x4E86;&#x4E0B;&#x4EE5;&#x524D;&#x548C;&#x8FD9;&#x6B21;&#x7684;&#x7B14;&#x8BB0;&#xFF0C;&#x603B;&#x7ED3;&#x51FA;&#x4E00;&#x7BC7;&#x535A;&#x5BA2;&#x3002;</p>
 <p>debian &#x7684;&#x7279;&#x70B9;&#x5728;&#x4E8E;&#x7A33;&#x5B9A;&#xFF0C;&#x6BD4;&#x8F83;&#x9002;&#x5408;&#x50CF;&#x6211;&#x8FD9;&#x6837;&#x7528; linux &#x4F5C;&#x4E3A;&#x65E5;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x4EBA;&#x3002; &#x76EE;&#x524D; debian &#x7684; test &#x7248;&#x672C; stretch &#x5DF2;&#x7ECF;&#x51BB;&#x7ED3;&#x4E86;&#xFF0C;&#x5F88;&#x5FEB;&#x5C06;&#x4F1A;&#x6210;&#x4E3A;&#x4E0B;&#x4E00;&#x4E2A; statble &#x7248;&#x672C;&#x3002;</p>
         
-          <a class="article-more-a" href="/2017/05/11/debian-stretch-and-lxde-config/#more">more >></a>
+          <a class="article-more-a" href="/articles/2017-05-11-e6dc.html#more">more >></a>
         
       
 
@@ -925,7 +951,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/系统//" class="article-tag-list-link color3">系统</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -934,7 +964,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/11/debian-stretch-and-lxde-config/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2017-05-11-e6dc.html">展开全文 >></a>
         </p>
       
 
@@ -964,19 +994,19 @@
 
 
   
-    <article id="post-chromebook-install-linux-by-crouton" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-IT/linux/chromebook-install-linux-by-crouton" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/10/chromebook-install-linux-by-crouton/">chromebook通过crouton安装linux小结</a>
+      <a class="article-title" href="/articles/2017-05-10-c95f.html">chromebook通过crouton安装linux小结</a>
     </h1>
   
 
         
-        <a href="/2017/05/10/chromebook-install-linux-by-crouton/" class="archive-article-date">
+        <a href="/articles/2017-05-10-c95f.html" class="archive-article-date">
   	<time datetime="2017-05-10T15:26:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
 </a>
         
@@ -989,7 +1019,7 @@
 <img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
  &#x65E0;&#x5948;&#xFF0C;&#x91CD;&#x7F6E;&#x4E86;chromeOS&#xFF0C;&#x88C5;&#x7684;debian&#x4E5F;&#x6CA1;&#x4E86;&#x3002;&#x8D81;&#x7740;&#x8FD9;&#x6B21;&#x4E8B;&#x6545;&#x6211;&#x5347;&#x7EA7;&#x4E86;&#x4E0B;&#x6211;&#x7684;debian&#xFF0C;&#x5E76;&#x4E14;&#x8D81;&#x7740;&#x8FD8;&#x70ED;&#x547C;&#xFF0C;&#x6574;&#x7406;&#x4E86;&#x4E0B;&#x7B14;&#x8BB0;&#xFF0C;&#x8D76;&#x7D27;&#x53D1;&#x7BC7;&#x535A;&#x6587;&#x3002;</p>
         
-          <a class="article-more-a" href="/2017/05/10/chromebook-install-linux-by-crouton/#more">more >></a>
+          <a class="article-more-a" href="/articles/2017-05-10-c95f.html#more">more >></a>
         
       
 
@@ -1023,7 +1053,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/系统//" class="article-tag-list-link color3">系统</a>
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -1032,7 +1066,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/10/chromebook-install-linux-by-crouton/">展开全文 >></a>
+          <a class="article-more-a" href="/articles/2017-05-10-c95f.html">展开全文 >></a>
         </p>
       
 
@@ -1184,7 +1218,51 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">orgmode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">知识管理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">atom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">泛型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,26 +1278,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">emacs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">orgmode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
@@ -1228,35 +1286,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">graphviz</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">draw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">泛型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1268,19 +1298,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">graphviz</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">draw</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">知识管理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">atom</a>
               </li>
              
               <li class="article-tag-list-item">

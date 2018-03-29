@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /articles/
+Allow: /tags/
+Allow: /home/
+Allow: /archives/
+Allow: /about/
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Sitemap: http://dajipai.cc/sitemap.xml
+Sitemap: http://dajipai.cc/baidusitemap.xml
