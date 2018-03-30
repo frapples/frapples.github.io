@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://frapples.github.io/articles/2018-03-30-4a97.html</loc>
+    
+    <lastmod>2018-03-30T07:07:08.384Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frapples.github.io/articles/2016-11-16-1f70.html</loc>
     
     <lastmod>2018-03-29T19:22:07.371Z</lastmod>
@@ -10,6 +17,20 @@
   
   <url>
     <loc>https://frapples.github.io/articles/2016-10-27-ce3f.html</loc>
+    
+    <lastmod>2018-03-29T19:03:26.726Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frapples.github.io/articles/2016-09-21-6d0.html</loc>
+    
+    <lastmod>2018-03-29T19:03:26.726Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frapples.github.io/articles/2016-09-20-e4e.html</loc>
     
     <lastmod>2018-03-29T19:03:26.726Z</lastmod>
     
@@ -30,16 +51,16 @@
   </url>
   
   <url>
-    <loc>https://frapples.github.io/articles/2016-09-20-e4e.html</loc>
+    <loc>https://frapples.github.io/articles/2017-08-28-929b.html</loc>
     
-    <lastmod>2018-03-29T19:03:26.726Z</lastmod>
+    <lastmod>2018-03-29T19:03:26.722Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://frapples.github.io/articles/2016-09-21-6d0.html</loc>
+    <loc>https://frapples.github.io/articles/2016-09-18-3c82.html</loc>
     
-    <lastmod>2018-03-29T19:03:26.726Z</lastmod>
+    <lastmod>2018-03-29T19:03:26.722Z</lastmod>
     
   </url>
   
@@ -58,28 +79,7 @@
   </url>
   
   <url>
-    <loc>https://frapples.github.io/articles/2016-09-18-3c82.html</loc>
-    
-    <lastmod>2018-03-29T19:03:26.722Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frapples.github.io/articles/2017-08-28-929b.html</loc>
-    
-    <lastmod>2018-03-29T19:03:26.722Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://frapples.github.io/articles/2017-05-10-c95f.html</loc>
-    
-    <lastmod>2018-03-29T19:03:26.722Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frapples.github.io/articles/2016-11-11-d23f.html</loc>
     
     <lastmod>2018-03-29T19:03:26.722Z</lastmod>
     
@@ -100,21 +100,14 @@
   </url>
   
   <url>
+    <loc>https://frapples.github.io/articles/2016-11-11-d23f.html</loc>
+    
+    <lastmod>2018-03-29T19:03:26.722Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://frapples.github.io/articles/2017-05-21-529.html</loc>
-    
-    <lastmod>2018-03-29T19:03:26.718Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frapples.github.io/articles/2017-07-11-c771.html</loc>
-    
-    <lastmod>2018-03-29T19:03:26.718Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://frapples.github.io/articles/2018-02-10-166e.html</loc>
     
     <lastmod>2018-03-29T19:03:26.718Z</lastmod>
     
@@ -128,7 +121,7 @@
   </url>
   
   <url>
-    <loc>https://frapples.github.io/articles/2016-10-10-1e6e.html</loc>
+    <loc>https://frapples.github.io/articles/2016-09-16-b0bb.html</loc>
     
     <lastmod>2018-03-29T19:03:26.718Z</lastmod>
     
@@ -142,7 +135,21 @@
   </url>
   
   <url>
-    <loc>https://frapples.github.io/articles/2016-09-16-b0bb.html</loc>
+    <loc>https://frapples.github.io/articles/2018-02-10-166e.html</loc>
+    
+    <lastmod>2018-03-29T19:03:26.718Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frapples.github.io/articles/2017-07-11-c771.html</loc>
+    
+    <lastmod>2018-03-29T19:03:26.718Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://frapples.github.io/articles/2016-10-10-1e6e.html</loc>
     
     <lastmod>2018-03-29T19:03:26.718Z</lastmod>
     
