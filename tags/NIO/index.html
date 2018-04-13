@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://frapples.github.io">
-  <title>Frapples的博客</title>
+  <title>Tag: NIO | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
 <meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Frapples的博客">
-<meta property="og:url" content="https://frapples.github.io/page/3/index.html">
+<meta property="og:url" content="https://frapples.github.io/tags/NIO/index.html">
 <meta property="og:site_name" content="Frapples的博客">
 <meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
 <meta property="og:locale" content="zh_CN">
@@ -152,59 +152,50 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-IT/C/dynamic-language-and-c-generics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/articles/2018-04-13-c310.html" class="archive-article-date">
+  	<time datetime="2018-04-13T09:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-10-10-1e6e.html">动态语言与 C 语言泛型</a>
+      <a class="archive-article-title" href="/articles/2018-04-13-c310.html">java同步非阻塞IO</a>
     </h1>
   
 
-        
-        <a href="/articles/2016-10-10-1e6e.html" class="archive-article-date">
-  	<time datetime="2016-10-10T15:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x52A8;&#x6001;&#x8BED;&#x8A00;&#x5982; python&#xFF0C;javascript&#xFF0C;php &#x7B49;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x53D8;&#x91CF;&#x548C;&#x503C;&#x662F;&#x5206;&#x5F00;&#x6765;&#x7684;&#x3002; &#x53D8;&#x91CF;&#x662F;&#x6CA1;&#x6709;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x4EFB;&#x4F55;&#x7684;&#x503C;&#x8D4B;&#x7ED9;&#x53D8;&#x91CF;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x8D4B;&#x503C;&#x7ED9;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8D4B;&#x503C;&#x7ED9;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x3002; &#x8FD9;&#x6BEB;&#x65E0;&#x95EE;&#x9898;&#x3002;</p>
-<p>C &#x8BED;&#x8A00;&#x662F;&#x4E00;&#x79CD;&#x504F;&#x5411;&#x5E95;&#x5C42;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x5386;&#x53F2;&#x60A0;&#x4E45;&#xFF0C;&#x7279;&#x6027;&#x5F88;&#x5C11;&#x4F46;&#x662F;&#x90FD;&#x662F;&#x4E45;&#x7ECF;&#x8003;&#x9A8C;&#x7684;&#x3002; &#x5728;&#x7528; C &#x5B9E;&#x73B0;&#x4E00;&#x79CD;&#x6CDB;&#x578B;&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x4E00;&#x79CD;&#x8BBE;&#x8BA1;&#x662F;&#x4F7F;&#x7528; void *&#x6307;&#x9488;&#x6765;&#x50A8;&#x5B58;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x3002;</p>
-<p>&#x5F88;&#x4E45;&#x4EE5;&#x524D;&#x6211;&#x5C31;&#x611F;&#x89C9;&#x5230;&#x8FD9;&#x4E24;&#x8005;&#x4E2D;&#x6709;&#x67D0;&#x79CD;&#x7684;&#x76F8;&#x4F3C;&#x548C;&#x8054;&#x7CFB;&#x4E4B;&#x5904;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5728;&#x5199;&#x6CDB;&#x578B;&#x4EE3;&#x7801;&#x65F6;&#x3002;&#x73B0;&#x5728;&#x6211;&#x60F3;&#x628A;&#x5B83;&#x5177;&#x4F53;&#x7684;&#x8868;&#x8FBE;&#x51FA;&#x6765;&#x3002;</p>
-        
-          <a class="article-more-a" href="/articles/2016-10-10-1e6e.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态语言</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">泛型</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NIO</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -214,540 +205,24 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT/C//" class="article-tag-list-link color2">C</a>
+        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-10-10-1e6e.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-IT/tools/create-blog-by-hexo-high" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-21-6d0.html">hexo 搭建静态博客－高级篇（插件编写）</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-21-6d0.html" class="archive-article-date">
-  	<time datetime="2016-09-21T14:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x867D;&#x7136; hexo &#x672C;&#x8EAB;&#x7684;&#x529F;&#x80FD;&#x5DF2;&#x7ECF;&#x5F88;&#x4E0D;&#x9519;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x96BE;&#x514D;&#x4F1A;&#x6709;&#x4EBA;&#x6709;&#x5404;&#x79CD;&#x5404;&#x6837;&#x5C0F;&#x4F17;&#x7684;&#x9700;&#x6C42;&#x3002; &#x6BD4;&#x5982;&#x8BF4;&#xFF0C;emacs &#x7528;&#x6237;&#x4F1A;&#x60F3;&#x7528; org &#x6A21;&#x5F0F;&#x5199;&#x535A;&#x6587;&#x7B49;&#x7B49;&#x3002; hexo &#x5F53;&#x7136;&#x4E5F;&#x7167;&#x987E;&#x5230;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x4EBA;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x7B80;&#x5355;&#x6613;&#x7528;&#x7684; API &#x7528;&#x4EE5;&#x521B;&#x5EFA;&#x63D2;&#x4EF6;&#x3002; &#x8FD9;&#x6837;&#xFF0C;&#x6709;&#x72EC;&#x7279;&#x9700;&#x6C42;&#x7684;&#x4EBA;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x7684;&#x6269;&#x5C55; hexo&#x3002;</p>
-<p>&#x6211;&#x6700;&#x8FD1;&#x53D1;&#x73B0;&#x6211;&#x7684;&#x535A;&#x5BA2;&#x4E0D;&#x652F;&#x6301; emoji &#x8868;&#x60C5;
-<img width="20" height="20" class="emoji nofancybox" title=":disappointed:" alt="&#x1F61E;" src="/images/emoji/disappointed.png">
-&#xFF0C;&#x4F46;&#x662F;&#x641C;&#x7D22;&#x4E86;&#x4E00;&#x5708;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x597D;&#x7528;&#x7684;&#x63D2;&#x4EF6;&#x3002; &#x6240;&#x4EE5;&#x6211;&#x5728;&#x770B;&#x4E86;&#x6587;&#x6863;&#x4E86;&#x89E3;&#x4E86;&#x4E00;&#x4E9B;&#x60C5;&#x51B5;&#x540E;&#xFF0C;&#x51B3;&#x5B9A;&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5199;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x652F;&#x6301; emoji &#x7684;&#x63D2;&#x4EF6;&#x6765;&#x3002; &#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x5229;&#x7528; hexo &#x7684; API &#x5199;&#x51FA;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x63D2;&#x4EF6;&#x6765;&#x3002;</p>
-        
-          <a class="article-more-a" href="/articles/2016-09-21-6d0.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-21-6d0.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-IT/tools/create-blog-by-hexo-middle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-20-e4e.html">hexo 搭建静态博客－中级篇（主题和 org 支持）</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-20-e4e.html" class="archive-article-date">
-  	<time datetime="2016-09-20T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hexo &#x662F;&#x4E00;&#x6B3E;&#x5F88;&#x5F3A;&#x5927;&#x7684;&#x9759;&#x6001;&#x535A;&#x5BA2;&#x751F;&#x6210;&#x7CFB;&#x7EDF;&#x3002; &#x5BF9;&#x4E8E;&#x4E00;&#x822C;&#x7528;&#x6237;&#xFF0C;&#x53EF;&#x80FD;&#x89C9;&#x5F97;&#x9ED8;&#x8BA4;&#x7684;&#x914D;&#x7F6E;&#x5DF2;&#x7ECF;&#x8DB3;&#x591F;&#x4E86;&#xFF0C; &#x9ED8;&#x8BA4;&#x4E3B;&#x9898;&#x591F;&#x6F02;&#x4EAE;&#xFF0C;&#x4F7F;&#x7528; markdown &#x683C;&#x5F0F;&#x4E66;&#x5199;&#x535A;&#x6587;&#x4E5F;&#x662F;&#x5F88;&#x4E0D;&#x9519;&#x7684;&#x642D;&#x914D;&#x3002;</p>
-<p>&#x4F46;&#x662F;&#x5BF9;&#x6211;&#x800C;&#x8A00;&#xFF0C;&#x9996;&#x5148;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A; emacs &#x7528;&#x6237;&#x800C;&#x8A00;&#xFF0C;&#x7528; org-mode &#x5199;&#x535A;&#x6587;&#x90A3;&#x662F;&#x5FC5;&#x987B;&#x7684;
-<img width="20" height="20" class="emoji nofancybox" title=":smile:" alt="&#x1F604;" src="/images/emoji/smile.png">
-&#x3002; &#x7136;&#x800C; hexo &#x9ED8;&#x8BA4;&#x662F;&#x4E0D;&#x652F;&#x6301; org &#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5F97;&#x53BB;&#x9700;&#x6C42;&#x652F;&#x6301; org &#x6587;&#x4EF6;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x7136;&#x540E;&#x5C31;&#x662F;&#x4E3B;&#x9898;&#x4E86;&#x3002;&#x7C7B;&#x4F3C;&#x4E8E;&#x5404;&#x79CD;&#x8F6F;&#x4EF6;&#x7684;&#x6362;&#x80A4;&#x529F;&#x80FD;&#xFF0C;&#x53BB;&#x627E;&#x4E00;&#x4E2A;&#x6F02;&#x4EAE;&#x7684;&#x4E3B;&#x9898;&#x6362;&#x4E0A;&#x53BB;&#x603B;&#x662F;&#x90A3;&#x4E48;&#x7684;&#x6709;&#x5438;&#x5F15;&#x529B;
-<img width="20" height="20" class="emoji nofancybox" title=":blush:" alt="&#x1F60A;" src="/images/emoji/blush.png">
- &#xFF01;</p>
-<p>&#x5728;&#x914D;&#x7F6E;&#x5B8C;&#x6211;&#x7684; hexo &#x535A;&#x5BA2;&#x540E;&#xFF0C;&#x6211;&#x628A;&#x7B14;&#x8BB0;&#x4E2D;&#x7684;&#x76F8;&#x5173;&#x90E8;&#x5206;&#x6574;&#x7406;&#x51FA;&#x6765;&#x3002; &#x8003;&#x8651;&#x5230;&#x4F7F;&#x7528; emacs &#x7684;&#x57FA;&#x672C;&#x90FD;&#x662F;&#x559C;&#x6B22;&#x6298;&#x817E;&#x7684;&#x4EBA;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x7BC7;&#x535A;&#x6587;&#x4E5F;&#x5C31;&#x4E0D;&#x591A;&#x5E9F;&#x8BDD;&#x4E86;&#xFF0C;&#x529B;&#x6C42;&#x7B80;&#x6D01;&#x660E;&#x4E86;&#x3002;</p>
-        
-          <a class="article-more-a" href="/articles/2016-09-20-e4e.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">emacs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">orgmode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-20-e4e.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-IT/tools/create-blog-by-hexo-basic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-18-3c82.html">hexo 搭建静态博客－基础篇</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-18-3c82.html" class="archive-article-date">
-  	<time datetime="2016-09-17T16:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x535A;&#x5BA2;&#x8FD9;&#x79CD;&#x6BD4;&#x8F83;&#x53E4;&#x8001;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x867D;&#x7136;&#x73B0;&#x5728;&#x6CA1;&#x6709;&#x4EE5;&#x524D;&#x6D41;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x7684;&#x5F88;&#x591A;&#x4F18;&#x70B9;&#x5374;&#x6709;&#x7740;&#x4E0D;&#x53EF;&#x66FF;&#x4EE3;&#x7684;&#x4F5C;&#x7528;&#x3002; hexo&#xFF0C;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x535A;&#x5BA2;&#x751F;&#x6210;&#x7CFB;&#x7EDF;&#xFF0C; &#x548C; github&#xFF0C;&#x4E00;&#x4E2A;&#x514D;&#x8D39;&#x7684;&#x6258;&#x7BA1;&#x7F51;&#x7AD9;&#xFF0C; &#x4F7F;&#x7528;&#x4ED6;&#x4EEC;&#xFF0C;&#x4F60;&#x5C31;&#x80FD;&#x642D;&#x5EFA;&#x5C5E;&#x4E8E;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x5566;&#xFF01;</p>
-<p>&#x9274;&#x4E8E; hexo &#x6BD4;&#x8F83;&#x504F;&#x6280;&#x672F;&#x5316;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4E0D;&#x63A8;&#x8350;&#x4E00;&#x822C;&#x4EBA;&#x4F7F;&#x7528; hexo&#x3002; &#x5176;&#x5B83;&#x7684;&#x535A;&#x5BA2;&#x6258;&#x7BA1;&#x670D;&#x52A1;&#xFF0C;&#x5982;&#x65B0;&#x6D6A;&#x535A;&#x5BA2;&#x7B49;&#xFF0C;&#x53EF;&#x80FD;&#x66F4;&#x9002;&#x5408;&#x4F60;&#x3002; &#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x5BF9; IT &#x611F;&#x5174;&#x8DA3;&#x6216;&#x8005;&#x672C;&#x8EAB;&#x5C31;&#x662F; IT &#x7684;&#xFF0C;&#x60F3;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x5F3A;&#x70C8;&#x5EFA;&#x8BAE; hexo&#xFF01; &#x4F60;&#x4E0D;&#x4EC5;&#x80FD;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x6F02;&#x4EAE;&#x7684;&#x535A;&#x5BA2;&#xFF0C;&#x8FD8;&#x80FD;&#x4ECE;&#x4E2D;&#x5B66;&#x4E60;&#x5230;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#x3002;</p>
-<p>&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E9B;&#x642D;&#x5EFA; hexo &#x9759;&#x6001;&#x535A;&#x5BA2;&#x7684;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x548C;&#x57FA;&#x672C;&#x77E5;&#x8BC6;&#xFF0C;&#x529B;&#x6C42;&#x901A;&#x4FD7;&#x6613;&#x61C2;&#xFF0C;&#x7ED9;&#x60F3;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x7684;&#x4EBA;&#x4E00;&#x4E2A;&#x53C2;&#x8003;&#x3002;</p>
-        
-          <a class="article-more-a" href="/articles/2016-09-18-3c82.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-18-3c82.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-feelings/blog-starting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-17-acb.html">博客开张</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-17-acb.html" class="archive-article-date">
-  	<time datetime="2016-09-17T09:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x4E2D;&#x79CB;&#x524D;&#x540E;&#xFF0C;&#x5229;&#x7528; hexo &#x5DE5;&#x5177;&#x548C; github&#xFF0C;&#x7EC8;&#x4E8E;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x7ED9;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#x3002; &#x65F6;&#x95F4;&#x8FC7;&#x7684;&#x53EF;&#x771F;&#x5FEB;&#xFF0C;&#x4E0D;&#x77E5;&#x4E0D;&#x89C9;&#x7684;&#x5DF2;&#x7ECF;&#x8E0F;&#x5165;&#x5927;&#x5B66;&#x4E09;&#x5E74;&#x4E86;&#x3002; &#x5176;&#x5B9E;&#x65E9;&#x5728;&#x5927;&#x4E8C;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x5C31;&#x6709;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x7684;&#x60F3;&#x6CD5;&#x4E86;&#x3002; &#x53EF;&#x90A3;&#x65F6;&#xFF0C;&#x6211;&#x53D1;&#x73B0;&#x6211;&#x8EAB;&#x4E0A;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x7684;&#x95EE;&#x9898;&#x8981;&#x53BB;&#x89E3;&#x51B3;&#x3002; &#x800C;&#x4E14;&#x6211;&#x81EA;&#x5DF1;&#x53C8;&#x592A;&#x61D2;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E8B;&#xFF0C;&#x5C31;&#x4E00;&#x76F4;&#x62D6;&#x7740;&#x4E86;&#x3002;</p>
-<p>&#x524D;&#x51E0;&#x5929;&#x5728;&#x6574;&#x7406;&#x81EA;&#x5DF1;&#x7684;&#x7B14;&#x8BB0;&#xFF0C;&#x7A81;&#x7136;&#x53D1;&#x73B0;&#x591A;&#x4E86;&#x8BB8;&#x591A;&#x7075;&#x611F;&#x3002; &#x4E8E;&#x662F;&#x5C31;&#x501F;&#x7740;&#x8FD9;&#x6CE2;&#x52B2;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x7ED9;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#x3002; &#x4EE5;&#x540E;&#x8FD9;&#x91CC;&#x5BF9;&#x6211;&#x800C;&#x8A00;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x9759;&#x8C27;&#x4E4B;&#x5730;&#xFF0C;&#x80FD;&#x8BA9;&#x6211;&#x6682;&#x65F6;&#x8FDC;&#x79BB;&#x5C18;&#x4E16;&#x7684;&#x55A7;&#x56A3;&#x548C;&#x6D6E;&#x8E81;&#xFF0C;&#x76F4;&#x9762;&#x5185;&#x5FC3;&#x7684;&#x81EA;&#x5DF1;&#x3002; &#x6211;&#x4E0D;&#x4EC5;&#x80FD;&#x591F;&#x5B89;&#x9759;&#x7684;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x95EE;&#x9898;&#xFF0C;&#x6574;&#x7406;&#x601D;&#x7EEA;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x5206;&#x4EAB;&#x4E00;&#x4E9B;&#x4E2A;&#x4EBA;&#x7684;&#x5C0F;&#x5FC3;&#x5F97;&#x548C;&#x6D45;&#x8584;&#x7684;&#x89C1;&#x89E3;&#x3002;</p>
-<p>&#x611F;&#x8C22;&#x8FD9;&#x4E9B;&#x5E74;&#x6765;&#x4E00;&#x76F4;&#x9ED8;&#x9ED8;&#x652F;&#x6301;&#x6211;&#x7684;&#x670B;&#x53CB;&#x4EEC;&#xFF0C;&#x795D;&#x613F;&#x6211;&#x4EEC;&#x7684;&#x660E;&#x5929;&#x5C06;&#x4F1A;&#x66F4;&#x7F8E;&#x597D;&#x3002;</p>
-        
-          <a class="article-more-a" href="/articles/2016-09-17-acb.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">myself</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/feelings//" class="article-tag-list-link color4">feelings</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-17-acb.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jottings/hexo-org-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-16-b0bb.html">这是一篇使用 org-mode 书写的博文</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-16-b0bb.html" class="archive-article-date">
-  	<time datetime="2016-09-16T12:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>org-mode &#x662F; emacs &#x4E2D;&#x7528;&#x6765;&#x7F16;&#x8F91;&#x6587;&#x6863;&#x7684;&#x4E3B;&#x6A21;&#x5F0F;&#x3002; org-mode &#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x5957;&#x8BED;&#x6CD5;&#x6765;&#x6807;&#x8BB0;&#x5BCC;&#x6587;&#x6863;&#xFF0C;&#x7C7B;&#x4F3C; markdown&#xFF0C;&#x4F46;&#x662F;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#x800C;&#x4E14;&#x529F;&#x80FD;&#x66F4;&#x591A;&#x3002; org-mode &#x4E0E; emacs &#x96C6;&#x6210;&#x7684;&#x5929;&#x8863;&#x65E0;&#x7F1D;&#xFF0C;&#x80FD;&#x4F7F;&#x7528; emacs &#x7684;&#x7F16;&#x8F91;&#x4F18;&#x52BF;&#x4E13;&#x5FC3;&#x5199;&#x4F5C;&#xFF0C;&#x6D41;&#x7545;&#x7F16;&#x8F91;&#xFF0C;&#x4E0D;&#x53D7;&#x6253;&#x6270;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x62FF; org-mode &#x5199;&#x535A;&#x5BA2;&#x4E5F;&#x662F;&#x5F88;&#x81EA;&#x7136;&#x7684;&#x60F3;&#x6CD5;&#x3002;</p>
-<p>&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x662F;&#x4E00;&#x7BC7;&#x6D4B;&#x8BD5;&#x535A;&#x5BA2;&#xFF0C;&#x6D4B;&#x8BD5;&#x4E86;&#x5728;&#x6211;&#x7684; hexo &#x914D;&#x7F6E;&#x4E2D;&#xFF0C;&#x6700;&#x7EC8;&#x5BF9; org-mode &#x7684;&#x5C55;&#x793A;&#x6548;&#x679C;&#x5982;&#x4F55;&#x3002; 
-<img width="20" height="20" class="emoji nofancybox" title=":grinning:" alt="&#x1F600;" src="/images/emoji/grinning.png">
-</p>
-<h1 id="&#x66F4;&#x65B0;&#x65E5;&#x5FD7;">1. &#x66F4;&#x65B0;&#x65E5;&#x5FD7;</h1><ol>
-<li><2018-01-28> &#x7531;&#x4E8E;&#x65E9;&#x5DF2;&#x4ECE;emacs&#x8F6C;&#x5411;atom, &#x56E0;&#x6B64;&#x6B64;&#x535A;&#x6587;&#x88AB;markdown&#x91CD;&#x5199;&#x3002;</2018-01-28></li>
-</ol>
-        
-          <a class="article-more-a" href="/articles/2016-09-16-b0bb.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">emacs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">orgmode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jottings//" class="article-tag-list-link color4">jottings</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-16-b0bb.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
-  
 
 
           </div>
@@ -769,10 +244,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
