@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://frapples.github.io">
-  <title>Tag: orgmode | Frapples的博客</title>
+  <title>源码|jdk源码-ArrayList与Vector源码阅读 | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
-<meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frapples的博客">
-<meta property="og:url" content="https://frapples.github.io/tags/orgmode/index.html">
+  <meta name="description" content="&amp;#x6BD5;&amp;#x4E1A;&amp;#x4E24;&amp;#x4E2A;&amp;#x661F;&amp;#x671F;&amp;#x4E86;&amp;#xFF0C;&amp;#x5F00;&amp;#x59CB;&amp;#x6210;&amp;#x4E3A;&amp;#x4E00;&amp;#x540D;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684;java&amp;#x7801;&amp;#x519C;&amp;#x4E86;&amp;#x3002;&amp;#x4E00;&amp;#x76F4;&amp;#x5BF9;&amp;#x5">
+<meta name="keywords" content="java,list,jdk8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码|jdk源码-ArrayList与Vector源码阅读">
+<meta property="og:url" content="https://frapples.github.io/articles/2018-07-10-7932.html">
 <meta property="og:site_name" content="Frapples的博客">
-<meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta property="og:description" content="&amp;#x6BD5;&amp;#x4E1A;&amp;#x4E24;&amp;#x4E2A;&amp;#x661F;&amp;#x671F;&amp;#x4E86;&amp;#xFF0C;&amp;#x5F00;&amp;#x59CB;&amp;#x6210;&amp;#x4E3A;&amp;#x4E00;&amp;#x540D;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684;java&amp;#x7801;&amp;#x519C;&amp;#x4E86;&amp;#x3002;&amp;#x4E00;&amp;#x76F4;&amp;#x5BF9;&amp;#x5">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://frapples.github.io/articles/2018-07-10-7932/ArrayList-UML.png">
+<meta property="og:image" content="https://frapples.github.io/images/emoji/joy.png">
+<meta property="og:updated_time" content="2018-07-10T12:47:01.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frapples的博客">
-<meta name="twitter:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="twitter:title" content="源码|jdk源码-ArrayList与Vector源码阅读">
+<meta name="twitter:description" content="&amp;#x6BD5;&amp;#x4E1A;&amp;#x4E24;&amp;#x4E2A;&amp;#x661F;&amp;#x671F;&amp;#x4E86;&amp;#xFF0C;&amp;#x5F00;&amp;#x59CB;&amp;#x6210;&amp;#x4E3A;&amp;#x4E00;&amp;#x540D;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684;java&amp;#x7801;&amp;#x519C;&amp;#x4E86;&amp;#x3002;&amp;#x4E00;&amp;#x76F4;&amp;#x5BF9;&amp;#x5">
+<meta name="twitter:image" content="https://frapples.github.io/articles/2018-07-10-7932/ArrayList-UML.png">
   
     <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
   
@@ -150,56 +154,148 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-IT/java/jdk/源码-jdk源码之ArrayList与Vector" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2016-09-20-e4e.html" class="archive-article-date">
-  	<time datetime="2016-09-20T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2016-09-20-e4e.html">hexo 搭建静态博客－中级篇（主题和 org 支持）</a>
+    <h1 class="article-title" itemprop="name">
+      源码|jdk源码-ArrayList与Vector源码阅读
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/articles/2018-07-10-7932.html" class="archive-article-date">
+  	<time datetime="2018-07-10T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x6BD5;&#x4E1A;&#x4E24;&#x4E2A;&#x661F;&#x671F;&#x4E86;&#xFF0C;&#x5F00;&#x59CB;&#x6210;&#x4E3A;&#x4E00;&#x540D;&#x6B63;&#x5F0F;&#x7684;java&#x7801;&#x519C;&#x4E86;&#x3002;<br>&#x4E00;&#x76F4;&#x5BF9;&#x504F;&#x5E95;&#x5C42;&#x6BD4;&#x8F83;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x60F3;&#x7740;&#x6DF1;&#x5165;&#x81EA;&#x5DF1;&#x7684;java&#x6280;&#x80FD;&#xFF0C;&#x770B;&#x4E66;&#x3001;&#x8BFB;&#x6E90;&#x7801;&#x3001;&#x603B;&#x7ED3;&#x3001;&#x9020;&#x8F6E;&#x5B50;&#x5B9E;&#x8DF5;&#x90FD;&#x662F;&#x4ED8;&#x8BF8;&#x884C;&#x52A8;&#x7684;&#x65B9;&#x6CD5;&#x3002;<br>&#x8BF4;&#x5230;&#x770B;&#x6E90;&#x7801;&#xFF0C;&#x5C31;&#x5E94;&#x8BE5;&#x7531;&#x7B80;&#x5165;&#x96BE;&#xFF0C;&#x9010;&#x6E10;&#x52A0;&#x6DF1;&#xFF0C;&#x90A3;&#x5C31;&#x4ECE;jdk&#x7684;&#x6E90;&#x7801;&#x5F00;&#x59CB;&#x770B;&#x8D77;&#x5427;&#x3002;</p>
+<p>ArrayList&#x548C;Vector&#x662F;java&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x4E5F;&#x662F;&#x6700;&#x5E38;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x3002;</p>
+<a id="more"></a>
+<h1 id="&#x7EBF;&#x6027;&#x8868;&#x7684;&#x6982;&#x5FF5;">1. &#x7EBF;&#x6027;&#x8868;&#x7684;&#x6982;&#x5FF5;</h1><h2 id="&#x8868;ADT">1.1. &#x8868;ADT</h2><p>&#x8868;&#x8FD9;&#x79CD;&#x62BD;&#x8C61;&#x6982;&#x5FF5;&#x6307;&#x7684;&#x662F;&#x4E00;&#x79CD;&#x5B58;&#x653E;&#x6570;&#x636E;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x5176;&#x4E2D;&#x6570;&#x636E;A1, A2, A3, &#x2026;, A<sub>i</sub>, &#x2026; A<sub>N</sub>&#x6709;&#x5E8F;&#x6392;&#x5217;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x5728;&#x8868;&#x8FD9;&#x4E00;&#x62BD;&#x8C61;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x6A21;&#x578B;&#x4E2D;&#xFF1A;</p>
+<ol>
+<li>&#x6570;&#x636E;&#x662F;&#x6709;&#x5E8F;&#x6392;&#x5217;&#x7684;&#xFF0C;&#x6709;&#x524D;&#x540E;&#x4E4B;&#x5206;&#x3002;</li>
+<li>&#x8868;&#x4E2D;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#xFF0C;A1&#x5143;&#x7D20;&#x7684;&#x7D22;&#x5F15;&#x4E3A;0, A<sub>i</sub>&#x5143;&#x7D20;&#x7684;&#x7D22;&#x5F15;&#x4E3A;i - 1&#x3002;&#x81F3;&#x4E8E;&#x7D22;&#x5F15;&#x4ECE;0&#x5F00;&#x59CB;&#x8FD8;&#x662F;&#x4ECE;1&#x5F00;&#x59CB;&#x7F16;&#x53F7;&#x8FD9;&#x4E2A;&#x4E0D;&#x662F;&#x91CD;&#x70B9;&#x3002;</li>
+<li>&#x8868;&#x7684;&#x5927;&#x5C0F;&#x4E3A;&#x5373;&#x4E3A;&#x6570;&#x636E;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x5373;N&#x3002;</li>
+</ol>
+<p>&#x5B83;&#x7684;&#x64CD;&#x4F5C;&#x6709;&#xFF1A;</p>
+<ol>
+<li>&#x83B7;&#x53D6;&#x8868;&#x7684;&#x5927;&#x5C0F;&#x3002;</li>
+<li>&#x53D6;&#x51FA;&#x8868;&#x4E2D;&#x7ED9;&#x5B9A;&#x7D22;&#x5F15;&#x7684;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x7ED9;&#x8868;&#x4E2D;&#x7ED9;&#x5B9A;&#x7D22;&#x5F15;&#x7684;&#x4F4D;&#x7F6E;&#x653E;&#x5165;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x5411;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x5C06;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x79FB;&#x9664;&#x3002;</li>
+</ol>
+<p>&#x8868;&#x6709;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#x548C;&#x94FE;&#x8868;&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x5404;&#x6709;&#x4F18;&#x52A3;&#xFF0C;&#x5176;&#x4E2D;&#x8FD9;&#x91CC;&#x6240;&#x8BF4;&#x7684;ArrayList&#x662F;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="&#x5B9E;&#x73B0;&#x601D;&#x8DEF;">1.2. &#x5B9E;&#x73B0;&#x601D;&#x8DEF;</h2><p>&#x7EBF;&#x6027;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x662F;&#x5C06;&#x5143;&#x7D20;&#x653E;&#x5230;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x3002;&#x5982;&#x679C;&#x662F;C&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x90A3;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x5757;&#x8FDE;&#x7EED;&#x7684;&#x5185;&#x5B58;&#x3002;<br>&#x5728;java&#x4E2D;&#x4E5F;&#x662F;java&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#xFF0C;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#x4E2D;&#x903B;&#x8F91;&#x4E0A;&#x662F;&#x8FDE;&#x7EED;&#x7684;&#xFF0C;&#x7269;&#x7406;&#x4E0A;&#x4E0D;&#x4E00;&#x5B9A;&#x3002;&#x5370;&#x8C61;&#x4E2D;&#x6709;&#x7684;jvm&#x5B9E;&#x73B0;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x5185;&#x5B58;&#x788E;&#x7247;&#x641E;&#x7C7B;&#x4F3C;&#x903B;&#x8F91;&#x5185;&#x5B58;&#x7684;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5F80;&#x7EBF;&#x6027;&#x8868;&#x53D6;&#x51FA;&#x6570;&#x636E;&#x6216;&#x62FF;&#x51FA;&#x5143;&#x7D20;&#x90FD;&#x80FD;&#x5F88;&#x76F4;&#x63A5;&#x5BF9;&#x5E94;&#x5230;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x4E2D;&#x53BB;&#x3002;<br>&#x4F46;&#x662F;&#xFF0C;&#x7EBF;&#x6027;&#x8868;&#x63D2;&#x5165;&#x6570;&#x636E;&#x7684;&#x8FD9;&#x4E00;&#x64CD;&#x4F5C;&#x8981;&#x6C42;&#x8868;&#x662F;&#x80FD;&#x591F;&#x52A8;&#x6001;&#x589E;&#x957F;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#x3002;</p>
+<p>&#x7EBF;&#x6027;&#x8868;&#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x5927;&#x91CD;&#x70B9;&#x662F;&#x5B9E;&#x73B0;&#x8868;&#x52A8;&#x6001;&#x589E;&#x957F;&#x8FD9;&#x4E00;&#x8981;&#x6C42;&#xFF0C;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x3001;&#x5316;&#x5F52;&#x5230;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#x7684;&#x539F;&#x751F;&#x6570;&#x636E;&#x4E0A;&#x53BB;&#x3002;&#x601D;&#x8DEF;&#x662F;&#xFF0C;&#x5F53;&#x7EBF;&#x6027;&#x8868;&#x5185;&#x90E8;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6570;&#x7EC4;&#x5982;&#x679C;&#x4E0D;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x5C31;&#x7533;&#x8BF7;&#x4E00;&#x4E2A;&#x66F4;&#x5927;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x5C06;&#x539F;&#x6765;&#x6570;&#x7EC4;&#x7684;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#x8FDB;&#x53BB;&#x3002;</p>
+<h2 id="&#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;">1.3. &#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;</h2><ol>
+<li>&#x7531;&#x4E8E;&#x7EBF;&#x6027;&#x8868;&#x7528;&#x6570;&#x7EC4;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x6B64;&#x5B9A;&#x4F4D;&#x5143;&#x7D20;&#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x5185;&#x5B58;&#x504F;&#x79FB;&#x91CF;&#x5373;&#x53EF;&#x8BBF;&#x95EE;&#x5F97;&#x5230;&#xFF0C;&#x53D6;&#x51FA;&#x548C;&#x653E;&#x5165;&#x5143;&#x7D20;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O(1)&#x3002;</li>
+<li>&#x7531;&#x4E8E;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x662F;&#x7D27;&#x5BC6;&#x6392;&#x5217;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4E2D;&#x95F4;&#x63D2;&#x5165;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x6216;&#x79FB;&#x9664;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x9700;&#x8981;&#x79FB;&#x52A8;&#x540E;&#x9762;&#x4E00;&#x6392;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x5F80;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x63D2;&#x5165;&#x6216;&#x79FB;&#x9664;&#x6570;&#x636E;&#x7684;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O(n)&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x5F80;&#x8868;&#x672B;&#x5C3E;&#x63D2;&#x5165;&#x5143;&#x7D20;&#xFF0C;&#x60C5;&#x51B5;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x56E0;&#x4E3A;&#x8FD9;&#x53EF;&#x80FD;&#x89E6;&#x53D1;&#x6269;&#x5BB9;&#x64CD;&#x4F5C;&#x3002;&#x4E0D;&#x89E6;&#x53D1;&#x6269;&#x5BB9;&#x5C31;&#x662F;O(1)&#xFF0C;&#x5982;&#x679C;&#x89E6;&#x53D1;&#x4E86;&#x6269;&#x5BB9;&#xFF0C;&#x5047;&#x8BBE;&#x662F;2&#x500D;&#x6269;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x6269;&#x5BB9;&#x7684;&#x65F6;&#x95F4;&#x5747;&#x644A;&#x5230;&#x524D;&#x9762;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x63D2;&#x5165;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x5E73;&#x5747;&#x6765;&#x8BF4;&#xFF0C;&#x4E5F;&#x662F;O(1)&#x3002;</li>
+</ol>
+<h1 id="ArrayList&#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;">2. ArrayList&#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;</h1><p><img src="/articles/2018-07-10-7932/ArrayList-UML.png" alt="img"></p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5728;&#x8BBE;&#x8BA1;&#x4E0A;&#xFF0C;&#x5B83;&#x7684;&#x7ED3;&#x6784;&#x5E94;&#x8BE5;&#x7406;&#x89E3;&#x6210; <code>ArrayList</code> &#x2013;&gt; <code>List</code> &#x2013;&gt; <code>Collection</code> &#x2013;&gt; <code>Iterable</code>&#xFF1A;</p>
+<ol>
+<li><code>List</code>&#x63A5;&#x53E3;&#x8868;&#x793A;&#x62BD;&#x8C61;&#x7684;&#x8868;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;&#x8868;&#x3002;</li>
+<li><code>Collection</code>&#x63A5;&#x53E3;&#x8868;&#x793A;&#x62BD;&#x8C61;&#x7684;&#x5BB9;&#x5668;&#xFF0C;&#x80FD;&#x653E;&#x5143;&#x7D20;&#x7684;&#x90FD;&#x7B97;&#x3002;</li>
+<li><code>Iterable</code>&#x63A5;&#x53E3;&#x8868;&#x793A;&#x53EF;&#x8FED;&#x4EE3;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4E5F;&#x5373;&#x8BE5;&#x5BB9;&#x5668;&#x5185;&#x7684;&#x5143;&#x7D20;&#x90FD;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x8FED;&#x4EE3;&#x5668;&#x8FED;&#x4EE3;&#x3002;</li>
+</ol>
+<p>&#x4F46;&#x662F;&#x5728;&#x7EE7;&#x627F;&#x7ED3;&#x6784;&#x4E0A;&#xFF0C;<code>ArrayList</code>&#x7EE7;&#x627F;&#x4E86;<code>AbstractList</code>&#x3002;&#x8FD9;&#x662F;java&#x4E2D;&#x901A;&#x7528;&#x7684;&#x4E00;&#x79CD;&#x6280;&#x5DE7;&#xFF0C;&#x7531;&#x4E8E;java8&#x4E4B;&#x524D;&#x7684;&#x63A5;&#x53E3;&#x65E0;&#x6CD5;&#x6307;&#x5B9A;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x8981;&#x5B9E;&#x73B0;<code>List</code>&#x63A5;&#x53E3;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x5176;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x3002;<br>&#x4F46;&#x662F;&#xFF0C;<code>List</code>&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x662F;&#x5927;&#x800C;&#x5168;&#x7684;&#xFF0C;&#x6709;&#x5927;&#x91CF;&#x65B9;&#x6CD5;&#x662F;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8C03;&#x7528;&#x8005;&#x4F7F;&#x7528;&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#x884D;&#x751F;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x975E;&#x5B9E;&#x73B0;&#x8BE5;&#x63A5;&#x53E3;&#x7684;&#x5FC5;&#x987B;&#x65B9;&#x6CD5;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;<code>isEmpty</code>&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x5316;&#x5F52;&#x5230;<code>size</code>&#x65B9;&#x6CD5;&#x4E0A;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;java&#x5BF9;&#x4E8E;List&#x63A5;&#x53E3;&#x4F1A;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;<code>AbstractList</code>&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x91CC;&#x9762;&#x63D0;&#x4F9B;&#x4E86;&#x90E8;&#x5206;&#x65B9;&#x6CD5;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x7EE7;&#x627F;&#x8BE5;&#x7C7B;&#x7684;&#x53EA;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x7EC4;&#x6700;&#x5C0F;&#x7684;&#x5FC5;&#x987B;&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x3002;<br>&#x603B;&#x800C;&#x8A00;&#x4E4B;&#x4E00;&#x53E5;&#x8BDD;&#xFF0C;<code>AbstractList</code>&#x7684;&#x4F5C;&#x7528;&#x662F;&#x7ED9;<code>List</code>&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x3002;</p>
+<h1 id="ArrayList&#x6E90;&#x7801;&#x5206;&#x6790;">3. ArrayList&#x6E90;&#x7801;&#x5206;&#x6790;</h1><h2 id="&#x5C5E;&#x6027;">3.1. &#x5C5E;&#x6027;</h2><p>&#x5148;&#x770B;ArrayList&#x5185;&#x90E8;&#x4FDD;&#x5B58;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x72B6;&#x6001;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = {};</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};</div><div class="line"><span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;</div></pre></td></tr></table></figure></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;&#x6700;&#x5173;&#x952E;&#x7684;&#x4E3A;<code>elementData</code>&#x548C;<code>size</code>&#x3002; <code>elementData</code>&#x4E5F;&#x5373;&#x771F;&#x6B63;&#x5B58;&#x50A8;&#x5143;&#x7D20;&#x7684;java&#x539F;&#x751F;&#x6570;&#x7EC4;&#x3002;<br>&#x7531;&#x4E8E;ArrayList&#x4E2D;&#x5B9E;&#x9645;&#x4FDD;&#x5B58;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x662F;&#x5C11;&#x4E8E;<code>elementData</code>&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x7684;&#xFF0C;&#x4E5F;&#x5373;&#x4F1A;&#x6709;&#x90E8;&#x5206;&#x7A7A;&#x95F4;&#x7684;&#x6D6A;&#x8D39;&#xFF0C;&#x56E0;&#x6B64;<code>size</code>&#x5C5E;&#x6027;&#x662F;&#x7528;&#x6765;&#x4FDD;&#x5B58;<code>ArrayList</code>&#x5B58;&#x50A8;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;</p>
+<p>&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;<code>elementData</code>&#x6CA1;&#x6709;&#x8BBF;&#x95EE;&#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x9ED8;&#x8BA4;&#x662F;&#x5BF9;&#x5305;&#x5185;&#x53EF;&#x89C1;&#x7684;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x76EE;&#x7684;&#x662F;&#xFF1A;</p>
+<ol>
+<li>&#x5373;&#x80FD;&#x4FDD;&#x8BC1;&#x4F7F;&#x7528;&#x8005;&#xFF08;&#x5305;&#x5916;&#xFF09;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x5230;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;&#x6570;&#x636E;&#x9690;&#x85CF;&#xFF1B;</li>
+<li>&#x53E6;&#x5916;&#x4E00;&#x65B9;&#x9762;&#xFF0C;&#x5B9E;&#x73B0;ArrayList&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x8F85;&#x52A9;&#x4F5C;&#x7528;&#x7684;&#x5D4C;&#x5957;&#x7C7B;&#xFF0C;&#x5B83;&#x4EEC;&#x9700;&#x8981;&#x77E5;&#x9053;&#x90E8;&#x5206;ArrayList&#x7684;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x3002;&#x7531;&#x4E8E;&#x5B83;&#x4EEC;&#x548C;ArrayList&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5305;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#x8F85;&#x52A9;&#x7C7B;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x5230;&#x5B83;&#x4EEC;&#x3002;</li>
+</ol>
+<h2 id="&#x6784;&#x9020;&#x51FD;&#x6570;">3.2. &#x6784;&#x9020;&#x51FD;&#x6570;</h2><p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E00;&#x5171;&#x6709;&#x4E09;&#x4E2A;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x5176;&#x4E2D;&#x4E24;&#x4E2A;&#x3002;&#x7B2C;&#x4E09;&#x4E2A;&#x662F;&#x4ECE;&#x5176;&#x5B83;&#x5BB9;&#x5668;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x770B;&#x7684;&#x5730;&#x65B9;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (initialCapacity &gt; <span class="number">0</span>) {</div><div class="line">        <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[initialCapacity];</div><div class="line">    } <span class="keyword">else</span> <span class="keyword">if</span> (initialCapacity == <span class="number">0</span>) {</div><div class="line">        <span class="keyword">this</span>.elementData = EMPTY_ELEMENTDATA;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal Capacity: &quot;</span>+</div><div class="line">                                           initialCapacity);</div><div class="line">    }</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Constructs an empty list with an initial capacity of ten.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">this</span>.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x5E26;&#x53C2;&#x6570;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x884C;&#x4E3A;&#x4E0A;&#x8FD9;&#x4E2A;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x4F9D;&#x7136;&#x662F;&#x4E2A;&#x7A7A;&#x8868;&#xFF0C;&#x770B;&#x4EE3;&#x7801;&#x4E5F;&#x53EF;&#x53D1;&#x73B0;&#x6267;&#x884C;&#x5B8C;&#x540E;<code>size</code>&#x5C5E;&#x6027;&#x4E3A;0&#x3002;<code>initialCapacity</code>&#x7684;&#x542B;&#x4E49;&#x662F;&#x6307;&#x5B9A;&#x5185;&#x90E8;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5927;&#x5C0F;&#x3002;<br>&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x5F88;&#x7B80;&#x5355;&#xFF0C;<code>initialCapacity</code>&#x5927;&#x4E8E;0&#x65F6;&#x5BF9;<code>elementData</code>&#x5206;&#x914D;&#x8BE5;&#x5927;&#x5C0F;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x3002;&#x4F46;&#x662F;&#x95EE;&#x9898;&#x662F;&#xFF0C;<code>initialCapacity</code>&#x4E3A;0&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x76F4;&#x63A5;new&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x4E3A;0&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x53D8;&#x91CF;<code>EMPTY_ELEMENTDATA</code>&#x6765;&#x4EE3;&#x66FF;&#x3002;<br>&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;<code>EMPTY_ELEMENTDATA</code>&#x662F;&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x6709;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#xFF0C;&#x4E2A;&#x4EBA;&#x731C;&#x6D4B;&#x5E94;&#x8BE5;&#x662F;&#x4E3A;&#x4E86;&#x7701;&#x70B9;&#x5185;&#x5B58;&#x5427;&#x3002;&#x53EF;&#x662F;&#x8FD9;&#x4E2A;&#x5360;&#x4E0D;&#x4E86;&#x591A;&#x5927;&#x7684;&#x5185;&#x5B58;&#x554A;&#xFF0C;&#x8FD9;&#x4E2A;&#x7406;&#x7531;&#x53EF;&#x80FD;&#x8BF4;&#x670D;&#x529B;&#x4E0D;&#x592A;&#x5F3A;&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x884C;&#x4E3A;&#x4E0A;&#x4E5F;&#x662F;&#x521B;&#x5EFA;&#x7A7A;&#x8868;&#x3002;&#x4F46;&#x662F;&#x4F1A;&#x9884;&#x5148;&#x5C06;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x8BBE;&#x7F6E;&#x4E3A;<code>DEFAULT_CAPACITY</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9ED8;&#x8BA4;&#x503C;10&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x80FD;&#x907F;&#x514D;&#x5728;&#x5927;&#x5C0F;&#x8F83;&#x5C0F;&#x65F6;&#x9891;&#x7E41;&#x6269;&#x5BB9;&#x5E26;&#x6765;&#x6027;&#x80FD;&#x635F;&#x8017;&#x3002;</p>
+<p>&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#xFF0C;&#x4EE3;&#x7801;&#x5E94;&#x8BE5;&#x957F;&#x8FD9;&#x6837;&#x624D;&#x5BF9;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[DEFAULT_CAPACITY];</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;<code>DEFAULTCAPACITY_EMPTY_ELEMENTDATA</code>&#x5176;&#x5B9E;&#x662F;&#x4E2A;&#x7A7A;&#x8868;&#xFF0C;&#x4E5F;&#x662F;&#x9759;&#x6001;&#x53D8;&#x91CF;&#xFF0C;&#x591A;&#x5B9E;&#x4F8B;&#x5171;&#x4EAB;&#x7684;&#x3002;<br>&#x8FD9;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x79CD;&#x4F18;&#x5316;&#x624B;&#x6BB5;&#xFF0C;&#x56E0;&#x4E3A;&#x5F88;&#x591A;&#x573A;&#x666F;&#x90FD;&#x662F;&#x76F4;&#x63A5;&#x9ED8;&#x8BA4;&#x6784;&#x9020;&#x7684;&#x4E00;&#x4E2A;&#x7A7A;&#x8868;&#x5728;&#x54EA;&#x91CC;&#x653E;&#x7740;&#xFF0C;&#x4E3A;&#x4E86;&#x8282;&#x7EA6;&#x5185;&#x5B58;&#xFF0C;jdk&#x5B9E;&#x73B0;&#x5148;&#x4E0D;&#x5B9E;&#x9645;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;&#x4EC5;&#x4EC5;&#x505A;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x6807;&#x8BB0;&#x4F5C;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4E4B;&#x540E;&#x771F;&#x6B63;&#x4F7F;&#x7528;&#x4E86;&#x624D;&#x4F1A;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;&#x8FBE;&#x5230;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x201C;&#x5EF6;&#x8FDF;&#x5206;&#x914D;&#x201D;&#x7684;&#x6548;&#x679C;&#x3002;&#x8FD9;&#x4E9B;&#x601D;&#x8DEF;&#x5728;&#x6269;&#x5BB9;&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x6709;&#x6240;&#x4F53;&#x73B0;&#x3002;</p>
+<h2 id="get&#x548C;set">3.3. get&#x548C;set</h2><p>get&#x548C;set&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x8BF4;&#x7684;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x5185;&#x90E8;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x3002;<br>&#x4E0D;&#x8FC7;&#xFF0C;&#x4ECE;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5728;get&#x548C;set&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x505A;&#x8D8A;&#x754C;&#x68C0;&#x67E5;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rangeCheck</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (index &gt;= size)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(outOfBoundsMsg(index));</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    rangeCheck(index);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> elementData(index);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function">E <span class="title">elementData</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    <span class="keyword">return</span> (E) elementData[index];</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>{</div><div class="line">    rangeCheck(index);</div><div class="line"></div><div class="line">    E oldValue = elementData(index);</div><div class="line">    elementData[index] = element;</div><div class="line">    <span class="keyword">return</span> oldValue;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h2 id="add">3.4. add</h2><p>&#x4E0B;&#x9762;&#x518D;&#x6765;&#x770B;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x3002;&#x63D2;&#x5165;&#x6709;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ol>
+<li>&#x7B2C;&#x4E00;&#x79CD;&#x662F;&#x5728;&#x672B;&#x5C3E;&#x63D2;&#x5165;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x79CD;&#x662F;&#x5728;&#x4E2D;&#x95F4;&#x63D2;&#x5165;&#x3002;</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>{</div><div class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></div><div class="line">    elementData[size++] = e;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>{</div><div class="line">    rangeCheckForAdd(index);</div><div class="line"></div><div class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></div><div class="line">    System.arraycopy(elementData, index, elementData, index + <span class="number">1</span>,</div><div class="line">                     size - index);</div><div class="line">    elementData[index] = element;</div><div class="line">    size++;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">rangeCheckForAdd</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (index &gt; size || index &lt; <span class="number">0</span>)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IndexOutOfBoundsException(outOfBoundsMsg(index));</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x601D;&#x8DEF;&#x90FD;&#x7279;&#x522B;&#x663E;&#x7136;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5728;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#xFF0C;&#x8C03;&#x7528;&#x4E86;<code>ensureCapacityInternal</code>&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5B8C;&#x6BD5;&#x540E;&#x4F1A;&#x4FDD;&#x8BC1;&#x5185;&#x90E8;&#x6570;&#x7EC4;&#x7684;&#x7A7A;&#x95F4;&#x80FD;&#x5B58;&#x50A8;&#x4E0B;&#x8FD9;&#x4E48;&#x591A;&#x5143;&#x7D20;&#x3002;<br>&#x6B64;&#x5916;&#xFF0C;<code>void add(int, E)</code>&#x51FD;&#x6570;&#x8FD8;&#x505A;&#x4E86;&#x8D8A;&#x754C;&#x68C0;&#x67E5;&#x3002;</p>
+<h2 id="&#x6269;&#x5BB9;&#x64CD;&#x4F5C;">3.5. &#x6269;&#x5BB9;&#x64CD;&#x4F5C;</h2><p>&#x63A5;&#x4E0B;&#x6765;&#x770B;<code>ensureCapacityInternal</code>&#x51FD;&#x6570;&#xFF0C;&#x76F8;&#x5173;&#x5B9E;&#x73B0;&#x6D89;&#x53CA;&#x5230;&#x56DB;&#x4E2A;&#x51FD;&#x6570;&#x3002;<br>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x76EE;&#x7684;&#x662F;&#x4FDD;&#x8BC1;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x5185;&#x90E8;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x81F3;&#x5C11;&#x80FD;&#x5BB9;&#x7EB3;<code>minCapacity</code>&#x4E2A;&#x5143;&#x7D20;&#x3002;<br>&#x4E4B;&#x524D;&#x6240;&#x8BF4;&#x7684;&#x90A3;&#x79CD;&#x201C;&#x5EF6;&#x8FDF;&#x5206;&#x914D;&#x201D;&#x64CD;&#x4F5C;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x4F53;&#x73B0;&#x51FA;&#x6765;&#x4E86;&#x3002;&#x5206;&#x6790;&#x4EE3;&#x7801;&#x6D41;&#x7A0B;&#x4E0D;&#x96BE;&#x53D1;&#x73B0;&#xFF0C;&#x5F53;<code>elementData</code>&#x4E3A;<code>DEFAULTCAPACITY_EMPTY_ELEMENTDATA</code>&#xFF0C;&#x4E5F;&#x5373;&#x524D;&#x9762;&#x6240;&#x8BF4;&#x5230;&#x7684;&#x90A3;&#x4E2A;&#x6807;&#x8BB0;&#xFF0C;&#x90A3;&#x4E48;&#x4E4B;&#x540E;&#x6269;&#x5BB9;&#x540E;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x7A7A;&#x95F4;&#x4E00;&#x5B9A;&#x4E0D;&#x5C0F;&#x4E8E;<code>DEFAULT_CAPACITY</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x524D;&#x9762;&#x5B9A;&#x4E49;&#x5904;&#x7684;10&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {</div><div class="line">        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</div><div class="line">    }</div><div class="line"></div><div class="line">    ensureExplicitCapacity(minCapacity);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">    modCount++;</div><div class="line"></div><div class="line">    <span class="comment">// overflow-conscious code</span></div><div class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</div><div class="line">        grow(minCapacity);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">    <span class="comment">// overflow-conscious code</span></div><div class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</div><div class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</div><div class="line">        newCapacity = minCapacity;</div><div class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</div><div class="line">        newCapacity = hugeCapacity(minCapacity);</div><div class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></div><div class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</div><div class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</div><div class="line">        Integer.MAX_VALUE :</div><div class="line">        MAX_ARRAY_SIZE;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x518D;&#x770B;&#x5177;&#x4F53;&#x7684;&#x6269;&#x5BB9;&#x903B;&#x8F91;&#xFF0C;&#x4E5F;&#x5373;<code>grow</code>&#x51FD;&#x6570;&#x3002;&#x903B;&#x8F91;&#x8FD8;&#x4E0D;&#x5355;&#x4E00;&#x3002;&#x9996;&#x5148;&#x6269;&#x5BB9;&#x5C1D;&#x8BD5;&#x6309;&#x7167;&#x539F;&#x6765;&#x5927;&#x5C0F;&#x7684;1.5&#x500D;&#x6269;&#x5BB9;&#xFF0C;&#x4E3A;&#x4E86;&#x6027;&#x80FD;&#xFF0C;&#x8FD9;&#x91CC;&#x9664;&#x4EE5;2&#x4F18;&#x5316;&#x6210;&#x4E86;&#x53F3;&#x79FB;&#x8FD0;&#x7B97;&#x3002;<br>&#x5982;&#x679C;1.5&#x500D;&#x4E0D;&#x591F;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x5982;&#x679C;&#x662F;&#x6211;&#xFF0C;&#x6211;&#x53EF;&#x80FD;&#x4F1A;&#x4F18;&#x96C5;&#x7684;&#x9012;&#x5F52;&#x518D;&#x6269;&#x5927;&#xFF0C;&#x7136;&#x800C;&#xFF0C;jdk&#x7684;&#x505A;&#x6CD5;&#x662F;&#x5982;&#x679C;1.5&#x500D;&#x4E0D;&#x591F;&#x7684;&#x8BDD;&#x76F4;&#x63A5;&#x6309;&#x7167;&#x9700;&#x8981;&#x7684;&#x5927;&#x5C0F;&#x6269;&#x5BB9;&#x3002;<br>&#x6700;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x5B9E;&#x5728;&#x592A;&#x5927;&#xFF0C;&#x4E5F;&#x8981;&#x505A;&#x4E00;&#x4E0B;&#x9650;&#x5236;&#xFF0C;&#x6700;&#x5927;&#x53EF;&#x8FBE;&#x5230;&#x7684;&#x5927;&#x5C0F;&#x4E3A;<code>Integer.MAX_VALUE</code>&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x8D85;&#x8FC7;&#x4E86;int&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x6EA2;&#x51FA;&#x4E86;&#x3002;</p>
+<h2 id="&#x79FB;&#x9664;&#x64CD;&#x4F5C;">3.6. &#x79FB;&#x9664;&#x64CD;&#x4F5C;</h2><p>&#x4E0B;&#x9762;&#x662F;&#x79FB;&#x9664;&#x76F8;&#x5173;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</p>
+<ol>
+<li><code>E remove(int)</code>&#x662F;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x79FB;&#x9664;&#x3002;</li>
+<li><code>boolean remove(Object)</code>&#x662F;&#x901A;&#x8FC7;&#x5143;&#x7D20;&#x79FB;&#x9664;&#x3002;</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    rangeCheck(index);</div><div class="line"></div><div class="line">    modCount++;</div><div class="line">    E oldValue = elementData(index);</div><div class="line"></div><div class="line">    <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)</div><div class="line">        System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index,</div><div class="line">                         numMoved);</div><div class="line">    elementData[--size] = <span class="keyword">null</span>; <span class="comment">// clear to let GC do its work</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> oldValue;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>{</div><div class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) {</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</div><div class="line">            <span class="keyword">if</span> (elementData[index] == <span class="keyword">null</span>) {</div><div class="line">                fastRemove(index);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            }</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</div><div class="line">            <span class="keyword">if</span> (o.equals(elementData[index])) {</div><div class="line">                fastRemove(index);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fastRemove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    modCount++;</div><div class="line">    <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)</div><div class="line">        System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index,</div><div class="line">                         numMoved);</div><div class="line">    elementData[--size] = <span class="keyword">null</span>; <span class="comment">// clear to let GC do its work</span></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6309;&#x7D22;&#x5F15;&#x79FB;&#x9664;&#x7684;&#x7684;&#x601D;&#x8DEF;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x9996;&#x5148;&#x628A;&#x9700;&#x8981;&#x79FB;&#x9664;&#x7684;&#x5143;&#x7D20;&#x62FF;&#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x9762;&#x7684;&#x90FD;&#x5F80;&#x524D;&#x632A;&#x4E00;&#x4E2A;&#xFF0C;&#x901A;&#x8FC7;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#x5B9E;&#x73B0;&#x3002;<br>&#x4F46;&#x662F;&#xFF0C;&#x6709;&#x4E2A; <strong>&#x7279;&#x522B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x5730;&#x65B9;&#x662F;</strong>&#xFF0C;&#x5047;&#x8BBE;&#x5220;&#x9664;&#x4E4B;&#x540E;&#x7684;&#x8868;&#x5927;&#x5C0F;&#x4E3A;N&#xFF0C;&#x5F80;&#x524D;&#x632A;&#x4E00;&#x4E2A;&#x540E;&#xFF0C;<code>elementData[N - 1]</code>&#x548C;<code>elementData[N]</code>&#x90FD;&#x6307;&#x5411;&#x4E86;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x8FD9;&#x65F6;<code>elementData[N]</code>&#x4ECD;&#x7136;&#x6301;&#x6709;&#x5BF9;&#x8BE5;&#x5143;&#x7D20;&#x7684;&#x5F15;&#x7528;&#x3002;&#x5982;&#x679C;&#x4E4B;&#x540E;&#x8BD5;&#x56FE;&#x79FB;&#x9664;&#x8868;&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5B83;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#x53CA;&#x65F6;&#x7684;&#x88AB;gc&#x5E72;&#x6389;&#xFF0C;&#x9020;&#x6210;&#x65E0;&#x610F;&#x4E49;&#x7684;&#x989D;&#x5916;&#x5185;&#x5B58;&#x5360;&#x7528;&#x3002;</p>
+<p>&#x6309;&#x5143;&#x7D20;&#x79FB;&#x9664;&#x7684;&#x601D;&#x8DEF;&#x4E5F;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x5148;&#x662F;&#x627E;&#x5230;&#x8BE5;&#x5143;&#x7D20;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x7136;&#x540E;&#x6309;&#x7D22;&#x5F15;&#x79FB;&#x9664;&#x3002;<code>fastRemove</code>&#x7684;&#x4EE3;&#x7801;&#x51E0;&#x4E4E;&#x548C;<code>remove(int)</code>&#x4E00;&#x6A21;&#x4E00;&#x6837;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x590D;&#x7528;&#x4E00;&#x4E0B;&#x3002;&#x3002;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x4ECE;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E00;&#x70B9;&#xFF0C;&#x8868;&#x5185;&#x5143;&#x7D20;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#xFF0C;&#x4F46;&#x662F;jdk&#x5BF9;ArrayList&#x7684;&#x5B9E;&#x73B0;&#x53EA;&#x4F1A;&#x6269;&#x5BB9;&#x8868;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x7F29;&#x5C0F;&#x8868;&#x4EE5;&#x51CF;&#x5C0F;&#x5185;&#x5B58;&#x5360;&#x7528;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;<code>trimToSize</code>&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;&#x8868;&#x4E2D;&#x539F;&#x751F;&#x6570;&#x7EC4;&#x7684;&#x7A7A;&#x95F2;&#x7A7A;&#x95F4;&#x53BB;&#x6389;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">()</span> </span>{</div><div class="line">    modCount++;</div><div class="line">    <span class="keyword">if</span> (size &lt; elementData.length) {</div><div class="line">        elementData = (size == <span class="number">0</span>)</div><div class="line">          ? EMPTY_ELEMENTDATA</div><div class="line">          : Arrays.copyOf(elementData, size);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x5B83;&#x91CD;&#x65B0;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x6B63;&#x597D;&#x5408;&#x9002;&#x7684;&#x539F;&#x751F;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x62F7;&#x8D1D;&#x8FC7;&#x53BB;&#x3002;</p>
+<h2 id="removeAll-amp-retainAll">3.7. removeAll&amp;retainAll</h2><p>&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF1A;</p>
+<ol>
+<li>removeAll&#x662F;&#x79FB;&#x9664;&#x6240;&#x6709;c&#x4E2D;&#x7684;&#x5143;&#x7D20;</li>
+<li>retainAll&#x662F;&#x4FDD;&#x7559;&#x6240;&#x6709;c&#x4E2D;&#x7684;&#x5143;&#x7D20;</li>
+</ol>
+<p>&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7B97;&#x6CD5;&#x51E0;&#x4E4E;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#xFF0C;&#x56E0;&#x6B64;&#x62BD;&#x8C61;&#x51FA;&#x4E00;&#x4E2A;&#x51FD;&#x6570;<code>batchRemove</code>&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>{</div><div class="line">    Objects.requireNonNull(c);</div><div class="line">    <span class="keyword">return</span> batchRemove(c, <span class="keyword">false</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>{</div><div class="line">    Objects.requireNonNull(c);</div><div class="line">    <span class="keyword">return</span> batchRemove(c, <span class="keyword">true</span>);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">batchRemove</span><span class="params">(Collection&lt;?&gt; c, <span class="keyword">boolean</span> complement)</span> </span>{</div><div class="line">    <span class="keyword">final</span> Object[] elementData = <span class="keyword">this</span>.elementData;</div><div class="line">    <span class="keyword">int</span> r = <span class="number">0</span>, w = <span class="number">0</span>;</div><div class="line">    <span class="keyword">boolean</span> modified = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        <span class="keyword">for</span> (; r &lt; size; r++)</div><div class="line">            <span class="keyword">if</span> (c.contains(elementData[r]) == complement)</div><div class="line">                elementData[w++] = elementData[r];</div><div class="line">    } <span class="keyword">finally</span> {</div><div class="line">        <span class="comment">// Preserve behavioral compatibility with AbstractCollection,</span></div><div class="line">        <span class="comment">// even if c.contains() throws.</span></div><div class="line">        <span class="keyword">if</span> (r != size) {</div><div class="line">            System.arraycopy(elementData, r,</div><div class="line">                             elementData, w,</div><div class="line">                             size - r);</div><div class="line">            w += size - r;</div><div class="line">        }</div><div class="line">        <span class="keyword">if</span> (w != size) {</div><div class="line">            <span class="comment">// clear to let GC do its work</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = w; i &lt; size; i++)</div><div class="line">                elementData[i] = <span class="keyword">null</span>;</div><div class="line">            modCount += size - w;</div><div class="line">            size = w;</div><div class="line">            modified = <span class="keyword">true</span>;</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> modified;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6838;&#x5FC3;&#x5728;&#x4E8E;try&#x4E2D;&#x7684;&#x90A3;&#x4E09;&#x884C;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x7B80;&#x5316;&#x4E86;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF1A;</p>
+<blockquote>
+<p>&#x6709;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;data&#x548C;isRemove&#xFF0C;isRemove[i]&#x4E3A;true&#x8868;&#x793A;data[i]&#x5E94;&#x8BE5;&#x88AB;&#x79FB;&#x9664;&#x3002;<br>&#x8981;&#x6C42;&#x5728;O(n)&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF0C;O(1)&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x5C06;data&#x4E2D;isRemove[i]&#x4E3A;true&#x7684;&#x5143;&#x7D20;&#x79FB;&#x9664;&#x3002;</p>
+</blockquote>
+<p>&#x7B97;&#x6CD5;&#x8FD9;&#x79CD;&#x4E1C;&#x897F;&#xFF0C;&#x601D;&#x8DEF;&#x6211;&#x80FD;&#x5728;&#x8111;&#x5B50;&#x91CC;&#x60F3;&#x8C61;&#x51FA;&#x6765;&#x753B;&#x9762;&#xFF0C;&#x4F46;&#x662F;&#x8BF4;&#x4E0D;&#x6E05;&#x695A;&#x3002;&#x3002;&#x3002;
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+ &#x5927;&#x5B66;&#x91CC;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x65F6;&#x5019;&#x90FD;&#x5199;&#x8FC7;&#xFF0C;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;&#x3002;</p>
+<h2 id="&#x5176;&#x5B83;">3.8. &#x5176;&#x5B83;</h2><p>&#x611F;&#x89C9;&#x5199;&#x7684;&#x6709;&#x70B9;&#x591A;&#x3002;&#x3002;&#x3002;&#x4EE5;&#x4E0A;&#x662F;&#x548C;<code>ArrayList</code>&#x64CD;&#x4F5C;&#x5BC6;&#x5207;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x5176;&#x5B83;&#x7684;&#x7B80;&#x5355;&#x603B;&#x7ED3;&#x4E0B;&#x5427;&#x3002;</p>
+<ol>
+<li>subList. subList&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;List&#xFF0C;&#x4EE3;&#x8868;&#x7740;&#x8BE5;ArrayList&#x7684;&#x4E2D;&#x95F4;&#x4E00;&#x6BB5;&#x3002;&#x8FD9;&#x4E2A;subList&#x5B9E;&#x9645;&#x4E0A;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x7C7B;&#x4F3C;&#x89C6;&#x56FE;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x672C;&#x8EAB;&#x4E0D;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x5BF9;subList&#x7684;&#x64CD;&#x4F5C;&#x6700;&#x7EC8;&#x4F1A;&#x53CD;&#x6620;&#x5230;&#x539F;&#x6765;&#x7684;&#x90A3;&#x4E2A;ArrayList&#x4E0A;&#x6765;&#x3002;&#x5B9E;&#x73B0;&#x5728;&#x8F85;&#x52A9;&#x7C7B;<code>SubList</code>&#x4E2D;&#x3002;</li>
+<li>iterator. &#x8FD4;&#x56DE;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x4E0E;&#x4E4B;&#x6709;&#x4E00;&#x4E2A;&#x642D;&#x914D;&#x7684;&#x8F85;&#x52A9;&#x7C7B;<code>Itr</code>&#x3002;&#x57FA;&#x672C;&#x90FD;&#x662F;&#x4E00;&#x4E9B;&#x5305;&#x88C5;&#x4EE3;&#x7801;&#x3002;</li>
+<li>sort. &#x6392;&#x5E8F;&#x662F;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>Arrays.sort</code>&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x8981;&#x770B;<code>Arrays.sort</code>&#x3002;</li>
+</ol>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x770B;&#x61C2;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5373;&#x5728;AbstractList&#x4E2D;&#x6709;&#x4E00;&#x4E2A;<code>modCount</code>&#x5B57;&#x6BB5;&#xFF0C;<code>ArrayList</code>&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x591A;&#x6B21;&#x64CD;&#x4F5C;&#x8BE5;&#x5B57;&#x6BB5;&#x3002;&#x4F46;&#x662F;&#x4ECD;&#x7136;&#x6CA1;&#x6709;&#x7406;&#x89E3;&#x8BE5;&#x5B57;&#x6BB5;&#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+<h1 id="Vector">4. Vector</h1><p>Vector&#x63D0;&#x4F9B;&#x7684;&#x5BB9;&#x5668;&#x6A21;&#x578B;&#x548C;ArrayList&#x51E0;&#x4E4E;&#x4E00;&#x6A21;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5B83;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x3002;<br>&#x5B83;&#x7684;&#x4EE3;&#x7801;&#x601D;&#x8DEF;&#x4E0A;&#x548C;ArrayList&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0A;&#x7684;&#x5C0F;&#x533A;&#x522B;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x5B83;&#x6709;&#x4E00;&#x4E2A;&#x53C2;&#x6570;<code>capacityIncrement</code>&#xFF0C;&#x80FD;&#x591F;&#x63A7;&#x5236;&#x6269;&#x5BB9;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x770B;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">int</span> capacityIncrement)</span> </span>{</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Illegal Capacity: &quot;</span>+</div><div class="line">                                           initialCapacity);</div><div class="line">    <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[initialCapacity];</div><div class="line">    <span class="keyword">this</span>.capacityIncrement = capacityIncrement;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Vector</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>{</div><div class="line">    <span class="keyword">this</span>(initialCapacity, <span class="number">0</span>);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x4E0D;&#x6307;&#x5B9A;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x4E2A;<code>initialCapacity</code>&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;0&#x3002;&#x5728;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x5C5E;&#x6027;<code>capacityIncrement</code>&#x4FDD;&#x5B58;&#x3002;</p>
+<p>&#x5176;&#x6B21;&#xFF0C;&#x518D;&#x770B;&#x63A7;&#x5236;&#x6269;&#x5BB9;&#x7684;&#x6838;&#x5FC3;&#x51FD;&#x6570;<code>grow</code>&#xFF0C;&#x7814;&#x7A76;&#x4E0B;&#x6269;&#x5BB9;&#x903B;&#x8F91;&#x662F;&#x4E0D;&#x662F;&#x6709;&#x4EC0;&#x4E48;&#x5DEE;&#x5F02;:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>{</div><div class="line">    <span class="comment">// overflow-conscious code</span></div><div class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</div><div class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + ((capacityIncrement &gt; <span class="number">0</span>) ?</div><div class="line">                                     capacityIncrement : oldCapacity);</div><div class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</div><div class="line">        newCapacity = minCapacity;</div><div class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</div><div class="line">        newCapacity = hugeCapacity(minCapacity);</div><div class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;<code>capacityIncrement</code>&#x63A7;&#x5236;&#x7684;&#x662F;&#x6269;&#x5BB9;&#x7684;&#x6B65;&#x957F;&#x3002;<br>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x6B65;&#x957F;&#xFF0C;&#x90A3;&#x4E48;&#x5219;&#x662F;&#x6309;&#x7167;&#x4E24;&#x500D;&#x6269;&#x5BB9;&#xFF0C;&#x8FD9;&#x662F;&#x4E0E;<code>ArrayList</code>&#x4E0D;&#x540C;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<p>&#x603B;&#x4F53;&#x4E0A;&#xFF0C;&#x5B83;&#x76F8;&#x5F53;&#x4E8E;synchronized&#x540C;&#x6B65;&#x8FC7;&#x7684;ArrayList&#xFF0C;&#x4E5F;&#x5373;&#x5B83;&#x5BF9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5B9E;&#x73B0;&#x975E;&#x5E38;&#x66B4;&#x529B;&#xFF0C;&#x5E76;&#x672A;&#x7528;&#x5230;&#x592A;&#x591A;&#x7684;&#x6280;&#x5DE7;&#x3002;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x5728;&#x5E76;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x5BF9;vector&#x7684;&#x64CD;&#x4F5C;&#x76F4;&#x63A5;&#x9501;&#x4F4F;&#x6574;&#x4E2A;vector&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x64CD;&#x4F5C;vector&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x4E32;&#x884C;&#x64CD;&#x4F5C;vector&#xFF0C;&#x6027;&#x80FD;&#x4E0D;&#x9AD8;&#x3002;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">emacs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">orgmode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -209,81 +305,93 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2016-09-16-b0bb.html" class="archive-article-date">
-  	<time datetime="2016-09-16T12:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2016-09-16-b0bb.html">这是一篇使用 org-mode 书写的博文</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">emacs</a>
+        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">orgmode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jottings//" class="article-tag-list-link color4">jottings</a>
+        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/articles/2018-07-07-8fad.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">配置|electron+vue+ts+sqlite配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表的概念"><span class="toc-number">1.</span> <span class="toc-text">1. 线性表的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#表ADT"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 表ADT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现思路"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#时间空间复杂度"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 时间空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList的继承结构"><span class="toc-number">2.</span> <span class="toc-text">2. ArrayList的继承结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList源码分析"><span class="toc-number">3.</span> <span class="toc-text">3. ArrayList源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#get和set"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. get和set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#add"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩容操作"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 扩容操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#移除操作"><span class="toc-number">3.6.</span> <span class="toc-text">3.6. 移除操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#removeAll-amp-retainAll"><span class="toc-number">3.7.</span> <span class="toc-text">3.7. removeAll&amp;retainAll</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-number">3.8.</span> <span class="toc-text">3.8. 其它</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vector"><span class="toc-number">4.</span> <span class="toc-text">4. Vector</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://frapples.github.io/articles/2018-07-10-7932.html",
+  owner: 'frapples',
+  repo: 'frapples.github.io',
+  oauth: {
+    client_id: '0891e95861157db67799',
+    client_secret: 'ed05340f95e66138cc99d6f7dc1ee6e2ebc4662f',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -306,9 +414,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
