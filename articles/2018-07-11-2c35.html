@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://frapples.github.io">
-  <title>Tag: graphviz | Frapples的博客</title>
+  <title>源码|jdk源码之LinkedList与modCount字段 | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
-<meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frapples的博客">
-<meta property="og:url" content="https://frapples.github.io/tags/graphviz/index.html">
+  <meta name="description" content="&amp;#x94FE;&amp;#x8868;&amp;#x662F;&amp;#x5BF9;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x535A;&amp;#x6587;&amp;#x6240;&amp;#x8BF4;&amp;#x7684;&amp;#x987A;&amp;#x5E8F;&amp;#x8868;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002; &amp;#x4E0E;ArrayList&amp;#x601D;&amp;#x8DE">
+<meta name="keywords" content="java,list,jdk8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码|jdk源码之LinkedList与modCount字段">
+<meta property="og:url" content="https://frapples.github.io/articles/2018-07-11-2c35.html">
 <meta property="og:site_name" content="Frapples的博客">
-<meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta property="og:description" content="&amp;#x94FE;&amp;#x8868;&amp;#x662F;&amp;#x5BF9;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x535A;&amp;#x6587;&amp;#x6240;&amp;#x8BF4;&amp;#x7684;&amp;#x987A;&amp;#x5E8F;&amp;#x8868;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002; &amp;#x4E0E;ArrayList&amp;#x601D;&amp;#x8DE">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://frapples.github.io/articles/2018-07-11-2c35/LinkedList-UML.png">
+<meta property="og:updated_time" content="2018-07-11T14:07:38.180Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frapples的博客">
-<meta name="twitter:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="twitter:title" content="源码|jdk源码之LinkedList与modCount字段">
+<meta name="twitter:description" content="&amp;#x94FE;&amp;#x8868;&amp;#x662F;&amp;#x5BF9;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x535A;&amp;#x6587;&amp;#x6240;&amp;#x8BF4;&amp;#x7684;&amp;#x987A;&amp;#x5E8F;&amp;#x8868;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002; &amp;#x4E0E;ArrayList&amp;#x601D;&amp;#x8DE">
+<meta name="twitter:image" content="https://frapples.github.io/articles/2018-07-11-2c35/LinkedList-UML.png">
   
     <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
   
@@ -150,52 +153,102 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-IT/java/jdk/源码-jdk源码之LinkedList与modCount字段" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2016-11-16-1f70.html" class="archive-article-date">
-  	<time datetime="2016-11-16T05:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2016-11-16-1f70.html">dot 绘图语言</a>
+    <h1 class="article-title" itemprop="name">
+      源码|jdk源码之LinkedList与modCount字段
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/articles/2018-07-11-2c35.html" class="archive-article-date">
+  	<time datetime="2018-07-11T14:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x94FE;&#x8868;&#x662F;&#x5BF9;&#x4E0A;&#x4E00;&#x7BC7;&#x535A;&#x6587;&#x6240;&#x8BF4;&#x7684;&#x987A;&#x5E8F;&#x8868;&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x4E0E;ArrayList&#x601D;&#x8DEF;&#x622A;&#x7136;&#x4E0D;&#x540C;&#xFF0C;&#x94FE;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#x601D;&#x8DEF;&#x662F;&#xFF1A;</p>
+<ol>
+<li>&#x4E0D;&#x540C;&#x5143;&#x7D20;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5B58;&#x50A8;&#x5728;&#x79BB;&#x6563;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x3002;</li>
+<li>&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x8FD9;&#x6837;&#x6574;&#x4E2A;&#x79BB;&#x6563;&#x7684;&#x7A7A;&#x95F4;&#x5C31;&#x88AB;&#x201C;&#x4E32;&#x201D;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x6709;&#x987A;&#x5E8F;&#x7684;&#x8868;&#x3002;</li>
+</ol>
+<p>&#x4ECE;&#x94FE;&#x8868;&#x7684;&#x6982;&#x5FF5;&#x6765;&#x8BB2;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x7B97;&#x662F;&#x4E00;&#x79CD;&#x9012;&#x5F52;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x56E0;&#x4E3A;&#x94FE;&#x8868;&#x62FF;&#x6389;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5269;&#x4E0B;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x4F9D;&#x7136;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x3002;</p>
+<a id="more"></a>
+<h1 id="&#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;">1. &#x65F6;&#x95F4;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;</h1><ol>
+<li>&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x5B9A;&#x4F4D;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x7531;&#x4E8E;&#x4E0D;&#x80FD;&#x50CF;ArrayList&#x90A3;&#x6837;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x8BA1;&#x7B97;&#x5185;&#x5B58;&#x5730;&#x5740;&#x504F;&#x79FB;&#x91CF;&#x6765;&#x5B9A;&#x4F4D;&#x5143;&#x7D20;&#xFF0C;&#x53EA;&#x80FD;&#x4ECE;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x5F00;&#x59CB;&#x987A;&#x85E4;&#x6478;&#x74DC;&#x6765;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x4E3A;O(n)&#x3002;</li>
+<li>&#x63D2;&#x5165;&#x5143;&#x7D20;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x9700;&#x8981;&#x770B;&#x60C5;&#x51B5;&#xFF1A;<ul>
+<li>&#x5982;&#x679C;&#x6307;&#x5B9A;&#x94FE;&#x8868;&#x4E2D;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x5C06;&#x5176;&#x63D2;&#x4E4B;&#x5176;&#x540E;&#xFF0C;&#x90A3;&#x4E48;&#x9996;&#x5148;&#x5F97;&#x627E;&#x51FA;&#x8BE5;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x8FD8;&#x662F;O(n)&#x3002;</li>
+<li>&#x5982;&#x679C;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x8282;&#x70B9;&#x5F80;&#x5176;&#x540E;&#x63D2;&#x5165;&#xFF08;&#x5982;&#x901A;&#x8FC7;&#x8FED;&#x4EE3;&#x5668;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x4EC5;&#x4EC5;&#x9700;&#x8981;&#x79FB;&#x52A8;&#x6307;&#x9488;&#x5373;&#x53EF;&#x5B8C;&#x6210;&#xFF0C;O(1)&#x3002;</li>
+</ul>
+</li>
+<li>&#x79FB;&#x9664;&#x5143;&#x7D20;&#x3002;&#x79FB;&#x9664;&#x548C;&#x63D2;&#x5165;&#x7C7B;&#x4F3C;&#xFF0C;&#x5F97;&#x770B;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x5982;&#x679C;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x5143;&#x7D20;&#x6240;&#x5728;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x53EA;&#x9700;&#x8981;O(1)&#x3002;</li>
+</ol>
+<h1 id="LinkedList&#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;">2. LinkedList&#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;</h1><p><img src="/articles/2018-07-11-2c35/LinkedList-UML.png" alt="img"></p>
+<p>&#x9996;&#x5148;&#x7EE7;&#x627F;&#x7ED3;&#x6784;&#x548C;ArrayList&#x7C7B;&#x4F3C;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;List&#x63A5;&#x53E3;&#x3002;<br>&#x4F46;&#x662F;&#xFF0C;&#x5B83;&#x7EE7;&#x627F;&#x7684;&#x662F;&#x7EE7;&#x627F;&#x4E86;AbstractList&#x7C7B;&#x7684;AbstractSequentialList&#x7C7B;&#xFF0C;<br>&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x4F5C;&#x7528;&#x4E5F;&#x662F;&#x7ED9;List&#x4E2D;&#x7684;&#x90E8;&#x5206;&#x51FD;&#x6570;&#x63D0;&#x4F9B;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x53EA;&#x662F;&#x8FD9;&#x4E2A;&#x7C7B;&#x5BF9;&#x94FE;&#x8868;&#x8FD9;&#x79CD;List&#x7684;&#x5B9E;&#x73B0;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x591A;&#x8D34;&#x5408;&#x7684;&#x9ED8;&#x8BA4;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x53EF;&#x4EE5;&#x6CE8;&#x610F;&#x5230;&#xFF0C;LinkedList&#x5B9E;&#x73B0;&#x4E86;Deque&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E5F;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x94FE;&#x8868;&#x8FD9;&#x79CD;&#x7ED3;&#x6784;&#x5929;&#x7136;&#x5C31;&#x9002;&#x5408;&#x5F53;&#x505A;&#x53CC;&#x7AEF;&#x961F;&#x5217;&#x4F7F;&#x7528;&#x3002;</p>
+<h1 id="LinkedList&#x6E90;&#x7801;&#x5206;&#x6790;">3. LinkedList&#x6E90;&#x7801;&#x5206;&#x6790;</h1><h2 id="&#x8282;&#x70B9;&#x5B9A;&#x4E49;">3.1. &#x8282;&#x70B9;&#x5B9A;&#x4E49;</h2><p>&#x5148;&#x6765;&#x770B;&#x94FE;&#x8868;&#x7684;&#x8282;&#x70B9;&#x5B9A;&#x4E49;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>{</div><div class="line">    E item;</div><div class="line">    Node&lt;E&gt; next;</div><div class="line">    Node&lt;E&gt; prev;</div><div class="line"></div><div class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) {</div><div class="line">        <span class="keyword">this</span>.item = element;</div><div class="line">        <span class="keyword">this</span>.next = next;</div><div class="line">        <span class="keyword">this</span>.prev = prev;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x94FE;&#x8868;&#x8282;&#x70B9;&#x9664;&#x4E86;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x5916;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x6307;&#x5411;&#x524D;&#x540E;&#x8282;&#x70B9;&#x7684;&#x6307;&#x9488;&#x3002;<br>&#x8FD9;&#x91CC;&#xFF0C;&#x94FE;&#x8868;&#x5373;&#x6709;&#x540E;&#x7EE7;&#x6307;&#x9488;&#x4E5F;&#x6709;&#x524D;&#x9A71;&#x6307;&#x9488;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;</p>
+<p>&#x4E00;&#x7EC4;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x6309;&#x987A;&#x5E8F;&#x7528;&#x6307;&#x9488;&#x6307;&#x8D77;&#x6765;&#xFF0C;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x94FE;&#x8868;&#x7684;&#x94FE;&#x72B6;&#x7ED3;&#x6784;&#x3002;</p>
+<h2 id="&#x5C5E;&#x6027;&#x548C;&#x6784;&#x9020;&#x51FD;&#x6570;">3.2. &#x5C5E;&#x6027;&#x548C;&#x6784;&#x9020;&#x51FD;&#x6570;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size = <span class="number">0</span>;</div><div class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</div><div class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</div></pre></td></tr></table></figure>
+<p>&#x4E09;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;first&#x548C;last&#x5206;&#x522B;&#x6307;&#x5411;&#x94FE;&#x6761;&#x7684;&#x9996;&#x8282;&#x70B9;&#x548C;&#x5C3E;&#x8282;&#x70B9;&#x3002;<br>&#x8FD9;&#x6837;&#x6709;&#x4E2A;&#x597D;&#x5904;&#xFF0C;&#x5C31;&#x662F;&#x94FE;&#x8868;&#x5373;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5934;&#x63D2;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5C3E;&#x63D2;&#x6CD5;&#x3002;</p>
+<p>size&#x5C5E;&#x6027;&#x8DDF;&#x8E2A;&#x4E86;&#x94FE;&#x8868;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;&#x867D;&#x7136;&#x8BF4;&#x904D;&#x5386;&#x4E00;&#x904D;&#x94FE;&#x8868;&#x4E5F;&#x80FD;&#x7EDF;&#x8BA1;&#x5230;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;<br>&#x4F46;&#x662F;&#x90A3;&#x662F;O(n)&#x7684;&#x8D39;&#x65F6;&#x64CD;&#x4F5C;&#x3002;<br>&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x94FE;&#x8868;&#x7684;size&#x65B9;&#x6CD5;&#x662F;O(1)&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedList</span><span class="params">()</span> </span>{</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>LinkedList&#x7684;&#x4EE3;&#x7801;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7A7A;&#x7A7A;&#x5982;&#x4E5F;&#x3002;<br>&#x7A7A;&#x8868;&#x4E2D;&#xFF0C;first&#x548C;last&#x5B57;&#x6BB5;&#x90FD;&#x4E3A;null&#x3002;</p>
+<h2 id="get&#x548C;set&#x65B9;&#x6CD5;">3.3. get&#x548C;set&#x65B9;&#x6CD5;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    checkElementIndex(index);</div><div class="line">    <span class="keyword">return</span> node(index).item;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>{</div><div class="line">    checkElementIndex(index);</div><div class="line">    Node&lt;E&gt; x = node(index);</div><div class="line">    E oldVal = x.item;</div><div class="line">    x.item = element;</div><div class="line">    <span class="keyword">return</span> oldVal;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function">Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span> </span>{</div><div class="line">    <span class="comment">// assert isElementIndex(index);</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> (index &lt; (size &gt;&gt; <span class="number">1</span>)) {</div><div class="line">        Node&lt;E&gt; x = first;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; i++)</div><div class="line">            x = x.next;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        Node&lt;E&gt; x = last;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; index; i--)</div><div class="line">            x = x.prev;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>get&#x548C;set&#x7684;&#x601D;&#x8DEF;&#x90FD;&#x662F;&#x5148;&#x6839;&#x636E;&#x7D22;&#x5F15;&#x5B9A;&#x4F4D;&#x5230;&#x94FE;&#x8868;&#x8282;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x83B7;&#x5F97;&#x6216;&#x8BBE;&#x7F6E;&#x8282;&#x70B9;&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x62BD;&#x8C61;&#x51FA;&#x4E86;node&#x51FD;&#x6570;&#xFF0C;&#x6839;&#x636E;&#x7D22;&#x5F15;&#x627E;&#x5230;&#x94FE;&#x8868;&#x8282;&#x70B9;&#x3002;</p>
+<p><code>node</code>&#x7684;&#x601D;&#x8DEF;&#x4E5F;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x904D;&#x5386;&#x4E00;&#x904D;&#x5373;&#x53EF;&#x5F97;&#x5230;&#x3002;<br>&#x8FD9;&#x91CC;&#x505A;&#x4E86;&#x4E00;&#x70B9;&#x4F18;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;LinkedList&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x4E00;&#x4E2A;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x5E76;&#x4E14;LinkedList&#x6301;&#x6709;&#x4E86;&#x5934;&#x5C3E;&#x6307;&#x9488;&#x3002;<br>&#x90A3;&#x4E48;&#xFF0C;&#x6839;&#x636E;&#x7D22;&#x5F15;&#x548C;size&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x8BE5;&#x8282;&#x70B9;&#x662F;&#x5728;&#x94FE;&#x8868;&#x7684;&#x524D;&#x534A;&#x90E8;&#x5206;&#x8FD8;&#x662F;&#x540E;&#x534A;&#x90E8;&#x5206;&#xFF0C;<br>&#x4ECE;&#x800C;&#x51B3;&#x5B9A;&#x4ECE;&#x5934;&#x8282;&#x70B9;&#x5F00;&#x59CB;&#x904D;&#x5386;&#x8FD8;&#x662F;&#x4ECE;&#x5C3E;&#x8282;&#x70B9;&#x5F00;&#x59CB;&#x904D;&#x5386;&#xFF0C;&#x8FD9;&#x6837;&#x6700;&#x591A;&#x904D;&#x5386; N / 2&#x6B21;&#x5373;&#x53EF;&#x627E;&#x5230;&#x3002;</p>
+<h1 id="&#x6DFB;&#x52A0;-&#x5220;&#x9664;">4. &#x6DFB;&#x52A0;/&#x5220;&#x9664;</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>{</div><div class="line">    linkLast(e);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>{</div><div class="line">    checkPositionIndex(index);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (index == size)</div><div class="line">        linkLast(element);</div><div class="line">    <span class="keyword">else</span></div><div class="line">        linkBefore(element, node(index));</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>{</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</div><div class="line">    last = newNode;</div><div class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</div><div class="line">        first = newNode;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        l.next = newNode;</div><div class="line">    size++;</div><div class="line">    modCount++;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkBefore</span><span class="params">(E e, Node&lt;E&gt; succ)</span> </span>{</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; pred = succ.prev;</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(pred, e, succ);</div><div class="line">    succ.prev = newNode;</div><div class="line">    <span class="keyword">if</span> (pred == <span class="keyword">null</span>)</div><div class="line">        first = newNode;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        pred.next = newNode;</div><div class="line">    size++;</div><div class="line">    modCount++;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6DFB;&#x52A0;/&#x5220;&#x9664;&#x7684;&#x601D;&#x8DEF;&#x90FD;&#x7C7B;&#x4F3C;&#xFF0C;&#x5220;&#x9664;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x4E0D;&#x8D34;&#x4E86;&#x3002;&#x5982;&#x679C;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x9700;&#x8981;&#x88AB;&#x64CD;&#x4F5C;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x5C31;&#x80FD;&#x76F4;&#x63A5;&#x79FB;&#x52A8;&#x4E0B;&#x6307;&#x9488;&#xFF0C;O(1)&#x5B8C;&#x6210;&#x3002;&#x5426;&#x5219;&#x5C31;&#x9700;&#x8981;&#x904D;&#x5386;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x518D;&#x64CD;&#x4F5C;&#x3002;<br>&#x9700;&#x8981;&#x5173;&#x6CE8;&#x4E24;&#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x64CD;&#x4F5C;&#x5934;&#x6307;&#x9488;&#xFF0C;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x64CD;&#x4F5C;&#x5C3E;&#x6307;&#x9488;&#x3002;&#x4F46;&#x662F;&#x4E0D;&#x7BA1;&#x64CD;&#x4F5C;&#x54EA;&#x4E00;&#x4E2A;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x53CA;size&#x7684;&#x503C;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x5220;&#x9664;&#xFF0C;&#x5220;&#x9664;&#x540E;&#x53CA;&#x65F6;&#x628A;&#x76F8;&#x5173;&#x8282;&#x70B9;&#x7684;item&#x5B57;&#x6BB5;&#x7F6E;&#x4E3A;null&#xFF0C;&#x4EE5;&#x5E2E;&#x52A9;gc&#x80FD;&#x66F4;&#x5FEB;&#x7684;&#x91CA;&#x653E;&#x5185;&#x5B58;&#x3002;</li>
+</ol>
+<h1 id="modCount&#x5B57;&#x6BB5;&#x5206;&#x6790;">5. modCount&#x5B57;&#x6BB5;&#x5206;&#x6790;</h1><p>&#x4E4B;&#x524D;&#x9605;&#x8BFB;ArrayList&#x7684;&#x4EE3;&#x7801;&#x65F6;&#x53D1;&#x73B0;&#x4E86;modCount&#x8FD9;&#x4E00;&#x5B57;&#x6BB5;&#xFF0C;&#x5B83;&#x662F;&#x5B9A;&#x4E49;&#x5728;AbstractList&#x7C7B;&#x4E2D;&#x7684;&#x3002;&#x4E4B;&#x524D;&#x4E0D;&#x77E5;&#x9053;&#x5B83;&#x8D77;&#x5230;&#x4EC0;&#x4E48;&#x4F5C;&#x7528;&#xFF0C;&#x8FD9;&#x6B21;&#x7ED9;&#x5F04;&#x660E;&#x767D;&#x4E86;&#x3002;</p>
+<h2 id="&#x8FED;&#x4EE3;&#x5668;">5.1. &#x8FED;&#x4EE3;&#x5668;</h2><h3 id="&#x8FED;&#x4EE3;&#x5668;&#x8FED;&#x4EE3;&#x4E2D;&#x8868;&#x88AB;&#x4FEE;&#x6539;">5.1.1. &#x8FED;&#x4EE3;&#x5668;&#x8FED;&#x4EE3;&#x4E2D;&#x8868;&#x88AB;&#x4FEE;&#x6539;</h3><p>&#x8003;&#x8651;&#x4EE5;&#x4E0B;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;&gt;();</div><div class="line">    Iterator&lt;Integer&gt; it = list.listIterator();</div><div class="line">    list.add(<span class="number">1</span>);</div><div class="line">    it.next();</div></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x8FED;&#x4EE3;&#x5668;&#x521B;&#x5EFA;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x8868;&#x8FDB;&#x884C;&#x4E86;&#x4FEE;&#x6539;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x5982;&#x679C;&#x64CD;&#x4F5C;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x5219;&#x4F1A;&#x5F97;&#x5230;&#x5F02;&#x5E38;<code>java.util.ConcurrentModificationException</code>&#x3002;<br>&#x8FD9;&#x6837;&#x8BBE;&#x8BA1;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;&#x8FED;&#x4EE3;&#x5668;&#x4EE3;&#x8868;&#x8868;&#x4E2D;&#x67D0;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5185;&#x90E8;&#x4F1A;&#x5B58;&#x50A8;&#x67D0;&#x4E9B;&#x80FD;&#x591F;&#x4EE3;&#x8868;&#x8BE5;&#x4F4D;&#x7F6E;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x5F53;&#x8868;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x8BE5;&#x4FE1;&#x606F;&#x7684;&#x542B;&#x4E49;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x8FD9;&#x65F6;&#x64CD;&#x4F5C;&#x8FED;&#x4EE3;&#x5668;&#x5C31;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x4E0D;&#x53EF;&#x9884;&#x6599;&#x7684;&#x4E8B;&#x60C5;&#x3002;<br>&#x56E0;&#x6B64;&#xFF0C;&#x679C;&#x65AD;&#x629B;&#x5F02;&#x5E38;&#x963B;&#x6B62;&#xFF0C;&#x662F;&#x6700;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD9;&#x79CD;&#x8FED;&#x4EE3;&#x5668;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x4E2D;&#x8868;&#x7ED3;&#x6784;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x66F4;&#x7ECF;&#x5E38;&#x53D1;&#x751F;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#x3002;</p>
+<h2 id="&#x8BB0;&#x5F55;&#x8868;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x6807;&#x8BB0;">5.2. &#x8BB0;&#x5F55;&#x8868;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x6807;&#x8BB0;</h2><p>&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x7684;&#x5B9E;&#x73B0;&#x5C31;&#x9700;&#x8981;&#x8BB0;&#x5F55;&#x8868;&#x88AB;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x4E48;&#x601D;&#x8DEF;&#x662F;&#x4F7F;&#x7528;&#x72B6;&#x6001;&#x5B57;&#x6BB5;<code>modCount</code>&#x3002;<br>&#x6BCF;&#x5F53;&#x4F1A;&#x4FEE;&#x6539;&#x8868;&#x7684;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x90FD;&#x5C06;&#x6B64;&#x5B57;&#x6BB5;&#x52A0;1&#x3002;&#x4F7F;&#x7528;&#x8005;&#x53EA;&#x9700;&#x8981;&#x524D;&#x540E;&#x5BF9;&#x6BD4;&#x8BE5;&#x5B57;&#x6BB5;&#x5C31;&#x77E5;&#x9053;&#x4E2D;&#x95F4;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x8868;&#x662F;&#x5426;&#x88AB;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x5982;linkedList&#x4E2D;&#x7684;&#x5934;&#x63D2;&#x548C;&#x5C3E;&#x63D2;&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x5C06;modCount&#x5B57;&#x6BB5;&#x81EA;&#x589E;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkFirst</span><span class="params">(E e)</span> </span>{</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; f = first;</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(<span class="keyword">null</span>, e, f);</div><div class="line">    first = newNode;</div><div class="line">    <span class="keyword">if</span> (f == <span class="keyword">null</span>)</div><div class="line">        last = newNode;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        f.prev = newNode;</div><div class="line">    size++;</div><div class="line">    modCount++;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>{</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</div><div class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</div><div class="line">    last = newNode;</div><div class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</div><div class="line">        first = newNode;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        l.next = newNode;</div><div class="line">    size++;</div><div class="line">    modCount++;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h2 id="&#x8FED;&#x4EE3;&#x5668;-1">5.3. &#x8FED;&#x4EE3;&#x5668;</h2><p>&#x8FED;&#x4EE3;&#x5668;&#x4F7F;&#x7528;&#x8BE5;&#x5B57;&#x6BB5;&#x6765;&#x5224;&#x65AD;&#xFF0C;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">ListItr</span> <span class="keyword">implements</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; </span>{</div><div class="line">    <span class="keyword">private</span> Node&lt;E&gt; lastReturned;</div><div class="line">    <span class="keyword">private</span> Node&lt;E&gt; next;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nextIndex;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> expectedModCount = modCount;</div><div class="line"></div><div class="line">    ListItr(<span class="keyword">int</span> index) {</div><div class="line">        <span class="comment">// assert isPositionIndex(index);</span></div><div class="line">        next = (index == size) ? <span class="keyword">null</span> : node(index);</div><div class="line">        nextIndex = index;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">return</span> nextIndex &lt; size;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>{</div><div class="line">        checkForComodification();</div><div class="line">        <span class="keyword">if</span> (!hasNext())</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</div><div class="line"></div><div class="line">        lastReturned = next;</div><div class="line">        next = next.next;</div><div class="line">        nextIndex++;</div><div class="line">        <span class="keyword">return</span> lastReturned.item;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="comment">/* ... */</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span> </span>{</div><div class="line">        <span class="keyword">if</span> (lastReturned == <span class="keyword">null</span>)</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</div><div class="line">        checkForComodification();</div><div class="line">        lastReturned.item = e;</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">if</span> (modCount != expectedModCount)</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x8FED;&#x4EE3;&#x5668;&#x5F00;&#x59CB;&#x65F6;&#x8BB0;&#x5F55;&#x4E0B;&#x521D;&#x59CB;&#x7684;&#x503C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">int</span> expectedModCount = modCount;</div></pre></td></tr></table></figure></p>
+<p>&#x7136;&#x540E;&#x4E0E;&#x73B0;&#x5728;&#x7684;&#x503C;&#x5BF9;&#x6BD4;&#x5224;&#x65AD;&#x662F;&#x5426;&#x88AB;&#x4FEE;&#x6539;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">if</span> (modCount != expectedModCount)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5185;&#x90E8;&#x7C7B;&#xFF0C;&#x9690;&#x5F0F;&#x6301;&#x6709;LinkedList&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5230;LinkedList&#x4E2D;&#x7684;modCount&#x5B57;&#x6BB5;&#x3002;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">graphviz</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">draw</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -205,24 +258,93 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
+        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/articles/2018-07-10-7932.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">源码|jdk源码-ArrayList与Vector源码阅读</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#时间空间复杂度"><span class="toc-number">1.</span> <span class="toc-text">1. 时间空间复杂度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedList的继承结构"><span class="toc-number">2.</span> <span class="toc-text">2. LinkedList的继承结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedList源码分析"><span class="toc-number">3.</span> <span class="toc-text">3. LinkedList源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#节点定义"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 节点定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性和构造函数"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 属性和构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#get和set方法"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. get和set方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加-删除"><span class="toc-number">4.</span> <span class="toc-text">4. 添加/删除</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#modCount字段分析"><span class="toc-number">5.</span> <span class="toc-text">5. modCount字段分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代器"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器迭代中表被修改"><span class="toc-number">5.1.1.</span> <span class="toc-text">5.1.1. 迭代器迭代中表被修改</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#记录表被修改的标记"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 记录表被修改的标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代器-1"><span class="toc-number">5.3.</span> <span class="toc-text">5.3. 迭代器</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://frapples.github.io/articles/2018-07-11-2c35.html",
+  owner: 'frapples',
+  repo: 'frapples.github.io',
+  oauth: {
+    client_id: '0891e95861157db67799',
+    client_secret: 'ed05340f95e66138cc99d6f7dc1ee6e2ebc4662f',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -245,9 +367,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

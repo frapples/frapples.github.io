@@ -152,6 +152,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-IT/tools/spacemacs-install-and-basic-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/articles/2016-12-02-69e1.html">spacemacs 系列--安装和基础配置</a>
+    </h1>
+  
+
+        
+        <a href="/articles/2016-12-02-69e1.html" class="archive-article-date">
+  	<time datetime="2016-12-02T13:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x4E0D;&#x77E5;&#x4E0D;&#x89C9;&#x4E2D;&#xFF0C;&#x6211;&#x4F7F;&#x7528; spacemacs &#x7684;&#x65F6;&#x95F4;&#x5FEB;&#x3002;&#x3002;&#x3002;
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+ &#x54CE;&#xFF0C;&#x6211;&#x7ADF;&#x7136;&#x4E0D;&#x8BB0;&#x5F97;&#x4E86;&#x3002; &#x4ED4;&#x7EC6;&#x60F3;&#x60F3;&#x5E94;&#x8BE5;&#x8FD8;&#x6CA1;&#x6709;&#x4E00;&#x5E74;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x5370;&#x8C61;&#x91CC;&#x53BB;&#x5E74;&#x8FC7;&#x5E74;&#x7684;&#x65F6;&#x5019;&#x6211;&#x4F7F;&#x7528;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x8FD8;&#x662F; vim&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x662F;&#x4E2A; vim &#x515A;&#xFF0C;&#x5E76;&#x4E14;&#x6709;&#x6BB5;&#x65F6;&#x95F4;&#x8BD5;&#x56FE;&#x627E;&#x5404;&#x79CD;&#x914D;&#x7F6E;&#x63D2;&#x4EF6;&#x8BD5;&#x56FE;&#x60F3;&#x8BA9; vim &#x66F4;&#x5F3A;&#x5927;&#x3002; &#x76F4;&#x5230;&#x4E0D;&#x505C;&#x7684;&#x8E29;&#x5230;&#x5751;&#x540E;&#x6211;&#x624D;&#x660E;&#x767D;&#x8FC7;&#x6765;&#xFF0C;vim &#x7684;&#x914D;&#x7F6E;&#x80FD;&#x529B;&#x5176;&#x5B9E;&#x5E76;&#x6CA1;&#x6709;&#x7F51;&#x4E0A;&#x5439;&#x5618;&#x7684;&#x90A3;&#x4E48;&#x795E;&#x3002; &#x7531;&#x4E8E; vim &#x7684;&#x811A;&#x672C; vimscript &#x4E0D;&#x592A;&#x597D;&#x7528;&#x800C;&#x4E14;&#x6548;&#x7387;&#x4F4E;&#xFF0C;&#x52A0;&#x4E0A; vim &#x672C;&#x8EAB;&#x7F3A;&#x4E4F;&#x8DB3;&#x591F;&#x7684;&#x652F;&#x6301;&#x673A;&#x5236;&#xFF0C;&#x6240;&#x4EE5; vim &#x7684;&#x63D2;&#x4EF6;&#x867D;&#x7136;&#x5F88;&#x591A;&#xFF0C; &#x4F46;&#x662F;&#x597D;&#x7528;&#x7684;&#x53EA;&#x6709;&#x90A3;&#x4E48;&#x51E0;&#x4E2A;&#x5C0F;&#x5DE7;&#x7684;&#x63D2;&#x4EF6;&#x3002;&#x5176;&#x4F59;&#x7684;&#x8BD5;&#x56FE;&#x5BF9; vim &#x8FDB;&#x884C;&#x5927;&#x5E45;&#x5EA6;&#x6269;&#x5C55;&#x7684;&#xFF0C;&#x90FD;&#x4E0D;&#x600E;&#x4E48;&#x597D;&#x4F7F;&#xFF0C;&#x8FDE;&#x51D1;&#x5408;&#x90FD;&#x8BF4;&#x4E0D;&#x4E0A;&#x3002;</p>
+<p>&#x8D77;&#x521D;&#x6211;&#x53EA;&#x662F;&#x773C;&#x998B; emacs &#x7684; org-mode &#x529F;&#x80FD;&#xFF0C;&#x52A0;&#x4E0A; spacemacs &#x5BF9; vim &#x7528;&#x6237;&#x975E;&#x5E38;&#x7684;&#x53CB;&#x597D;&#xFF0C;&#x6211;&#x5C31;&#x51B3;&#x5B9A;&#x8BD5;&#x4E00;&#x8BD5; emacs&#x3002; &#x8FD9;&#x4E00;&#x8BD5;&#x4E0D;&#x8981;&#x7D27;&#xFF0C;&#x4ECE;&#x90A3;&#x4E4B;&#x540E;&#xFF0C;&#x5F00; vim &#x7684;&#x9891;&#x7387;&#x76F4;&#x7EBF;&#x4E0B;&#x964D;&#x3002;&#x5982;&#x4ECA;&#xFF0C;&#x6211;&#x5199;&#x7A0B;&#x5E8F;&#xFF0C;&#x8BB0;&#x7B14;&#x8BB0;&#x7B49;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x95F4;&#x90FD;&#x662F;&#x6CE1;&#x5728; emacs &#x91CC;&#x7684;&#x3002;
+<img width="20" height="20" class="emoji nofancybox" title=":grin:" alt="&#x1F601;" src="/images/emoji/grin.png">
+</p>
+        
+          <a class="article-more-a" href="/articles/2016-12-02-69e1.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">spacemacs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/tools//" class="article-tag-list-link color1">tools</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/articles/2016-12-02-69e1.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-IT/tools/dot-language" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1032,110 +1129,9 @@
 
 
   
-    <article id="post-jottings/hexo-org-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-16-b0bb.html">这是一篇使用 org-mode 书写的博文</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-16-b0bb.html" class="archive-article-date">
-  	<time datetime="2016-09-16T12:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>org-mode &#x662F; emacs &#x4E2D;&#x7528;&#x6765;&#x7F16;&#x8F91;&#x6587;&#x6863;&#x7684;&#x4E3B;&#x6A21;&#x5F0F;&#x3002; org-mode &#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x4E00;&#x5957;&#x8BED;&#x6CD5;&#x6765;&#x6807;&#x8BB0;&#x5BCC;&#x6587;&#x6863;&#xFF0C;&#x7C7B;&#x4F3C; markdown&#xFF0C;&#x4F46;&#x662F;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#x800C;&#x4E14;&#x529F;&#x80FD;&#x66F4;&#x591A;&#x3002; org-mode &#x4E0E; emacs &#x96C6;&#x6210;&#x7684;&#x5929;&#x8863;&#x65E0;&#x7F1D;&#xFF0C;&#x80FD;&#x4F7F;&#x7528; emacs &#x7684;&#x7F16;&#x8F91;&#x4F18;&#x52BF;&#x4E13;&#x5FC3;&#x5199;&#x4F5C;&#xFF0C;&#x6D41;&#x7545;&#x7F16;&#x8F91;&#xFF0C;&#x4E0D;&#x53D7;&#x6253;&#x6270;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x62FF; org-mode &#x5199;&#x535A;&#x5BA2;&#x4E5F;&#x662F;&#x5F88;&#x81EA;&#x7136;&#x7684;&#x60F3;&#x6CD5;&#x3002;</p>
-<p>&#x8FD9;&#x7BC7;&#x535A;&#x5BA2;&#x662F;&#x4E00;&#x7BC7;&#x6D4B;&#x8BD5;&#x535A;&#x5BA2;&#xFF0C;&#x6D4B;&#x8BD5;&#x4E86;&#x5728;&#x6211;&#x7684; hexo &#x914D;&#x7F6E;&#x4E2D;&#xFF0C;&#x6700;&#x7EC8;&#x5BF9; org-mode &#x7684;&#x5C55;&#x793A;&#x6548;&#x679C;&#x5982;&#x4F55;&#x3002; 
-<img width="20" height="20" class="emoji nofancybox" title=":grinning:" alt="&#x1F600;" src="/images/emoji/grinning.png">
-</p>
-<h1 id="&#x66F4;&#x65B0;&#x65E5;&#x5FD7;">1. &#x66F4;&#x65B0;&#x65E5;&#x5FD7;</h1><ol>
-<li><2018-01-28> &#x7531;&#x4E8E;&#x65E9;&#x5DF2;&#x4ECE;emacs&#x8F6C;&#x5411;atom, &#x56E0;&#x6B64;&#x6B64;&#x535A;&#x6587;&#x88AB;markdown&#x91CD;&#x5199;&#x3002;</2018-01-28></li>
-</ol>
-        
-          <a class="article-more-a" href="/articles/2016-09-16-b0bb.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">emacs</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">orgmode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jottings//" class="article-tag-list-link color4">jottings</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-16-b0bb.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1279,15 +1275,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">泛型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1315,15 +1311,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SOA</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1335,7 +1335,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chromebook</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">crouton</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1344,10 +1352,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lxde</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,19 +1383,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chromebook</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crouton</a>
+                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1403,7 +1395,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
               </li>
              
               <li class="article-tag-list-item">

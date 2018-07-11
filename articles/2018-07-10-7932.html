@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://frapples.github.io/articles/2018-07-10-7932/ArrayList-UML.png">
 <meta property="og:image" content="https://frapples.github.io/images/emoji/joy.png">
-<meta property="og:updated_time" content="2018-07-10T12:47:01.741Z">
+<meta property="og:updated_time" content="2018-07-10T12:54:12.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="源码|jdk源码-ArrayList与Vector源码阅读">
 <meta name="twitter:description" content="&amp;#x6BD5;&amp;#x4E1A;&amp;#x4E24;&amp;#x4E2A;&amp;#x661F;&amp;#x671F;&amp;#x4E86;&amp;#xFF0C;&amp;#x5F00;&amp;#x59CB;&amp;#x6210;&amp;#x4E3A;&amp;#x4E00;&amp;#x540D;&amp;#x6B63;&amp;#x5F0F;&amp;#x7684;java&amp;#x7801;&amp;#x519C;&amp;#x4E86;&amp;#x3002;&amp;#x4E00;&amp;#x76F4;&amp;#x5BF9;&amp;#x5">
@@ -327,6 +327,15 @@
   
 <nav id="article-nav">
   
+    <a href="/articles/2018-07-11-2c35.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          源码|jdk源码之LinkedList与modCount字段
+        
+      </div>
+    </a>
+  
   
     <a href="/articles/2018-07-07-8fad.html" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">配置|electron+vue+ts+sqlite配置</div>
@@ -533,15 +542,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">泛型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,15 +578,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SOA</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,7 +602,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chromebook</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">crouton</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,10 +619,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lxde</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,19 +650,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chromebook</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crouton</a>
+                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,7 +662,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
               </li>
              
               <li class="article-tag-list-item">
