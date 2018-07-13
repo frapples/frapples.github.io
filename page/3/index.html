@@ -152,6 +152,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-IT/C/c99-some-new-feature-and-skill" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/articles/2017-01-11-b93a.html">C99 的常用好用特性和 C 语言细节上的小坑</a>
+    </h1>
+  
+
+        
+        <a href="/articles/2017-01-11-b93a.html" class="archive-article-date">
+  	<time datetime="2017-01-11T06:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x65F6;&#x95F4;&#x8FC7;&#x7684;&#x98DE;&#x5FEB;&#xFF0C;&#x8F6C;&#x773C;&#x95F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B66;&#x671F;&#x5C31;&#x8981;&#x7ED3;&#x675F;&#x4E86;&#x3002; &#x5728;&#x5FD9;&#x5B8C;&#x624B;&#x5934;&#x7684;&#x5404;&#x79CD;&#x4E8B;&#x60C5;&#x4E4B;&#x540E;&#xFF0C;&#x6253;&#x5F00;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#xFF0C;&#x7EC6;&#x7EC6;&#x7684;&#x6570;&#x6570;&#xFF0C;&#x81EA;&#x5DF1;&#x4EFF;&#x4F5B;&#x5DF2;&#x7ECF;&#x6709;&#x4E00;&#x4E2A;&#x591A;&#x6708;&#x90FD;&#x6CA1;&#x6709;&#x53D1;&#x8868;&#x65B0;&#x535A;&#x6587;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x4EE5;&#x6765;&#xFF0C;&#x524D;&#x540E;&#x5728;&#x4E0D;&#x505C;&#x7684;&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8BFE;&#x7A0B;&#x8BBE;&#x8BA1;&#x548C;&#x6570;&#x636E;&#x5E93;&#x8BFE;&#x7A0B;&#x8BBE;&#x8BA1;&#x4E4B;&#x95F4;&#x6765;&#x56DE;&#x5FD9;&#x548C;&#x7740;&#x3002; &#x65E9;&#x5728;&#x4E4B;&#x524D;&#x5B66;&#x4E60;&#x5230;&#x4E00;&#x4E9B;&#x65B0;&#x7684;&#x7F16;&#x7A0B;&#x77E5;&#x8BC6;&#x65F6;&#x6211;&#x6709;&#x5DF2;&#x7ECF;&#x6709;&#x4E00;&#x4E9B;&#x6A21;&#x7CCA;&#x7684;&#x60F3;&#x6CD5;&#x4E86;&#xFF0C;&#x53EF;&#x6211;&#x8FD9;&#x4E2A;&#x4EBA;&#x4E00;&#x76F4;&#x6BD4;&#x8F83;&#x61D2;&#xFF0C; &#x5F53;&#x65F6;&#x5E76;&#x6CA1;&#x6709;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x60F3;&#x6CD5;&#x52AA;&#x529B;&#x660E;&#x786E;&#x5E76;&#x4E14;&#x52A8;&#x624B;&#x5B9E;&#x73B0;&#x3002;&#x6B63;&#x597D;&#xFF0C;&#x8FD9;&#x6B21;&#x8D81;&#x7740;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8BFE;&#x7A0B;&#x8BBE;&#x8BA1;&#xFF0C; &#x9009;&#x4E86;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6EE1;&#x610F;&#x7684;&#x9898;&#x76EE;&#xFF0C;&#x6765;&#x52A8;&#x624B;&#x5199;&#x4E2A;&#x6FC0;&#x52A8;&#x4EBA;&#x5FC3;&#x7684;&#x9879;&#x76EE;&#x3002;</p>
+<p>&#x7ECF;&#x8FC7;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x6295;&#x5165;&#xFF0C;&#x7EC8;&#x4E8E;&#x5728;&#x4E0D;&#x4E45;&#x4E4B;&#x524D;&#x5C06;&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x5B8C;&#x5DE5;&#x4E86;&#x3002; &#x5728;&#x6B64;&#x4E4B;&#x95F4;&#xFF0C;&#x6211;&#x4E5F;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x7684;&#x953B;&#x70BC;&#xFF0C;&#x5B66;&#x4E60;&#x5E76;&#x9886;&#x609F;&#x5230;&#x4E86;&#x4E0D;&#x5C11;&#x7684;&#x4E1C;&#x897F;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x6536;&#x83B7;&#xFF0C;&#x7531;&#x6DF1;&#x5165;&#x6D45;&#xFF0C;&#x5927;&#x6982;&#x53EF;&#x5206;&#x4E3A;&#x601D;&#x60F3;&#x4E0A;&#x7684;&#xFF0C;&#x8BBE;&#x8BA1;&#x4E0A;&#x7684;&#xFF0C;&#x548C;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0A;&#x7684;&#x3002; &#x7531;&#x4E8E;&#x601D;&#x60F3;&#x4E0A;&#x548C;&#x8BBE;&#x8BA1;&#x4E0A;&#x7684;&#x5B9E;&#x5728;&#x592A;&#x96BE;&#x8868;&#x8FBE;&#x51FA;&#x6765;&#xFF0C;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#x4E5F;&#x975E;&#x5E38;&#x8017;&#x7CBE;&#x529B;&#xFF0C; &#x53C8;&#x8003;&#x8651;&#x5230;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0A;&#x7684;&#x5C5E;&#x4E8E;&#x90A3;&#x79CD;&#x6BD4;&#x8F83;&#x70E6;&#x7410;&#x800C;&#x4E14;&#x5BB9;&#x6613;&#x5FD8;&#x8BB0;&#x7684;&#x77E5;&#x8BC6;&#xFF0C; &#x6240;&#x4EE5;&#x8FD9;&#x7BC7;&#x535A;&#x6587;&#x6682;&#x4E14;&#x5077;&#x4E2A;&#x61D2;&#x603B;&#x7ED3;&#x4E0B;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0A;&#x7684;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#x5427;&#x3002; 
+<img width="20" height="20" class="emoji nofancybox" title=":smile:" alt="&#x1F604;" src="/images/emoji/smile.png">
+</p>
+        
+          <a class="article-more-a" href="/articles/2017-01-11-b93a.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/C//" class="article-tag-list-link color2">C</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/articles/2017-01-11-b93a.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-IT/tools/spacemacs-install-and-basic-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1040,95 +1136,6 @@
 
 
   
-    <article id="post-feelings/blog-starting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2016-09-17-acb.html">博客开张</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2016-09-17-acb.html" class="archive-article-date">
-  	<time datetime="2016-09-17T09:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x4E2D;&#x79CB;&#x524D;&#x540E;&#xFF0C;&#x5229;&#x7528; hexo &#x5DE5;&#x5177;&#x548C; github&#xFF0C;&#x7EC8;&#x4E8E;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x7ED9;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#x3002; &#x65F6;&#x95F4;&#x8FC7;&#x7684;&#x53EF;&#x771F;&#x5FEB;&#xFF0C;&#x4E0D;&#x77E5;&#x4E0D;&#x89C9;&#x7684;&#x5DF2;&#x7ECF;&#x8E0F;&#x5165;&#x5927;&#x5B66;&#x4E09;&#x5E74;&#x4E86;&#x3002; &#x5176;&#x5B9E;&#x65E9;&#x5728;&#x5927;&#x4E8C;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x5C31;&#x6709;&#x642D;&#x5EFA;&#x535A;&#x5BA2;&#x7684;&#x60F3;&#x6CD5;&#x4E86;&#x3002; &#x53EF;&#x90A3;&#x65F6;&#xFF0C;&#x6211;&#x53D1;&#x73B0;&#x6211;&#x8EAB;&#x4E0A;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x7684;&#x95EE;&#x9898;&#x8981;&#x53BB;&#x89E3;&#x51B3;&#x3002; &#x800C;&#x4E14;&#x6211;&#x81EA;&#x5DF1;&#x53C8;&#x592A;&#x61D2;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E8B;&#xFF0C;&#x5C31;&#x4E00;&#x76F4;&#x62D6;&#x7740;&#x4E86;&#x3002;</p>
-<p>&#x524D;&#x51E0;&#x5929;&#x5728;&#x6574;&#x7406;&#x81EA;&#x5DF1;&#x7684;&#x7B14;&#x8BB0;&#xFF0C;&#x7A81;&#x7136;&#x53D1;&#x73B0;&#x591A;&#x4E86;&#x8BB8;&#x591A;&#x7075;&#x611F;&#x3002; &#x4E8E;&#x662F;&#x5C31;&#x501F;&#x7740;&#x8FD9;&#x6CE2;&#x52B2;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;&#x7ED9;&#x642D;&#x5EFA;&#x8D77;&#x6765;&#x4E86;&#x3002; &#x4EE5;&#x540E;&#x8FD9;&#x91CC;&#x5BF9;&#x6211;&#x800C;&#x8A00;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x9759;&#x8C27;&#x4E4B;&#x5730;&#xFF0C;&#x80FD;&#x8BA9;&#x6211;&#x6682;&#x65F6;&#x8FDC;&#x79BB;&#x5C18;&#x4E16;&#x7684;&#x55A7;&#x56A3;&#x548C;&#x6D6E;&#x8E81;&#xFF0C;&#x76F4;&#x9762;&#x5185;&#x5FC3;&#x7684;&#x81EA;&#x5DF1;&#x3002; &#x6211;&#x4E0D;&#x4EC5;&#x80FD;&#x591F;&#x5B89;&#x9759;&#x7684;&#x6DF1;&#x5165;&#x601D;&#x8003;&#x95EE;&#x9898;&#xFF0C;&#x6574;&#x7406;&#x601D;&#x7EEA;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x5206;&#x4EAB;&#x4E00;&#x4E9B;&#x4E2A;&#x4EBA;&#x7684;&#x5C0F;&#x5FC3;&#x5F97;&#x548C;&#x6D45;&#x8584;&#x7684;&#x89C1;&#x89E3;&#x3002;</p>
-<p>&#x611F;&#x8C22;&#x8FD9;&#x4E9B;&#x5E74;&#x6765;&#x4E00;&#x76F4;&#x9ED8;&#x9ED8;&#x652F;&#x6301;&#x6211;&#x7684;&#x670B;&#x53CB;&#x4EEC;&#xFF0C;&#x795D;&#x613F;&#x6211;&#x4EEC;&#x7684;&#x660E;&#x5929;&#x5C06;&#x4F1A;&#x66F4;&#x7F8E;&#x597D;&#x3002;</p>
-        
-          <a class="article-more-a" href="/articles/2016-09-17-acb.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">myself</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/feelings//" class="article-tag-list-link color4">feelings</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2016-09-17-acb.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1271,6 +1278,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
@@ -1283,11 +1294,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1307,15 +1322,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SOA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,10 +1362,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
@@ -1383,6 +1386,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
               </li>
              
@@ -1395,19 +1406,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">list</a>
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">jdk8</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">list</a>
               </li>
             
             <div class="clearfix"></div>
