@@ -152,6 +152,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-IT/java/jdk/源码-jdk源码之HashMap分析(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/articles/2018-07-17-d281.html">源码|jdk源码之HashMap分析(二)</a>
+    </h1>
+  
+
+        
+        <a href="/articles/2018-07-17-d281.html" class="archive-article-date">
+  	<time datetime="2018-07-17T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&#x63A5;&#x4E0A;&#x4E00;&#x7BC7;&#x535A;&#x6587;&#xFF0C;&#x6765;&#x5427;&#x5269;&#x4E0B;&#x7684;&#x90E8;&#x5206;&#x5199;&#x5B8C;&#x3002;<br>&#x603B;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;HashMap&#x7684;&#x5B9E;&#x73B0;&#x5185;&#x90E8;&#x6709;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#xFF0C;&#x7B2C;&#x4E00;&#x662F;&#x5F53;&#x8868;&#x5185;&#x5143;&#x7D20;&#x548C;hash&#x6876;&#x6570;&#x7EC4;&#x7684;&#x6BD4;&#x4F8B;&#x8FBE;&#x5230;&#x67D0;&#x4E2A;&#x9608;&#x503C;&#x65F6;&#x4F1A;&#x89E6;&#x53D1;&#x6269;&#x5BB9;&#x673A;&#x5236;&#xFF0C;&#x5426;&#x5219;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x6324;&#x5F71;&#x54CD;&#x6027;&#x80FD;&#xFF1B;<br>&#x7B2C;&#x4E8C;&#x662F;&#x4FDD;&#x5B58;hash&#x51B2;&#x7A81;&#x7684;&#x94FE;&#x8868;&#x5982;&#x679C;&#x8FC7;&#x957F;&#xFF0C;&#x5C31;&#x91CD;&#x6784;&#x4E3A;&#x7EA2;&#x9ED1;&#x6811;&#x63D0;&#x5347;&#x6027;&#x80FD;&#x3002;</p>
+        
+          <a class="article-more-a" href="/articles/2018-07-17-d281.html#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/articles/2018-07-17-d281.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-IT/java/jdk/源码-jdk源码之HashMap分析(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -192,11 +295,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		
 		</ul>
@@ -301,11 +404,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
         		</li>
       		
 		</ul>
@@ -405,11 +508,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
         		</li>
       		
 		</ul>
@@ -1057,101 +1160,6 @@
 
 
   
-    <article id="post-IT/java/java动态代理及RPC框架介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/articles/2018-03-30-4a97.html">java动态代理及RPC框架介绍</a>
-    </h1>
-  
-
-        
-        <a href="/articles/2018-03-30-4a97.html" class="archive-article-date">
-  	<time datetime="2018-03-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x6240;&#x8C13;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x8BED;&#x6CD5;&#xFF0C;&#x80FD;&#x591F;&#x5C06;&#x5BF9;&#x5BF9;&#x8C61;&#x4E2D;&#x4E0D;&#x540C;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x6765;&#x3002;<br>python&#x91CD;&#x5199;<code>__getattr__</code>&#x51FD;&#x6570;&#x80FD;&#x591F;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x5C31;&#x8FDE;&#x4E16;&#x754C;&#x4E0A;&#x6700;&#x597D;&#x7684;&#x8BED;&#x8A00;&#x4E5F;&#x63D0;&#x4F9B;&#x79F0;&#x4E3A;&#x9B54;&#x672F;&#x65B9;&#x6CD5;&#x7684;<code>__call</code>&#x3002;<br>&#x8FD9;&#x79CD;&#x8BED;&#x6CD5;&#x9664;&#x4E86;&#x80FD;&#x66F4;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5916;&#xFF0C;&#x8FD8;&#x662F;RPC&#x6846;&#x67B6;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;<br></p>
-        
-          <a class="article-more-a" href="/articles/2018-03-30-4a97.html#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SOA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/articles/2018-03-30-4a97.html">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1270,10 +1278,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">myself</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">emacs</a>
               </li>
              
@@ -1294,11 +1298,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color2">myself</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,11 +1306,27 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">泛型</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1330,27 +1346,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SOA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1382,7 +1386,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">aop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,6 +1403,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">draw</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,15 +1430,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">aop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">list</a>
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1434,7 +1442,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">map</a>
+                <a href="javascript:void(0)" class="js-tag color5">list</a>
               </li>
             
             <div class="clearfix"></div>
