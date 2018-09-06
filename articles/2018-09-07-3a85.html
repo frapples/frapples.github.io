@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://frapples.github.io">
-  <title>Archives: 2018/2 | Frapples的博客</title>
+  <title>源码|jdk源码之LinkedHashMap分析 | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
-<meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frapples的博客">
-<meta property="og:url" content="https://frapples.github.io/archives/2018/02/index.html">
+  <meta name="description" content="HashMap&amp;#x4F5C;&amp;#x4E3A;&amp;#x4E00;&amp;#x79CD;&amp;#x7ECF;&amp;#x5178;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#xFF0C;&amp;#x5176;&amp;#x6839;&amp;#x636E;key&amp;#x5B9A;&amp;#x4F4D;&amp;#x5143;&amp;#x7D20;&amp;#x80FD;&amp;#x8FBE;&amp;#x5230;&amp;#x5E73;&amp;#x574">
+<meta name="keywords" content="java,map,jdk8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码|jdk源码之LinkedHashMap分析">
+<meta property="og:url" content="https://frapples.github.io/articles/2018-09-07-3a85.html">
 <meta property="og:site_name" content="Frapples的博客">
-<meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta property="og:description" content="HashMap&amp;#x4F5C;&amp;#x4E3A;&amp;#x4E00;&amp;#x79CD;&amp;#x7ECF;&amp;#x5178;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#xFF0C;&amp;#x5176;&amp;#x6839;&amp;#x636E;key&amp;#x5B9A;&amp;#x4F4D;&amp;#x5143;&amp;#x7D20;&amp;#x80FD;&amp;#x8FBE;&amp;#x5230;&amp;#x5E73;&amp;#x574">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://frapples.github.io/images/emoji/joy.png">
+<meta property="og:updated_time" content="2018-09-06T16:03:49.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frapples的博客">
-<meta name="twitter:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="twitter:title" content="源码|jdk源码之LinkedHashMap分析">
+<meta name="twitter:description" content="HashMap&amp;#x4F5C;&amp;#x4E3A;&amp;#x4E00;&amp;#x79CD;&amp;#x7ECF;&amp;#x5178;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#xFF0C;&amp;#x5176;&amp;#x6839;&amp;#x636E;key&amp;#x5B9A;&amp;#x4F4D;&amp;#x5143;&amp;#x7D20;&amp;#x80FD;&amp;#x8FBE;&amp;#x5230;&amp;#x5E73;&amp;#x574">
+<meta name="twitter:image" content="https://frapples.github.io/images/emoji/joy.png">
   
     <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
   
@@ -150,89 +153,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-IT/java/jdk/源码-jdk源码之LinkedHashMap分析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-02-10-166e.html" class="archive-article-date">
-  	<time datetime="2018-02-10T15:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-02-10-166e.html">javascript模拟基本的对象特性</a>
+    <h1 class="article-title" itemprop="name">
+      源码|jdk源码之LinkedHashMap分析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/frontend//" class="article-tag-list-link color4">frontend</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-02-05-c05e.html" class="archive-article-date">
-  	<time datetime="2018-02-05T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
+        
+        <a href="/articles/2018-09-07-3a85.html" class="archive-article-date">
+  	<time datetime="2018-09-06T16:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-02-05-c05e.html">spring自定义argumentResolver参数解析器</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HashMap&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x7ECF;&#x5178;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5176;&#x6839;&#x636E;key&#x5B9A;&#x4F4D;&#x5143;&#x7D20;&#x80FD;&#x8FBE;&#x5230;&#x5E73;&#x5747;O(1)&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x3002; &#x4F46;&#x662F;&#xFF0C;&#x5B58;&#x50A8;&#x4E8E;HashMap&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x663E;&#x7136;&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x904D;&#x5386;HashMap&#x7684;&#x987A;&#x5E8F;&#x5F97;&#x770B;&#x8138;&#x3002;&#x3002;&#x3002;<br>&#x90A3;&#x5982;&#x4F55;&#x4F7F;&#x5F97;HashMap&#x91CC;&#x7684;&#x5143;&#x7D20;&#x53D8;&#x5F97;&#x6709;&#x5E8F;&#x5462;&#xFF1F;&#x4E00;&#x79CD;&#x601D;&#x8DEF;&#x662F;&#xFF0C;&#x5C06;&#x5B58;&#x653E;HashMap&#x5143;&#x7D20;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x6307;&#x9488;&#x5C06;&#x4ED6;&#x4EEC;&#x4E32;&#x8D77;&#x6765;&#x3002;&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5C31;&#x50CF;&#x5728;HashMap&#x91CC;&#x9762;&#x201C;&#x5D4C;&#x5165;&#x201D;&#x4E86;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#x4E00;&#x6837;&#x3002;<br>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;jdk&#x7684;LinkedHashMap&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x601D;&#x8DEF;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<a id="more"></a>
+<h1 id="&#x7EE7;&#x627F;HashMap">1. &#x7EE7;&#x627F;HashMap</h1><p>LinkedHashMap&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x4E0D;&#x7B97;&#x591A;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#xFF0C;jdk&#x7684;&#x8BBE;&#x8BA1;&#x4F7F;&#x7528;&#x7EE7;&#x627F;&#x590D;&#x7528;&#x4E86;&#x4EE3;&#x7801;&#xFF0C;&#x5728;jdk&#x7684;&#x8BBE;&#x8BA1;&#x4E2D;&#xFF0C;LinkedHashMap&#x662F;HashMap&#x7684;&#x6269;&#x5C55;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedHashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></div><div class="line">    <span class="keyword">extends</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</div><div class="line">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</div><div class="line">{</div><div class="line">    <span class="comment">/* ... */</span></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h1 id="&#x5BF9;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x6269;&#x5C55;">2. &#x5BF9;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x6269;&#x5C55;</h1><h2 id="&#x7236;&#x7C7B;HashMap&#x4E2D;&#x7684;&#x8282;&#x70B9;">2.1. &#x7236;&#x7C7B;HashMap&#x4E2D;&#x7684;&#x8282;&#x70B9;</h2><p>&#x56DE;&#x60F3;&#x4E00;&#x4E0B;HashMap&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x4E2D;&#xFF0C;&#x5C06;key&#x548C;value&#x6253;&#x5305;&#x6210;&#x7684;&#x8282;&#x70B9;&#x6709;&#x4E24;&#x79CD;&#xFF1A;<br>&#x7B2C;&#x4E00;&#x79CD;&#xFF0C;&#x4F20;&#x7EDF;&#x5206;&#x79BB;&#x94FE;&#x8868;&#x6CD5;&#x7684;&#x94FE;&#x8868;&#x8282;&#x70B9;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>{</div><div class="line">    <span class="comment">/* ... */</span></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x7B2C;&#x4E8C;&#x79CD;&#xFF0C;HashMap&#x4E3A;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#xFF0C;&#x4E00;&#x5B9A;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x5C06;&#x94FE;&#x8868;&#x91CD;&#x6784;&#x4E3A;&#x7EA2;&#x9ED1;&#x6811;&#x3002;&#x7B2C;&#x4E8C;&#x79CD;&#x8282;&#x70B9;&#x662F;&#x7EA2;&#x9ED1;&#x6811;&#x8282;&#x70B9;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>{</div><div class="line">    <span class="comment">/* ... */</span></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x7A81;&#x7136;&#x53D1;&#x73B0;&#xFF0C;HashMap&#x7684;TreeNode&#x662F;&#x7EE7;&#x627F;&#x81F3;LinkedHashMap&#x7684;Entry&#x7684;&#x3002;&#x3002;&#x3002;<br>&#x4E2A;&#x4EBA;&#x89C2;&#x70B9;&#x662F;jdk&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x4E0D;&#x662F;&#x5F88;&#x4F18;&#x96C5;&#xFF0C;&#x672C;&#x8EAB;LinkedHashMap&#x7EE7;&#x627F;HashMap&#x5C31;&#x4F7F;&#x5F97;&#x4E24;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x903B;&#x8F91;&#x6DF7;&#x5728;&#x4E86;&#x4E00;&#x8D77;&#xFF0C;&#x800C;&#x8FD9;&#x91CC;&#x7684;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x53C8;&#x53CD;&#x8FC7;&#x6765;&#x7EE7;&#x627F;&#xFF0C;&#x903B;&#x8F91;&#x641E;&#x5F97;&#x5F88;&#x6DF7;&#x4E71;&#x3002;</p>
+<h2 id="&#x6269;&#x5C55;&#x8282;&#x70B9;">2.2. &#x6269;&#x5C55;&#x8282;&#x70B9;</h2><p>LinkedListHashMap&#x9700;&#x8981;&#x5C06;&#x8282;&#x70B9;&#x4E32;&#x6210;&#x4E00;&#x4E2A;&#x201C;&#x5D4C;&#x5165;&#x5F0F;&#x201D;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x7ED9;&#x8FD9;&#x4E24;&#x79CD;&#x8282;&#x70B9;&#x589E;&#x52A0;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">HashMap</span>.<span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>{</div><div class="line">    Entry&lt;K,V&gt; before, after;</div><div class="line">    Entry(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next) {</div><div class="line">        <span class="keyword">super</span>(hash, key, value, next);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x6269;&#x5C55;HashMap.Node&#xFF0C;&#x589E;&#x52A0;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5B57;&#x6BB5;&#x3002;<br>&#x7531;&#x4E8E;TreeNode&#x662F;&#x7EE7;&#x627F;&#x81EA;LinkedListMap.Entry&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4E5F;&#x6709;&#x8FD9;&#x4E24;&#x4E2A;&#x5B57;&#x6BB5;&#x3002;</p>
+<h2 id="&#x5C5E;&#x6027;">2.3. &#x5C5E;&#x6027;</h2><p>&#x518D;&#x6765;&#x770B;&#x4E0B;LinkedHashMap&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5F88;&#x5C11;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * The head (eldest) of the doubly linked list.</div><div class="line"> */</div><div class="line"><span class="keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; head;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * The tail (youngest) of the doubly linked list.</div><div class="line"> */</div><div class="line"><span class="keyword">transient</span> LinkedHashMap.Entry&lt;K,V&gt; tail;</div></pre></td></tr></table></figure></p>
+<p>&#x8BB0;&#x5F55;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x8868;&#x5934;&#x548C;&#x8868;&#x5C3E;&#x3002;&#x4ECE;&#x6CE8;&#x91CA;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;head&#x8282;&#x70B9;&#x662F;&#x6700;&#x8001;&#x7684;&#xFF0C;tail&#x8282;&#x70B9;&#x662F;&#x6700;&#x65B0;&#x7684;&#xFF0C;&#x4E5F;&#x5373;&#x94FE;&#x8868;&#x6309;&#x7167;&#x7531;&#x8001;&#x5230;&#x65B0;&#x7684;&#x987A;&#x5E8F;&#x4E32;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x7531;&#x4E8E;LinkedHashMap&#x662F;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5B83;&#x7EC4;&#x7EC7;&#x5143;&#x7D20;&#x7684;&#x987A;&#x5E8F;&#x3002;&#x4E00;&#x79CD;&#x662F;&#x94FE;&#x8868;&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x662F;&#x6309;&#x63D2;&#x5165;&#x65F6;&#x5019;&#x7684;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x662F;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x7684;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x6307;&#x5B9A;&#x987A;&#x5E8F;&#x662F;&#x6309;&#x7167;&#x8BBF;&#x95EE;&#x987A;&#x5E8F;&#x6765;&#xFF0C;&#x8FD8;&#x662F;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x6765;</span></div><div class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> accessOrder;</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x4E2A;<code>accessOrder</code>&#x6307;&#x5B9A;&#x662F;&#x5426;&#x6309;&#x63D2;&#x5165;&#x987A;&#x5E8F;&#x6765;&#x3002;</p>
+<h1 id="&#x91CD;&#x5199;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x7684;&#x51FD;&#x6570;">3. &#x91CD;&#x5199;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x7684;&#x51FD;&#x6570;</h1><p>&#x7531;&#x4E8E;&#x5BF9;Map&#x4E2D;&#x7684;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x4E86;&#x6269;&#x5C55;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x65F6;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x539F;&#x6765;&#x7684;&#x8282;&#x70B9;&#x4E86;&#xFF0C;&#x800C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x540E;&#x7684;&#x3002;<br>HashMap&#x5C06;&#x521B;&#x5EFA;&#x8282;&#x70B9;&#x7684;&#x64CD;&#x4F5C;&#x62BD;&#x53D6;&#x51FA;&#x6765;&#x653E;&#x5230;&#x4E86;&#x5355;&#x72EC;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;LinkedHashMap&#x91CD;&#x5199;&#x5373;&#x53EF;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node&lt;K,V&gt; <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; e)</span> </span>{</div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">        <span class="keyword">new</span> LinkedHashMap.Entry&lt;K,V&gt;(hash, key, value, e);</div><div class="line">    linkNodeLast(p);</div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function">Node&lt;K,V&gt; <span class="title">replacementNode</span><span class="params">(Node&lt;K,V&gt; p, Node&lt;K,V&gt; next)</span> </span>{</div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; q = (LinkedHashMap.Entry&lt;K,V&gt;)p;</div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; t =</div><div class="line">        <span class="keyword">new</span> LinkedHashMap.Entry&lt;K,V&gt;(q.hash, q.key, q.value, next);</div><div class="line">    transferLinks(q, t);</div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// HashMap&#x7684;TreeNode&#x662F;&#x7EE7;&#x627F;&#x81EA;LinkedHashMap.Entry&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x80FD;&#x591F;&#x53C2;&#x4E0E;&#x7EC4;&#x7EC7;&#x53CC;&#x5411;&#x94FE;&#x8868;</span></div><div class="line"><span class="function">TreeNode&lt;K,V&gt; <span class="title">newTreeNode</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next)</span> </span>{</div><div class="line">    TreeNode&lt;K,V&gt; p = <span class="keyword">new</span> TreeNode&lt;K,V&gt;(hash, key, value, next);</div><div class="line">    linkNodeLast(p);</div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function">TreeNode&lt;K,V&gt; <span class="title">replacementTreeNode</span><span class="params">(Node&lt;K,V&gt; p, Node&lt;K,V&gt; next)</span> </span>{</div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; q = (LinkedHashMap.Entry&lt;K,V&gt;)p;</div><div class="line">    TreeNode&lt;K,V&gt; t = <span class="keyword">new</span> TreeNode&lt;K,V&gt;(q.hash, q.key, q.value, next);</div><div class="line">    transferLinks(q, t);</div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h1 id="&#x5728;&#x83B7;&#x53D6;&#x3001;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x5143;&#x7D20;&#x65F6;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;">4. &#x5728;&#x83B7;&#x53D6;&#x3001;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x5143;&#x7D20;&#x65F6;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;</h1><p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728;LinkedHashMap&#x7684;&#x64CD;&#x4F5C;&#x65F6;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;</p>
+<h2 id="&#x5220;&#x9664;">4.1. &#x5220;&#x9664;</h2><p>&#x56DE;&#x987E;&#x4E0B;HashMap&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;HashMap&#x5728;&#x5220;&#x9664;&#x8282;&#x70B9;&#x540E;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;<code>afterNodeRemoval</code>&#x51FD;&#x6570;&#x3002;<br>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5728;HashMap&#x4E2D;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;jdk&#x662F;&#x5C06;&#x5B83;&#x8BBE;&#x8BA1;&#x4E3A;&#x4E00;&#x4E2A;hook&#xFF0C;&#x679C;&#x7136;&#xFF0C;&#x5728;LinkedHashMap&#x4E2D;&#xFF0C;&#x5C31;&#x91CD;&#x5199;&#x4E86;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x5176;&#x4E2D;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// &#x5F53;&#x6709;&#x8282;&#x70B9;&#x88AB;&#x5220;&#x9664;&#xFF08;&#x5373;&#x6709;&#x5143;&#x7D20;&#x88AB;&#x79FB;&#x9664;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x8981;&#x5C06;&#x5B83;&#x4ECE;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4E2D;&#x79FB;&#x9664;</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeRemoval</span><span class="params">(Node&lt;K,V&gt; e)</span> </span>{ <span class="comment">// unlink</span></div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">        (LinkedHashMap.Entry&lt;K,V&gt;)e, b = p.before, a = p.after;</div><div class="line">    p.before = p.after = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (b == <span class="keyword">null</span>)</div><div class="line">        head = a;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        b.after = a;</div><div class="line">    <span class="keyword">if</span> (a == <span class="keyword">null</span>)</div><div class="line">        tail = b;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        a.before = b;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h2 id="&#x63D2;&#x5165;">4.2. &#x63D2;&#x5165;</h2><p>&#x6309;&#x7167;&#x7C7B;&#x4F3C;&#x7684;&#x601D;&#x8DEF;&#xFF0C;HashMap&#x4E2D;&#x5728;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x540E;&#x4F1A;&#x8C03;&#x7528;<code>afterNodeInsertion</code>&#xFF0C;&#x90A3;&#x662F;&#x4E0D;&#x662F;LinkedHashMap&#x4E5F;&#x5728;&#x8FD9;&#x91CC;&#x5B9E;&#x73B0;&#x4E86;&#x76F8;&#x5173;&#x903B;&#x8F91;&#xFF0C;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x540E;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x8282;&#x70B9;&#x5462;&#xFF1F;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeInsertion</span><span class="params">(<span class="keyword">boolean</span> evict)</span> </span>{ <span class="comment">// possibly remove eldest</span></div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; first;</div><div class="line">    <span class="keyword">if</span> (evict &amp;&amp; (first = head) != <span class="keyword">null</span> &amp;&amp; removeEldestEntry(first)) {</div><div class="line">        K key = first.key;</div><div class="line">        removeNode(hash(key), key, <span class="keyword">null</span>, <span class="keyword">false</span>, <span class="keyword">true</span>);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5728;LinkedHashMap&#x4E2D;&#x8BE5;&#x51FD;&#x6570;&#x4F3C;&#x4E4E;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#x3002;&#x56E0;&#x4E3A;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;K,V&gt; eldest)</span> </span>{</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p><code>removeEldestEntry</code>&#x59CB;&#x7EC8;&#x8FD4;&#x56DE;false&#xFF0C;afterNodeInsertion&#x76F8;&#x5F53;&#x4E8E;&#x4EC0;&#x4E48;&#x4E5F;&#x6CA1;&#x505A;&#x3002;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x8BBE;&#x8BA1;&#x76EE;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8FD8;&#x4E0D;&#x80FD;&#x5F88;&#x6E05;&#x695A;&#x3002;&#x4E5F;&#x8BB8;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x8C01;&#x53BB;&#x7EE7;&#x627F;&#xFF1F;&#x4EE5;&#x540E;&#x518D;&#x63A2;&#x7A76;&#x3002;</p>
+<p>&#x90A3;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x540E;&#x7684;&#x5728;&#x54EA;&#x91CC;&#x7EF4;&#x62A4;&#x4E86;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5462;&#xFF1F;&#x56DE;&#x5230;&#x4E4B;&#x524D;&#x7684;<code>newNode</code>&#x548C;<code>newTreeNode</code>&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function">Node&lt;K,V&gt; <span class="title">newNode</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; e)</span> </span>{</div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">        <span class="keyword">new</span> LinkedHashMap.Entry&lt;K,V&gt;(hash, key, value, e);</div><div class="line">    linkNodeLast(p);</div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function">TreeNode&lt;K,V&gt; <span class="title">newTreeNode</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, Node&lt;K,V&gt; next)</span> </span>{</div><div class="line">    TreeNode&lt;K,V&gt; p = <span class="keyword">new</span> TreeNode&lt;K,V&gt;(hash, key, value, next);</div><div class="line">    linkNodeLast(p);</div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">// &#x5C3E;&#x63D2;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x8282;&#x70B9;</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">linkNodeLast</span><span class="params">(LinkedHashMap.Entry&lt;K,V&gt; p)</span> </span>{</div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; last = tail;</div><div class="line">    tail = p;</div><div class="line">    <span class="keyword">if</span> (last == <span class="keyword">null</span>)</div><div class="line">        head = p;</div><div class="line">    <span class="keyword">else</span> {</div><div class="line">        p.before = last;</div><div class="line">        last.after = p;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x7531;&#x4E8E;HashMap&#x4E2D;&#x8C03;&#x7528;newNode&#x65F6;&#x5019;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x88C5;&#x65B0;&#x63D2;&#x5165;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;<br>&#x611F;&#x89C9;&#x8026;&#x5408;&#x662F;&#x4E0D;&#x662F;&#x592A;&#x7D27;&#x4E86;&#x3002;&#x3002;&#x3002;&#x5982;&#x679C;HashMap&#x7531;&#x4E8E;&#x67D0;&#x4E2A;&#x64CD;&#x4F5C;&#x9700;&#x8981;&#x4E34;&#x65F6;&#x641E;&#x4E2A;newNode&#x501F;&#x7528;&#x4E0B;&#xFF0C;&#x5C82;&#x4E0D;&#x662F;&#x4F1A;&#x51FA;&#x95EE;&#x9898;&#xFF1F;</p>
+<p>&#x4E0B;&#x9762;&#x662F;<code>replacementNode</code>&#x548C;<code>replacementTreeNode</code>&#x3002;<br><code>replacementNode</code>&#x5728;HashMap&#x4E2D;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x8BE5;K V&#x4E4B;&#x524D;&#x662F;&#x88AB;TreeNode&#x5305;&#x88C5;&#x7684;&#xFF0C;&#x73B0;&#x5728;&#x9700;&#x8981;&#x62FF;Node&#x5305;&#x88C5;&#x5B83;&#x3002;&#x8FD9;&#x4E5F;&#x52BF;&#x5FC5;&#x4F1A;&#x5F71;&#x54CD;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x4E5F;&#x9700;&#x8981;&#x989D;&#x5916;&#x7EF4;&#x62A4;&#x4E0B;&#x3002;</p>
+<h2 id="&#x83B7;&#x53D6;">4.3. &#x83B7;&#x53D6;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&#x83B7;&#x53D6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x540C;&#x6837;&#xFF0C;&#x662F;&#x91CD;&#x5199;&#x4E86;`afterNodeAccess`&#x94A9;&#x5B50;&#xFF0C;&#x8FD9;&#x6837;&#x5728;HashMap&#x7684;&#x83B7;&#x53D6;&#x903B;&#x8F91;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x903B;&#x8F91;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#xFF0C;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x3002;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterNodeAccess</span><span class="params">(Node&lt;K,V&gt; e)</span> </span>{ <span class="comment">// move node to last</span></div><div class="line">    LinkedHashMap.Entry&lt;K,V&gt; last;</div><div class="line">    <span class="keyword">if</span> (accessOrder &amp;&amp; (last = tail) != e) {</div><div class="line">        LinkedHashMap.Entry&lt;K,V&gt; p =</div><div class="line">            (LinkedHashMap.Entry&lt;K,V&gt;)e, b = p.before, a = p.after;</div><div class="line">        p.after = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (b == <span class="keyword">null</span>)</div><div class="line">            head = a;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            b.after = a;</div><div class="line">        <span class="keyword">if</span> (a != <span class="keyword">null</span>)</div><div class="line">            a.before = b;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            last = b;</div><div class="line">        <span class="keyword">if</span> (last == <span class="keyword">null</span>)</div><div class="line">            head = p;</div><div class="line">        <span class="keyword">else</span> {</div><div class="line">            p.before = last;</div><div class="line">            last.after = p;</div><div class="line">        }</div><div class="line">        tail = p;</div><div class="line">        ++modCount;</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>LinkedHashMap&#x4E2D;&#x7684;&#x987A;&#x5E8F;&#x6709;&#x8BBF;&#x95EE;&#x5E8F;&#x548C;&#x63D2;&#x5165;&#x5E8F;&#xFF0C;&#x53EA;&#x6709;&#x8BBF;&#x95EE;&#x5E8F;&#x624D;&#x9700;&#x8981;&#x5728;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#x66F4;&#x65B0;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7ED3;&#x6784;&#x3002;&#x4E5F;&#x5373;<code>accessOrder</code>&#x4E3A;true&#x624D;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x6BB5;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6CE8;&#x610F;&#x5230;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">++modCount;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x53EA;&#x6709;&#x4FEE;&#x6539;&#x4E86;Map&#x7ED3;&#x6784;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x624D;&#x9700;&#x8981;&#x4FEE;&#x6539;modCount&#x4EE5;&#x8BA9;&#x6B63;&#x5728;&#x8FED;&#x4EE3;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x611F;&#x77E5;&#x5230;&#x4E86;&#x53D8;&#x5316;&#x3002;<br>&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#xFF0C;&#x7531;&#x4E8E;&#x8FED;&#x4EE3;&#x5668;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x91CC;&#x7684;&#x201C;&#x5D4C;&#x5165;&#x5F0F;&#x201D;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#xFF0C;&#x800C;&#x5728;&#x8FD9;&#x91CC;&#x4F1A;&#x6539;&#x53D8;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x82E5;&#x8FED;&#x4EE3;&#x5668;&#x7EE7;&#x7EED;&#x8FED;&#x4EE3;&#x4F1A;&#x9020;&#x6210;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x7ED3;&#x679C;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6539;&#x53D8;<code>modCount</code>&#xFF0C;&#x963B;&#x6B62;&#x8FED;&#x4EE3;&#x5668;&#x7EE7;&#x7EED;&#x8FED;&#x4EE3;&#x3002;</p>
+<h1 id="&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;">5. &#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;</h1><p>LinkedHashMap&#x7684;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;LRU&#x7B97;&#x6CD5;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x73B0;&#x5728;&#x591C;&#x5DF2;&#x6DF1;&#xFF0C;&#x73B0;&#x5728;&#x4E0D;&#x6562;&#x71AC;&#x591C;&#x8EAB;&#x4F53;&#x5403;&#x4E0D;&#x6D88;&#xFF0C;&#x60F3;&#x7761;&#x89C9;&#x4E86;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x5751;&#x4EE5;&#x540E;&#x518D;&#x586B; 
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+</p>
+<h1 id="&#x6700;&#x540E;">6. &#x6700;&#x540E;</h1><p>LinkedHashMap&#x8FD8;&#x6709;&#x5176;&#x5B83;&#x7684;&#x4E00;&#x4E9B;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF0C;&#x5982;&#xFF1A;</p>
+<ol>
+<li><code>clear</code>&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x8981;&#x540C;&#x65F6;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF1B;</li>
+<li>&#x6839;&#x636E;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x5B9E;&#x73B0;&#x8FED;&#x4EE3;&#x5668;&#x3002;</li>
+</ol>
+<p>&#x6700;&#x540E;&#xFF0C;&#x603B;&#x7ED3;&#x4E0B;jdk&#x4E2D;&#x5BF9;LinkedHashMap&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x601D;&#x8DEF;&#xFF1A;</p>
+<ol>
+<li>&#x6269;&#x5C55;HashMap&#x5B9E;&#x73B0;&#x3002;</li>
+<li>&#x6269;&#x5C55;HashMap&#x7684;&#x8282;&#x70B9;&#xFF08;&#x5305;&#x62EC;Node&#x548C;TreeNode&#xFF09;&#xFF0C;&#x52A0;&#x5165;&#x4E24;&#x4E2A;&#x57DF;&#x7EC4;&#x7EC7;&#x989D;&#x5916;&#x7684;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x4FDD;&#x5B58;&#x987A;&#x5E8F;&#x3002;</li>
+<li>&#x5728;&#x4EA7;&#x751F;&#x63D2;&#x5165;&#x3001;&#x5220;&#x9664;&#x3001;&#x8BBF;&#x95EE;&#x7684;&#x5730;&#x65B9;&#x7EF4;&#x62A4;&#x53CC;&#x5411;&#x94FE;&#x8868;&#xFF0C;&#x901A;&#x8FC7;&#x91CD;&#x5199;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x3002;</li>
+<li>&#x5B9E;&#x73B0;&#x8FED;&#x4EE3;&#x5668;&#x76F8;&#x5173;&#x903B;&#x8F91;&#xFF0C;&#x56E0;&#x4E3A;&#x8FED;&#x4EE3;&#x5668;&#x662F;&#x6839;&#x636E;&#x53CC;&#x5411;&#x94FE;&#x8868;&#x987A;&#x5E8F;&#x8FED;&#x4EE3;&#x7684;&#x3002;</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -242,13 +231,17 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -260,132 +253,91 @@
         		<li class="article-tag-list-item">
         			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-02-03-85dd.html" class="archive-article-date">
-  	<time datetime="2018-02-03T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-02-03-85dd.html">Druid使用自定义加密方式加密数据库配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">druid</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
+        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-02-02-9496.html" class="archive-article-date">
-  	<time datetime="2018-02-02T15:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/articles/2018-09-04-80a0.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vagrant尝鲜及docker搭建nignx与reids</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-02-02-9496.html">谈知识管理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识管理</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">atom</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/jottings//" class="article-tag-list-link color4">jottings</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#继承HashMap"><span class="toc-number">1.</span> <span class="toc-text">1. 继承HashMap</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对节点进行扩展"><span class="toc-number">2.</span> <span class="toc-text">2. 对节点进行扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#父类HashMap中的节点"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 父类HashMap中的节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展节点"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 扩展节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 属性</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重写创建节点的函数"><span class="toc-number">3.</span> <span class="toc-text">3. 重写创建节点的函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在获取、插入、删除元素时维护双向链表"><span class="toc-number">4.</span> <span class="toc-text">4. 在获取、插入、删除元素时维护双向链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#删除"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 获取</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#典型应用场景"><span class="toc-number">5.</span> <span class="toc-text">5. 典型应用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">6.</span> <span class="toc-text">6. 最后</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://frapples.github.io/articles/2018-09-07-3a85.html",
+  owner: 'frapples',
+  repo: 'frapples.github.io',
+  oauth: {
+    client_id: '0891e95861157db67799',
+    client_secret: 'ed05340f95e66138cc99d6f7dc1ee6e2ebc4662f',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -408,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
