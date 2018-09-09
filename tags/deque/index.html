@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://frapples.github.io">
-  <title>spring中的统一异常处理 | Frapples的博客</title>
+  <title>Tag: deque | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#x5728;&amp;#x5177;&amp;#x4F53;&amp;#x7684;SSM&amp;#x9879;&amp;#x76EE;&amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#xFF0C;&amp;#x7531;&amp;#x4E8E;Controller&amp;#x5C42;&amp;#x4E3A;&amp;#x5904;&amp;#x4E8E;&amp;#x8BF7;&amp;#x6C42;&amp;#x5904;&amp;#x7406;&amp;#x7684;&amp;#x6700;&amp;#x9876;&amp;#x">
-<meta name="keywords" content="java,spring">
-<meta property="og:type" content="article">
-<meta property="og:title" content="spring中的统一异常处理">
-<meta property="og:url" content="https://frapples.github.io/articles/2018-09-01-ecbc.html">
+  <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Frapples的博客">
+<meta property="og:url" content="https://frapples.github.io/tags/deque/index.html">
 <meta property="og:site_name" content="Frapples的博客">
-<meta property="og:description" content="&amp;#x5728;&amp;#x5177;&amp;#x4F53;&amp;#x7684;SSM&amp;#x9879;&amp;#x76EE;&amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#xFF0C;&amp;#x7531;&amp;#x4E8E;Controller&amp;#x5C42;&amp;#x4E3A;&amp;#x5904;&amp;#x4E8E;&amp;#x8BF7;&amp;#x6C42;&amp;#x5904;&amp;#x7406;&amp;#x7684;&amp;#x6700;&amp;#x9876;&amp;#x">
+<meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2018-09-01T11:47:59.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring中的统一异常处理">
-<meta name="twitter:description" content="&amp;#x5728;&amp;#x5177;&amp;#x4F53;&amp;#x7684;SSM&amp;#x9879;&amp;#x76EE;&amp;#x5F00;&amp;#x53D1;&amp;#x4E2D;&amp;#xFF0C;&amp;#x7531;&amp;#x4E8E;Controller&amp;#x5C42;&amp;#x4E3A;&amp;#x5904;&amp;#x4E8E;&amp;#x8BF7;&amp;#x6C42;&amp;#x5904;&amp;#x7406;&amp;#x7684;&amp;#x6700;&amp;#x9876;&amp;#x">
+<meta name="twitter:title" content="Frapples的博客">
+<meta name="twitter:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
   
     <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
   
@@ -151,83 +150,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-IT/java/spring/Spring中的统一异常处理" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      spring中的统一异常处理
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/articles/2018-09-09-5ed1.html" class="archive-article-date">
+  	<time datetime="2018-09-09T15:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/articles/2018-09-09-5ed1.html">源码|jdk源码之栈、队列及ArrayDeque分析</a>
     </h1>
   
 
-        
-        <a href="/articles/2018-09-01-ecbc.html" class="archive-article-date">
-  	<time datetime="2018-09-01T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>&#x5728;&#x5177;&#x4F53;&#x7684;SSM&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;Controller&#x5C42;&#x4E3A;&#x5904;&#x4E8E;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x7684;&#x6700;&#x9876;&#x5C42;&#xFF0C;&#x518D;&#x5F80;&#x4E0A;&#x5C31;&#x662F;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x7684;&#x3002;<br>&#x56E0;&#x6B64;&#xFF0C;&#x80AF;&#x5B9A;&#x9700;&#x8981;&#x5728;Controller&#x6355;&#x83B7;&#x6240;&#x6709;&#x5F02;&#x5E38;&#xFF0C;&#x5E76;&#x4E14;&#x505A;&#x9002;&#x5F53;&#x5904;&#x7406;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED9;&#x524D;&#x7AEF;&#x4E00;&#x4E2A;&#x53CB;&#x597D;&#x7684;&#x9519;&#x8BEF;&#x7801;&#x3002;</p>
-<p>&#x4E0D;&#x8FC7;&#xFF0C;Controller&#x4E00;&#x591A;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x6BCF;&#x4E2A;Controller&#x91CC;&#x90FD;&#x6709;&#x5927;&#x91CF;&#x91CD;&#x590D;&#x7684;&#x3001;&#x5197;&#x4F59;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x4EE3;&#x7801;&#xFF0C;&#x5F88;&#x662F;&#x5570;&#x55E6;&#x3002;<br>&#x80FD;&#x5426;&#x5C06;&#x8FD9;&#x4E9B;&#x91CD;&#x590D;&#x7684;&#x90E8;&#x5206;&#x62BD;&#x53D6;&#x51FA;&#x6765;&#xFF0C;&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;Controller&#x5C42;&#x66F4;&#x4E13;&#x6CE8;&#x4E8E;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;&#x5904;&#x7406;&#xFF0C;<br>&#x540C;&#x65F6;&#x80FD;&#x591F;&#x4F7F;&#x5F97;&#x5F02;&#x5E38;&#x7684;&#x5904;&#x7406;&#x6709;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684;&#x63A7;&#x5236;&#x4E2D;&#x5FC3;&#x70B9;&#x3002;</p>
-<a id="more"></a>
-<h1 id="&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;">1. &#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;</h1><h2 id="HandlerExceptionResolver&#x63A5;&#x53E3;">1.1. HandlerExceptionResolver&#x63A5;&#x53E3;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HandlerExceptionResolver</span> </span>{</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * Try to resolve the given exception that got thrown during on handler execution,</div><div class="line">	 * returning a ModelAndView that represents a specific error page if appropriate.</div><div class="line">	 * &lt;p&gt;The returned ModelAndView may be {<span class="doctag">@linkplain</span> ModelAndView#isEmpty() empty}</div><div class="line">	 * to indicate that the exception has been resolved successfully but that no view</div><div class="line">	 * should be rendered, for instance by setting a status code.</div><div class="line">	 * <span class="doctag">@param</span> request current HTTP request</div><div class="line">	 * <span class="doctag">@param</span> response current HTTP response</div><div class="line">	 * <span class="doctag">@param</span> handler the executed handler, or {<span class="doctag">@code</span> null} if none chosen at the</div><div class="line">	 * time of the exception (for example, if multipart resolution failed)</div><div class="line">	 * <span class="doctag">@param</span> ex the exception that got thrown during handler execution</div><div class="line">	 * <span class="doctag">@return</span> a corresponding ModelAndView to forward to,</div><div class="line">	 * or {<span class="doctag">@code</span> null} for default processing</div><div class="line">	 */</div><div class="line">	<span class="function">ModelAndView <span class="title">resolveException</span><span class="params">(</span></span></div><div class="line">			HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex);</div><div class="line">}</div></pre></td></tr></table></figure>
-<p>&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x53EA;&#x9700;&#x8981;&#x4E24;&#x6B65;&#xFF1A;</p>
-<ol>
-<li>&#x5B9E;&#x73B0;HandlerExceptionResolver&#x63A5;&#x53E3;&#x3002;</li>
-<li>&#x5C06;&#x5B9E;&#x73B0;&#x7C7B;&#x4F5C;&#x4E3A;Spring Bean&#xFF0C;&#x8FD9;&#x6837;Spring&#x5C31;&#x80FD;&#x626B;&#x63CF;&#x5230;&#x5B83;&#x5E76;&#x4F5C;&#x4E3A;&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x52A0;&#x8F7D;&#x3002;</li>
-</ol>
-<p>&#x5728;resolveException&#x4E2D;&#x5B9E;&#x73B0;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;<br>&#x4ECE;&#x53C2;&#x6570;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E0D;&#x4EC5;&#x80FD;&#x591F;&#x62FF;&#x5230;&#x53D1;&#x751F;&#x5F02;&#x5E38;&#x7684;&#x51FD;&#x6570;&#x548C;&#x5F02;&#x5E38;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD8;&#x80FD;&#x591F;&#x62FF;&#x5230;HttpServletResponse&#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x800C;&#x63A7;&#x5236;&#x672C;&#x6B21;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x7ED9;&#x524D;&#x7AEF;&#x7684;&#x884C;&#x4E3A;&#x3002;</p>
-<p>&#x6B64;&#x5916;&#xFF0C;&#x51FD;&#x6570;&#x8FD8;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ModelAndView&#x5BF9;&#x8C61;&#xFF0C;&#x8868;&#x793A;&#x6E32;&#x67D3;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#xFF0C;&#x6BD4;&#x65B9;&#x8BF4;&#x9519;&#x8BEF;&#x9875;&#x9762;&#x3002;<br>&#x4E0D;&#x8FC7;&#xFF0C;&#x5728;&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x4E3A;&#x4E3B;&#x6D41;&#x67B6;&#x6784;&#x7684;&#x4ECA;&#x5929;&#xFF0C;&#x8FD9;&#x4E2A;&#x5F88;&#x5C11;&#x7528;&#x4E86;&#x3002;&#x5982;&#x679C;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x89C6;&#x56FE;&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x4E0D;&#x9700;&#x8981;&#x89C6;&#x56FE;&#x3002;</p>
-<h2 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;">1.2. &#x4F7F;&#x7528;&#x793A;&#x4F8B;</h2><p>&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomHandlerExceptionResolver</span> <span class="keyword">implements</span> <span class="title">HandlerExceptionResolver</span> </span>{</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">resolveException</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> </span>{</div><div class="line">        Method method = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">if</span> (handler != <span class="keyword">null</span> &amp;&amp; handler <span class="keyword">instanceof</span> HandlerMethod) {</div><div class="line">            method = ((HandlerMethod) handler).getMethod();</div><div class="line">        }</div><div class="line"></div><div class="line">        log.error(<span class="string">&quot;[{}] system error&quot;</span>, method, ex);</div><div class="line">        ResponseDTO response = ResponseDTO.builder()</div><div class="line">        .errorCode(ErrorCode.SYSTEM_ERROR)</div><div class="line">        .build();</div><div class="line">        <span class="keyword">byte</span>[] bytes = JSON.toJSONString(response).getBytes(StandardCharsets.UTF_8));</div><div class="line">        <span class="keyword">try</span> {</div><div class="line">            FileCopyUtils.copy(bytes, response.getOutputStream());</div><div class="line">        } <span class="keyword">catch</span> (IOException e) {</div><div class="line">            log.error(<span class="string">&quot;error&quot;</span>, e);</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ModelAndView();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>&#x903B;&#x8F91;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x5728;&#x53D1;&#x751F;&#x5F02;&#x5E38;&#x65F6;&#xFF0C;&#x5C06;ResponseDTO&#x5E8F;&#x5217;&#x5316;&#x4E3A;json&#x7ED9;&#x524D;&#x7AEF;&#x3002;</p>
-<h2 id="Controller&#x5C40;&#x90E8;&#x5F02;&#x5E38;&#x5904;&#x7406;">1.3. Controller&#x5C40;&#x90E8;&#x5F02;&#x5E38;&#x5904;&#x7406;</h2><h3 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;-1">1.3.1. &#x4F7F;&#x7528;&#x793A;&#x4F8B;</h3><p>&#x8FD9;&#x79CD;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x53EA;&#x5C40;&#x90E8;&#x4E8E;&#x67D0;&#x4E2A;Controller&#x5185;&#xFF0C;&#x5982;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">&quot;/api/demo&quot;</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> </span>{</div><div class="line"></div><div class="line">    <span class="meta">@ExceptionHandler</span>(Exception.class)</div><div class="line">    <span class="meta">@ResponseBody</span></div><div class="line">    <span class="keyword">public</span> ResponseDTO&lt;?&gt; exceptionHandler(Exception e) {</div><div class="line">        log.error(<span class="string">&quot;[{}] system error&quot;</span>, e);</div><div class="line">        <span class="keyword">return</span> ResponseDTO.builder()</div><div class="line">        .errorCode(ErrorCode.SYSTEM_ERROR)</div><div class="line">        .build();</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<ol>
-<li>&#x6240;&#x6709;Controller&#x65B9;&#x6CD5;&#xFF08;&#x5373;&#x88AB;RequestMapping&#x6CE8;&#x89E3;&#x7684;&#x65B9;&#x6CD5;&#xFF09;&#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x4F1A;&#x88AB;&#x8BE5;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x3002;</li>
-<li>&#x4F7F;&#x7528;&#x4E0A;&#xFF0C;&#x5728;Controller&#x5185;&#x90E8;&#xFF0C;&#x7528;<code>@ExceptionHandler</code>&#x6CE8;&#x89E3;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5C31;&#x4F1A;&#x4F5C;&#x4E3A;&#x8BE5;Controller&#x5185;&#x90E8;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x3002;</li>
-<li>&#x5E76;&#x4E14;&#xFF0C;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x4E2D;&#x53EF;&#x4EE5;&#x6CE8;&#x5165;&#x5982;WebRequest&#x3001;NativeWebRequest&#x7B49;&#xFF0C;&#x7528;&#x6765;&#x62FF;&#x5230;&#x8BF7;&#x6C42;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x3002;</li>
-<li>&#x5B83;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;String&#x4EE3;&#x8868;&#x4E00;&#x4E2A;view&#x540D;&#x79F0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5E76;&#x4E14;&#x7528;<code>@ResponseBody</code>&#x4FEE;&#x9970;&#xFF0C;&#x7531;&#x6846;&#x67B6;&#x7684;&#x5176;&#x5B83;&#x673A;&#x5236;&#x5E2E;&#x4F60;&#x5E8F;&#x5217;&#x5316;&#x3002;</li>
-</ol>
-<p>&#x6B64;&#x5916;&#xFF0C;&#x5B83;&#x8FD8;&#x80FD;&#x591F;&#x5BF9;&#x5F02;&#x5E38;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x901A;&#x8FC7;&#x6CE8;&#x89E3;&#x53EF;&#x4EE5;&#x6709;&#x9009;&#x62E9;&#x7684;&#x6307;&#x5B9A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5E94;&#x7528;&#x7684;&#x5F02;&#x5E38;&#x7C7B;&#x578B;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ExceptionHandler</span>({BusinessException.class, DataBaseError.class })</div></pre></td></tr></table></figure></p>
-<p>&#x867D;&#x7136;&#x8BF4;&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;HandlerExceptionResolver&#x901A;&#x8FC7;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x4E5F;&#x80FD;&#x505A;&#x5230;&#xFF0C;<br>&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6CE8;&#x89E3;&#x65B9;&#x5F0F;&#x660E;&#x663E;&#x66F4;&#x5177;&#x6709;&#x53EF;&#x8BFB;&#x6027;&#x3002;</p>
-<h3 id="&#x4E00;&#x4E2A;&#x95EE;&#x9898;">1.3.2. &#x4E00;&#x4E2A;&#x95EE;&#x9898;</h3><p>&#x521A;&#x624D;&#x8BF4;&#x5230;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x7528;<code>@ResponseBody</code>&#x4FEE;&#x9970;&#xFF0C;&#x5C31;&#x50CF;&#x4E00;&#x822C;&#x7684;Controller&#x65B9;&#x6CD5;&#x4E00;&#x6837;&#x3002;</p>
-<p>&#x7136;&#x800C;&#xFF0C;&#x975E;&#x5E38;&#x9057;&#x61BE;&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x7684;<code>HandlerMethodReturnValueHandler</code>&#xFF0C;&#x5374;&#x4E0D;&#x751F;&#x6548;&#x3002;<br>&#x6BD4;&#x5982;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ExceptionHandler</span>(Exception.class)</div><div class="line"><span class="meta">@JsonResponse</span></div><div class="line"><span class="keyword">public</span> ResponseDTO&lt;?&gt; exceptionHandler(Exception e) {</div><div class="line">    log.error(<span class="string">&quot;[{}] system error&quot;</span>, e);</div><div class="line">    <span class="keyword">return</span> ResponseDTO.builder()</div><div class="line">    .errorCode(ErrorCode.SYSTEM_ERROR)</div><div class="line">    .build();</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>&#x4E0D;&#x77E5;&#x9053;&#x662F;&#x6211;&#x7684;&#x4F7F;&#x7528;&#x59FF;&#x52BF;&#x4E0D;&#x5BF9;&#xFF0C;&#x8FD8;&#x662F;&#x4EC0;&#x4E48;&#x60C5;&#x51B5;&#xFF1F;&#x5404;&#x79CD;google&#x540E;&#x65E0;&#x679C;&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#xFF0C;&#x76EE;&#x524D;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x80FD;&#x591F;&#x63A7;&#x5236;@JsonResponse&#x6CE8;&#x89E3;&#x76F8;&#x5173;&#x7684;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#xFF0C;&#x5C06;&#x5904;&#x7406;&#x8FD4;&#x56DE;&#x503C;&#x8FD9;&#x90E8;&#x5206;&#x903B;&#x8F91;&#x62BD;&#x53D6;&#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x624B;&#x52A8;&#x8C03;&#x7528;&#x3002;</p>
-<h2 id="ControllerAdvice">1.4. ControllerAdvice</h2><h3 id="&#x4F7F;&#x7528;&#x793A;&#x4F8B;-2">1.4.1. &#x4F7F;&#x7528;&#x793A;&#x4F8B;</h3><p>&#x521A;&#x624D;&#x4ECB;&#x7ECD;&#x7684;&#x662F;Controller&#x5C40;&#x90E8;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x8BE5;Controller&#x5185;&#x90E8;&#x7684;&#x7279;&#x6709;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5341;&#x5206;&#x6709;&#x7528;&#x3002;<br>&#x9996;&#x5148;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B58;&#x653E;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#x7C7B;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;<code>@ControllerAdvice</code>&#x4FEE;&#x9970;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ControllerAdvice</span>(assignableTypes = {GlobalExceptionHandlerMixin.class})</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionAdvice</span> </span>{</div><div class="line"></div><div class="line">    <span class="meta">@ExceptionHandler</span>(ErrorCodeWrapperException.class)</div><div class="line">    <span class="meta">@ResponseBody</span></div><div class="line">    <span class="keyword">public</span> ResponseDTO&lt;?&gt; exceptionHandler(ErrorCodeWrapperException e) {</div><div class="line">        <span class="keyword">if</span> ((errCodeException.getErrorCode().equals(ErrorCode.SYSTEM_ERROR))) {</div><div class="line">            log.error(e);</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> ResponseDTO.ofErroCodeWrapperException(errCodeException);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p><code>@ExceptionHanlder</code>&#x4FEE;&#x9970;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x5199;&#x6CD5;&#x548C;Controller&#x5185;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5199;&#x6CD5;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
-<h3 id="&#x63A7;&#x5236;&#x751F;&#x6548;&#x7684;Controller&#x8303;&#x56F4;">1.4.2. &#x63A7;&#x5236;&#x751F;&#x6548;&#x7684;Controller&#x8303;&#x56F4;</h3><p>&#x6CE8;&#x610F;&#x5230;&#xFF0C;&#x6211;&#x662F;&#x8FD9;&#x6837;&#x7F16;&#x5199;&#x6CE8;&#x89E3;&#x7684;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@ControllerAdvice</span>(assignableTypes = {GlobalExceptionHandlerMixin.class})</div></pre></td></tr></table></figure></p>
-<p>&#x5B83;&#x7528;&#x6765;&#x9650;&#x5B9A;&#x8FD9;&#x4E9B;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x51FD;&#x6570;&#x8D77;&#x4F5C;&#x7528;&#x7684;Controller&#x7684;&#x8303;&#x56F4;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5199;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x5BF9;&#x6240;&#x6709;Controller&#x6709;&#x6548;&#x3002;</p>
-<p>&#x8FD9;&#x4E5F;&#x662F;ControllerAdvice&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7684;&#x4F18;&#x70B9;&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#x8BE5;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x9488;&#x5BF9;&#x54EA;&#x4E9B;Controller&#x6709;&#x6548;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x597D;&#x5904;&#x662F;&#xFF1A;</p>
-<ol>
-<li>&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x91CC;&#x5C31;&#x80FD;&#x591F;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#xFF0C;Controller&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x9009;&#x62E9;&#x7684;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#xFF0C;&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#x3002;</li>
-<li>&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#x53EF;&#x80FD;&#x5BF9;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#x4E0D;&#x540C;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x673A;&#x5236;&#x5C31;&#x80FD;&#x505A;&#x5230;&#x3002;</li>
-<li>&#x8BBE;&#x60F3;&#x4E00;&#x4E2A;&#x4E00;&#x5F00;&#x59CB;&#x5E76;&#x672A;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x5F15;&#x5165;&#x5168;&#x5C40;&#x8303;&#x56F4;&#x5185;&#x751F;&#x6548;&#x7684;&#x5168;&#x5C40;&#x5F02;&#x5E38;&#x5904;&#x7406;&#xFF0C;&#x52BF;&#x5FC5;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x53D8;&#x5DF2;&#x6709;Controller&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x6709;&#x4FB5;&#x5165;&#x6027;&#x3002;<br>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x63A7;&#x5236;&#x751F;&#x6548;&#x8303;&#x56F4;&#xFF0C;&#x5373;&#x9ED8;&#x8BA4;&#x5BF9;&#x6240;&#x6709;Controller&#x751F;&#x6548;&#x3002;&#x5982;&#x679C;&#x63A7;&#x5236;&#x751F;&#x6548;&#x8303;&#x56F4;&#xFF0C;&#x5219;&#x9ED8;&#x8BA4;&#x5BF9;&#x6240;&#x6709;Controller&#x4E0D;&#x751F;&#x6548;&#xFF0C;&#x964D;&#x4F4E;&#x4FB5;&#x5165;&#x6027;&#x3002;</li>
-</ol>
-<p>&#x5982;&#x521A;&#x624D;&#x793A;&#x4F8B;&#x4E2D;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x53EA;&#x9488;&#x5BF9;&#x5B9E;&#x73B0;&#x4E86;GlobalExceptionHandlerMixin&#x63A5;&#x53E3;&#x7684;&#x7C7B;&#x6709;&#x6548;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">&quot;/api/demo&quot;</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> <span class="keyword">implements</span> <span class="title">GlobalExceptionHandlerMixin</span> </span>{</div><div class="line">}</div></pre></td></tr></table></figure></p>
-<p>ControllerAdvice&#x652F;&#x6301;&#x7684;&#x9650;&#x5B9A;&#x8303;&#x56F4;&#xFF1A;</p>
-<ol>
-<li>&#x6309;&#x6CE8;&#x89E3;&#xFF1A;<code>@ControllerAdvice(annotations = RestController.class)</code></li>
-<li>&#x6309;&#x5305;&#x540D;&#xFF1A;<code>@ControllerAdvice(&quot;org.example.controllers&quot;)</code></li>
-<li>&#x6309;&#x7C7B;&#x578B;&#xFF1A;<code>@ControllerAdvice(assignableTypes = {ControllerInterface.class, AbstractController.class})</code></li>
-</ol>
-<h1 id="&#x603B;&#x7ED3;">2. &#x603B;&#x7ED3;</h1><p>&#x4EE5;&#x4E0A;&#x51E0;&#x79CD;&#x65B9;&#x5F0F;&#x662F;Spring&#x4E13;&#x95E8;&#x4E3A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x8BBE;&#x8BA1;&#x7684;&#x673A;&#x5236;&#x3002;<br>&#x5C31;&#x6211;&#x4E2A;&#x4EBA;&#x800C;&#x8A00;&#xFF0C;&#x7531;&#x4E8E;ControllerAdvice&#x5177;&#x6709;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#x80FD;&#x529B;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x66F4;&#x504F;&#x7231;&#x4E8E;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F7F;&#x7528;ControllerAdvice&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x3002;<br>&#x9664;&#x4E86;&#x7528;&#x5F02;&#x5E38;&#x6765;&#x4F20;&#x9012;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x610F;&#x5916;&#x9519;&#x8BEF;&#xFF0C;&#x4E5F;&#x4F1A;&#x7528;&#x5B83;&#x6765;&#x4F20;&#x9012;&#x5904;&#x4E8E;&#x63A5;&#x53E3;&#x884C;&#x4E3A;&#x4E00;&#x90E8;&#x5206;&#x7684;&#x4E1A;&#x52A1;&#x9519;&#x8BEF;&#x3002;<br>&#x8FD9;&#x4E5F;&#x662F;&#x5F02;&#x5E38;&#x7684;&#x4F18;&#x70B9;&#x4E4B;&#x4E00;&#xFF0C;&#x5982;&#x679C;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;&#x5206;&#x591A;&#x5C42;&#x51FD;&#x6570;&#x5B9E;&#x73B0;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x9519;&#x8BEF;&#x7801;&#xFF0C;&#x90A3;&#x4E48;&#x5230;Controller&#x7684;&#x8DEF;&#x5F84;&#x4E0A;&#x7684;&#x6BCF;&#x4E00;&#x5C42;&#x51FD;&#x6570;&#x90FD;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x9519;&#x8BEF;&#x7801;&#xFF0C;&#x9000;&#x56DE;&#x5230;&#x4E86;C&#x8BED;&#x8A00;&#x90A3;&#x79CD;&#x53EF;&#x6015;&#x7684;&#x201C;&#x5199;&#x4E00;&#x884C;&#x8BED;&#x53E5;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;&#x9519;&#x8BEF;&#x7801;&#x201D;&#x7684;&#x6A21;&#x5F0F;&#x3002;</p>
-<p>&#x5F53;&#x7136;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#xFF0C;&#x4EFB;&#x4F55;&#x80FD;&#x591F;&#x7ED9;Controller&#x52A0;&#x5207;&#x9762;&#x7684;&#x673A;&#x5236;&#x90FD;&#x80FD;&#x53D8;&#x76F8;&#x7684;&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x3002;&#x6BD4;&#x5982;&#xFF1A;</p>
-<ol>
-<li>&#x5728;&#x62E6;&#x622A;&#x5668;&#x5185;&#x6355;&#x83B7;Controller&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x505A;&#x7EDF;&#x4E00;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x3002;</li>
-<li>&#x4F7F;&#x7528;Spring&#x7684;AOP&#x673A;&#x5236;&#xFF0C;&#x505A;&#x7EDF;&#x4E00;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x3002;</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -237,13 +189,17 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">deque</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -257,98 +213,24 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/spring//" class="article-tag-list-link color2">spring</a>
+        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/articles/2018-09-04-80a0.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          vagrant尝鲜及docker搭建nignx与reids
-        
-      </div>
-    </a>
   
   
-    <a href="/articles/2018-07-17-d281.html" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">源码|jdk源码之HashMap分析(二)</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#全局异常处理"><span class="toc-number">1.</span> <span class="toc-text">1. 全局异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HandlerExceptionResolver接口"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. HandlerExceptionResolver接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用示例"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 使用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Controller局部异常处理"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. Controller局部异常处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1. 使用示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个问题"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.3.2. 一个问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ControllerAdvice"><span class="toc-number">1.4.</span> <span class="toc-text">1.4. ControllerAdvice</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例-2"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.4.1. 使用示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#控制生效的Controller范围"><span class="toc-number">1.4.2.</span> <span class="toc-text">1.4.2. 控制生效的Controller范围</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">2. 总结</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "https://frapples.github.io/articles/2018-09-01-ecbc.html",
-  owner: 'frapples',
-  repo: 'frapples.github.io',
-  oauth: {
-    client_id: '0891e95861157db67799',
-    client_secret: 'ed05340f95e66138cc99d6f7dc1ee6e2ebc4662f',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -371,9 +253,9 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
