@@ -9,7 +9,7 @@
   <title>源码|jdk源码之LinkedList与modCount字段 | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="&amp;#x94FE;&amp;#x8868;&amp;#x662F;&amp;#x5BF9;&amp;#x4E0A;&amp;#x4E00;&amp;#x7BC7;&amp;#x535A;&amp;#x6587;&amp;#x6240;&amp;#x8BF4;&amp;#x7684;&amp;#x987A;&amp;#x5E8F;&amp;#x8868;&amp;#x7684;&amp;#x4E00;&amp;#x79CD;&amp;#x5B9E;&amp;#x73B0;&amp;#x3002; &amp;#x4E0E;ArrayList&amp;#x601D;&amp;#x8DE">
-<meta name="keywords" content="java,jdk8,list">
+<meta name="keywords" content="java,list,jdk8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="源码|jdk源码之LinkedList与modCount字段">
 <meta property="og:url" content="https://frapples.github.io/articles/2018-07-11-2c35.html">
@@ -66,6 +66,8 @@
 	        
 				<li><a href="/archives">博文归档</a></li>
 	        
+				<li><a href="/categories/IT/java/jdk/">专题-jdk源码</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -87,6 +89,8 @@
 			<div class="social">
 				
 					<a class="github" target="_blank" href="https://github.com/frapples" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="segmentfault" target="_blank" href="https://segmentfault.com/blog/frapples" title="segmentfault"><i class="icon-segmentfault"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:isfrapples@outlook.com" title="mail"><i class="icon-mail"></i></a>
 		        
@@ -120,6 +124,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -127,18 +133,22 @@
 					
 						<a class="github" target="_blank" href="https://github.com/frapples" title="github"><i class="icon-github"></i></a>
 			        
+						<a class="segmentfault" target="_blank" href="https://segmentfault.com/blog/frapples" title="segmentfault"><i class="icon-segmentfault"></i></a>
+			        
 						<a class="mail" target="_blank" href="mailto:isfrapples@outlook.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/archives">博文归档</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">博文归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories/IT/java/jdk/">专题-jdk源码</a></li>
 		        
 				</ul>
 			</nav>
@@ -238,11 +248,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
         		</li>
       		
 		</ul>
@@ -491,11 +501,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,6 +537,34 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SOA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">concurrent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -555,35 +593,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SOA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">concurrent</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +637,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdk8</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,11 +645,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">deque</a>
+                <a href="javascript:void(0)" class="js-tag color5">jdk8</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">deque</a>
               </li>
             
             <div class="clearfix"></div>

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Frapples的博客">
 <meta property="og:description" content="&amp;#x6808;&amp;#x3001;&amp;#x961F;&amp;#x5217;&amp;#x3001;&amp;#x53CC;&amp;#x7AEF;&amp;#x961F;&amp;#x5217;&amp;#x90FD;&amp;#x662F;&amp;#x975E;&amp;#x5E38;&amp;#x7ECF;&amp;#x5178;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x548C;&amp;#x94FE;&amp;#x8868;&amp;#x3001;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2018-09-09T15:01:34.710Z">
+<meta property="og:updated_time" content="2018-09-09T15:02:46.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="源码|jdk源码之栈、队列及ArrayDeque分析">
 <meta name="twitter:description" content="&amp;#x6808;&amp;#x3001;&amp;#x961F;&amp;#x5217;&amp;#x3001;&amp;#x53CC;&amp;#x7AEF;&amp;#x961F;&amp;#x5217;&amp;#x90FD;&amp;#x662F;&amp;#x975E;&amp;#x5E38;&amp;#x7ECF;&amp;#x5178;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x3002;&amp;#x548C;&amp;#x94FE;&amp;#x8868;&amp;#x3001;">
@@ -64,6 +64,8 @@
 	        
 				<li><a href="/archives">博文归档</a></li>
 	        
+				<li><a href="/categories/IT/java/jdk/">专题-jdk源码</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -85,6 +87,8 @@
 			<div class="social">
 				
 					<a class="github" target="_blank" href="https://github.com/frapples" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="segmentfault" target="_blank" href="https://segmentfault.com/blog/frapples" title="segmentfault"><i class="icon-segmentfault"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:isfrapples@outlook.com" title="mail"><i class="icon-mail"></i></a>
 		        
@@ -118,6 +122,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -125,18 +131,22 @@
 					
 						<a class="github" target="_blank" href="https://github.com/frapples" title="github"><i class="icon-github"></i></a>
 			        
+						<a class="segmentfault" target="_blank" href="https://segmentfault.com/blog/frapples" title="segmentfault"><i class="icon-segmentfault"></i></a>
+			        
 						<a class="mail" target="_blank" href="mailto:isfrapples@outlook.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/archives">博文归档</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">博文归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories/IT/java/jdk/">专题-jdk源码</a></li>
 		        
 				</ul>
 			</nav>
@@ -259,7 +269,7 @@
 <p>&#x51FA;&#x961F;&#x7684;&#x4EE3;&#x7801;&#x5F88;&#x663E;&#x7136;&#xFF0C;&#x4E0D;&#x591A;&#x89E3;&#x91CA;&#x3002;</p>
 <h2 id="&#x6269;&#x5BB9;">3.6. &#x6269;&#x5BB9;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doubleCapacity</span><span class="params">()</span> </span>{</div><div class="line">    <span class="keyword">assert</span> head == tail;</div><div class="line">    <span class="keyword">int</span> p = head;</div><div class="line">    <span class="keyword">int</span> n = elements.length;</div><div class="line">    <span class="keyword">int</span> r = n - p; <span class="comment">// number of elements to the right of p</span></div><div class="line">    <span class="keyword">int</span> newCapacity = n &lt;&lt; <span class="number">1</span>;</div><div class="line">    <span class="comment">// &#x6269;&#x5BB9;&#x540E;&#x7684;&#x5927;&#x5C0F;&#x5C0F;&#x4E8E;0&#xFF08;&#x6EA2;&#x51FA;&#xFF09;&#xFF0C;&#x4E5F;&#x5373;&#x961F;&#x5217;&#x6700;&#x5927;&#x5E94;&#x8BE5;&#x662F;2&#x7684;30&#x6B21;&#x65B9;</span></div><div class="line">    <span class="keyword">if</span> (newCapacity &lt; <span class="number">0</span>)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">&quot;Sorry, deque too big&quot;</span>);</div><div class="line">    Object[] a = <span class="keyword">new</span> Object[newCapacity];</div><div class="line">    System.arraycopy(elements, p, a, <span class="number">0</span>, r);</div><div class="line">    System.arraycopy(elements, <span class="number">0</span>, a, r, p);</div><div class="line">    elements = a;</div><div class="line">    head = <span class="number">0</span>;</div><div class="line">    tail = n;</div><div class="line">}</div></pre></td></tr></table></figure>
 <p>&#x6269;&#x5BB9;&#x7684;&#x5B9E;&#x73B0;&#x4E3A;&#x6309; <strong>&#x4E24;&#x500D;</strong> &#x6269;&#x5BB9;&#x539F;&#x6570;&#x7EC4;&#xFF0C;&#x5C06;&#x539F;&#x6570;&#x500D;&#x62F7;&#x8D1D;&#x8FC7;&#x53BB;&#x3002;<br>&#x5176;&#x4E2D;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5BF9;&#x6570;&#x7EC4;&#x5927;&#x5C0F;&#x6EA2;&#x51FA;&#x7684;&#x5904;&#x7406;&#x3002;</p>
-<h2 id="&#x8FED;&#x4EE3;&#x5668;">3.7. &#x8FED;&#x4EE3;&#x5668;</h2><p>&#x4E4B;&#x524D;&#x300A;&#x6E90;&#x7801;|jdk&#x6E90;&#x7801;&#x4E4B;LinkedList&#x4E0E;modCount&#x5B57;&#x6BB5;&#x300B;&#x4E2D;&#x5206;&#x6790;&#x8FC7;&#xFF0C;<br>&#x5BB9;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x4FEE;&#x6539;&#x8FC7;&#x5BB9;&#x5668;&#x7ED3;&#x6784;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x9700;&#x8981;&#x4FEE;&#x6539;<code>modCount</code>&#x5B57;&#x6BB5;&#x3002;<br>&#x8FD9;&#x6837;&#x8FED;&#x4EE3;&#x5668;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x524D;&#x540E;&#x6BD4;&#x5BF9;&#x8BE5;&#x5B57;&#x6BB5;&#x6765;&#x5224;&#x65AD;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x88AB;&#x52A8;&#x8FC7;&#xFF0C;&#x53CA;&#x65F6;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#x8FED;&#x4EE3;&#x4EE5;&#x514D;&#x9020;&#x6210;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5C31;&#x50CF;</p>
+<h2 id="&#x8FED;&#x4EE3;&#x5668;">3.7. &#x8FED;&#x4EE3;&#x5668;</h2><p>&#x4E4B;&#x524D;&#x300A;&#x6E90;&#x7801;|jdk&#x6E90;&#x7801;&#x4E4B;LinkedList&#x4E0E;modCount&#x5B57;&#x6BB5;&#x300B;&#x4E2D;&#x5206;&#x6790;&#x8FC7;&#xFF0C;<br>&#x5BB9;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x6240;&#x6709;&#x4FEE;&#x6539;&#x8FC7;&#x5BB9;&#x5668;&#x7ED3;&#x6784;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x9700;&#x8981;&#x4FEE;&#x6539;<code>modCount</code>&#x5B57;&#x6BB5;&#x3002;<br>&#x8FD9;&#x6837;&#x8FED;&#x4EE3;&#x5668;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x524D;&#x540E;&#x6BD4;&#x5BF9;&#x8BE5;&#x5B57;&#x6BB5;&#x6765;&#x5224;&#x65AD;&#x5BB9;&#x5668;&#x662F;&#x5426;&#x88AB;&#x52A8;&#x8FC7;&#xFF0C;&#x53CA;&#x65F6;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#x8FED;&#x4EE3;&#x4EE5;&#x514D;&#x9020;&#x6210;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
 <p>&#x4E0D;&#x8FC7;&#xFF0C;&#x5728;ArrayDeque&#x7684;&#x63D2;&#x5165;&#x65B9;&#x6CD5;&#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x4FEE;&#x6539;modeCount&#x5B57;&#x6BB5;&#x3002;&#x4ECE;ArrayDeque&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DeqIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>{</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Index of element to be returned by subsequent call to next.</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> cursor = head;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Tail recorded at construction (also in remove), to stop</div><div class="line">     * iterator and also to check for comodification.</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> fence = tail;</div><div class="line">}</div></pre></td></tr></table></figure></p>
 <p>&#x539F;&#x6765;&#xFF0C;ArrayDeque&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x4E86;head&#x548C;tail&#x5934;&#x5C3E;&#x6307;&#x9488;&#xFF0C;&#x5C31;&#x80FD;&#x5224;&#x65AD;&#x51FA;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x4E2D;&#x662F;&#x5426;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x3002;</p>
 
@@ -523,11 +533,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,6 +569,34 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SOA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">concurrent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -587,35 +625,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SOA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">concurrent</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,11 +669,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jdk8</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,11 +677,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">deque</a>
+                <a href="javascript:void(0)" class="js-tag color5">jdk8</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">deque</a>
               </li>
             
             <div class="clearfix"></div>
