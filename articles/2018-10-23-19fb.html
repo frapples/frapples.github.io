@@ -17,7 +17,7 @@
 <meta property="og:description" content="Rust&amp;#x662F;mozilla&amp;#x63A8;&amp;#x51FA;&amp;#x7684;&amp;#x4E00;&amp;#x6B3E;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7EA7;&amp;#x7684;&amp;#x7F16;&amp;#x7A0B;&amp;#x8BED;&amp;#x8A00;&amp;#xFF0C;&amp;#x5176;&amp;#x4E24;&amp;#x5927;&amp;#x7279;&amp;#x70B9;&amp;#x5728;&amp;#x4E8E;&amp;#x96F6;&amp;#x5F">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://frapples.github.io/images/emoji/joy.png">
-<meta property="og:updated_time" content="2018-10-23T01:48:29.386Z">
+<meta property="og:updated_time" content="2018-10-23T02:11:50.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rust语言特点及基础配置">
 <meta name="twitter:description" content="Rust&amp;#x662F;mozilla&amp;#x63A8;&amp;#x51FA;&amp;#x7684;&amp;#x4E00;&amp;#x6B3E;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7EA7;&amp;#x7684;&amp;#x7F16;&amp;#x7A0B;&amp;#x8BED;&amp;#x8A00;&amp;#xFF0C;&amp;#x5176;&amp;#x4E24;&amp;#x5927;&amp;#x7279;&amp;#x70B9;&amp;#x5728;&amp;#x4E8E;&amp;#x96F6;&amp;#x5F">
@@ -190,19 +190,19 @@
 <p>C++&#x662F;&#x76F8;&#x5F53;&#x96BE;&#x5B66;&#xFF0C;&#x5176;&#x4E2D;&#x662F;&#x56E0;&#x4E3A;&#x5176;&#x56E0;&#x4E3A;&#x5386;&#x53F2;&#x9057;&#x7559;&#x539F;&#x56E0;&#x53CA;&#x4E0E;C&#x7684;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x5BFC;&#x81F4;&#x8BED;&#x6CD5;&#x6B63;&#x4EA4;&#x6027;&#x3001;&#x7EDF;&#x4E00;&#x6027;&#x5DEE;&#xFF0C;<br>&#x8981;&#x5B66;&#x4E60;&#x7684;&#x8BED;&#x6CD5;&#x70B9;&#x53CA;&#x8981;&#x907F;&#x514D;&#x7684;&#x8E29;&#x5751;&#x70B9;&#x76F8;&#x5F53;&#x4E4B;&#x591A;&#xFF0C;&#x4E43;&#x81F3;&#x4E8E;&#x4E00;&#x90E8;&#x5206;&#x540C;&#x5B66;&#x90FD;&#x662F;&#x201C;C++&#x4ECE;&#x5165;&#x95E8;&#x5230;&#x653E;&#x5F03;&#x201D;&#x4E86;&#x3002;&#xFF08;&#x6211;&#x4E5F;&#x662F;
 <img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
 &#xFF09;<br>&#x800C;&#x5269;&#x4E0B;&#x4E00;&#x90E8;&#x5206;&#x8BF4;&#x7528;C++&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;C with class&#xFF0C;&#x4E0D;&#x6562;&#x7528;&#x592A;&#x9AD8;&#x7EA7;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6015;hold&#x4E0D;&#x4F4F;&#x3002;&#x3002;&#x3002;</p>
-<p>&#x7C7B;&#x4F3C;&#x4E8E;C++&#xFF0C;Rust&#x7684;&#x5B9A;&#x4F4D;&#x662F;&#x4E00;&#x6B3E;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x5177;&#x6709;C++&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;&#x7684;&#x6240;&#x6709;&#x7279;&#x70B9;&#xFF1A;</p>
+<h2 id="&#x62E5;&#x6709;&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;C-&#x7684;&#x4F18;&#x52BF;">1.1. &#x62E5;&#x6709;&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;C++&#x7684;&#x4F18;&#x52BF;</h2><p>&#x7C7B;&#x4F3C;&#x4E8E;C++&#xFF0C;Rust&#x7684;&#x5B9A;&#x4F4D;&#x662F;&#x4E00;&#x6B3E;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x5177;&#x6709;C++&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;&#x7684;&#x6240;&#x6709;&#x7279;&#x70B9;&#xFF1A;</p>
 <ol>
-<li>&#x96F6;&#x5F00;&#x9500;&#x62BD;&#x8C61;&#x3002;&#x62BD;&#x8C61;&#x4E0D;&#x4F1A;&#x5F15;&#x5165;&#x989D;&#x5916;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x7F16;&#x8BD1;&#x51FA;&#x975E;&#x5E38;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x673A;&#x5668;&#x4EE3;&#x7801;&#x3002;</li>
-<li>&#x6CA1;&#x6709;gc&#x3002;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x5E94;&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x6027;&#x8981;&#x6C42;&#x9AD8;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;gc&#x3002;&#x4E5F;&#x7528;&#x4E8E;&#x7F16;&#x5199;&#x5E95;&#x5C42;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#xFF0C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7528;gc&#x3002;</li>
-<li>&#x5185;&#x5B58;&#x6A21;&#x578B;&#x6CA1;&#x6709;&#x9AD8;&#x5EA6;&#x5C01;&#x88C5;&#x3002;&#x548C;C++&#x4E00;&#x6837;&#xFF0C;&#x4F60;&#x5373;&#x53EF;&#x4EE5;&#x5C06;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5230;&#x6808;&#x4E0A;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5230;&#x5806;&#x4E0A;&#x3002;<br>&#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x7EA7;&#x7684;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x8FD9;&#x4E9B;&#x7684;&#x7EC6;&#x7C92;&#x5EA6;&#x63A7;&#x5236;&#x529B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x50CF;java&#x4E4B;&#x7C7B;&#x7684;&#x9AD8;&#x7EA7;&#x8BED;&#x8A00;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5F15;&#x7528;&#x7684;&#x6982;&#x5FF5;&#x5373;&#x53EF;&#x4F7F;&#x7528;java&#x4E86;&#xFF0C;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x5185;&#x5B58;&#x5206;&#x914D;&#x95EE;&#x9898;&#x3002;</li>
+<li><strong>&#x96F6;&#x5F00;&#x9500;&#x62BD;&#x8C61;</strong> &#x3002;&#x62BD;&#x8C61;&#x4E0D;&#x4F1A;&#x5F15;&#x5165;&#x989D;&#x5916;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x7F16;&#x8BD1;&#x51FA;&#x975E;&#x5E38;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x673A;&#x5668;&#x4EE3;&#x7801;&#x3002;</li>
+<li><strong>&#x6CA1;&#x6709;gc</strong> &#x3002;&#x7CFB;&#x7EDF;&#x7EA7;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x5E94;&#x7528;&#x4E8E;&#x5B9E;&#x65F6;&#x6027;&#x8981;&#x6C42;&#x9AD8;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x4E0D;&#x80FD;&#x7528;gc&#x3002;&#x4E5F;&#x7528;&#x4E8E;&#x7F16;&#x5199;&#x5E95;&#x5C42;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#xFF0C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7528;gc&#x3002;</li>
+<li>&#x5185;&#x5B58;&#x6A21;&#x578B;&#x6CA1;&#x6709;&#x9AD8;&#x5EA6;&#x5C01;&#x88C5;&#x3002;&#x548C;C++&#x4E00;&#x6837;&#xFF0C;&#x4F60;&#x5373;&#x53EF;&#x4EE5;&#x5C06;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5230;&#x6808;&#x4E0A;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5C06;&#x5BF9;&#x8C61;&#x5206;&#x914D;&#x5230;&#x5806;&#x4E0A;&#x3002;<br> &#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x7EA7;&#x7684;&#x8BED;&#x8A00;&#x9700;&#x8981;&#x8FD9;&#x4E9B;&#x7684;&#x7EC6;&#x7C92;&#x5EA6;&#x63A7;&#x5236;&#x529B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x50CF;java&#x4E4B;&#x7C7B;&#x7684;&#x9AD8;&#x7EA7;&#x8BED;&#x8A00;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5F15;&#x7528;&#x7684;&#x6982;&#x5FF5;&#x5373;&#x53EF;&#x4F7F;&#x7528;java&#x4E86;&#xFF0C;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x5185;&#x5B58;&#x5206;&#x914D;&#x95EE;&#x9898;&#x3002;</li>
 </ol>
-<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x9664;&#x4E86;&#x62E5;&#x6709;C++&#x4F18;&#x70B9;&#x5916;&#xFF0C;&#x5B83;&#x8FD8;&#x6709;&#xFF1A;</p>
+<h2 id="&#x62E5;&#x6709;&#x66F4;&#x5F3A;&#x7684;&#x9759;&#x6001;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x548C;&#x73B0;&#x4EE3;&#x8BED;&#x8A00;&#x7279;&#x6027;">1.2. &#x62E5;&#x6709;&#x66F4;&#x5F3A;&#x7684;&#x9759;&#x6001;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x548C;&#x73B0;&#x4EE3;&#x8BED;&#x8A00;&#x7279;&#x6027;</h2><p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C;&#x9664;&#x4E86;&#x62E5;&#x6709;C++&#x4F18;&#x70B9;&#x5916;&#xFF0C;&#x5B83;&#x8FD8;&#x6709;&#xFF1A;</p>
 <ol>
-<li>&#x8BED;&#x6CD5;&#x4E0A;&#x5E72;&#x51C0;&#x6B63;&#x4EA4;&#xFF0C;&#x6CA1;&#x6709;C++&#x90A3;&#x4E48;&#x7E41;&#x7410;&#x3002;</li>
-<li>&#x5B89;&#x5168;&#x6027;&#x3002;Rust&#x8BED;&#x6CD5;&#x5F15;&#x5165;&#x6240;&#x6709;&#x6743;&#x548C;&#x751F;&#x547D;&#x671F;&#x6982;&#x5FF5;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x80FD;&#x68C0;&#x67E5;&#x51FA;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x9519;&#x8BEF;&#xFF0C;<br>&#x8FD9;&#x662F;rust&#x7684;&#x4E00;&#x4E2A;&#x6740;&#x624B;&#x950F;&#x7684;&#x7279;&#x6027;&#x3002;</li>
-<li>&#x8BED;&#x8A00;&#x7279;&#x6027;&#x5438;&#x6536;&#x4E86;&#x73B0;&#x4EE3;&#x8BED;&#x8A00;&#x7684;&#x5927;&#x91CF;&#x4F18;&#x79C0;&#x7279;&#x6027;&#xFF0C;&#x652F;&#x6301;&#x591A;&#x8303;&#x5F0F;&#x3002;</li>
+<li><strong>&#x8BED;&#x6CD5;&#x5E72;&#x51C0;&#x6B63;&#x4EA4;</strong>&#xFF0C;&#x6CA1;&#x6709;C++&#x90A3;&#x4E48;&#x7E41;&#x7410;&#x3002;</li>
+<li><strong>&#x5B89;&#x5168;&#x6027;</strong>&#x3002;Rust&#x8BED;&#x6CD5;&#x5F15;&#x5165;&#x6240;&#x6709;&#x6743;&#x548C;&#x751F;&#x547D;&#x671F;&#x6982;&#x5FF5;&#xFF0C;&#x5728;&#x7F16;&#x8BD1;&#x671F;&#x5C31;&#x80FD;&#x68C0;&#x67E5;&#x51FA;&#x4E00;&#x90E8;&#x5206;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x9519;&#x8BEF;&#xFF0C;<br> &#x8FD9;&#x662F;rust&#x7684;&#x4E00;&#x4E2A;&#x6740;&#x624B;&#x950F;&#x7684;&#x7279;&#x6027;&#x3002;</li>
+<li><strong>&#x73B0;&#x4EE3;&#x8BED;&#x8A00;&#x7279;&#x6027;</strong>&#x3002;&#x8BED;&#x8A00;&#x7279;&#x6027;&#x5438;&#x6536;&#x4E86;&#x73B0;&#x4EE3;&#x8BED;&#x8A00;&#x7684;&#x5927;&#x91CF;&#x4F18;&#x79C0;&#x7279;&#x6027;&#xFF0C;&#x652F;&#x6301;&#x591A;&#x8303;&#x5F0F;&#x3002;</li>
 </ol>
-<p>&#x4ECE;&#x6211;&#x4E86;&#x89E3;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x6765;&#x770B;&#xFF0C;&#x8FD8;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x5BF9;&#x6807;C++&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x76EE;&#x524D;&#x611F;&#x53D7;&#x8FD8;&#x4E0D;&#x662F;&#x5F88;&#x5927;&#xFF1A;</p>
+<h2 id="&#x6CA1;&#x6709;C-&#x7684;&#x5386;&#x53F2;&#x9057;&#x7559;&#x95EE;&#x9898;">1.3. &#x6CA1;&#x6709;C++&#x7684;&#x5386;&#x53F2;&#x9057;&#x7559;&#x95EE;&#x9898;</h2><p>&#x4ECE;&#x6211;&#x4E86;&#x89E3;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x6765;&#x770B;&#xFF0C;&#x8FD8;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x5BF9;&#x6807;C++&#x7684;&#x7279;&#x70B9;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x76EE;&#x524D;&#x611F;&#x53D7;&#x8FD8;&#x4E0D;&#x662F;&#x5F88;&#x5927;&#xFF1A;</p>
 <ol>
 <li>&#x73B0;&#x4EE3;&#x5316;&#x7684;&#x6A21;&#x5757;&#x7CFB;&#x7EDF;&#xFF0C;&#x6BD4;C++&#x90A3;&#x79CD;&#x53E4;&#x8001;&#x7684;&#x7EE7;&#x627F;C&#x8BED;&#x8A00;&#x7684;&#x65B9;&#x5F0F;&#xFF08;&#x5229;&#x7528;#include&#x9884;&#x7F16;&#x8BD1;&#x548C;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7684;&#x6982;&#x5FF5;&#xFF09;&#x8981;&#x597D;&#x7528;&#x5F88;&#x591A;&#x3002;</li>
 <li>&#x66F4;&#x597D;&#x7528;&#x7684;&#x6CDB;&#x578B;&#x3002;&#x6BD4;C++&#x7684;&#x6A21;&#x677F;&#x66F4;&#x5BB9;&#x6613;&#x4F7F;&#x7528;&#x3002;</li>
@@ -222,13 +222,13 @@
 <p>rust&#x4E2D;&#x7684;&#x8BED;&#x6CD5;&#x4E0D;&#x662F;C&#x7CFB;&#x8BED;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x719F;&#x6089;rust&#x7684;&#x8BED;&#x6CD5;&#x9700;&#x8981;&#x591A;&#x591A;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x7EC3;&#x4E60;&#x3002;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x8BED;&#x6CD5;&#x6709;&#xFF1A;</p>
 <ol>
 <li>&#x9996;&#x5148;&#xFF0C;&#x4F7F;&#x7528;&#x5173;&#x952E;&#x5B57;let&#x58F0;&#x660E;&#x53D8;&#x91CF;&#xFF0C;rust&#x9F13;&#x52B1;&#x4F7F;&#x7528;&#x81EA;&#x52A8;&#x7C7B;&#x578B;&#x63A8;&#x5BFC;&#x3002;</li>
-<li>&#x9ED8;&#x8BA4;&#x6765;&#x8BF4;&#xFF0C;&#x53D8;&#x91CF;&#x9ED8;&#x8BA4;&#x4E0D;&#x53EF;&#x53D8;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x5F97;&#x53D8;&#x91CF;&#x53EF;&#x53D8;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x7684;&#x58F0;&#x660E;&#x4E3A;<code>mut</code>&#x3002;rust&#x9F13;&#x52B1;&#x4F7F;&#x7528;&#x4E0D;&#x53EF;&#x53D8;&#x53D8;&#x91CF;&#x3002;<br>&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x662F;&#x548C;C&#x7CFB;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x662F;&#x6807;&#x6CE8;&#x5728;&#x53D8;&#x91CF;&#x540E;&#x9762;&#x3002;&#x5BF9;&#x4E8E;&#x4E60;&#x60EF;C&#x7CFB;&#x8BED;&#x6CD5;&#xFF08;C&#xFF0C;java&#xFF0C;js&#xFF09;&#x7684;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x597D;&#x4E0D;&#x4E60;&#x60EF;&#x3002;&#x3002;&#x3002;</li>
+<li>&#x9ED8;&#x8BA4;&#x6765;&#x8BF4;&#xFF0C;&#x53D8;&#x91CF;&#x9ED8;&#x8BA4;&#x4E0D;&#x53EF;&#x53D8;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x5F97;&#x53D8;&#x91CF;&#x53EF;&#x53D8;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x7684;&#x58F0;&#x660E;&#x4E3A;<code>mut</code>&#x3002;rust&#x9F13;&#x52B1;&#x4F7F;&#x7528;&#x4E0D;&#x53EF;&#x53D8;&#x53D8;&#x91CF;&#x3002;<br> &#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x662F;&#x548C;C&#x7CFB;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x662F;&#x6807;&#x6CE8;&#x5728;&#x53D8;&#x91CF;&#x540E;&#x9762;&#x3002;&#x5BF9;&#x4E8E;&#x4E60;&#x60EF;C&#x7CFB;&#x8BED;&#x6CD5;&#xFF08;C&#xFF0C;java&#xFF0C;js&#xFF09;&#x7684;&#x4EBA;&#x6765;&#x8BF4;&#xFF0C;&#x597D;&#x4E0D;&#x4E60;&#x60EF;&#x3002;&#x3002;&#x3002;</li>
 <li>C&#x7CFB;&#x8BED;&#x6CD5;&#x4E0D;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7684;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5F00;&#x5934;&#x5C31;&#x662F;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x3002;&#x4E8E;&#x6B64;&#x4E0D;&#x540C;&#xFF0C;rust&#x4F7F;&#x7528;fn&#x4F5C;&#x4E3A;&#x5B9A;&#x4E49;&#x51FD;&#x6570;&#x7684;&#x5173;&#x952E;&#x5B57;&#x3002;</li>
-<li>rust&#x4E2D;&#x4E5F;&#x6709;while&#x5FAA;&#x73AF;&#x548C;for&#x5FAA;&#x73AF;&#x3002;&#x548C;C&#x7CFB;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;for&#x5FAA;&#x73AF;&#x662F;&#x7528;&#x6765;&#x8FED;&#x4EE3;&#x5217;&#x8868;&#x3002;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x8FED;&#x4EE3;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x533A;&#x95F4;&#xFF0C;<br>&#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>(1..10)</code>&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;<code>Range&lt;i32&gt;</code>&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5E76;&#x8FED;&#x4EE3;&#x3002;</li>
+<li>rust&#x4E2D;&#x4E5F;&#x6709;while&#x5FAA;&#x73AF;&#x548C;for&#x5FAA;&#x73AF;&#x3002;&#x548C;C&#x7CFB;&#x8BED;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;for&#x5FAA;&#x73AF;&#x662F;&#x7528;&#x6765;&#x8FED;&#x4EE3;&#x5217;&#x8868;&#x3002;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x8FED;&#x4EE3;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x533A;&#x95F4;&#xFF0C;<br> &#x5219;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>(1..10)</code>&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;<code>Range&lt;i32&gt;</code>&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5E76;&#x8FED;&#x4EE3;&#x3002;</li>
 </ol>
 <p>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x5C06;Vector&#x8F6C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#xFF1A;<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">vector_to_string</span></span>(nums: &amp;<span class="built_in">Vec</span>&lt;<span class="built_in">i32</span>&gt;) -&gt; <span class="built_in">String</span> {</div><div class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> s = <span class="built_in">String</span>::new();</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums.iter() {</div><div class="line">        s += &amp;(i.to_string() + <span class="string">&quot; &quot;</span>);</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> s;</div><div class="line">}</div></pre></td></tr></table></figure></p>
 <ol>
-<li><code>String::new</code>&#x6697;&#x793A;&#x51FA;&#xFF0C;rust&#x4E2D;&#x6CA1;&#x6709;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;new&#x8FD0;&#x7B97;&#x7B26;&#x3002;&#x600E;&#x4E48;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF1F;&#x7528;&#x9759;&#x6001;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x3002;<br>&#x8FD9;&#x4E2A;&#x8BBE;&#x8BA1;&#x7701;&#x4E86;&#x5F88;&#x591A;&#x9EBB;&#x70E6;&#xFF0C;&#x9996;&#x5148;&#xFF0C;&#x5373;&#x4F7F;&#x7ED9;&#x4F60;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5DE5;&#x7A0B;&#x5B9E;&#x8DF5;&#x4E0A;&#x4E5F;&#x4F1A;&#x518D;&#x5C01;&#x88C5;&#x4E00;&#x5C42;&#x5404;&#x79CD;&#x5DE5;&#x5382;&#x3002;<br>&#x5176;&#x6B21;&#xFF0C;&#x4F60;&#x4E0D;&#x4F1A;&#x5F04;&#x51FA;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x534A;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5982;java&#x4E2D;&#x7684;this&#x5F15;&#x7528;&#x6CC4;&#x6F0F;&#x3002;</li>
+<li><code>String::new</code>&#x6697;&#x793A;&#x51FA;&#xFF0C;rust&#x4E2D;&#x6CA1;&#x6709;&#x6784;&#x9020;&#x51FD;&#x6570;&#x548C;new&#x8FD0;&#x7B97;&#x7B26;&#x3002;&#x600E;&#x4E48;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF1F;&#x7528;&#x9759;&#x6001;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x3002;<br> &#x8FD9;&#x4E2A;&#x8BBE;&#x8BA1;&#x7701;&#x4E86;&#x5F88;&#x591A;&#x9EBB;&#x70E6;&#xFF0C;&#x9996;&#x5148;&#xFF0C;&#x5373;&#x4F7F;&#x7ED9;&#x4F60;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5DE5;&#x7A0B;&#x5B9E;&#x8DF5;&#x4E0A;&#x4E5F;&#x4F1A;&#x518D;&#x5C01;&#x88C5;&#x4E00;&#x5C42;&#x5404;&#x79CD;&#x5DE5;&#x5382;&#x3002;<br> &#x5176;&#x6B21;&#xFF0C;&#x4F60;&#x4E0D;&#x4F1A;&#x5F04;&#x51FA;&#x4E00;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x534A;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x5982;java&#x4E2D;&#x7684;this&#x5F15;&#x7528;&#x6CC4;&#x6F0F;&#x3002;</li>
 <li>String&#x5BF9;&#x8C61;&#x652F;&#x6301;<code>+=</code>&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x8868;&#x660E;Rust&#x652F;&#x6301;&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x8F7D;&#x3002;</li>
 </ol>
 <p>&#x6700;&#x540E;&#xFF0C;main&#x51FD;&#x6570;&#xFF1A;<br><figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() {</div><div class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> v = <span class="built_in">vec!</span>[<span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">1</span>];</div><div class="line">    selection_sort(&amp;<span class="keyword">mut</span> v);</div><div class="line">    <span class="built_in">println!</span>(<span class="string">&quot;{}&quot;</span>, vector_to_string(&amp;v));</div><div class="line">}</div></pre></td></tr></table></figure></p>
@@ -236,7 +236,7 @@
 <li><code>vec!</code>&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E00;&#x4E2A;&#x5B8F;&#xFF0C;rust&#x652F;&#x6301;&#x5F3A;&#x5927;&#x7684;&#x5B8F;&#xFF0C;&#x5F3A;&#x5927;&#x5230;&#x7C7B;&#x4F3C;lisp&#x7684;&#x90A3;&#x79CD;&#x3002;</li>
 <li><code>&amp;</code>&#x662F;&#x5F15;&#x7528;&#x7B26;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x6240;&#x6709;&#x6743;&#x548C;&#x501F;&#x7528;&#x7684;&#x6982;&#x5FF5;&#x3002;</li>
 </ol>
-<h1 id="&#x5B66;&#x4E60;&#x8D44;&#x6599;">4. &#x5B66;&#x4E60;&#x8D44;&#x6599;</h1><p>&#x5BF9;&#x4E8E;&#x6709;&#x7740;&#x4E00;&#x5B9A;&#x57FA;&#x7840;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x5B66;&#x4E60;&#x4E00;&#x95E8;&#x8BED;&#x8A00;&#xFF0C;&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#xFF0C;&#x6700;&#x6709;&#x6548;&#x7387;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#xFF1A;</p>
+<h1 id="&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x4E0E;&#x8D44;&#x6599;">4. &#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x4E0E;&#x8D44;&#x6599;</h1><p>&#x5BF9;&#x4E8E;&#x6709;&#x7740;&#x4E00;&#x5B9A;&#x57FA;&#x7840;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#xFF0C;&#x5B66;&#x4E60;&#x4E00;&#x95E8;&#x8BED;&#x8A00;&#xFF0C;&#x4E2A;&#x4EBA;&#x89C9;&#x5F97;&#xFF0C;&#x6700;&#x6709;&#x6548;&#x7387;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#xFF1A;</p>
 <ol>
 <li>&#x7ED3;&#x5408;&#x73B0;&#x6210;&#x7684;&#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B66;&#x4E60;&#x8BED;&#x6CD5;&#x6559;&#x7A0B;&#x3002;</li>
 <li>&#x5199;&#x603B;&#x7ED3;&#xFF0C;&#x6309;&#x7167;&#x81EA;&#x5DF1;&#x7684;&#x7406;&#x89E3;&#x603B;&#x7ED3;&#x8BED;&#x6CD5;&#xFF0C;&#x5199;&#x7B14;&#x8BB0;&#x3002;</li>
@@ -244,9 +244,12 @@
 </ol>
 <p>&#x6700;&#x540E;&#xFF0C;&#x6709;&#x4E00;&#x4E9B;&#x503C;&#x5F97;&#x5B66;&#x4E60;&#x7684;&#x8D44;&#x6599;&#xFF1A;</p>
 <ol>
-<li>rust&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://www.rust-lang.org/zh-CN/documentation.html" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/documentation.html</a><br>&#x5B66;&#x4E60;rust&#x7684;&#x4E3B;&#x8981;&#x8D44;&#x6599;&#x3002;<br>2.&#x300A;&#x901A;&#x8FC7;&#x4F8B;&#x5B50;&#x5B66;&#x4E60;Rust&#x300B; <a href="https://rustcc.github.io/rust-by-example/index.html" target="_blank" rel="noopener">https://rustcc.github.io/rust-by-example/index.html</a><br>&#x5F25;&#x8865;Rust&#x5B98;&#x65B9;&#x6587;&#x6863;&#x7684;&#x4E0D;&#x8DB3;&#xFF0C;&#x5BF9;&#x4E8E;&#x8BED;&#x6CD5;&#x642D;&#x914D;&#x4E00;&#x90E8;&#x5206;&#x4F8B;&#x5B50;&#x6765;&#x53C2;&#x8003;&#x3002;</li>
+<li>rust&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<a href="https://www.rust-lang.org/zh-CN/documentation.html" target="_blank" rel="noopener">https://www.rust-lang.org/zh-CN/documentation.html</a><br> &#x5B66;&#x4E60;rust&#x7684;&#x4E3B;&#x8981;&#x8D44;&#x6599;&#x3002;</li>
+<li>&#x300A;&#x901A;&#x8FC7;&#x4F8B;&#x5B50;&#x5B66;&#x4E60;Rust&#x300B; <a href="https://rustcc.github.io/rust-by-example/index.html" target="_blank" rel="noopener">https://rustcc.github.io/rust-by-example/index.html</a><br> &#x5F25;&#x8865;Rust&#x5B98;&#x65B9;&#x6587;&#x6863;&#x7684;&#x4E0D;&#x8DB3;&#xFF0C;&#x5BF9;&#x4E8E;&#x8BED;&#x6CD5;&#x642D;&#x914D;&#x4E00;&#x90E8;&#x5206;&#x4F8B;&#x5B50;&#x6765;&#x53C2;&#x8003;&#x3002;</li>
 <li>rust&#x7684;awesome&#x7CFB;&#x5217;&#x3002;<a href="https://github.com/rust-unofficial/awesome-rust" target="_blank" rel="noopener">https://github.com/rust-unofficial/awesome-rust</a></li>
 </ol>
+<h1 id="&#x6700;&#x540E;">5. &#x6700;&#x540E;</h1><p>&#x5BF9;&#x4E8E;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x6BCF;&#x4E2A;&#x4EBA;&#x6709;&#x7740;&#x4E0D;&#x540C;&#x7684;&#x89C2;&#x70B9;&#x3002;</p>
+<p>&#x5C31;&#x6211;&#x4E2A;&#x4EBA;&#x800C;&#x8A00;&#xFF0C;&#x6211;&#x66F4;&#x8D5E;&#x540C;&#x300A;&#x4EE3;&#x7801;&#x5927;&#x5168;&#x300B;&#x4E2D;&#x7684;&#x9690;&#x55BB;&#xFF0C;&#x5373;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x662F;&#x7A0B;&#x5E8F;&#x5458;&#x5DE5;&#x5177;&#x7BB1;&#x4E2D;&#x7684;&#x4E00;&#x628A;&#x8D81;&#x624B;&#x7684;&#x5DE5;&#x5177;&#xFF0C;<br>&#x603B;&#x4F53;&#x800C;&#x8A00;&#xFF0C;&#x5B83;&#x5C3D;&#x91CF;&#x4F7F;&#x7528;&#x826F;&#x597D;&#x7684;&#x8BBE;&#x8BA1;&#x907F;&#x514D;&#x7ED9;&#x7A0B;&#x5E8F;&#x5458;&#x9020;&#x6210;&#x989D;&#x5916;&#x7684;&#x8D1F;&#x62C5;&#xFF0C;&#x53C8;&#x5177;&#x5907;&#x5F3A;&#x5927;&#x7684;&#x7279;&#x6027;&#x4F7F;&#x5F97;&#x7A0B;&#x5E8F;&#x5458;&#x53EF;&#x4EE5;&#x4F18;&#x96C5;&#x5B9E;&#x73B0;&#x5404;&#x7C7B;&#x9700;&#x6C42;&#x3002;<br>&#x5305;&#x62EC;&#x7EDF;&#x4E00;&#x6B63;&#x4EA4;&#x7684;&#x8BED;&#x6CD5;&#x3001;&#x4F18;&#x79C0;&#x7684;&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;&#x3001;&#x4E0D;&#x7834;&#x574F;&#x7EDF;&#x4E00;&#x6027;&#x7684;&#x9002;&#x5F53;&#x7684;&#x8BED;&#x6CD5;&#x7CD6;&#x7B49;&#x3002;</p>
 
       
 
@@ -323,7 +326,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rust的特点"><span class="toc-number">1.</span> <span class="toc-text">1. rust的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rust开发环境的搭建"><span class="toc-number">2.</span> <span class="toc-text">2. rust开发环境的搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一个rust程序"><span class="toc-number">3.</span> <span class="toc-text">3. 第一个rust程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#学习资料"><span class="toc-number">4.</span> <span class="toc-text">4. 学习资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#rust的特点"><span class="toc-number">1.</span> <span class="toc-text">1. rust的特点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#拥有作为系统级语言C-的优势"><span class="toc-number">1.1.</span> <span class="toc-text">1.1. 拥有作为系统级语言C++的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥有更强的静态类型检查和现代语言特性"><span class="toc-number">1.2.</span> <span class="toc-text">1.2. 拥有更强的静态类型检查和现代语言特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有C-的历史遗留问题"><span class="toc-number">1.3.</span> <span class="toc-text">1.3. 没有C++的历史遗留问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rust开发环境的搭建"><span class="toc-number">2.</span> <span class="toc-text">2. rust开发环境的搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一个rust程序"><span class="toc-number">3.</span> <span class="toc-text">3. 第一个rust程序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#学习方法与资料"><span class="toc-number">4.</span> <span class="toc-text">4. 学习方法与资料</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后"><span class="toc-number">5.</span> <span class="toc-text">5. 最后</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -496,11 +499,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +551,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,6 +575,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">debian</a>
               </li>
              
@@ -580,15 +587,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">折腾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rust</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,6 +599,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">rust</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -608,15 +611,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">graphviz</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">draw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
               </li>
              
               <li class="article-tag-list-item">
