@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://frapples.github.io">
-  <title>Category: jdk | Frapples的博客</title>
+  <title>java高性能反射及性能对比 | Frapples的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
-<meta name="keywords" content="java,linux,python,js,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frapples的博客">
-<meta property="og:url" content="https://frapples.github.io/categories/IT/java/jdk/index.html">
+  <meta name="description" content="java&amp;#x7F16;&amp;#x7A0B;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x53CD;&amp;#x5C04;&amp;#x6765;&amp;#x589E;&amp;#x5F3A;&amp;#x7075;&amp;#x6D3B;&amp;#x6027;&amp;#xFF08;&amp;#x5982;&amp;#x5404;&amp;#x7C7B;&amp;#x6846;&amp;#x67B6;&amp;#xFF09;&amp;#x3001;&amp;#x67D0;&amp;#x4E9B;&amp;#x6">
+<meta name="keywords" content="java,reflectASM,反射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java高性能反射及性能对比">
+<meta property="og:url" content="https://frapples.github.io/articles/2018-11-11-164b.html">
 <meta property="og:site_name" content="Frapples的博客">
-<meta property="og:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta property="og:description" content="java&amp;#x7F16;&amp;#x7A0B;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x53CD;&amp;#x5C04;&amp;#x6765;&amp;#x589E;&amp;#x5F3A;&amp;#x7075;&amp;#x6D3B;&amp;#x6027;&amp;#xFF08;&amp;#x5982;&amp;#x5404;&amp;#x7C7B;&amp;#x6846;&amp;#x67B6;&amp;#xFF09;&amp;#x3001;&amp;#x67D0;&amp;#x4E9B;&amp;#x6">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2018-11-10T16:11:30.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frapples的博客">
-<meta name="twitter:description" content="Frapples 个人的一片小天地，整理思绪，思考问题，分享心得:)">
+<meta name="twitter:title" content="java高性能反射及性能对比">
+<meta name="twitter:description" content="java&amp;#x7F16;&amp;#x7A0B;&amp;#x4E2D;&amp;#xFF0C;&amp;#x4F7F;&amp;#x7528;&amp;#x53CD;&amp;#x5C04;&amp;#x6765;&amp;#x589E;&amp;#x5F3A;&amp;#x7075;&amp;#x6D3B;&amp;#x6027;&amp;#xFF08;&amp;#x5982;&amp;#x5404;&amp;#x7C7B;&amp;#x6846;&amp;#x67B6;&amp;#xFF09;&amp;#x3001;&amp;#x67D0;&amp;#x4E9B;&amp;#x6">
   
     <link rel="alternative" href="/atom.xml" title="Frapples的博客" type="application/atom+xml">
   
@@ -160,36 +161,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-IT/java/java高性能反射及性能对比" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java高性能反射及性能对比
+    </h1>
+  
+
+        
+        <a href="/articles/2018-11-11-164b.html" class="archive-article-date">
+  	<time datetime="2018-11-10T16:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java&#x7F16;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x53CD;&#x5C04;&#x6765;&#x589E;&#x5F3A;&#x7075;&#x6D3B;&#x6027;&#xFF08;&#x5982;&#x5404;&#x7C7B;&#x6846;&#x67B6;&#xFF09;&#x3001;&#x67D0;&#x4E9B;&#x62BD;&#x8C61;&#xFF08;&#x5982;&#x5404;&#x7C7B;&#x6846;&#x67B6;&#xFF09;&#x53CA;&#x51CF;&#x5C11;&#x6837;&#x677F;&#x4EE3;&#x7801;&#xFF08;&#x5982;Java Bean&#xFF09;&#x3002;<br>&#x56E0;&#x6B64;&#xFF0C;&#x53CD;&#x5C04;&#x5728;&#x5B9E;&#x9645;&#x7684;java&#x9879;&#x76EE;&#x4E2D;&#x88AB;&#x5927;&#x91CF;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x9879;&#x76EE;&#x91CC;&#x5B58;&#x5728;&#x53CD;&#x5C04;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;ReflectASM&#x9AD8;&#x6027;&#x80FD;&#x53CD;&#x5C04;&#x5E93;&#x6765;&#x4F18;&#x5316;&#x3002;<br>&#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x7A7A;&#x95F2;&#x65F6;&#x95F4;&#x7814;&#x7A76;&#x4E86;&#x4E0B;&#x7684;&#x8FD9;&#x4E2A;&#x5E93;&#xFF0C;&#x5E76;&#x505A;&#x4E86;&#x7B80;&#x5355;&#x7684;Beachmark&#x3002;</p>
+<a id="more"></a>
+<h1 id="&#x4ECB;&#x7ECD;">1. &#x4ECB;&#x7ECD;</h1><p>ReflectASM&#x662F;&#x4F7F;&#x7528;&#x5B57;&#x8282;&#x7801;&#x751F;&#x6210;&#x6765;&#x52A0;&#x5F3A;&#x53CD;&#x5C04;&#x7684;&#x6027;&#x80FD;&#x3002;<br>&#x53CD;&#x5C04;&#x5305;&#x542B;&#x591A;&#x79CD;&#x53CD;&#x5C04;&#xFF0C;&#x8FD9;&#x4E2A;&#x5E93;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x7684;&#x7279;&#x6027;&#x5219;&#x662F;&#xFF1A;</p>
+<ol>
+<li>&#x6839;&#x636E;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x3002;</li>
+<li>&#x6839;&#x636E;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8C03;&#x7528;&#x6210;&#x5458;&#x51FD;&#x6570;&#x3002;</li>
+<li>&#x6839;&#x636E;&#x5339;&#x914D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x8C03;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;</li>
+</ol>
+<p>&#x8FD9;&#x4E09;&#x79CD;&#x4E5F;&#x6070;&#x6070;&#x662F;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x4E2D;&#x6700;&#x591A;&#x7684;&#xFF0C;&#x4E14;&#x5728;&#x7279;&#x6B8A;&#x573A;&#x666F;&#x4E0B;&#x4E5F;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;</p>
+<h1 id="&#x4F8B;&#x5B50;">2. &#x4F8B;&#x5B50;</h1><p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4F7F;&#x7528;MethodAccess&#x6765;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x51FD;&#x6570;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Person person = <span class="keyword">new</span> Person();</div><div class="line">MethodAccess m = MethodAccess.get(Person.class);</div><div class="line">Object value = m.invoke(person, <span class="string">&quot;getName&quot;</span>);</div></pre></td></tr></table></figure></p>
+<p>&#x66F4;&#x591A;&#x7684;&#x4F8B;&#x5B50;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF0C;&#x8FD9;&#x4E2A;&#x5E93;&#x672C;&#x8EAB;&#x5C31;&#x4E0D;&#x5927;&#xFF0C;&#x5C31;&#x51E0;&#x4E2A;&#x7C7B;&#x3002;</p>
+<h1 id="&#x5B9E;&#x73B0;&#x539F;&#x7406;">3. &#x5B9E;&#x73B0;&#x539F;&#x7406;</h1><h2 id="MethodAccess-get&#x65B9;&#x6CD5;">3.1. MethodAccess.get&#x65B9;&#x6CD5;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> MethodAccess <span class="title">get</span> <span class="params">(Class type)</span> </span>{</div><div class="line">	ArrayList&lt;Method&gt; methods = <span class="keyword">new</span> ArrayList&lt;Method&gt;();</div><div class="line">	<span class="keyword">boolean</span> isInterface = type.isInterface();</div><div class="line">	<span class="keyword">if</span> (!isInterface) {</div><div class="line">		Class nextClass = type;</div><div class="line">		<span class="keyword">while</span> (nextClass != Object.class) {</div><div class="line">			addDeclaredMethodsToList(nextClass, methods);</div><div class="line">			nextClass = nextClass.getSuperclass();</div><div class="line">		}</div><div class="line">	} <span class="keyword">else</span> {</div><div class="line">		recursiveAddInterfaceMethodsToList(type, methods);</div><div class="line">	}</div><div class="line"></div><div class="line">	<span class="keyword">int</span> n = methods.size();</div><div class="line">	String[] methodNames = <span class="keyword">new</span> String[n];</div><div class="line">	Class[][] parameterTypes = <span class="keyword">new</span> Class[n][];</div><div class="line">	Class[] returnTypes = <span class="keyword">new</span> Class[n];</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</div><div class="line">		Method method = methods.get(i);</div><div class="line">		methodNames[i] = method.getName();</div><div class="line">		parameterTypes[i] = method.getParameterTypes();</div><div class="line">		returnTypes[i] = method.getReturnType();</div><div class="line">	}</div><div class="line"></div><div class="line">	String className = type.getName();</div><div class="line">	String accessClassName = className + <span class="string">&quot;MethodAccess&quot;</span>;</div><div class="line">	<span class="keyword">if</span> (accessClassName.startsWith(<span class="string">&quot;java.&quot;</span>)) accessClassName = <span class="string">&quot;reflectasm.&quot;</span> + accessClassName;</div><div class="line">	Class accessClass;</div><div class="line"></div><div class="line">	AccessClassLoader loader = AccessClassLoader.get(type);</div><div class="line">	<span class="keyword">synchronized</span> (loader) {</div><div class="line">		<span class="keyword">try</span> {</div><div class="line">			accessClass = loader.loadClass(accessClassName);</div><div class="line">		} <span class="keyword">catch</span> (ClassNotFoundException ignored) {</div><div class="line">			String accessClassNameInternal = accessClassName.replace(<span class="string">&apos;.&apos;</span>, <span class="string">&apos;/&apos;</span>);</div><div class="line">			String classNameInternal = className.replace(<span class="string">&apos;.&apos;</span>, <span class="string">&apos;/&apos;</span>);</div><div class="line"></div><div class="line">			ClassWriter cw = <span class="keyword">new</span> ClassWriter(ClassWriter.COMPUTE_MAXS);</div><div class="line">			MethodVisitor mv;</div><div class="line">            <span class="comment">/* ... &#x5B57;&#x8282;&#x7801;&#x751F;&#x6210; */</span></div><div class="line">			<span class="keyword">byte</span>[] data = cw.toByteArray();</div><div class="line">			accessClass = loader.defineClass(accessClassName, data);</div><div class="line">        }                </div><div class="line">    }</div><div class="line"></div><div class="line">	<span class="keyword">try</span> {</div><div class="line">		MethodAccess access = (MethodAccess)accessClass.newInstance();</div><div class="line">		access.methodNames = methodNames;</div><div class="line">		access.parameterTypes = parameterTypes;</div><div class="line">		access.returnTypes = returnTypes;</div><div class="line">		<span class="keyword">return</span> access;</div><div class="line">	} <span class="keyword">catch</span> (Throwable t) {</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Error constructing method access class: &quot;</span> + accessClassName, t);</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5927;&#x81F4;&#x903B;&#x8F91;&#x4E3A;&#xFF1A;</p>
+<ol>
+<li>&#x901A;&#x8FC7;java&#x53CD;&#x5C04;&#x83B7;&#x53D6;&#x5FC5;&#x8981;&#x7684;&#x51FD;&#x6570;&#x540D;&#x3001;&#x51FD;&#x6570;&#x7C7B;&#x578B;&#x7B49;&#x4FE1;&#x606F;&#x3002;</li>
+<li>&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x8C03;&#x7528;&#x88AB;&#x53CD;&#x5C04;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#xFF0C;&#x5176;&#x4E3A;MethodAccess&#x7684;&#x5B50;&#x7C7B;&#x3002;</li>
+<li>&#x53CD;&#x5C04;&#x751F;&#x6210;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x7C7B;&#xFF0C;&#x8FD4;&#x56DE;&#x3002;</li>
+</ol>
+<p>&#x7531;&#x4E8E;&#x91CC;&#x9762;&#x5305;&#x542B;&#x5B57;&#x8282;&#x7801;&#x751F;&#x6210;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x6BD4;&#x8F83;&#x8017;&#x65F6;&#x7684;&#x3002;<br>&#x6211;&#x4EEC;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;&#x5BF9;&#x76F8;&#x540C;&#x7684;&#x7C7B;&#x8C03;&#x7528;<code>MethodAccess.get()</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x4E0D;&#x4F1A;&#x597D;&#x4E00;&#x4E9B;&#xFF1F;<br>&#x6CE8;&#x610F;&#x5230;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">synchronized</span> (loader) {</div><div class="line">	<span class="keyword">try</span> {</div><div class="line">        accessClass = loader.loadClass(accessClassName);</div><div class="line">    } <span class="keyword">catch</span> {</div><div class="line">        <span class="comment">/* ... */</span></div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;MethodAccess&#x7C7B;&#x5DF2;&#x7ECF;&#x751F;&#x6210;&#x8FC7;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B21;&#x8C03;&#x7528;<code>MethodAccess.get</code>&#x662F;&#x4E0D;&#x4F1A;&#x64CD;&#x4F5C;&#x5B57;&#x8282;&#x7801;&#x751F;&#x6210;&#x7684;&#x3002;<br>&#x4F46;&#x662F;&#xFF0C;&#x524D;&#x9762;&#x7684;&#x4E00;&#x5927;&#x5806;&#x51C6;&#x5907;&#x53CD;&#x5C04;&#x4FE1;&#x606F;&#x7684;&#x64CD;&#x4F5C;&#x4F9D;&#x7136;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x5C01;&#x88C5;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8BD5;&#x56FE;&#x4F7F;&#x7528;ReflectASM&#x5E93;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">Object <span class="title">reflectionInvoke</span><span class="params">(Object bean, String methodName)</span> </span>{</div><div class="line">    MethodAccess m = MethodAccess.get(bean.getClass());</div><div class="line">    <span class="keyword">return</span> m.invoke(bean, methodName);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x90A3;&#x4E48;&#x6BCF;&#x6B21;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x524D;&#x90FD;&#x5F97;&#x6267;&#x884C;&#x8FD9;&#x4E48;&#x4E00;&#x5927;&#x5768;&#x51C6;&#x5907;&#x53CD;&#x5C04;&#x4FE1;&#x606F;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8FD8;&#x4E0D;&#x5982;&#x7528;&#x539F;&#x751F;&#x53CD;&#x5C04;&#x5462;&#x3002;&#x8FD9;&#x4E2A;&#x540E;&#x9762;&#x4F1A;&#x6709;Beachmark&#x3002;</p>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x5728;&#x627E;&#x4E0D;&#x5230;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;MethodAccess&#x7C7B;&#x65F6;&#xFF08;&#x5373;&#x7B2C;&#x4E00;&#x6B21;&#x8C03;&#x7528;&#xFF09;&#x65F6;&#xFF0C;&#x518D;&#x51C6;&#x5907;&#x53CD;&#x5C04;&#x4FE1;&#x606F;&#xFF1F;&#x8FD9;&#x4E2A;&#x5F97;&#x95EE;&#x4F5C;&#x8005;&#x3002;</p>
+<h2 id="&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x7C7B;">3.2. &#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x7C7B;</h2><h3 id="&#x901A;&#x8FC7;idea&#x8C03;&#x8BD5;&#x5668;&#x83B7;&#x53D6;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7C7B;&#x7684;&#x5B57;&#x8282;&#x7801;">3.2.1. &#x901A;&#x8FC7;idea&#x8C03;&#x8BD5;&#x5668;&#x83B7;&#x53D6;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7C7B;&#x7684;&#x5B57;&#x8282;&#x7801;</h3><p>&#x90A3;&#x4E48;&#x90A3;&#x4E2A;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x7C7B;&#x7684;&#x5185;&#x90E8;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;<br>&#x7531;&#x4E8E;&#x8FD9;&#x4E2A;&#x7C7B;&#x662F;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x83B7;&#x53D6;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x3002;<br>&#x4E00;&#x5F00;&#x59CB;&#x6211;&#x8BD5;&#x56FE;&#x5BFB;&#x627E;java&#x7684;ClassLoader&#x7684;API&#x83B7;&#x53D6;&#x5B83;&#x7684;&#x5B57;&#x8282;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x4F3C;&#x4E4E;&#x6CA1;&#x6709;&#x8FD9;&#x79CD;API&#x3002;</p>
+<p>&#x540E;&#x6765;&#xFF0C;&#x6211;&#x60F3;&#x4E86;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#xFF0C;&#x76F4;&#x63A5;&#x5728;<code>MethodAccess.get</code>&#x91CC;&#x9762;&#x7684;&#x8FD9;&#x884C;&#x4EE3;&#x7801;&#x6253;&#x65AD;&#x70B9;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">byte</span>[] data = cw.toByteArray();</div></pre></td></tr></table></figure></p>
+<p>&#x901A;&#x8FC7;idea&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x628A;<code>data</code>&#x7684;&#x5185;&#x5BB9;&#x590D;&#x5236;&#x51FA;&#x6765;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x53C8;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;data&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x5185;&#x5BB9;&#xFF0C;&#x6839;&#x672C;&#x590D;&#x5236;&#x4E0D;&#x51FA;&#x6765;&#x3002;<br>&#x4E00;&#x4E2A;&#x4E00;&#x5E74;&#x8981;400&#x7F8E;&#x5200;&#x7684;IDE&#xFF0C;&#x4E3A;&#x5565;&#x4E0D;&#x80FD;&#x505A;&#x7684;&#x8D34;&#x5FC3;&#x4E00;&#x70B9;&#x554A;&#xFF1F;</p>
+<p>&#x65E2;&#x7136;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x5185;&#x5BB9;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x80FD;&#x8BBE;&#x6CD5;&#x5C06;&#x5176;&#x7F16;&#x7801;&#x6210;&#x6587;&#x672C;&#x518D;&#x590D;&#x5236;&#x4E86;&#x3002;&#x901A;&#x8FC7;idea&#x8C03;&#x8BD5;&#x5668;&#x81EA;&#x5B9A;&#x4E49;view&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5C06;&#x5176;&#x7F16;&#x7801;&#x6210;base64&#x540E;&#x590D;&#x5236;&#x4E86;&#x51FA;&#x6765;&#x3002;<br>&#x7136;&#x540E;&#xFF0C;&#x641E;&#x4E2A;python&#x5C0F;&#x811A;&#x672C;&#x5C06;&#x5176;base64&#x89E3;&#x7801;&#x56DE;.class&#x6587;&#x4EF6;&#xFF1A;<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line"><span class="keyword">with</span> open(<span class="string">&quot;tmp.txt&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> fi, open(<span class="string">&quot;tmp.class&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> fo:</div><div class="line">    base64.decode(fi, fo)</div></pre></td></tr></table></figure></p>
+<p>&#x53CD;&#x7F16;&#x8BD1;.class&#x6587;&#x4EF6;&#xFF0C;&#x5F97;&#x5230;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">// Source code recreated from a .class file by IntelliJ IDEA</span></div><div class="line"><span class="comment">// (powered by Fernflower decompiler)</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">package</span> io.github.frapples.javademoandcookbook.commonutils.entity;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.esotericsoftware.reflectasm.MethodAccess;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PointMethodAccess</span> <span class="keyword">extends</span> <span class="title">MethodAccess</span> </span>{</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PointMethodAccess</span><span class="params">()</span> </span>{</div><div class="line">    }</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object var1, <span class="keyword">int</span> var2, Object... var3)</span> </span>{</div><div class="line">        Point var4 = (Point)var1;</div><div class="line">        <span class="keyword">switch</span>(var2) {</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> var4.getX();</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            var4.setX((Integer)var3[<span class="number">0</span>]);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            <span class="keyword">return</span> var4.getY();</div><div class="line">        <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">            var4.setY((Integer)var3[<span class="number">0</span>]);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">            <span class="keyword">return</span> var4.toString();</div><div class="line">        <span class="keyword">case</span> <span class="number">5</span>:</div><div class="line">            <span class="keyword">return</span> Point.of((Integer)var3[<span class="number">0</span>], (Integer)var3[<span class="number">1</span>], (String)var3[<span class="number">2</span>]);</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Method not found: &quot;</span> + var2);</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x751F;&#x6210;&#x7684;invoke&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x76F4;&#x63A5;&#x6839;&#x636E;&#x7D22;&#x5F15;&#x4F7F;&#x7528;switch&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;&#x53EA;&#x8981;&#x4F7F;&#x7528;&#x5F97;&#x5F53;&#xFF0C;&#x6027;&#x80FD;&#x5AB2;&#x7F8E;&#x539F;&#x751F;&#x8C03;&#x7528;&#x662F;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x7684;&#x3002;</p>
+<h2 id="MethodAccess-invoke&#x65B9;&#x6CD5;">3.3. MethodAccess.invoke&#x65B9;&#x6CD5;</h2><p>&#x6765;&#x770B;<code>invoke</code>&#x65B9;&#x6CD5;&#x5185;&#x5177;&#x4F53;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">public</span> Object <span class="title">invoke</span> <span class="params">(Object object, <span class="keyword">int</span> methodIndex, Object... args)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">/** Invokes the method with the specified name and the specified param types. */</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span> <span class="params">(Object object, String methodName, Class[] paramTypes, Object... args)</span> </span>{</div><div class="line">	<span class="keyword">return</span> invoke(object, getIndex(methodName, paramTypes), args);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">/** Invokes the first method with the specified name and the specified number of arguments. */</span></div><div class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span> <span class="params">(Object object, String methodName, Object... args)</span> </span>{</div><div class="line">	<span class="keyword">return</span> invoke(object, getIndex(methodName, args == <span class="keyword">null</span> ? <span class="number">0</span> : args.length), args);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">/** Returns the index of the first method with the specified name. */</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getIndex</span> <span class="params">(String methodName)</span> </span>{</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, n = methodNames.length; i &lt; n; i++)</div><div class="line">		<span class="keyword">if</span> (methodNames[i].equals(methodName)) <span class="keyword">return</span> i;</div><div class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Unable to find non-private method: &quot;</span> + methodName);</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x901A;&#x8FC7;&#x51FD;&#x6570;&#x540D;&#x79F0;&#x8C03;&#x7528;&#x51FD;&#x6570;&#xFF08;&#x5373;&#x8C03;&#x7528;<code>invoke(Object, String, Class[], Object...)</code>&#xFF0C;<br>&#x5219;<code>MethodAccess</code>&#x662F;&#x5148;&#x904D;&#x5386;&#x6240;&#x6709;&#x51FD;&#x6570;&#x540D;&#x79F0;&#x62FF;&#x5230;&#x7D22;&#x5F15;&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x7D22;&#x5F15;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#xFF08;&#x5373;&#x8C03;&#x7528;&#x865A;&#x51FD;&#x6570;<code>invoke(Object, int, Object...)</code>&#xFF0C;<br>&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x901A;&#x8FC7;&#x591A;&#x6001;&#x8C03;&#x7528;&#x5B57;&#x8282;&#x7801;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;&#x5B50;&#x7C7B;&#x7684;&#x5BF9;&#x5E94;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x88AB;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x7684;&#x7C7B;&#x7684;&#x51FD;&#x6570;&#x5F88;&#x591A;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x904D;&#x5386;&#x64CD;&#x4F5C;&#x5E26;&#x6765;&#x7684;&#x6027;&#x80FD;&#x635F;&#x5931;&#x4E0D;&#x80FD;&#x5FFD;&#x7565;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;&#x6027;&#x80FD;&#x8981;&#x6C42;&#x9AD8;&#x7684;&#x573A;&#x5408;&#xFF0C;&#x5E94;&#x8BE5;&#x9884;&#x5148;&#x901A;&#x8FC7;<code>getIndex</code>&#x65B9;&#x6CD5;&#x63D0;&#x524D;&#x83B7;&#x5F97;&#x7D22;&#x5F15;&#xFF0C;&#x7136;&#x540E;&#x540E;&#x9762;&#x5373;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;<code>invoke(Object, int, Object...)</code>&#x6765;&#x8C03;&#x7528;&#x3002;</p>
+<h1 id="Beachmark">4. Beachmark</h1><p>&#x8C08;&#x8FD9;&#x79CD;&#x7EC6;&#x7C92;&#x5EA6;&#x64CD;&#x4F5C;&#x7EA7;&#x522B;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x6700;&#x6709;&#x8BF4;&#x670D;&#x529B;&#x7684;&#x5C31;&#x662F;&#x5B9E;&#x9645;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x4E86;&#x3002;<br>&#x4E0B;&#x9762;&#xFF0C;Talk is cheap, show you my beachmark.</p>
+<p>&#x9996;&#x5148;&#x662F;&#x76F8;&#x5173;&#x73AF;&#x5883;&#xFF1A;<br>&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#xFF1A; elementary OS 0.4.1 Loki 64-bit<br>CPU: &#x53CC;&#x6838; Intel&#xAE; Core&#x2122; i5-7200U CPU @ 2.50GHz<br>JMH&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x7248;&#x672C;: 1.21<br>JVM&#x7248;&#x672C;: JDK 1.8.0_181, OpenJDK 64-Bit Server VM, 25.181-b13</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Benchmark                                                Mode  Cnt     Score    Error   Units</div><div class="line"><span class="comment">// &#x901A;&#x8FC7;MethodHandle&#x8C03;&#x7528;&#x3002;&#x9884;&#x5148;&#x5F97;&#x5230;&#x67D0;&#x51FD;&#x6570;&#x7684;MethodHandle</span></div><div class="line">ReflectASMBenchmark.javaMethodHandleWithInitGet         thrpt    <span class="number">5</span>   <span class="number">122.988</span> &#xB1;  <span class="number">4.240</span>  ops/us</div><div class="line"><span class="comment">// &#x901A;&#x8FC7;java&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x3002;&#x7F13;&#x5B58;&#x5F97;&#x5230;&#x7684;Method&#x5BF9;&#x8C61;</span></div><div class="line">ReflectASMBenchmark.javaReflectWithCacheGet             thrpt    <span class="number">5</span>    <span class="number">11.877</span> &#xB1;  <span class="number">2.203</span>  ops/us</div><div class="line"><span class="comment">// &#x901A;&#x8FC7;java&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x3002;&#x9884;&#x5148;&#x5F97;&#x5230;&#x67D0;&#x51FD;&#x6570;&#x7684;Method&#x5BF9;&#x8C61;</span></div><div class="line">ReflectASMBenchmark.javaReflectWithInitGet              thrpt    <span class="number">5</span>    <span class="number">66.702</span> &#xB1; <span class="number">11.154</span>  ops/us</div><div class="line"><span class="comment">// &#x901A;&#x8FC7;java&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x3002;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x5148;&#x53D6;&#x5F97;Method&#x5BF9;&#x8C61;</span></div><div class="line">ReflectASMBenchmark.javaReflectWithOriginGet            thrpt    <span class="number">5</span>     <span class="number">3.654</span> &#xB1;  <span class="number">0.795</span>  ops/us</div><div class="line"><span class="comment">// &#x76F4;&#x63A5;&#x8C03;&#x7528;</span></div><div class="line">ReflectASMBenchmark.normalCall                          thrpt    <span class="number">5</span>  <span class="number">1059.926</span> &#xB1; <span class="number">99.724</span>  ops/us</div><div class="line"><span class="comment">// ReflectASM&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#x8C03;&#x7528;&#x3002;&#x9884;&#x5148;&#x53D6;&#x5F97;MethodAccess&#x5BF9;&#x8C61;&#xFF0C;&#x9884;&#x5148;&#x53D6;&#x5F97;&#x67D0;&#x51FD;&#x6570;&#x7684;&#x7D22;&#x5F15;</span></div><div class="line">ReflectASMBenchmark.reflectAsmIndexWithCacheGet         thrpt    <span class="number">5</span>   <span class="number">639.051</span> &#xB1; <span class="number">47.750</span>  ops/us</div><div class="line"><span class="comment">// ReflectASM&#x901A;&#x8FC7;&#x51FD;&#x6570;&#x540D;&#x8C03;&#x7528;&#xFF0C;&#x7F13;&#x5B58;&#x5F97;&#x5230;&#x7684;MethodAccess&#x5BF9;&#x8C61;</span></div><div class="line">ReflectASMBenchmark.reflectAsmWithCacheGet              thrpt    <span class="number">5</span>    <span class="number">21.868</span> &#xB1;  <span class="number">1.879</span>  ops/us</div><div class="line"><span class="comment">// ReflectASM&#x901A;&#x8FC7;&#x51FD;&#x6570;&#x540D;&#x8C03;&#x7528;&#xFF0C;&#x9884;&#x5148;&#x5F97;&#x5230;&#x7684;MethodAccess</span></div><div class="line">ReflectASMBenchmark.reflectAsmWithInitGet               thrpt    <span class="number">5</span>    <span class="number">53.370</span> &#xB1;  <span class="number">0.821</span>  ops/us</div><div class="line"><span class="comment">// ReflectASM&#x901A;&#x8FC7;&#x51FD;&#x6570;&#x540D;&#x8C03;&#x7528;&#xFF0C;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x53D6;&#x5F97;MethodAccess</span></div><div class="line">ReflectASMBenchmark.reflectAsmWithOriginGet             thrpt    <span class="number">5</span>     <span class="number">0.593</span> &#xB1;  <span class="number">0.005</span>  ops/us</div></pre></td></tr></table></figure>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x6765;&#x4E00;&#x6B21;<code>MethodAccess.get</code>&#xFF0C;&#x6027;&#x80FD;&#x662F;&#x6700;&#x6162;&#x7684;&#xFF0C;&#x65F6;&#x95F4;&#x6D88;&#x8017;&#x662F;java&#x539F;&#x751F;&#x8C03;&#x7528;&#x7684;6&#x500D;&#xFF0C;&#x4E0D;&#x5982;&#x7528;java&#x539F;&#x751F;&#x8C03;&#x7528;&#x3002;<br>&#x6700;&#x5FEB;&#x7684;&#x5219;&#x662F;&#x9884;&#x5148;&#x53D6;&#x5F97;MethodAccess&#x548C;&#x51FD;&#x6570;&#x7684;&#x7D22;&#x5F15;&#x5E76;&#x7528;&#x7D22;&#x5F15;&#x6765;&#x8C03;&#x7528;&#x3002;&#x5176;&#x65F6;&#x95F4;&#x6D88;&#x8017;&#x4EC5;&#x4EC5;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x7684;2&#x500D;&#x4E0D;&#x5230;&#x3002;</p>
+<p>&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x89C1;&#xFF1A;<br><a href="https://github.com/frapples/java-demo-and-cookbook/blob/master/demo-and-case/src/main/java/io/github/frapples/javademoandcookbook/demoandcase/benchmark/ReflectASMBenchmark.java" target="_blank" rel="noopener">https://github.com/frapples/java-demo-and-cookbook/blob/master/demo-and-case/src/main/java/io/github/frapples/javademoandcookbook/demoandcase/benchmark/ReflectASMBenchmark.java</a></p>
+<p>jmh&#x6846;&#x67B6;&#x5341;&#x5206;&#x4E13;&#x4E1A;&#xFF0C;&#x5728;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x524D;&#x4F1A;&#x505A;&#x590D;&#x6742;&#x7684;&#x9884;&#x70ED;&#x8FC7;&#x7A0B;&#x4EE5;&#x51CF;&#x5C11;&#x73AF;&#x5883;&#x3001;&#x4F18;&#x5316;&#x7B49;&#x5F71;&#x54CD;&#xFF0C;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x4E5F;&#x5C3D;&#x53EF;&#x80FD;&#x901A;&#x8FC7;&#x5408;&#x7406;&#x7684;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x7B49;&#x65B9;&#x5F0F;&#x6765;&#x51CF;&#x5C0F;&#x8BEF;&#x5DEE;&#x3002;<br>&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x9ED8;&#x8BA4;&#x7684;&#x8FED;&#x4EE3;&#x6B21;&#x6570;&#x3001;&#x9884;&#x70ED;&#x6B21;&#x6570;&#x4E0B;&#xFF0C;&#x8DD1;&#x4E00;&#x6B21;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x7684;&#x65F6;&#x95F4;&#x4E0D;&#x77ED;&#xFF0C;CPU&#x547C;&#x547C;&#x7684;&#x8F6C;&#x3002;&#x3002;&#x3002;</p>
+<h1 id="&#x6700;&#x540E;&#x603B;&#x7ED3;">5. &#x6700;&#x540E;&#x603B;&#x7ED3;</h1><p>&#x5728;&#x4F7F;&#x7528;ReflectASM&#x5BF9;&#x67D0;&#x7C7B;&#x8FDB;&#x884C;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x9884;&#x5148;&#x751F;&#x6210;&#x6216;&#x83B7;&#x53D6;&#x5B57;&#x8282;&#x7801;&#x52A8;&#x6001;&#x751F;&#x6210;&#x7684;MethodAccess&#x5B50;&#x7C7B;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x8FD9;&#x4E00;&#x64CD;&#x4F5C;&#x662F;&#x975E;&#x5E38;&#x8017;&#x65F6;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6B63;&#x786E;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x662F;&#xFF1A;</p>
+<ol>
+<li>&#x5728;&#x67D0;&#x4E2A;&#x5229;&#x7528;&#x53CD;&#x5C04;&#x7684;&#x8017;&#x65F6;&#x51FD;&#x6570;&#x542F;&#x52A8;&#x524D;&#xFF0C;&#x5148;&#x9884;&#x5148;&#x751F;&#x6210;&#x8FD9;&#x4E2A;MethodAccess&#x5BF9;&#x8C61;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x662F;&#x81EA;&#x5DF1;&#x91CC;&#x9762;ReflectASM&#x5C01;&#x88C5;&#x5DE5;&#x5177;&#x7C7B;&#xFF0C;&#x5219;&#x5E94;&#x8BE5;&#x8BBE;&#x8BA1;&#x7F13;&#x5B58;&#xFF0C;&#x7F13;&#x5B58;&#x751F;&#x6210;&#x7684;MethodAccess&#x5BF9;&#x8C61;&#x3002;<br>&#x5982;&#x679C;&#x4E0D;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x8FD9;&#x4E2A;ReflectASM&#x7528;&#x7684;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x610F;&#x4E49;&#xFF0C;&#x6027;&#x80FD;&#x8FD8;&#x4E0D;&#x5982;java&#x7684;&#x539F;&#x751F;&#x53CD;&#x5C04;&#x3002;</li>
+</ol>
+<p>&#x5982;&#x679C;&#x60F3;&#x8FDB;&#x4E00;&#x6B65;&#x63D0;&#x5347;&#x6027;&#x80FD;&#xFF0C;&#x90A3;&#x4E48;&#x8FD8;&#x5E94;&#x8BE5;&#x907F;&#x514D;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x540D;&#x79F0;&#x6765;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x8017;&#x65F6;&#x7684;&#x51FD;&#x6570;&#x542F;&#x52A8;&#x524D;&#xFF0C;&#x9884;&#x5148;&#x83B7;&#x53D6;&#x51FD;&#x6570;&#x540D;&#x79F0;&#x5BF9;&#x5E94;&#x7684;&#x6574;&#x6570;&#x7D22;&#x5F15;&#x3002;<br>&#x5728;&#x540E;&#x9762;&#x7684;&#x8017;&#x65F6;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x6574;&#x6570;&#x7D22;&#x5F15;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#x3002;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-09-12-b021.html" class="archive-article-date">
-  	<time datetime="2018-09-12T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-09-12-b021.html">源码|jdk源码之Object及装箱类型分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,13 +243,17 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">reflectASM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">反射</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -217,416 +265,87 @@
         		<li class="article-tag-list-item">
         			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
       		
 		</ul>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-09-09-5ed1.html" class="archive-article-date">
-  	<time datetime="2018-09-09T15:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/articles/2018-10-23-19fb.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">rust语言特点及基础配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-09-09-5ed1.html">源码|jdk源码之栈、队列及ArrayDeque分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">deque</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">1. 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#例子"><span class="toc-number">2.</span> <span class="toc-text">2. 例子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现原理"><span class="toc-number">3.</span> <span class="toc-text">3. 实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MethodAccess-get方法"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. MethodAccess.get方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态生成的类"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 动态生成的类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过idea调试器获取动态生成类的字节码"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. 通过idea调试器获取动态生成类的字节码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MethodAccess-invoke方法"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. MethodAccess.invoke方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Beachmark"><span class="toc-number">4.</span> <span class="toc-text">4. Beachmark</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后总结"><span class="toc-number">5.</span> <span class="toc-text">5. 最后总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-09-07-3a85.html" class="archive-article-date">
-  	<time datetime="2018-09-06T16:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-09-07-3a85.html">源码|jdk源码之LinkedHashMap分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-07-17-d281.html" class="archive-article-date">
-  	<time datetime="2018-07-17T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-07-17-d281.html">源码|jdk源码之HashMap分析(二)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-07-13-1225.html" class="archive-article-date">
-  	<time datetime="2018-07-13T12:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-07-13-1225.html">源码|jdk源码之HashMap分析(一)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-07-11-2c35.html" class="archive-article-date">
-  	<time datetime="2018-07-11T14:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-07-11-2c35.html">源码|jdk源码之LinkedList与modCount字段</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/articles/2018-07-10-7932.html" class="archive-article-date">
-  	<time datetime="2018-07-10T12:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/articles/2018-07-10-7932.html">源码|jdk源码-ArrayList与Vector源码阅读</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jdk8</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT//" class="article-tag-list-link color3">IT</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/IT/java/jdk//" class="article-tag-list-link color4">jdk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://frapples.github.io/articles/2018-11-11-164b.html",
+  owner: 'frapples',
+  repo: 'frapples.github.io',
+  oauth: {
+    client_id: '0891e95861157db67799',
+    client_secret: 'ed05340f95e66138cc99d6f7dc1ee6e2ebc4662f',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -649,10 +368,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
