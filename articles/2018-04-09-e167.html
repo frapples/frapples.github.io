@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://frapples.github.io/images/emoji/joy.png">
 <meta property="og:image" content="https://frapples.github.io/images/emoji/joy.png">
-<meta property="og:updated_time" content="2018-04-09T07:10:16.307Z">
+<meta property="og:updated_time" content="2019-05-19T08:53:09.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue总结系列--数据驱动和响应式">
 <meta name="twitter:description" content="&amp;#x5728;&amp;#x516C;&amp;#x53F8;&amp;#x91CC;&amp;#x5E2E;&amp;#x9879;&amp;#x76EE;&amp;#x7EC4;&amp;#x91CC;&amp;#x5F00;&amp;#x53D1;&amp;#x540E;&amp;#x53F0;&amp;#x7CFB;&amp;#x7EDF;&amp;#x7684;&amp;#x524D;&amp;#x7AEF;&amp;#x9879;&amp;#x76EE;&amp;#x4E5F;&amp;#x6709;&amp;#x4E00;&amp;#x6BB5;&amp;#x65F6;">
@@ -187,7 +187,7 @@
         <p>&#x5728;&#x516C;&#x53F8;&#x91CC;&#x5E2E;&#x9879;&#x76EE;&#x7EC4;&#x91CC;&#x5F00;&#x53D1;&#x540E;&#x53F0;&#x7CFB;&#x7EDF;&#x7684;&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x4E5F;&#x6709;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E86;&#x3002; vue&#x8FD9;&#x79CD;&#x6570;&#x636E;&#x9A71;&#x52A8;&#xFF0C;&#x7EC4;&#x4EF6;&#x5316;&#x7684;&#x6846;&#x67B6;&#x548C;react&#x5F88;&#x50CF;&#xFF0C;<br>&#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#x7684;&#x5FEB;&#x901F;&#x4E0A;&#x624B;&#x57FA;&#x672C;&#x7684;&#x5F00;&#x53D1;&#xFF0C;&#x5230;&#x540E;&#x6765;&#x5F00;&#x59CB;&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;&#xFF0C;&#x5BF9;element UI&#x7684;&#x7EC4;&#x4EF6;&#x4E8C;&#x6B21;&#x5C01;&#x88C5;&#x4EE5;&#x6EE1;&#x8DB3;&#x9879;&#x76EE;&#x9700;&#x6C42;&#xFF0C;&#x671F;&#x95F4;&#x4E5F;&#x662F;&#x8E29;&#x4E86;&#x4E0D;&#x5C11;&#x5751;&#x3002;<br>&#x7531;&#x4E8E;&#x5C06;&#x6765;&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x53EF;&#x80FD;&#x518D;&#x4E5F;&#x4E0D;&#x4F1A;&#x63A5;&#x89E6;&#x524D;&#x7AEF;&#x4E86;&#xFF0C;&#x8D81;&#x7740;&#x73B0;&#x5728;&#x5BF9;vue&#x8FD8;&#x5F88;&#x719F;&#x7EC3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8D76;&#x7D27;&#x5C06;&#x8FD9;&#x671F;&#x95F4;&#x7684;&#x6536;&#x83B7;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#x3002;</p>
 <p>&#x6309;&#x7167;&#x6211;&#x7684;&#x7406;&#x89E3;&#xFF0C;vue&#x7684;&#x7279;&#x70B9;&#x5728;&#x4E8E;&#xFF0C;&#x9AD8;&#x5C42;&#x6B21;&#x7684;&#x62BD;&#x8C61;&#x6A21;&#x578B;&#xFF0C;&#x7EC4;&#x4EF6;&#x5316;&#xFF0C;&#x6570;&#x636E;&#x9A71;&#x52A8;&#x4E0E;&#x54CD;&#x5E94;&#x5F0F;&#x3002;<br><a id="more"></a></p>
 <p>&#x6CE8;&#x610F;&#xFF1A;&#x672C;&#x6587;&#x4E2D;&#x6240;&#x6709;&#x6D89;&#x53CA;&#x5230;<code>{ {</code>&#x7684;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x4E0D;&#x5305;&#x62EC;&#x4E2D;&#x95F4;&#x7684;&#x7A7A;&#x683C;&#xFF0C;&#x56E0;&#x4E3A;hexo&#x4F1A;&#x65E0;&#x8111;&#x628A;&#x8FD9;&#x4E2A;&#x8BED;&#x6CD5;&#x5F53;&#x6210;hexo&#x7684;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x8BED;&#x6CD5; 
-<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png" style="">
 </p>
 <h1 id="vue&#x662F;&#x4EC0;&#x4E48;&#x53CA;&#x7279;&#x70B9;">1. vue&#x662F;&#x4EC0;&#x4E48;&#x53CA;&#x7279;&#x70B9;</h1><h2 id="vue&#x662F;&#x4EC0;&#x4E48;">1.1. vue&#x662F;&#x4EC0;&#x4E48;</h2><p>&#x7B80;&#x5355;&#x7684;&#x6765;&#x8BF4;&#xFF0C;vue&#x662F;&#x4E00;&#x5957;&#x7528;&#x4E8E;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x7684;&#x6846;&#x67B6;&#x3002;<br>&#x5B66;&#x4E60;&#x4E00;&#x95E8;&#x6280;&#x672F;&#x9996;&#x5148;&#x5E94;&#x8BE5;&#x5BF9;&#x8BE5;&#x6280;&#x672F;&#x6709;&#x7740;&#x4E00;&#x4E2A;&#x6E05;&#x6670;&#x6B63;&#x786E;&#x7684;&#x8BA4;&#x8BC6;&#x548C;&#x601D;&#x8DEF;&#xFF0C;&#x5426;&#x5219;&#x72B9;&#x5982;&#x6D6E;&#x6C99;&#x4E4B;&#x4E0A;&#x5EFA;&#x9AD8;&#x697C;&#x3002;&#x4E0B;&#x9762;&#x5C31;&#x6765;&#x8C08;&#x8C08;&#x6211;&#x5BF9;vue&#x8FD9;&#x4E2A;&#x6846;&#x67B6;&#x7684;&#x7406;&#x89E3;&#x3002;</p>
 <p>vue&#x5B83;&#x7684;&#x60CA;&#x8273;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#xFF0C;&#x5BF9;&#x4E0A;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x5957;&#x975E;&#x5E38;&#x4F18;&#x79C0;&#x7684;&#x4E0E;&#x4F20;&#x7EDF;&#x524D;&#x7AEF;&#x622A;&#x7136;&#x4E0D;&#x540C;&#x7684;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x6A21;&#x578B;&#xFF0C;&#x5BF9;&#x4E0B;&#xFF0C;&#x5B83;&#x5C4F;&#x853D;&#x4E86;&#x4F20;&#x7EDF;&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x7684;&#x5404;&#x79CD;&#x4E11;&#x964B;&#x7684;&#x6280;&#x672F;&#x3002;<br>&#x5728;&#x5B9E;&#x73B0;&#x590D;&#x6742;&#x7684;&#x9875;&#x9762;&#x9700;&#x6C42;&#x65F6;&#xFF0C;vue&#x5E2E;&#x4F60;&#x4ECE;&#x4F20;&#x7EDF;&#x524D;&#x7AEF;&#x7684;&#x5404;&#x79CD;HACK&#x822C;&#x7684;&#x5947;&#x6DEB;&#x6280;&#x5DE7;&#x89E3;&#x8131;&#x51FA;&#x6765;&#xFF0C;vue&#x63D0;&#x4F9B;&#x7684;&#x62BD;&#x8C61;&#x5F00;&#x53D1;&#x6A21;&#x578B;&#x62E5;&#x6709;&#x5F3A;&#x5927;&#x7684; <strong>&#x8868;&#x8FBE;&#x80FD;&#x529B;</strong>&#xFF0C;&#x80FD;&#x591F;&#x5982;&#x4E1D;&#x987A;&#x6ED1;&#x822C;&#x7684;&#x5B8C;&#x6210;&#x5404;&#x79CD;&#x590D;&#x6742;&#x7684;&#x9700;&#x6C42;&#x3002;</p>
@@ -275,7 +275,7 @@
 <p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x4E2D;&#x7684;&#x4E00;&#x5927;&#x91CD;&#x70B9;&#x662F;diff&#x7B97;&#x6CD5;&#x3002;&#x5173;&#x4E8E;DOM&#x7684;diff&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x6CA1;&#x6709;&#x63A5;&#x89E6;&#x8FC7;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;&#x3002;<br>&#x4E4B;&#x524D;&#x7814;&#x7A76;&#x8FC7;&#x6587;&#x672C;diff&#x7B97;&#x6CD5;&#x662F;&#x57FA;&#x4E8E;LCS&#x7B97;&#x6CD5;&#x7684;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x4F18;&#x5316;&#xFF0C;&#x4E4B;&#x540E;&#x6709;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x7814;&#x7A76;&#x4E0B;DOM&#x7684;diff&#x7B97;&#x6CD5;&#x3002;</p>
 <h2 id="&#x6570;&#x636E;&#x66F4;&#x65B0;&#x68C0;&#x6D4B;&#x7684;&#x5751;">4.2. &#x6570;&#x636E;&#x66F4;&#x65B0;&#x68C0;&#x6D4B;&#x7684;&#x5751;</h2><p>&#x4ECE;&#x4E0A;&#x9762;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5F53;&#x76F4;&#x63A5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;vue&#x5C5E;&#x6027;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;getter&#x51FD;&#x6570;&#x3002;<br>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;getter&#x51FD;&#x6570;&#x662F;js&#x7684;&#x4E00;&#x4E2A;&#x673A;&#x5236;&#x3002;&#x5728;&#x4FEE;&#x6539;&#x6570;&#x7EC4;&#x6216;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x4E5F;&#x6709;&#x7C7B;&#x4F3C;&#x7684;&#x673A;&#x5236;&#x4FDD;&#x8BC1;vue&#x80FD;&#x68C0;&#x6D4B;&#x5230;&#x6570;&#x636E;&#x7684;&#x66F4;&#x65B0;&#x4EE5;&#x89E6;&#x53D1;&#x6E32;&#x67D3;&#x3002;</p>
 <p>&#x7136;&#x800C;&#xFF0C;&#x6709;&#x51E0;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x7531;&#x4E8E;js&#x7684;&#x9650;&#x5236;&#x65E0;&#x6CD5;&#x68C0;&#x6D4B;&#x5230;&#xFF0C;&#x5B9E;&#x9645;&#x7F16;&#x7A0B;&#x4E2D;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4F1A;&#x611F;&#x89C9;&#x78B0;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x7384;&#x5B66;bug&#x3002;&#x3002;&#x3002; 
-<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png">
+<img width="20" height="20" class="emoji nofancybox" title=":joy:" alt="&#x1F602;" src="/images/emoji/joy.png" style="">
 </p>
 <ol>
 <li>&#x6570;&#x7EC4;&#x3002;<ol>
@@ -420,7 +420,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Frapples
+    		&copy; 2020 Frapples
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -548,10 +548,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">typescrpt</a>
               </li>
              
@@ -572,6 +568,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
@@ -580,23 +580,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">druid</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">泛型</a>
+                <a href="javascript:void(0)" class="js-tag color4">SOA</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SOA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,11 +596,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态语言</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+                <a href="javascript:void(0)" class="js-tag color3">泛型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">principle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">oop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,19 +628,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">chromebook</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">crouton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">折腾</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,19 +640,23 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">rust</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">graphviz</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">draw</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -680,19 +668,39 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">spacemacs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">virtualbox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">折腾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">chromebook</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">crouton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">reflection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">tools</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">graphviz</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">draw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,11 +716,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">deque</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">deque</a>
               </li>
             
             <div class="clearfix"></div>
